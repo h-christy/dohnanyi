@@ -1,0 +1,55 @@
+---
+title: "Week 3"
+# date: "2025-07-17"
+authors:
+  - name: Christy Hsu
+    affiliation: Georgetown University
+    roles: writing
+    corresponding: true
+# description: "To people who travel and take notes"
+title-block-banner: '#E5E2D7'
+title-block-banner-color: "#697FEB"
+format:
+  html:
+    # df-print: kable
+    embed-resources: true
+    theme: default
+    css: styles.css
+bibliography: quintet.bib
+---
+
+# Week 3:
+
+## Connecting Positron to Jupyterhub
+
+## R Tutorial
+
+## Maps
+
+```{r}
+# library(tidyverse)
+# library(sf)
+# library(mapview)
+```
+
+```{r}
+# st_layers('')
+```
+
+```{r}
+# fr_sf <- st_read('')
+# fr_sf |> mapview()
+```
+
+```{r}
+# fr_sf |> ggplot() + geom_sf()
+```
+
+```{r}
+# library(rnaturalearthdata)
+```
+
+```{r}
+
+```
+

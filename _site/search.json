@@ -1,0 +1,42 @@
+[
+  {
+    "objectID": "week3.html",
+    "href": "week3.html",
+    "title": "Week 3",
+    "section": "",
+    "text": "# library(tidyverse)\n# library(sf)\n# library(mapview)\n\n\n# st_layers('')\n\n\n# fr_sf &lt;- st_read('')\n# fr_sf |&gt; mapview()\n\n\n# fr_sf |&gt; ggplot() + geom_sf()\n\n\n# library(rnaturalearthdata)",
+    "crumbs": [
+      "Coding Workshop"
+    ]
+  },
+  {
+    "objectID": "week3.html#maps",
+    "href": "week3.html#maps",
+    "title": "Week 3",
+    "section": "",
+    "text": "# library(tidyverse)\n# library(sf)\n# library(mapview)\n\n\n# st_layers('')\n\n\n# fr_sf &lt;- st_read('')\n# fr_sf |&gt; mapview()\n\n\n# fr_sf |&gt; ggplot() + geom_sf()\n\n\n# library(rnaturalearthdata)",
+    "crumbs": [
+      "Coding Workshop"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Taman",
+    "section": "",
+    "text": "In winter, when night’s shade\npossesses longer half the world,\nand longer in the idle stillness,\nby the bemisted moon,\nthe lazy orient sleeps,\nawakened at her customary hour\nshe would get up by candles.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site",
+    "crumbs": [
+      "About"
+    ]
+  }
+]

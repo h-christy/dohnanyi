@@ -1,0 +1,24 @@
+---
+title: "Taman"
+authors:
+  - name: Christy Hsu
+    affiliation: Georgetown University
+description: "To people who travel and take notes"
+title-block-banner: '#E5E2D7'
+title-block-banner-color: "#697FEB"
+format:
+  html:
+    # df-print: kable
+    embed-resources: true
+    theme: default
+    css: styles.css
+bibliography: quintet.bib
+---
+
+> In winter, when night's shade \
+> possesses longer half the world, \
+> and longer in the idle stillness, \
+> by the bemisted moon, \
+> the lazy orient sleeps, \
+> awakened at her customary hour \
+> she would get up by candles. \

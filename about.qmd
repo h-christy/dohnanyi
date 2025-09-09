@@ -1,0 +1,21 @@
+---
+title: "About"
+# date: "2025-07-17"
+authors:
+  - name: Christy Hsu
+    affiliation: Georgetown University
+    # roles: writing
+    # corresponding: true
+# description: "To people who travel and take notes"
+title-block-banner: '#E5E2D7'
+title-block-banner-color: "#697FEB"
+format:
+  html:
+    # df-print: kable
+    embed-resources: true
+    theme: default
+    css: styles.css
+bibliography: quintet.bib
+---
+
+About this site

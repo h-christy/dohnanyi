@@ -1,0 +1,25 @@
+project:
+  type: website
+  # output-dir: _site
+
+website:
+  title: "quintet"
+  sidebar:
+    title: "Christy Hsu"
+    footer: "2025-07-17"
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: week3.qmd
+        text: "Coding Workshop"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+
