@@ -1,0 +1,254 @@
+---
+title: "R Coding Workshop"
+subtitle: "GIS & Geospatial Data Analysis (Fall 2025)"
+execute:
+  echo: true
+format:
+  revealjs:
+    css: styles.css
+    slide-number: true
+    scrollable: true
+    code:
+      echo: true
+      eval: true
+---
+
+## Intro to Coding Workshop!
+
+
+## Outline for Today
+
+- Base R syntax and coding style
+- R data types and data structures
+  - Working with **Vectors** and **Data Frames**
+
+## Base R syntax and coding style
+
+## `print()` and comment out
+
+```{r}
+#| echo: true
+"Welcome to R Coding Workshop!"
+```
+
+```{r}
+#| echo: true
+print("Welcome to R Coding Workshop!")
+2025
+```
+
+- `⌘` + `/`: Commenting
+```{r}
+#| echo: true
+# 2025
+# command + forward slash to comment out
+```
+
+## Variables
+
+`<-`: initialize a variable and assign a value
+```{r}
+# variable_name <- variable_value
+x <- 1984
+y <- "World Geodetic System"
+```
+
+::: {.callout-note appearance="minimal"}
+
+- R variable naming
+
+:::
+
+
+## R Data Types `class()`
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- **"numeric"**
+  - double
+  - integer
+- **"character"**
+- **"logical"**
+
+:::
+::: {.column width="50%"}
+
+```{r}
+print(class(x))
+print(class(y))
+
+z <- class(x) == class(y)
+print(class(z))
+```
+
+:::
+::::
+
+::: {.callout-note appearance="minimal"}
+
+- Operators and Logical Operators
+- Type Casting
+
+:::
+
+
+## R Data Structures
+
+- Vector
+- Matrix
+- Array
+- Factor
+- List
+- Data Frame
+
+
+## Starting with *Vectors*
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Ways to create a vector
+
+- `c()`
+- `seq(from, to, by)`
+- `:`
+
+:::
+
+::: {.column width="50%"}
+```{r}
+v1 <- c(
+    "Bryce Canyon", "Canyonlands", "Arches", "Zion", "Capitol Reef"
+    )
+v2 <- 1:5
+v2
+```
+
+```{r}
+v3 <- seq(21.9, 25.3, 0.1)
+is.vector(v2)
+```
+
+:::
+::::
+
+## Subsetting a Vector
+
+- Indexing
+```{r}
+# v1 <- c(
+    # "Bryce Canyon", "Canyonlands", "Arches", "Zion", "Capitol Reef"
+    # )
+v1[1]
+v1[-1]
+```
+- Subsetting using Logical Vectors
+```{r}
+v4 <- 1:12
+bool_v4 <- v4 > 8
+v4[bool_v4]
+```
+- Access by name
+```{r}
+names(v4) <- month.abb
+v4["Jan"]
+```
+
+## Data Frame objects
+
+- Thinking of `data.frame` as a collection of column vectors
+
+Ways to create a df
+```{r}
+mth_df <- data.frame(
+    mth = 1:12,
+    mth_str = month.abb
+)
+mth_df
+```
+
+```{r}
+mth_df |> class()
+```
+
+::: {.callout-note appearance="minimal"}
+
+- import external tabular dataset
+:::
+
+## `data.frame` attributes
+
+```{r}
+utah_df <- data.frame(
+    national_park = v1,
+    lat = c(
+        37.640621053549125, 38.478777627059635, 38.6167568289248,
+        37.200271934321734, 38.291603924096385
+        ),
+    lon = c(
+        -112.16957627116382, -109.8251716515892, -109.61982474559946, 
+        -112.98700616100083, -111.2619347149233
+        )
+)
+```
+```{r}
+head(utah_df, 2)
+```
+```{r}
+# nrow() and ncol()
+dim(utah_df)
+```
+
+```{r}
+colnames(utah_df)
+```
+
+## Subsetting `data.frame`
+```{r}
+print(utah_df[, 1])
+print(utah_df[1, ])
+
+print(utah_df$national_park)
+utah_df[["national_park"]]
+```
+
+## R List
+
+- A vector that allows to have elements of different data type
+- Nested
+
+```{r}
+summary(utah_df)
+```
+```{r}
+class(utah_df[1])
+```
+
+::: {.callout-note appearance="minimal" collapse="true"}
+![](sf-wkt.png)
+:::
+
+## Getting to `sf` and a map
+
+```{r}
+library(sf)
+library(mapview)
+utah_sf <- st_as_sf(
+    utah_df,
+    coords = c('lon', 'lat'),
+    crs = 4326
+)
+utah_sf |> mapview()
+```
+
+```{r}
+utah_sf
+```
+
+::: {.callout-note appearance="minimal" collapse="true"}
+
+- prelude to `factor` class: How were the points colored? Why are we having a legend on the map?
+  - How to avoid presenting this map 
+![](bad-vis.png)
+:::

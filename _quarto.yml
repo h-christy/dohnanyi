@@ -13,7 +13,15 @@ website:
       - href: about.qmd
         text: About
       - href: week3.qmd
-        text: "Coding Workshop"
+        text: "Demo"
+      - section: Coding Workshop
+        contents:
+        - href: "https://georgetown.zoom.us/j/91709606336?pwd=C7Xq1MWIBE2oaQzSO7tNjQRiPoDcgD.1"
+          text: Zoom Link
+        - href: "https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%22c20d8a0c-387a-4d76-8ba8-b35700c9ee1f%22"
+          text: Recordings
+        - href: w3.qmd
+          text: Week 3
 
 format:
   html:

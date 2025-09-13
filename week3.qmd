@@ -22,34 +22,10 @@ bibliography: quintet.bib
 
 ## Connecting Positron to Jupyterhub
 
+{{< video https://drive.google.com/file/d/1lFJP_E8jZE0bSwdNQCP1eg52sx6JPx-E/view?usp=drive_link >}}
+
+
 ## R Tutorial
 
+### 
 ## Maps
-
-```{r}
-# library(tidyverse)
-# library(sf)
-# library(mapview)
-```
-
-```{r}
-# st_layers('')
-```
-
-```{r}
-# fr_sf <- st_read('')
-# fr_sf |> mapview()
-```
-
-```{r}
-# fr_sf |> ggplot() + geom_sf()
-```
-
-```{r}
-# library(rnaturalearthdata)
-```
-
-```{r}
-
-```
-

@@ -12,6 +12,8 @@ format:
     embed-resources: true
     theme: default
     css: styles.css
+    link-external-icon: true
+    link-external-newwindow: true
 bibliography: quintet.bib
 ---
 

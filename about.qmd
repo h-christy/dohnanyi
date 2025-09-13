@@ -18,4 +18,5 @@ format:
 bibliography: quintet.bib
 ---
 
-About this site
+2024-2026
+
