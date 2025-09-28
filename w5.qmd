@@ -1,0 +1,310 @@
+---
+title: "R Coding Workshop: 3rd Meeting"
+subtitle: "GIS & Geospatial Data Analysis (Fall 2025)"
+execute:
+  echo: true
+format:
+  html:
+    output-file: "w5-idx.html"
+    css: styles.css
+    toc: true
+    df-print: kable
+  revealjs:
+    output-file: "w5-slides.html"
+    css: styles.css
+    df-print: kable
+    slide-number: true
+    scrollable: true
+    code:
+      echo: true
+      eval: true
+---
+
+## R Coding Workshop: 3rd Meeting
+
+## Outline for today
+
+- Install and load R Packages
+- *Tidyverse*: coding style and collection of packages
+  - Pipeline operator
+  - `readr`: Read and write data
+  - Tidy Data: prepared for data analysis (next week)
+- Exploratory Data Analysis:`dplyr` continued
+- `ggplot`: Data Visualization
+
+## Tidyverse
+
+Tidyverse coding style and packages
+```{r}
+library(tidyverse)
+```
+
+## Read and write data
+
+```{r}
+uni_df <- tibble::tribble(
+  ~university, ~year, ~current_country, ~lat, ~lon, ~exist_today,
+  "Paris", 1150, "France", 48.8566, 2.3522, TRUE,
+  "Salerno", 1173,  "Italy", 40.7711, 14.7905, TRUE,
+  "Reggio", 1188, "Italy", 44.6450, 10.9277, TRUE,
+  "Oxford", 1190, "United Kingdom", 51.7520, -1.2576, TRUE,
+  "Bologna", 1200, "Italy", 44.4989, 11.3275, TRUE
+)
+uni_df
+```
+
+```{r}
+uni_fpath <- 'data/university-1200.csv'
+uni_df |> write_csv(uni_fpath)
+```
+
+```{r}
+uni_df |> rm()
+```
+
+```{r}
+uni_df <- read_csv(uni_fpath)
+uni_df |> class()
+```
+
+```{r}
+library(sf)
+library(mapview)
+```
+```{r}
+uni_sf <- uni_df |> st_as_sf(coords = c('lon','lat'), crs = 4326)
+uni_sf |> mapview(label = 'university')
+```
+
+```{r}
+uni_sf_fpath <- 'data/uni-1200-sf.gpkg'
+# uni_sf |> st_write(uni_sf_fpath)
+```
+
+```{r}
+uni_sf |> rm()
+uni_sf <- st_read(uni_sf_fpath)
+uni_sf |> mapview(label = 'university')
+```
+
+## `dplyr` for Exploratory Data Analysis
+
+- More functions from `dplyr`
+- Merits of pipeline operator `|>`
+
+## Tidyverse EDA
+
+**Import Data: Challenged Books from 2000 to 2010**
+
+- source: American Library Society (America Library Association)
+```{r}
+library(bayesrules)
+
+book_challenge_df <- book_banning |> as_tibble()
+book_challenge_df |> head()
+```
+
+::: {.callout-note appearance="minimal" collapse="true" title="Tidy Data and Data Cleaning (next week)"}
+
+```{r}
+book_challenge_df |> summary()
+```
+```{r}
+book_challenge_df |> dim()
+```
+
+- remove 11 books with missing values (require justification!)
+
+```{r}
+book_challenge_df <- book_challenge_df |> drop_na()
+book_challenge_df |> dim()
+```
+
+- duplicated rows?
+```{r}
+# book_challenge_df |> group_by(book_id) |> filter(n_distinct(title) > 1) |> arrange(book_id) |> tail()
+```
+
+```{r}
+# book_challenge_df |> distinct(book_id, title)
+```
+
+:::
+
+Dimension:
+
+- (`row` x `column`)
+- 920 Observations: number of recorded book challenges
+- 17 Variables:
+  - observation-level
+    - *title*, *author*, *date*
+  - state-level variables
+    - *median_income*, *political_value_index*
+
+Summary statistics:
+
+- the *data type* and the *value range* of the dataset
+```{r}
+book_challenge_df |> summary()
+```
+
+## `dplyr` functions: `mutate()`
+
+- `mutate()`: creating new variables (columns) from existing variables
+- case: typecasting
+
+```{r}
+book_challenge_df <- book_challenge_df |>
+  mutate(
+    yr = year(date),
+    month = month(date),
+    day = day(date),
+    week_day = wday(date, label = TRUE)
+    )
+```
+
+```{r}
+all(book_challenge_df$year == as.numeric(book_challenge_df$yr))
+```
+
+```{r}
+# book_challenge_df <- book_challenge_df |> mutate(year = yr) |> select(-yr)
+```
+- `count()`
+```{r}
+book_challenge_df |> count(week_day)
+```
+
+## `dplyr` functions: `group_by()`
+
+- group observations by like variable value, why?
+
+```{r}
+nrow(book_challenge_df[book_challenge_df$removed == 1,]) / nrow(book_challenge_df)
+```
+
+## `dplyr` functions: `group_by()`
+
+- subset, stratify
+```{r}
+book_challenge_df |> group_by(year) |> summarize(
+    total_count = n(),
+    removed_count = sum(removed == 1),
+    removed_pct = (removed_count / total_count) * 100
+)
+```
+
+```{.r}
+# A tibble: 11 × 4
+    year total_count removed_count removed_pct
+   <dbl>       <int>         <int>       <dbl>
+ 1  2000          71            26        36.6
+ 2  2001         111            26        23.4
+ 3  2002          52            16        30.8
+ 4  2003          88            14        15.9
+ 5  2004          83            20        24.1
+ 6  2005          52            15        28.8
+ 7  2006          54             9        16.7
+ 8  2007          38            15        39.5
+ 9  2008         122            37        30.3
+10  2009         197            22        11.2
+11  2010          52            14        26.9
+```
+
+- expressive pipeline that aligns with DS workflow!
+- Base R:
+```{.r}
+total_count <- as.vector(
+    tapply(
+        book_challenge_df$removed,
+        book_challenge_df$year,
+        length
+        )
+)
+removed_count <- as.vector(
+    tapply(
+        book_challenge_df$removed == 1,
+        book_challenge_df$year,
+        sum
+        )
+)
+year_summary <- data.frame(
+    year = 2000:2010,
+    total_count = total_count,
+    removed_count = removed_count,
+    removed_pct = (removed_count / total_count) * 100
+)
+year_summary
+```
+
+## Group Data by Geounit
+
+```{r}
+state_level_vars <- c(
+    "state", "political_value_index",
+    "median_income", "hs_grad_rate", "college_grad_rate"
+    )
+# book_challenge_df |> group_by(across(state_level_vars)) |> summarize(count = n())
+```
+
+```{r}
+state_summary <- book_challenge_df |>
+  group_by_at(state_level_vars) |>
+  summarize(count = n())
+
+state_summary
+```
+
+```{r}
+# sanity check
+state_summary |> dim() |> print()
+state_summary$count |> sum()
+```
+
+## Adding Spatial Dimension
+
+```{r}
+library(sf)
+library(mapview)
+library(rnaturalearth)
+library(viridis)
+```
+
+- Prepare the Geometry
+  
+```{r}
+state_sf <- ne_states(country = 'United States of America') |> select(postal, gn_name, gadm_level, region)
+state_sf |> dim() |> print()
+state_sf |> mapview()
+```
+
+- Combine by column value match
+
+```{r}
+plot_sf <- state_sf |>
+  left_join(
+    state_summary,
+    by = join_by(postal == state)
+)
+plot_sf |> head()
+```
+
+```{r}
+state_summary |> select(state, count) |> filter(state == 'WA')
+```
+
+## Choropleth
+
+```{r}
+plot_sf |> mapview(zcol = 'count', label = 'gn_name')
+```
+
+```{r}
+plot_sf |> filter(is.na(count))
+```
+
+## `ggplot` plot with more controls
+
+```{r}
+plot_sf |> ggplot() + geom_sf(aes(fill = count), color = 'white', size = 0.01) + scale_fill_viridis() + theme_bw()
+```

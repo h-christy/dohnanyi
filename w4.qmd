@@ -1,0 +1,372 @@
+---
+title: "R Coding Workshop: 2nd Meeting"
+subtitle: "GIS & Geospatial Data Analysis (Fall 2025)"
+execute:
+  echo: true
+format:
+  html:
+    output-file: "idx.html"
+    css: styles.css
+    toc: true
+  revealjs:
+    output-file: "slides.html"
+    css: styles.css
+    slide-number: true
+    scrollable: true
+    code:
+      echo: true
+      eval: true
+---
+
+## R Coding Workshop: 2nd Meeting
+
+## Outline
+
+- Recap
+- R Operators
+- Import files
+- Subsetting a Data Frame
+  - Base R advanced:
+    - `tapply()`
+    - `sample()`
+  - The **Tidyverse** approach: `dplyr` package
+
+## Recap
+
+1. Name your Variables smartly and annotate your code with comments
+- Name your variables as nouns^[functions should take on verbs as their names]
+- lowercase, concatenate with underscores `_`
+- Concise and Meaningful
+- `rm()` command
+2. `print()` , `class()` and `mapview()`
+3. R Data Types and Data Structures
+
+## R Operators
+
+Try them out:
+
+:::: {.columns}
+::: {.column width="33%"}
+#### Arithmetic Operators
+- `+` `-` `*` `/` `^`
+:::
+::: {.column width="33%"}
+#### Comparison Operators
+- `>` `<`
+- `==`
+- `!=`
+:::
+::: {.column width="33%"}
+#### Other Binary Operators
+- `&`
+- `|`
+- `!`
+- `%in%`
+:::
+
+::::
+
+$\sqrt{x^2 + y^2}$
+
+```{r}
+x <- 3
+y <- 4
+print((x^2 + y^2)^(1/2))
+```
+
+$mile = kilometer * 0.62137$
+
+```{r}
+print((3000 * 0.62137))
+print((3000 * 0.62137) * 1.609344)
+```
+```{r}
+# | code-fold: true
+# install.packages('measurements')
+library(measurements)
+conv_unit(3000, 'km', 'mi')
+```
+
+::: {.callout-tip appearance="minimal" title='R Binary Operators'}
+Binary operators in R: Be aware of the left hand side and the right hand side of binary operators.
+
+Vector Recycling
+```{r}
+vector1 <- 1:5
+print(vector1)
+print(vector1 + 1)
+print(vector1 * 1.609344)
+```
+
+This helps us make sense of the following evaluation:
+```{r}
+print(vector1 > 3)
+```
+:::
+
+
+```{r}
+# vector1 <- 1:5
+print(vector1 != 3)
+```
+
+```{r}
+'capitol' == 'CAPITOL'
+```
+```{r}
+# ascii or utf8
+print('>' < '0')
+print('a' < 'A')
+```
+
+```{r}
+us_states <- state.abb
+midwest_states <- c(
+  "IL", "IN", "MI", "OH", "WI","IA", "KS", "MN", "MO", "NE", "ND", "SD"
+)
+us_states %in% midwest_states
+```
+
+```{r}
+us_states <- state.abb
+midwest_states <- c(
+  "IL", "IN", "MI", "OH",
+  "WI", "IA", "KS", "MN",
+  "MO", "NE", "ND", "SD"
+)
+print(is.vector(midwest_states))
+!is.vector(midwest_states)
+```
+```{r}
+us_states %in% midwest_states
+```
+
+what happened here?
+
+```{r}
+double_vector <- seq(21.9, 25.3, 0.1)
+int_vector <- 20L:26L
+double_vector %in% int_vector
+
+```
+
+## Import and Export Files
+
+
+
+## Subsetting `data.frame` Continued
+
+We want to extract or access certain **rows** or **columns** of our dataframe.
+
+```{r}
+utah_df <- data.frame(
+    national_park = c(
+    "Bryce Canyon", "Canyonlands", "Arches", "Zion", "Capitol Reef"
+    ),
+    lat = c(
+        37.640621053549125, 38.478777627059635, 38.6167568289248,
+        37.200271934321734, 38.291603924096385
+        ),
+    lon = c(
+        -112.16957627116382, -109.8251716515892, -109.61982474559946, 
+        -112.98700616100083, -111.2619347149233
+        )
+)
+utah_df
+```
+
+## `tapply()`: Advanced way for data subsetting
+
+::: {.callout-note appearance="minimal" title="Demo Dataset Description"}
+
+Variable Documentation
+[](https://rdrr.io/github/mdogucu/bayesrules/man/book_banning.html)
+
+:::
+
+```{r}
+# install.packages('bayesrules')
+# import bayesrules package and 
+library(bayesrules)
+
+# bookban_df <- bayesrules::book_banning
+bookban_df <- book_banning
+# print(head(bookban_df))
+summary(bookban_df)
+```
+
+- ask your data questions:
+```{r}
+tapply(
+    bookban_df$removed == '1',
+    bookban_df$state,
+    mean
+    )
+```
+
+The data science question that is asked here: *What fraction of book challenges were successful in each state?*
+
+- The first argument: specify the variable we are interested in which is the books that their remove request were approved
+- The 2nd argument: how we want to group our data, often for the purpose of comparison, and this case we naturally want to compare between states.
+- The 3rd argument: takes a function, which is the operation that we want to apply to our variable of interest, here it is the `mean()` function for acquiring the fraction of approved request.
+
+::: {.callout-note appearance="minimal" title="R factor"}
+As we have observed, the `bookban_df$removed`, `removed` column is of factor data type, taking on values '0' and '1'. And by making the comparison (add `== 1`), we get a logical vector of TRUE(1) and FALSE(0) which can be treated as 1 and 0 correspondingly, which `mean()` can operate on. 
+
+:::
+
+What are we trying to ask for the following two code blocks?
+
+```{r}
+tapply(
+    bookban_df$political_value_ind,
+    bookban_df$lgbtq,
+    mean)
+```
+
+```{r}
+tapply(bookban_df$title, bookban_df$state, length)
+```
+
+## Tidyverse
+
+- tidyverse is a selection of R packages, by running the following import code, we can have most of the packages that we will use to do data analysis
+- Among them, `dplyr` and `ggplot2` will be used for almost all of the upcoming assignments
+
+```{r message=FALSE}
+library(tidyverse)
+```
+
+### `|>`: meet the pipeline operator
+
+```{r}
+bookban_df |> select(date) |> pull(date) |> class()
+```
+```{r}
+bookban_df['date']$date |> class()
+```
+
+## The Tidyverse way of initializing data frames
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{r}
+utah_df <- data.frame(
+    national_park = c(
+    "Bryce Canyon", "Canyonlands", "Arches", "Zion", "Capitol Reef"
+    ),
+    lat = c(
+        37.640621053549125, 38.478777627059635, 38.6167568289248,
+        37.200271934321734, 38.291603924096385
+        ),
+    lon = c(
+        -112.16957627116382, -109.8251716515892, -109.61982474559946, 
+        -112.98700616100083, -111.2619347149233
+        )
+)
+utah_df
+```
+
+:::
+::: {.column width="50%"}
+
+```{r}
+utah_tribble <- tibble::tribble(
+    ~national_park, ~lat, ~lon,
+    "Bryce Canyon", 37.640621053549125, -112.16957627116382,
+    "Canyonlands", 38.478777627059635, -109.8251716515892,
+    "Arches", 38.6167568289248, -109.61982474559946,
+    "Zion", 37.200271934321734, -112.98700616100083,
+    "Capitol Reef", 38.291603924096385, -111.2619347149233
+)
+utah_tribble
+```
+
+:::
+::::
+
+
+## Why `tibble` object?
+
+- Try uncomment the first line of the code!
+```{r}
+# print(bookban_df)
+
+as_tibble(bookban_df)
+```
+- tibble object print the data type of each column by default
+
+## `dplyr`
+
+`select()`: subset by column name
+
+- tip: uncomment the following code block in Positron to acquire a copiable vector of all the column names of your dataset
+```{r}
+# bookban_df |> colnames() |> View()
+```
+- or
+
+```{r}
+varnames <- c("title", "book_id", "author", "date", "year", "removed", "explicit", 
+"antifamily", "occult", "language", "lgbtq", "violent", "state", 
+"political_value_index", "median_income", "hs_grad_rate", "college_grad_rate"
+)
+```
+
+Sometimes, we are not interested in all the given variables
+
+```{r}
+state_level_vars <- c( 
+"political_value_index", "median_income", "hs_grad_rate", "college_grad_rate"
+)
+```
+
+```{r}
+bookban_df |> select(-any_of(state_level_vars)) |> tail(4)
+```
+
+- Being mindful of the data type after subsetting
+```{r}
+bookban_df |> select(title) |> class()
+```
+```{r}
+bookban_df[, 'title'] |> class()
+```
+
+```{r}
+
+```
+
+## `dplyr`
+
+`filter()`: keep rows that match our criteria
+
+We might have a particular interest in Wisconsin
+```{r}
+bookban_df |> filter(state == 'WI')
+```
+
+```{r}
+# bookban_df[bookban_df$state != "WI", ]
+```
+
+
+## Data Cleaning
+
+```{r}
+bookban_df |> filter(year > 2004) |> dim()
+```
+```{r}
+bookban_df[bookban_df$year > 2004, ] |> dim()
+```
+
+What happened?
+
+- we have missing values in the **year* column
+
+`count()`: result in a new dataframe with the distribution of the values that a given column takes on
+```{r}
+bookban_df |> count(year)
+```
+

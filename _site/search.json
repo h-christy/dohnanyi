@@ -172,5 +172,480 @@
     "crumbs": [
       "Home"
     ]
+  },
+  {
+    "objectID": "w5-slides.html#r-coding-workshop-3rd-meeting",
+    "href": "w5-slides.html#r-coding-workshop-3rd-meeting",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "R Coding Workshop: 3rd Meeting",
+    "text": "R Coding Workshop: 3rd Meeting"
+  },
+  {
+    "objectID": "w5-slides.html#outline-for-today",
+    "href": "w5-slides.html#outline-for-today",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Outline for today",
+    "text": "Outline for today"
+  },
+  {
+    "objectID": "w5-slides.html#tidyverse",
+    "href": "w5-slides.html#tidyverse",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Tidyverse",
+    "text": "Tidyverse\nTidyverse coding style and packages\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "w5-slides.html#read-and-write-data",
+    "href": "w5-slides.html#read-and-write-data",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Read and write data",
+    "text": "Read and write data\n\nuni_df &lt;- tibble::tribble(\n  ~university, ~year, ~current_country, ~lat, ~lon, ~exist_today,\n  \"Paris\", 1150, \"France\", 48.8566, 2.3522, TRUE,\n  \"Salerno\", 1173,  \"Italy\", 40.7711, 14.7905, TRUE,\n  \"Reggio\", 1188, \"Italy\", 44.6450, 10.9277, TRUE,\n  \"Oxford\", 1190, \"United Kingdom\", 51.7520, -1.2576, TRUE,\n  \"Bologna\", 1200, \"Italy\", 44.4989, 11.3275, TRUE\n)\nuni_df\n\n\n\n\n\nuniversity\nyear\ncurrent_country\nlat\nlon\nexist_today\n\n\n\n\nParis\n1150\nFrance\n48.8566\n2.3522\nTRUE\n\n\nSalerno\n1173\nItaly\n40.7711\n14.7905\nTRUE\n\n\nReggio\n1188\nItaly\n44.6450\n10.9277\nTRUE\n\n\nOxford\n1190\nUnited Kingdom\n51.7520\n-1.2576\nTRUE\n\n\nBologna\n1200\nItaly\n44.4989\n11.3275\nTRUE\n\n\n\n\n\n\n\nuni_fpath &lt;- 'university-1200.csv'\nuni_df |&gt; write_csv(uni_fpath)\n\n\nuni_df |&gt; rm()\n\n\nuni_df &lt;- read_csv(uni_fpath)\nuni_df |&gt; class()\n\n[1] \"spec_tbl_df\" \"tbl_df\"      \"tbl\"         \"data.frame\" \n\n\n\nlibrary(sf)\nlibrary(mapview)\n\n\nuni_sf &lt;- uni_df |&gt; st_as_sf(coords = c('lon','lat'), crs = 4326)\nuni_sf |&gt; mapview(label = 'university')\n\n\n\n\n\n\nuni_sf_fpath &lt;- 'uni-1200-sf.gpkg'\n# uni_sf |&gt; st_write(uni_sf_fpath)\n\n\nuni_sf |&gt; rm()\nuni_sf &lt;- st_read(uni_sf_fpath)\n\nReading layer `uni-1200-sf' from data source \n  `/Users/toyuan/dohnanyi/uni-1200-sf.gpkg' using driver `GPKG'\nSimple feature collection with 5 features and 4 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -1.2576 ymin: 40.7711 xmax: 14.7905 ymax: 51.752\nGeodetic CRS:  WGS 84\n\nuni_sf |&gt; mapview(label = 'university')"
+  },
+  {
+    "objectID": "w5-slides.html#dplyr-for-exploratory-data-analysis",
+    "href": "w5-slides.html#dplyr-for-exploratory-data-analysis",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "dplyr for Exploratory Data Analysis",
+    "text": "dplyr for Exploratory Data Analysis\n\nMore functions from dplyr\nMerits of pipeline operator |&gt;"
+  },
+  {
+    "objectID": "w5-slides.html#tidyverse-eda",
+    "href": "w5-slides.html#tidyverse-eda",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Tidyverse EDA",
+    "text": "Tidyverse EDA\nImport Data: Challenged Books from 2000 to 2010\n\nsource: American Library Society (America Library Association)\n\n\nlibrary(bayesrules)\n\nbook_challenge_df &lt;- book_banning |&gt; as_tibble()\nbook_challenge_df |&gt; head()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nHouse of the Spirits, The\n927\nAllende, Isabel\n2005-04-01\n2005\n0\n1\n0\n1\n1\n1\n1\nAK\n-13.4\n15707.5\n8.738042\n0.6762701\n\n\nIt’s Not the Stork!: A Book About Girls, Boys, Babies and Bodies\n1024\nHarris, Robie\n2008-02-06\n2008\n1\n0\n0\n0\n0\n0\n0\nAK\n-13.4\n15707.5\n8.738042\n0.6762701\n\n\nKing Stork\n1087\nPyle, Howard\n2008-10-02\n2008\n0\n0\n0\n0\n0\n0\n1\nAK\n-13.4\n15707.5\n8.738042\n0.6762701\n\n\nHow They Met and Other Stories\n936\nLevithan, David\n2008-10-05\n2008\n0\n0\n0\n0\n0\n0\n0\nAK\n-13.4\n15707.5\n8.738042\n0.6762701\n\n\nGhost in the Shell\n764\nMasamune, Shirow\n2008-10-02\n2008\n0\n0\n0\n0\n0\n0\n0\nAK\n-13.4\n15707.5\n8.738042\n0.6762701\n\n\nKing Stork\n1087\nPyle, Howard\n2003-09-13\n2003\n0\n0\n0\n0\n0\n0\n1\nAK\n-13.4\n15707.5\n8.738042\n0.6762701\n\n\n\n\n\n\n\n\n\n\nTidy Data and Data Cleaning (next week)\n\n\n\nbook_challenge_df |&gt; summary()\n\n    title              book_id       author               date           \n Length:931         143    : 17   Length:931         Min.   :2000-01-01  \n Class :character   868    : 12   Class :character   1st Qu.:2002-11-16  \n Mode  :character   1849   : 10   Mode  :character   Median :2006-02-10  \n                    1025   :  9                      Mean   :2005-12-16  \n                    1083   :  8                      3rd Qu.:2009-03-18  \n                    399    :  7                      Max.   :2010-09-09  \n                    (Other):868                      NA's   :11          \n      year      removed explicit antifamily occult  language lgbtq   violent\n Min.   :2000   0:714   0:632    0:891      0:895   0:694    0:842   0:797  \n 1st Qu.:2002   1:217   1:299    1: 40      1: 36   1:237    1: 89   1:134  \n Median :2006                                                               \n Mean   :2005                                                               \n 3rd Qu.:2009                                                               \n Max.   :2010                                                               \n NA's   :11                                                                 \n    state           political_value_index median_income    hs_grad_rate   \n Length:931         Min.   :-20.2000      Min.   :-8466   Min.   :-6.662  \n Class :character   1st Qu.: -1.8000      1st Qu.: 1274   1st Qu.: 1.038  \n Mode  :character   Median :  2.0000      Median : 4218   Median : 2.338  \n                    Mean   :  0.0304      Mean   : 4530   Mean   : 2.833  \n                    3rd Qu.:  4.0000      3rd Qu.: 9908   3rd Qu.: 5.538  \n                    Max.   : 13.4000      Max.   :19936   Max.   : 8.738  \n                                                                          \n college_grad_rate\n Min.   :-9.2237  \n 1st Qu.:-2.0237  \n Median : 0.2763  \n Mean   : 0.6043  \n 3rd Qu.: 2.5763  \n Max.   : 9.1763  \n                  \n\n\n\nbook_challenge_df |&gt; dim()\n\n[1] 931  17\n\n\n\nremove 11 books with missing values (require justification!)\n\n\nbook_challenge_df &lt;- book_challenge_df |&gt; drop_na()\nbook_challenge_df |&gt; dim()\n\n[1] 920  17\n\n\n\nduplicated rows?\n\n\n# book_challenge_df |&gt; group_by(book_id) |&gt; filter(n_distinct(title) &gt; 1) |&gt; arrange(book_id) |&gt; tail()\n\n\n# book_challenge_df |&gt; distinct(book_id, title)\n\n\n\n\n\nDimension: - (row x column) - 920 Observations: number of recorded book challenges - 17 Variables: - observation-level - title, author, date - state-level variables - median_income, political_value_index\nSummary statistics:\n\nthe data type and the value range of the dataset\n\n\nbook_challenge_df |&gt; summary()\n\n    title              book_id       author               date           \n Length:920         143    : 17   Length:920         Min.   :2000-01-01  \n Class :character   868    : 12   Class :character   1st Qu.:2002-11-16  \n Mode  :character   1849   : 10   Mode  :character   Median :2006-02-10  \n                    1025   :  9                      Mean   :2005-12-16  \n                    1083   :  8                      3rd Qu.:2009-03-18  \n                    399    :  7                      Max.   :2010-09-09  \n                    (Other):857                                          \n      year      removed explicit antifamily occult  language lgbtq   violent\n Min.   :2000   0:706   0:628    0:880      0:884   0:686    0:832   0:788  \n 1st Qu.:2002   1:214   1:292    1: 40      1: 36   1:234    1: 88   1:132  \n Median :2006                                                               \n Mean   :2005                                                               \n 3rd Qu.:2009                                                               \n Max.   :2010                                                               \n                                                                            \n    state           political_value_index median_income    hs_grad_rate   \n Length:920         Min.   :-20.20000     Min.   :-8466   Min.   :-6.662  \n Class :character   1st Qu.: -2.12500     1st Qu.: 1274   1st Qu.: 1.038  \n Mode  :character   Median :  2.00000     Median : 4218   Median : 2.338  \n                    Mean   :  0.01326     Mean   : 4522   Mean   : 2.808  \n                    3rd Qu.:  4.00000     3rd Qu.: 9908   3rd Qu.: 5.538  \n                    Max.   : 13.40000     Max.   :19936   Max.   : 8.738  \n                                                                          \n college_grad_rate\n Min.   :-9.2237  \n 1st Qu.:-1.7237  \n Median : 0.2763  \n Mean   : 0.6042  \n 3rd Qu.: 2.5763  \n Max.   : 9.1763"
+  },
+  {
+    "objectID": "w5-slides.html#dplyr-functions-mutate",
+    "href": "w5-slides.html#dplyr-functions-mutate",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "dplyr functions: mutate()",
+    "text": "dplyr functions: mutate()\n\nmutate(): creating new variables (columns) from existing variables\ncase: typecasting\n\n\nbook_challenge_df &lt;- book_challenge_df |&gt;\n  mutate(\n    yr = year(date),\n    month = month(date),\n    day = day(date),\n    week_day = wday(date, label = TRUE)\n    )\n\n\nall(book_challenge_df$year == as.numeric(book_challenge_df$yr))\n\n[1] TRUE\n\n\n\n# book_challenge_df &lt;- book_challenge_df |&gt; mutate(year = yr) |&gt; select(-yr)\n\n\ncount()\n\n\nbook_challenge_df |&gt; count(week_day)\n\n\n\n\n\nweek_day\nn\n\n\n\n\nSun\n119\n\n\nMon\n182\n\n\nTue\n95\n\n\nWed\n132\n\n\nThu\n148\n\n\nFri\n155\n\n\nSat\n89"
+  },
+  {
+    "objectID": "w5-slides.html#dplyr-functions-group_by",
+    "href": "w5-slides.html#dplyr-functions-group_by",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "dplyr functions: group_by()",
+    "text": "dplyr functions: group_by()\n\ngroup observations by like variable value, why?\n\n\nnrow(book_challenge_df[book_challenge_df$removed == 1,]) / nrow(book_challenge_df)\n\n[1] 0.2326087"
+  },
+  {
+    "objectID": "w5-slides.html#dplyr-functions-group_by-1",
+    "href": "w5-slides.html#dplyr-functions-group_by-1",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "dplyr functions: group_by()",
+    "text": "dplyr functions: group_by()\n\nsubset, stratify\n\n\nbook_challenge_df |&gt; group_by(year) |&gt; summarize(\n    total_count = n(),\n    removed_count = sum(removed == 1),\n    removed_pct = (removed_count / total_count) * 100\n)\n\n\n\n\n\nyear\ntotal_count\nremoved_count\nremoved_pct\n\n\n\n\n2000\n71\n26\n36.61972\n\n\n2001\n111\n26\n23.42342\n\n\n2002\n52\n16\n30.76923\n\n\n2003\n88\n14\n15.90909\n\n\n2004\n83\n20\n24.09639\n\n\n2005\n52\n15\n28.84615\n\n\n2006\n54\n9\n16.66667\n\n\n2007\n38\n15\n39.47368\n\n\n2008\n122\n37\n30.32787\n\n\n2009\n197\n22\n11.16751\n\n\n2010\n52\n14\n26.92308\n\n\n\n\n\n\n# A tibble: 11 × 4\n    year total_count removed_count removed_pct\n   &lt;dbl&gt;       &lt;int&gt;         &lt;int&gt;       &lt;dbl&gt;\n 1  2000          71            26        36.6\n 2  2001         111            26        23.4\n 3  2002          52            16        30.8\n 4  2003          88            14        15.9\n 5  2004          83            20        24.1\n 6  2005          52            15        28.8\n 7  2006          54             9        16.7\n 8  2007          38            15        39.5\n 9  2008         122            37        30.3\n10  2009         197            22        11.2\n11  2010          52            14        26.9\n\nexpressive pipeline that aligns with DS workflow!\nBase R:\n\ntotal_count &lt;- as.vector(\n    tapply(\n        book_challenge_df$removed,\n        book_challenge_df$year,\n        length\n        )\n)\nremoved_count &lt;- as.vector(\n    tapply(\n        book_challenge_df$removed == 1,\n        book_challenge_df$year,\n        sum\n        )\n)\nyear_summary &lt;- data.frame(\n    year = 2000:2010,\n    total_count = total_count,\n    removed_count = removed_count,\n    removed_pct = (removed_count / total_count) * 100\n)\nyear_summary"
+  },
+  {
+    "objectID": "w5-slides.html#group-data-by-geounit",
+    "href": "w5-slides.html#group-data-by-geounit",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Group Data by Geounit",
+    "text": "Group Data by Geounit\n\nstate_level_vars &lt;- c(\n    \"state\", \"political_value_index\",\n    \"median_income\", \"hs_grad_rate\", \"college_grad_rate\"\n    )\n# book_challenge_df |&gt; group_by(across(state_level_vars)) |&gt; summarize(count = n())\n\n\nstate_summary &lt;- book_challenge_df |&gt;\n  group_by_at(state_level_vars) |&gt;\n  summarize(count = n())\n\nstate_summary\n\n\n\n\n\n\n\n\n\n\n\n\n\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\ncount\n\n\n\n\nAK\n-13.4\n15707.5\n8.7380421\n0.6762701\n9\n\n\nAL\n-13.2\n-5054.0\n-4.2619579\n-5.0237299\n10\n\n\nAR\n-8.8\n-6258.5\n-4.2619579\n-7.3237299\n5\n\n\nAZ\n-6.1\n3490.5\n1.4380421\n-0.5237299\n12\n\n\nCA\n7.4\n10119.0\n-2.7619579\n2.5762701\n50\n\n\nCO\n-0.2\n10346.5\n7.3380421\n8.6762701\n80\n\n\nCT\n7.1\n16247.5\n4.4380421\n7.3762701\n6\n\n\nDE\n7.0\n9167.5\n3.0380421\n0.9762701\n2\n\n\nFL\n-1.8\n372.0\n0.3380421\n-1.7237299\n26\n\n\nGA\n-6.8\n2239.5\n-0.9619579\n0.2762701\n13\n\n\nIA\n1.0\n3921.5\n6.5380421\n-2.8237299\n13\n\n\nID\n-17.4\n3194.0\n5.1380421\n-2.3237299\n14\n\n\nIL\n7.7\n6489.5\n1.8380421\n2.0762701\n39\n\n\nIN\n-6.2\n1086.5\n2.5380421\n-4.6237299\n20\n\n\nKS\n-11.5\n144.5\n6.4380421\n1.7762701\n13\n\n\nKY\n-10.4\n-5880.5\n-5.4619579\n-6.9237299\n13\n\n\nLA\n-9.7\n-5120.5\n-4.7619579\n-5.3237299\n12\n\n\nMA\n11.7\n14048.5\n5.2380421\n9.1762701\n8\n\n\nMD\n8.5\n19404.5\n4.2380421\n7.3762701\n5\n\n\nME\n5.5\n1335.5\n5.8380421\n-1.1237299\n3\n\n\nMI\n3.8\n2966.0\n3.8380421\n-2.2237299\n34\n\n\nMN\n2.3\n15378.0\n8.3380421\n3.3762701\n17\n\n\nMO\n-3.1\n1279.5\n1.7380421\n-2.4237299\n11\n\n\nMS\n-9.5\n-8466.5\n-6.6619579\n-7.1237299\n1\n\n\nMT\n-7.1\n-6482.0\n7.6380421\n0.3762701\n7\n\n\nNC\n-4.3\n-310.0\n-1.4619579\n-1.5237299\n20\n\n\nND\n-10.4\n-813.0\n4.3380421\n-2.0237299\n6\n\n\nNE\n-13.5\n4927.5\n7.0380421\n-0.3237299\n2\n\n\nNH\n1.6\n17303.0\n7.8380421\n4.6762701\n7\n\n\nNJ\n4.4\n19935.5\n2.5380421\n5.7762701\n11\n\n\nNM\n2.4\n-2401.5\n-0.6619579\n-0.5237299\n3\n\n\nNY\n10.2\n5007.5\n-0.4619579\n3.3762701\n24\n\n\nOH\n-0.7\n2469.0\n3.4380421\n-2.9237299\n29\n\n\nOK\n-16.9\n-3087.5\n1.0380421\n-3.7237299\n23\n\n\nOR\n4.0\n1274.5\n5.5380421\n1.0762701\n118\n\n\nPA\n2.0\n4218.0\n2.3380421\n-1.6237299\n147\n\n\nRI\n11.2\n8141.0\n-1.5619579\n1.5762701\n3\n\n\nSC\n-7.8\n-2191.5\n-3.2619579\n-3.6237299\n15\n\n\nSD\n-8.9\n785.0\n5.0380421\n-2.5237299\n3\n\n\nTN\n-8.7\n-2995.5\n-3.6619579\n-4.4237299\n13\n\n\nUT\n-20.2\n12735.5\n8.1380421\n2.0762701\n1\n\n\nVA\n-1.7\n11296.0\n1.9380421\n5.4762701\n33\n\n\nVT\n13.4\n8467.0\n6.8380421\n5.3762701\n13\n\n\nWA\n5.0\n9907.5\n7.5380421\n3.6762701\n9\n\n\nWI\n2.4\n4234.5\n5.5380421\n-1.6237299\n10\n\n\nWV\n-7.9\n-7290.0\n-4.3619579\n-9.2237299\n3\n\n\nWY\n-19.7\n4081.5\n8.3380421\n-2.1237299\n4\n\n\n\n\n\n\n\n# sanity check\nstate_summary |&gt; dim() |&gt; print()\n\n[1] 47  6\n\nstate_summary$count |&gt; sum()\n\n[1] 920"
+  },
+  {
+    "objectID": "w5-slides.html#adding-spatial-dimension",
+    "href": "w5-slides.html#adding-spatial-dimension",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Adding Spatial Dimension",
+    "text": "Adding Spatial Dimension\n\nlibrary(sf)\nlibrary(mapview)\nlibrary(rnaturalearth)\nlibrary(viridis)\n\n\nPrepare the Geometry\n\n\nstate_sf &lt;- ne_states(country = 'United States of America') |&gt; select(postal, gn_name, gadm_level, region)\nstate_sf |&gt; dim() |&gt; print()\n\n[1] 51  5\n\nstate_sf |&gt; mapview()\n\n\n\n\n\n\nCombine by column value match\n\n\nplot_sf &lt;- state_sf |&gt;\n  left_join(\n    state_summary,\n    by = join_by(postal == state)\n)\nplot_sf |&gt; head()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npostal\ngn_name\ngadm_level\nregion\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\ncount\ngeometry\n\n\n\n\nWA\nWashington\n1\nWest\n5.0\n9907.5\n7.538042\n3.6762701\n9\nMULTIPOLYGON (((-122.753 48…\n\n\nID\nIdaho\n1\nWest\n-17.4\n3194.0\n5.138042\n-2.3237299\n14\nMULTIPOLYGON (((-117.0382 4…\n\n\nMT\nMontana\n1\nWest\n-7.1\n-6482.0\n7.638042\n0.3762701\n7\nMULTIPOLYGON (((-116.0482 4…\n\n\nND\nNorth Dakota\n1\nMidwest\n-10.4\n-813.0\n4.338042\n-2.0237299\n6\nMULTIPOLYGON (((-104.0476 4…\n\n\nMN\nMinnesota\n1\nMidwest\n2.3\n15378.0\n8.338042\n3.3762701\n17\nMULTIPOLYGON (((-97.22609 4…\n\n\nMI\nMichigan\n1\nMidwest\n3.8\n2966.0\n3.838042\n-2.2237299\n34\nMULTIPOLYGON (((-84.4913 46…\n\n\n\n\n\n\n\nstate_summary |&gt; select(state, count) |&gt; filter(state == 'WA')\n\n\n\n\n\npolitical_value_index\nmedian_income\nhs_grad_rate\nstate\ncount\n\n\n\n\n5\n9907.5\n7.538042\nWA\n9"
+  },
+  {
+    "objectID": "w5-slides.html#choropleth",
+    "href": "w5-slides.html#choropleth",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Choropleth",
+    "text": "Choropleth\n\nplot_sf |&gt; mapview(zcol = 'count', label = 'gn_name')\n\n\n\n\n\n\nplot_sf |&gt; filter(is.na(count))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npostal\ngn_name\ngadm_level\nregion\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\ncount\ngeometry\n\n\n\n\nTX\nTexas\n1\nSouth\nNA\nNA\nNA\nNA\nNA\nMULTIPOLYGON (((-103.3115 2…\n\n\nDC\nDistrict of Columbia\n1\nSouth\nNA\nNA\nNA\nNA\nNA\nMULTIPOLYGON (((-77.02293 3…\n\n\nHI\nHawaii\n1\nWest\nNA\nNA\nNA\nNA\nNA\nMULTIPOLYGON (((-154.8996 1…\n\n\nNV\nNevada\n1\nWest\nNA\nNA\nNA\nNA\nNA\nMULTIPOLYGON (((-114.0425 4…"
+  },
+  {
+    "objectID": "w5-slides.html#ggplot-plot-with-more-controls",
+    "href": "w5-slides.html#ggplot-plot-with-more-controls",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "ggplot plot with more controls",
+    "text": "ggplot plot with more controls\n\nplot_sf |&gt; ggplot() + geom_sf(aes(fill = count), color = 'white', size = 0.01) + scale_fill_viridis() + theme_bw()"
+  },
+  {
+    "objectID": "w5-idx.html#outline-for-today",
+    "href": "w5-idx.html#outline-for-today",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Outline for today",
+    "text": "Outline for today",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "w5-idx.html#tidyverse",
+    "href": "w5-idx.html#tidyverse",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Tidyverse",
+    "text": "Tidyverse\nTidyverse coding style and packages\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.3.0\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "w5-idx.html#read-and-write-data",
+    "href": "w5-idx.html#read-and-write-data",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Read and write data",
+    "text": "Read and write data\n\nuni_df &lt;- tibble::tribble(\n  ~university, ~year, ~current_country, ~lat, ~lon, ~exist_today,\n  \"Paris\", 1150, \"France\", 48.8566, 2.3522, TRUE,\n  \"Salerno\", 1173,  \"Italy\", 40.7711, 14.7905, TRUE,\n  \"Reggio\", 1188, \"Italy\", 44.6450, 10.9277, TRUE,\n  \"Oxford\", 1190, \"United Kingdom\", 51.7520, -1.2576, TRUE,\n  \"Bologna\", 1200, \"Italy\", 44.4989, 11.3275, TRUE\n)\nuni_df\n\n\n\n\n\nuniversity\nyear\ncurrent_country\nlat\nlon\nexist_today\n\n\n\n\nParis\n1150\nFrance\n48.8566\n2.3522\nTRUE\n\n\nSalerno\n1173\nItaly\n40.7711\n14.7905\nTRUE\n\n\nReggio\n1188\nItaly\n44.6450\n10.9277\nTRUE\n\n\nOxford\n1190\nUnited Kingdom\n51.7520\n-1.2576\nTRUE\n\n\nBologna\n1200\nItaly\n44.4989\n11.3275\nTRUE\n\n\n\n\n\n\n\nuni_fpath &lt;- 'university-1200.csv'\nuni_df |&gt; write_csv(uni_fpath)\n\n\nuni_df |&gt; rm()\n\n\nuni_df &lt;- read_csv(uni_fpath)\n\nRows: 5 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (2): university, current_country\ndbl (3): year, lat, lon\nlgl (1): exist_today\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nuni_df |&gt; class()\n\n[1] \"spec_tbl_df\" \"tbl_df\"      \"tbl\"         \"data.frame\" \n\n\n\nlibrary(sf)\n\nLinking to GEOS 3.13.0, GDAL 3.8.5, PROJ 9.5.1; sf_use_s2() is TRUE\n\nlibrary(mapview)\n\n\nuni_sf &lt;- uni_df |&gt; st_as_sf(coords = c('lon','lat'), crs = 4326)\nuni_sf |&gt; mapview(label = 'university')\n\n\n\n\n\n\nuni_sf_fpath &lt;- 'uni-1200-sf.gpkg'\n# uni_sf |&gt; st_write(uni_sf_fpath)\n\n\nuni_sf |&gt; rm()\nuni_sf &lt;- st_read(uni_sf_fpath)\n\nReading layer `uni-1200-sf' from data source \n  `/Users/toyuan/dohnanyi/uni-1200-sf.gpkg' using driver `GPKG'\nSimple feature collection with 5 features and 4 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -1.2576 ymin: 40.7711 xmax: 14.7905 ymax: 51.752\nGeodetic CRS:  WGS 84\n\nuni_sf |&gt; mapview(label = 'university')",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "w5-idx.html#dplyr-for-exploratory-data-analysis",
+    "href": "w5-idx.html#dplyr-for-exploratory-data-analysis",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "dplyr for Exploratory Data Analysis",
+    "text": "dplyr for Exploratory Data Analysis\n\nMore functions from dplyr\nMerits of pipeline operator |&gt;",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "w5-idx.html#tidyverse-eda",
+    "href": "w5-idx.html#tidyverse-eda",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Tidyverse EDA",
+    "text": "Tidyverse EDA\nImport Data: Challenged Books from 2000 to 2010\n\nsource: American Library Society (America Library Association)\n\n\nlibrary(bayesrules)\n\nbook_challenge_df &lt;- book_banning |&gt; as_tibble()\nbook_challenge_df |&gt; head()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nHouse of the Spirits, The\n927\nAllende, Isabel\n2005-04-01\n2005\n0\n1\n0\n1\n1\n1\n1\nAK\n-13.4\n15707.5\n8.738042\n0.6762701\n\n\nIt’s Not the Stork!: A Book About Girls, Boys, Babies and Bodies\n1024\nHarris, Robie\n2008-02-06\n2008\n1\n0\n0\n0\n0\n0\n0\nAK\n-13.4\n15707.5\n8.738042\n0.6762701\n\n\nKing Stork\n1087\nPyle, Howard\n2008-10-02\n2008\n0\n0\n0\n0\n0\n0\n1\nAK\n-13.4\n15707.5\n8.738042\n0.6762701\n\n\nHow They Met and Other Stories\n936\nLevithan, David\n2008-10-05\n2008\n0\n0\n0\n0\n0\n0\n0\nAK\n-13.4\n15707.5\n8.738042\n0.6762701\n\n\nGhost in the Shell\n764\nMasamune, Shirow\n2008-10-02\n2008\n0\n0\n0\n0\n0\n0\n0\nAK\n-13.4\n15707.5\n8.738042\n0.6762701\n\n\nKing Stork\n1087\nPyle, Howard\n2003-09-13\n2003\n0\n0\n0\n0\n0\n0\n1\nAK\n-13.4\n15707.5\n8.738042\n0.6762701\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Data and Data Cleaning (next week)\n\n\n\n\n\n\nbook_challenge_df |&gt; summary()\n\n    title              book_id       author               date           \n Length:931         143    : 17   Length:931         Min.   :2000-01-01  \n Class :character   868    : 12   Class :character   1st Qu.:2002-11-16  \n Mode  :character   1849   : 10   Mode  :character   Median :2006-02-10  \n                    1025   :  9                      Mean   :2005-12-16  \n                    1083   :  8                      3rd Qu.:2009-03-18  \n                    399    :  7                      Max.   :2010-09-09  \n                    (Other):868                      NA's   :11          \n      year      removed explicit antifamily occult  language lgbtq   violent\n Min.   :2000   0:714   0:632    0:891      0:895   0:694    0:842   0:797  \n 1st Qu.:2002   1:217   1:299    1: 40      1: 36   1:237    1: 89   1:134  \n Median :2006                                                               \n Mean   :2005                                                               \n 3rd Qu.:2009                                                               \n Max.   :2010                                                               \n NA's   :11                                                                 \n    state           political_value_index median_income    hs_grad_rate   \n Length:931         Min.   :-20.2000      Min.   :-8466   Min.   :-6.662  \n Class :character   1st Qu.: -1.8000      1st Qu.: 1274   1st Qu.: 1.038  \n Mode  :character   Median :  2.0000      Median : 4218   Median : 2.338  \n                    Mean   :  0.0304      Mean   : 4530   Mean   : 2.833  \n                    3rd Qu.:  4.0000      3rd Qu.: 9908   3rd Qu.: 5.538  \n                    Max.   : 13.4000      Max.   :19936   Max.   : 8.738  \n                                                                          \n college_grad_rate\n Min.   :-9.2237  \n 1st Qu.:-2.0237  \n Median : 0.2763  \n Mean   : 0.6043  \n 3rd Qu.: 2.5763  \n Max.   : 9.1763  \n                  \n\n\n\nbook_challenge_df |&gt; dim()\n\n[1] 931  17\n\n\n\nremove 11 books with missing values (require justification!)\n\n\nbook_challenge_df &lt;- book_challenge_df |&gt; drop_na()\nbook_challenge_df |&gt; dim()\n\n[1] 920  17\n\n\n\nduplicated rows?\n\n\n# book_challenge_df |&gt; group_by(book_id) |&gt; filter(n_distinct(title) &gt; 1) |&gt; arrange(book_id) |&gt; tail()\n\n\n# book_challenge_df |&gt; distinct(book_id, title)\n\n\n\n\nDimension: - (row x column) - 920 Observations: number of recorded book challenges - 17 Variables: - observation-level - title, author, date - state-level variables - median_income, political_value_index\nSummary statistics:\n\nthe data type and the value range of the dataset\n\n\nbook_challenge_df |&gt; summary()\n\n    title              book_id       author               date           \n Length:920         143    : 17   Length:920         Min.   :2000-01-01  \n Class :character   868    : 12   Class :character   1st Qu.:2002-11-16  \n Mode  :character   1849   : 10   Mode  :character   Median :2006-02-10  \n                    1025   :  9                      Mean   :2005-12-16  \n                    1083   :  8                      3rd Qu.:2009-03-18  \n                    399    :  7                      Max.   :2010-09-09  \n                    (Other):857                                          \n      year      removed explicit antifamily occult  language lgbtq   violent\n Min.   :2000   0:706   0:628    0:880      0:884   0:686    0:832   0:788  \n 1st Qu.:2002   1:214   1:292    1: 40      1: 36   1:234    1: 88   1:132  \n Median :2006                                                               \n Mean   :2005                                                               \n 3rd Qu.:2009                                                               \n Max.   :2010                                                               \n                                                                            \n    state           political_value_index median_income    hs_grad_rate   \n Length:920         Min.   :-20.20000     Min.   :-8466   Min.   :-6.662  \n Class :character   1st Qu.: -2.12500     1st Qu.: 1274   1st Qu.: 1.038  \n Mode  :character   Median :  2.00000     Median : 4218   Median : 2.338  \n                    Mean   :  0.01326     Mean   : 4522   Mean   : 2.808  \n                    3rd Qu.:  4.00000     3rd Qu.: 9908   3rd Qu.: 5.538  \n                    Max.   : 13.40000     Max.   :19936   Max.   : 8.738  \n                                                                          \n college_grad_rate\n Min.   :-9.2237  \n 1st Qu.:-1.7237  \n Median : 0.2763  \n Mean   : 0.6042  \n 3rd Qu.: 2.5763  \n Max.   : 9.1763",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "w5-idx.html#dplyr-functions-mutate",
+    "href": "w5-idx.html#dplyr-functions-mutate",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "dplyr functions: mutate()",
+    "text": "dplyr functions: mutate()\n\nmutate(): creating new variables (columns) from existing variables\ncase: typecasting\n\n\nbook_challenge_df &lt;- book_challenge_df |&gt;\n  mutate(\n    yr = year(date),\n    month = month(date),\n    day = day(date),\n    week_day = wday(date, label = TRUE)\n    )\n\n\nall(book_challenge_df$year == as.numeric(book_challenge_df$yr))\n\n[1] TRUE\n\n\n\n# book_challenge_df &lt;- book_challenge_df |&gt; mutate(year = yr) |&gt; select(-yr)\n\n\ncount()\n\n\nbook_challenge_df |&gt; count(week_day)\n\n\n\n\n\nweek_day\nn\n\n\n\n\nSun\n119\n\n\nMon\n182\n\n\nTue\n95\n\n\nWed\n132\n\n\nThu\n148\n\n\nFri\n155\n\n\nSat\n89",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "w5-idx.html#dplyr-functions-group_by",
+    "href": "w5-idx.html#dplyr-functions-group_by",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "dplyr functions: group_by()",
+    "text": "dplyr functions: group_by()\n\ngroup observations by like variable value, why?\n\n\nnrow(book_challenge_df[book_challenge_df$removed == 1,]) / nrow(book_challenge_df)\n\n[1] 0.2326087",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "w5-idx.html#dplyr-functions-group_by-1",
+    "href": "w5-idx.html#dplyr-functions-group_by-1",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "dplyr functions: group_by()",
+    "text": "dplyr functions: group_by()\n\nsubset, stratify\n\n\nbook_challenge_df |&gt; group_by(year) |&gt; summarize(\n    total_count = n(),\n    removed_count = sum(removed == 1),\n    removed_pct = (removed_count / total_count) * 100\n)\n\n\n\n\n\nyear\ntotal_count\nremoved_count\nremoved_pct\n\n\n\n\n2000\n71\n26\n36.61972\n\n\n2001\n111\n26\n23.42342\n\n\n2002\n52\n16\n30.76923\n\n\n2003\n88\n14\n15.90909\n\n\n2004\n83\n20\n24.09639\n\n\n2005\n52\n15\n28.84615\n\n\n2006\n54\n9\n16.66667\n\n\n2007\n38\n15\n39.47368\n\n\n2008\n122\n37\n30.32787\n\n\n2009\n197\n22\n11.16751\n\n\n2010\n52\n14\n26.92308\n\n\n\n\n\n\n# A tibble: 11 × 4\n    year total_count removed_count removed_pct\n   &lt;dbl&gt;       &lt;int&gt;         &lt;int&gt;       &lt;dbl&gt;\n 1  2000          71            26        36.6\n 2  2001         111            26        23.4\n 3  2002          52            16        30.8\n 4  2003          88            14        15.9\n 5  2004          83            20        24.1\n 6  2005          52            15        28.8\n 7  2006          54             9        16.7\n 8  2007          38            15        39.5\n 9  2008         122            37        30.3\n10  2009         197            22        11.2\n11  2010          52            14        26.9\n\nexpressive pipeline that aligns with DS workflow!\nBase R:\n\ntotal_count &lt;- as.vector(\n    tapply(\n        book_challenge_df$removed,\n        book_challenge_df$year,\n        length\n        )\n)\nremoved_count &lt;- as.vector(\n    tapply(\n        book_challenge_df$removed == 1,\n        book_challenge_df$year,\n        sum\n        )\n)\nyear_summary &lt;- data.frame(\n    year = 2000:2010,\n    total_count = total_count,\n    removed_count = removed_count,\n    removed_pct = (removed_count / total_count) * 100\n)\nyear_summary",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "w5-idx.html#group-data-by-geounit",
+    "href": "w5-idx.html#group-data-by-geounit",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Group Data by Geounit",
+    "text": "Group Data by Geounit\n\nstate_level_vars &lt;- c(\n    \"state\", \"political_value_index\",\n    \"median_income\", \"hs_grad_rate\", \"college_grad_rate\"\n    )\n# book_challenge_df |&gt; group_by(across(state_level_vars)) |&gt; summarize(count = n())\n\n\nstate_summary &lt;- book_challenge_df |&gt;\n  group_by_at(state_level_vars) |&gt;\n  summarize(count = n())\n\n`summarise()` has grouped output by 'state', 'political_value_index',\n'median_income', 'hs_grad_rate'. You can override using the `.groups` argument.\n\nstate_summary\n\n\n\n\n\n\n\n\n\n\n\n\n\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\ncount\n\n\n\n\nAK\n-13.4\n15707.5\n8.7380421\n0.6762701\n9\n\n\nAL\n-13.2\n-5054.0\n-4.2619579\n-5.0237299\n10\n\n\nAR\n-8.8\n-6258.5\n-4.2619579\n-7.3237299\n5\n\n\nAZ\n-6.1\n3490.5\n1.4380421\n-0.5237299\n12\n\n\nCA\n7.4\n10119.0\n-2.7619579\n2.5762701\n50\n\n\nCO\n-0.2\n10346.5\n7.3380421\n8.6762701\n80\n\n\nCT\n7.1\n16247.5\n4.4380421\n7.3762701\n6\n\n\nDE\n7.0\n9167.5\n3.0380421\n0.9762701\n2\n\n\nFL\n-1.8\n372.0\n0.3380421\n-1.7237299\n26\n\n\nGA\n-6.8\n2239.5\n-0.9619579\n0.2762701\n13\n\n\nIA\n1.0\n3921.5\n6.5380421\n-2.8237299\n13\n\n\nID\n-17.4\n3194.0\n5.1380421\n-2.3237299\n14\n\n\nIL\n7.7\n6489.5\n1.8380421\n2.0762701\n39\n\n\nIN\n-6.2\n1086.5\n2.5380421\n-4.6237299\n20\n\n\nKS\n-11.5\n144.5\n6.4380421\n1.7762701\n13\n\n\nKY\n-10.4\n-5880.5\n-5.4619579\n-6.9237299\n13\n\n\nLA\n-9.7\n-5120.5\n-4.7619579\n-5.3237299\n12\n\n\nMA\n11.7\n14048.5\n5.2380421\n9.1762701\n8\n\n\nMD\n8.5\n19404.5\n4.2380421\n7.3762701\n5\n\n\nME\n5.5\n1335.5\n5.8380421\n-1.1237299\n3\n\n\nMI\n3.8\n2966.0\n3.8380421\n-2.2237299\n34\n\n\nMN\n2.3\n15378.0\n8.3380421\n3.3762701\n17\n\n\nMO\n-3.1\n1279.5\n1.7380421\n-2.4237299\n11\n\n\nMS\n-9.5\n-8466.5\n-6.6619579\n-7.1237299\n1\n\n\nMT\n-7.1\n-6482.0\n7.6380421\n0.3762701\n7\n\n\nNC\n-4.3\n-310.0\n-1.4619579\n-1.5237299\n20\n\n\nND\n-10.4\n-813.0\n4.3380421\n-2.0237299\n6\n\n\nNE\n-13.5\n4927.5\n7.0380421\n-0.3237299\n2\n\n\nNH\n1.6\n17303.0\n7.8380421\n4.6762701\n7\n\n\nNJ\n4.4\n19935.5\n2.5380421\n5.7762701\n11\n\n\nNM\n2.4\n-2401.5\n-0.6619579\n-0.5237299\n3\n\n\nNY\n10.2\n5007.5\n-0.4619579\n3.3762701\n24\n\n\nOH\n-0.7\n2469.0\n3.4380421\n-2.9237299\n29\n\n\nOK\n-16.9\n-3087.5\n1.0380421\n-3.7237299\n23\n\n\nOR\n4.0\n1274.5\n5.5380421\n1.0762701\n118\n\n\nPA\n2.0\n4218.0\n2.3380421\n-1.6237299\n147\n\n\nRI\n11.2\n8141.0\n-1.5619579\n1.5762701\n3\n\n\nSC\n-7.8\n-2191.5\n-3.2619579\n-3.6237299\n15\n\n\nSD\n-8.9\n785.0\n5.0380421\n-2.5237299\n3\n\n\nTN\n-8.7\n-2995.5\n-3.6619579\n-4.4237299\n13\n\n\nUT\n-20.2\n12735.5\n8.1380421\n2.0762701\n1\n\n\nVA\n-1.7\n11296.0\n1.9380421\n5.4762701\n33\n\n\nVT\n13.4\n8467.0\n6.8380421\n5.3762701\n13\n\n\nWA\n5.0\n9907.5\n7.5380421\n3.6762701\n9\n\n\nWI\n2.4\n4234.5\n5.5380421\n-1.6237299\n10\n\n\nWV\n-7.9\n-7290.0\n-4.3619579\n-9.2237299\n3\n\n\nWY\n-19.7\n4081.5\n8.3380421\n-2.1237299\n4\n\n\n\n\n\n\n\n# sanity check\nstate_summary |&gt; dim() |&gt; print()\n\n[1] 47  6\n\nstate_summary$count |&gt; sum()\n\n[1] 920",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "w5-idx.html#adding-spatial-dimension",
+    "href": "w5-idx.html#adding-spatial-dimension",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Adding Spatial Dimension",
+    "text": "Adding Spatial Dimension\n\nlibrary(sf)\nlibrary(mapview)\nlibrary(rnaturalearth)\nlibrary(viridis)\n\nLe chargement a nécessité le package : viridisLite\n\n\n\nPrepare the Geometry\n\n\nstate_sf &lt;- ne_states(country = 'United States of America') |&gt; select(postal, gn_name, gadm_level, region)\nstate_sf |&gt; dim() |&gt; print()\n\n[1] 51  5\n\nstate_sf |&gt; mapview()\n\n\n\n\n\n\nCombine by column value match\n\n\nplot_sf &lt;- state_sf |&gt;\n  left_join(\n    state_summary,\n    by = join_by(postal == state)\n)\nplot_sf |&gt; head()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npostal\ngn_name\ngadm_level\nregion\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\ncount\ngeometry\n\n\n\n\nWA\nWashington\n1\nWest\n5.0\n9907.5\n7.538042\n3.6762701\n9\nMULTIPOLYGON (((-122.753 48…\n\n\nID\nIdaho\n1\nWest\n-17.4\n3194.0\n5.138042\n-2.3237299\n14\nMULTIPOLYGON (((-117.0382 4…\n\n\nMT\nMontana\n1\nWest\n-7.1\n-6482.0\n7.638042\n0.3762701\n7\nMULTIPOLYGON (((-116.0482 4…\n\n\nND\nNorth Dakota\n1\nMidwest\n-10.4\n-813.0\n4.338042\n-2.0237299\n6\nMULTIPOLYGON (((-104.0476 4…\n\n\nMN\nMinnesota\n1\nMidwest\n2.3\n15378.0\n8.338042\n3.3762701\n17\nMULTIPOLYGON (((-97.22609 4…\n\n\nMI\nMichigan\n1\nMidwest\n3.8\n2966.0\n3.838042\n-2.2237299\n34\nMULTIPOLYGON (((-84.4913 46…\n\n\n\n\n\n\n\nstate_summary |&gt; select(state, count) |&gt; filter(state == 'WA')\n\nAdding missing grouping variables: `political_value_index`, `median_income`,\n`hs_grad_rate`\n\n\n\n\n\n\npolitical_value_index\nmedian_income\nhs_grad_rate\nstate\ncount\n\n\n\n\n5\n9907.5\n7.538042\nWA\n9",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "w5-idx.html#choropleth",
+    "href": "w5-idx.html#choropleth",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Choropleth",
+    "text": "Choropleth\n\nplot_sf |&gt; mapview(zcol = 'count', label = 'gn_name')\n\n\n\n\n\n\nplot_sf |&gt; filter(is.na(count))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npostal\ngn_name\ngadm_level\nregion\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\ncount\ngeometry\n\n\n\n\nTX\nTexas\n1\nSouth\nNA\nNA\nNA\nNA\nNA\nMULTIPOLYGON (((-103.3115 2…\n\n\nDC\nDistrict of Columbia\n1\nSouth\nNA\nNA\nNA\nNA\nNA\nMULTIPOLYGON (((-77.02293 3…\n\n\nHI\nHawaii\n1\nWest\nNA\nNA\nNA\nNA\nNA\nMULTIPOLYGON (((-154.8996 1…\n\n\nNV\nNevada\n1\nWest\nNA\nNA\nNA\nNA\nNA\nMULTIPOLYGON (((-114.0425 4…",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "w5-idx.html#ggplot-plot-with-more-controls",
+    "href": "w5-idx.html#ggplot-plot-with-more-controls",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "ggplot plot with more controls",
+    "text": "ggplot plot with more controls\n\nplot_sf |&gt; ggplot() + geom_sf(aes(fill = count), color = 'white', size = 0.01) + scale_fill_viridis() + theme_bw()",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "slides.html#r-coding-workshop-2nd-meeting",
+    "href": "slides.html#r-coding-workshop-2nd-meeting",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "R Coding Workshop: 2nd Meeting",
+    "text": "R Coding Workshop: 2nd Meeting"
+  },
+  {
+    "objectID": "slides.html#outline",
+    "href": "slides.html#outline",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Outline",
+    "text": "Outline\n\nRecap\nR Operators\nImport files\nSubsetting a Data Frame\n\nBase R advanced:\n\ntapply()\nsample()\n\nThe Tidyverse approach: dplyr package"
+  },
+  {
+    "objectID": "slides.html#recap",
+    "href": "slides.html#recap",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Recap",
+    "text": "Recap\n\nName your Variables smartly and annotate your code with comments\n\n\nName your variables as nouns1\nlowercase, concatenate with underscores _\nConcise and Meaningful\nrm() command\n\n\nprint() , class() and mapview()\nR Data Types and Data Structures\n\nfunctions should take on verbs as their names"
+  },
+  {
+    "objectID": "slides.html#r-operators",
+    "href": "slides.html#r-operators",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "R Operators",
+    "text": "R Operators\nTry them out:\n\n\nArithmetic Operators\n\n+ - * / ^\n\n\nComparison Operators\n\n&gt; &lt;\n==\n!=\n\n\nOther Binary Operators\n\n&\n|\n!\n%in%\n\n\n\\(\\sqrt{x^2 + y^2}\\)\n\nx &lt;- 3\ny &lt;- 4\nprint((x^2 + y^2)^(1/2))\n\n[1] 5\n\n\n\\(mile = kilometer * 0.62137\\)\n\nprint((3000 * 0.62137))\n\n[1] 1864.11\n\nprint((3000 * 0.62137) * 1.609344)\n\n[1] 2999.994\n\n\n\n# | code-fold: true\n# install.packages('measurements')\nlibrary(measurements)\nconv_unit(3000, 'km', 'mi')\n\n[1] 1864.114\n\n\n\n\n\n\nR Binary Operators\n\n\nBinary operators in R: Be aware of the left hand side and the right hand side of binary operators.\nVector Recycling\n\nvector1 &lt;- 1:5\nprint(vector1)\n\n[1] 1 2 3 4 5\n\nprint(vector1 + 1)\n\n[1] 2 3 4 5 6\n\nprint(vector1 * 1.609344)\n\n[1] 1.609344 3.218688 4.828032 6.437376 8.046720\n\n\nThis helps us make sense of the following evaluation:\n\nprint(vector1 &gt; 3)\n\n[1] FALSE FALSE FALSE  TRUE  TRUE\n\n\n\n\n\n\n\n# vector1 &lt;- 1:5\nprint(vector1 != 3)\n\n[1]  TRUE  TRUE FALSE  TRUE  TRUE\n\n\n\n'capitol' == 'CAPITOL'\n\n[1] FALSE\n\n\n\n# ascii or utf8\nprint('&gt;' &lt; '0')\n\n[1] FALSE\n\nprint('a' &lt; 'A')\n\n[1] FALSE\n\n\n\nus_states &lt;- state.abb\nmidwest_states &lt;- c(\n  \"IL\", \"IN\", \"MI\", \"OH\", \"WI\",\"IA\", \"KS\", \"MN\", \"MO\", \"NE\", \"ND\", \"SD\"\n)\nus_states %in% midwest_states\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE\n[25]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE\n[37] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[49]  TRUE FALSE\n\n\n\nus_states &lt;- state.abb\nmidwest_states &lt;- c(\n  \"IL\", \"IN\", \"MI\", \"OH\",\n  \"WI\", \"IA\", \"KS\", \"MN\",\n  \"MO\", \"NE\", \"ND\", \"SD\"\n)\nprint(is.vector(midwest_states))\n\n[1] TRUE\n\n!is.vector(midwest_states)\n\n[1] FALSE\n\n\n\nus_states %in% midwest_states\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE\n[25]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE\n[37] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[49]  TRUE FALSE\n\n\nwhat happened here?\n\ndouble_vector &lt;- seq(21.9, 25.3, 0.1)\nint_vector &lt;- 20L:26L\ndouble_vector %in% int_vector\n\n [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE\n[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE\n[25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE"
+  },
+  {
+    "objectID": "slides.html#import-and-export-files",
+    "href": "slides.html#import-and-export-files",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Import and Export Files",
+    "text": "Import and Export Files"
+  },
+  {
+    "objectID": "slides.html#subsetting-data.frame-continued",
+    "href": "slides.html#subsetting-data.frame-continued",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Subsetting data.frame Continued",
+    "text": "Subsetting data.frame Continued\nWe want to extract or access certain rows or columns of our dataframe.\n\nutah_df &lt;- data.frame(\n    national_park = c(\n    \"Bryce Canyon\", \"Canyonlands\", \"Arches\", \"Zion\", \"Capitol Reef\"\n    ),\n    lat = c(\n        37.640621053549125, 38.478777627059635, 38.6167568289248,\n        37.200271934321734, 38.291603924096385\n        ),\n    lon = c(\n        -112.16957627116382, -109.8251716515892, -109.61982474559946, \n        -112.98700616100083, -111.2619347149233\n        )\n)\nutah_df\n\n  national_park      lat       lon\n1  Bryce Canyon 37.64062 -112.1696\n2   Canyonlands 38.47878 -109.8252\n3        Arches 38.61676 -109.6198\n4          Zion 37.20027 -112.9870\n5  Capitol Reef 38.29160 -111.2619"
+  },
+  {
+    "objectID": "slides.html#tapply-advanced-way-for-data-subsetting",
+    "href": "slides.html#tapply-advanced-way-for-data-subsetting",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "tapply(): Advanced way for data subsetting",
+    "text": "tapply(): Advanced way for data subsetting\n\n\n\n\nDemo Dataset Description\n\n\nVariable Documentation \n\n\n\n\n\n# install.packages('bayesrules')\n# import bayesrules package and \nlibrary(bayesrules)\n\n# bookban_df &lt;- bayesrules::book_banning\nbookban_df &lt;- book_banning\n# print(head(bookban_df))\nsummary(bookban_df)\n\n    title              book_id       author               date           \n Length:931         143    : 17   Length:931         Min.   :2000-01-01  \n Class :character   868    : 12   Class :character   1st Qu.:2002-11-16  \n Mode  :character   1849   : 10   Mode  :character   Median :2006-02-10  \n                    1025   :  9                      Mean   :2005-12-16  \n                    1083   :  8                      3rd Qu.:2009-03-18  \n                    399    :  7                      Max.   :2010-09-09  \n                    (Other):868                      NA's   :11          \n      year      removed explicit antifamily occult  language lgbtq   violent\n Min.   :2000   0:714   0:632    0:891      0:895   0:694    0:842   0:797  \n 1st Qu.:2002   1:217   1:299    1: 40      1: 36   1:237    1: 89   1:134  \n Median :2006                                                               \n Mean   :2005                                                               \n 3rd Qu.:2009                                                               \n Max.   :2010                                                               \n NA's   :11                                                                 \n    state           political_value_index median_income    hs_grad_rate   \n Length:931         Min.   :-20.2000      Min.   :-8466   Min.   :-6.662  \n Class :character   1st Qu.: -1.8000      1st Qu.: 1274   1st Qu.: 1.038  \n Mode  :character   Median :  2.0000      Median : 4218   Median : 2.338  \n                    Mean   :  0.0304      Mean   : 4530   Mean   : 2.833  \n                    3rd Qu.:  4.0000      3rd Qu.: 9908   3rd Qu.: 5.538  \n                    Max.   : 13.4000      Max.   :19936   Max.   : 8.738  \n                                                                          \n college_grad_rate\n Min.   :-9.2237  \n 1st Qu.:-2.0237  \n Median : 0.2763  \n Mean   : 0.6043  \n 3rd Qu.: 2.5763  \n Max.   : 9.1763  \n                  \n\n\n\nask your data questions:\n\n\ntapply(\n    bookban_df$removed == '1',\n    bookban_df$state,\n    mean\n    )\n\n        AK         AL         AR         AZ         CA         CO         CT \n0.11111111 0.50000000 0.00000000 0.41666667 0.32000000 0.12345679 0.16666667 \n        DE         FL         GA         IA         ID         IL         IN \n0.50000000 0.30769231 0.30769231 0.25000000 0.85714286 0.30769231 0.30000000 \n        KS         KY         LA         MA         MD         ME         MI \n0.76923077 0.15384615 0.41666667 0.37500000 0.00000000 0.00000000 0.19444444 \n        MN         MO         MS         MT         NC         ND         NE \n0.05555556 0.72727273 1.00000000 0.00000000 0.20000000 0.33333333 0.00000000 \n        NH         NJ         NM         NY         OH         OK         OR \n0.28571429 0.18181818 0.66666667 0.44000000 0.34482759 0.34782609 0.04237288 \n        PA         RI         SC         SD         TN         UT         VA \n0.07432432 0.33333333 0.40000000 0.33333333 0.38461538 0.00000000 0.52941176 \n        VT         WA         WI         WV         WY \n0.00000000 0.33333333 0.30000000 0.00000000 0.25000000 \n\n\nThe data science question that is asked here: What fraction of book challenges were successful in each state?\n\nThe first argument: specify the variable we are interested in which is the books that their remove request were approved\nThe 2nd argument: how we want to group our data, often for the purpose of comparison, and this case we naturally want to compare between states.\nThe 3rd argument: takes a function, which is the operation that we want to apply to our variable of interest, here it is the mean() function for acquiring the fraction of approved request.\n\n\n\n\n\nR factor\n\n\nAs we have observed, the bookban_df$removed, removed column is of factor data type, taking on values ‘0’ and ‘1’. And by making the comparison (add == 1), we get a logical vector of TRUE(1) and FALSE(0) which can be treated as 1 and 0 correspondingly, which mean() can operate on.\n\n\n\n\nWhat are we trying to ask for the following two code blocks?\n\ntapply(\n    bookban_df$political_value_ind,\n    bookban_df$lgbtq,\n    mean)\n\n        0         1 \n 0.102019 -0.647191 \n\n\n\ntapply(bookban_df$title, bookban_df$state, length)\n\n AK  AL  AR  AZ  CA  CO  CT  DE  FL  GA  IA  ID  IL  IN  KS  KY  LA  MA  MD  ME \n  9  10   5  12  50  81   6   2  26  13  16  14  39  20  13  13  12   8   5   3 \n MI  MN  MO  MS  MT  NC  ND  NE  NH  NJ  NM  NY  OH  OK  OR  PA  RI  SC  SD  TN \n 36  18  11   1   8  20   6   2   7  11   3  25  29  23 118 148   3  15   3  13 \n UT  VA  VT  WA  WI  WV  WY \n  1  34  13   9  10   3   4"
+  },
+  {
+    "objectID": "slides.html#tidyverse",
+    "href": "slides.html#tidyverse",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Tidyverse",
+    "text": "Tidyverse\n\ntidyverse is a selection of R packages, by running the following import code, we can have most of the packages that we will use to do data analysis\nAmong them, dplyr and ggplot2 will be used for almost all of the upcoming assignments\n\n\nlibrary(tidyverse)\n\n|&gt;: meet the pipeline operator\n\nbookban_df |&gt; select(date) |&gt; pull(date) |&gt; class()\n\n[1] \"Date\"\n\n\n\nbookban_df['date']$date |&gt; class()\n\n[1] \"Date\""
+  },
+  {
+    "objectID": "slides.html#the-tidyverse-way-of-initializing-data-frames",
+    "href": "slides.html#the-tidyverse-way-of-initializing-data-frames",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "The Tidyverse way of initializing data frames",
+    "text": "The Tidyverse way of initializing data frames\n\n\n\nutah_df &lt;- data.frame(\n    national_park = c(\n    \"Bryce Canyon\", \"Canyonlands\", \"Arches\", \"Zion\", \"Capitol Reef\"\n    ),\n    lat = c(\n        37.640621053549125, 38.478777627059635, 38.6167568289248,\n        37.200271934321734, 38.291603924096385\n        ),\n    lon = c(\n        -112.16957627116382, -109.8251716515892, -109.61982474559946, \n        -112.98700616100083, -111.2619347149233\n        )\n)\nutah_df\n\n  national_park      lat       lon\n1  Bryce Canyon 37.64062 -112.1696\n2   Canyonlands 38.47878 -109.8252\n3        Arches 38.61676 -109.6198\n4          Zion 37.20027 -112.9870\n5  Capitol Reef 38.29160 -111.2619\n\n\n\n\nutah_tribble &lt;- tibble::tribble(\n    ~national_park, ~lat, ~lon,\n    \"Bryce Canyon\", 37.640621053549125, -112.16957627116382,\n    \"Canyonlands\", 38.478777627059635, -109.8251716515892,\n    \"Arches\", 38.6167568289248, -109.61982474559946,\n    \"Zion\", 37.200271934321734, -112.98700616100083,\n    \"Capitol Reef\", 38.291603924096385, -111.2619347149233\n)\nutah_tribble\n\n# A tibble: 5 × 3\n  national_park   lat   lon\n  &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;\n1 Bryce Canyon   37.6 -112.\n2 Canyonlands    38.5 -110.\n3 Arches         38.6 -110.\n4 Zion           37.2 -113.\n5 Capitol Reef   38.3 -111."
+  },
+  {
+    "objectID": "slides.html#why-tibble-object",
+    "href": "slides.html#why-tibble-object",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Why tibble object?",
+    "text": "Why tibble object?\n\nTry uncomment the first line of the code!\n\n\n# print(bookban_df)\n\nas_tibble(bookban_df)\n\n# A tibble: 931 × 17\n   title      book_id author date        year removed explicit antifamily occult\n   &lt;chr&gt;      &lt;fct&gt;   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt; \n 1 House of … 927     Allen… 2005-04-01  2005 0       1        0          1     \n 2 It's Not … 1024    Harri… 2008-02-06  2008 1       0        0          0     \n 3 King Stork 1087    Pyle,… 2008-10-02  2008 0       0        0          0     \n 4 How They … 936     Levit… 2008-10-05  2008 0       0        0          0     \n 5 Ghost in … 764     Masam… 2008-10-02  2008 0       0        0          0     \n 6 King Stork 1087    Pyle,… 2003-09-13  2003 0       0        0          0     \n 7 Queer      1489    Gage,… 2003-09-13  2003 0       0        0          0     \n 8 Witness    2023    Hesse… 2003-09-13  2003 0       0        0          0     \n 9 It's Perf… 1025    Harri… 2001-12-22  2001 0       1        0          0     \n10 Brimstone… 318     Koert… 2006-01-30  2006 1       0        1          0     \n# ℹ 921 more rows\n# ℹ 8 more variables: language &lt;fct&gt;, lgbtq &lt;fct&gt;, violent &lt;fct&gt;, state &lt;chr&gt;,\n#   political_value_index &lt;dbl&gt;, median_income &lt;dbl&gt;, hs_grad_rate &lt;dbl&gt;,\n#   college_grad_rate &lt;dbl&gt;\n\n\n\ntibble object print the data type of each column by default"
+  },
+  {
+    "objectID": "slides.html#dplyr",
+    "href": "slides.html#dplyr",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "dplyr",
+    "text": "dplyr\nselect(): subset by column name\n\ntip: uncomment the following code block in Positron to acquire a copiable vector of all the column names of your dataset\n\n\n# bookban_df |&gt; colnames() |&gt; View()\n\n\nor\n\n\nvarnames &lt;- c(\"title\", \"book_id\", \"author\", \"date\", \"year\", \"removed\", \"explicit\", \n\"antifamily\", \"occult\", \"language\", \"lgbtq\", \"violent\", \"state\", \n\"political_value_index\", \"median_income\", \"hs_grad_rate\", \"college_grad_rate\"\n)\n\nSometimes, we are not interested in all the given variables\n\nstate_level_vars &lt;- c( \n\"political_value_index\", \"median_income\", \"hs_grad_rate\", \"college_grad_rate\"\n)\n\n\nbookban_df |&gt; select(-any_of(state_level_vars)) |&gt; tail(4)\n\n                        title book_id                               author\n928       When Dad Killed Mom    1964                       Lester, Julius\n929         Geology Book, The     755                  Morris, Dr. John D.\n930     And Tango Makes Three     143 Parnell, Peter and Justin Richardson\n931 Darkest Night of the Year     505                         Koontz, Dean\n          date year removed explicit antifamily occult language lgbtq violent\n928 2002-04-21 2002       1        0          0      0        0     0       1\n929 2010-05-05 2010       0        0          0      0        0     0       0\n930 2009-08-22 2009       0        0          0      0        0     1       0\n931 2007-12-03 2007       0        1          0      0        0     0       0\n    state\n928    WY\n929    WY\n930    WY\n931    WY\n\n\n\nBeing mindful of the data type after subsetting\n\n\nbookban_df |&gt; select(title) |&gt; class()\n\n[1] \"data.frame\"\n\n\n\nbookban_df[, 'title'] |&gt; class()\n\n[1] \"character\""
+  },
+  {
+    "objectID": "slides.html#dplyr-1",
+    "href": "slides.html#dplyr-1",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "dplyr",
+    "text": "dplyr\nfilter(): keep rows that match our criteria\nWe might have a particular interest in Wisconsin\n\nbookban_df |&gt; filter(state == 'WI')\n\n                                                                   title\n1                                               Lords of Discipline, The\n2                                                                 Damage\n3                                                        Athletic Shorts\n4                                                            Teens & Sex\n5  Doing It Right:  Making Smart, Safe, and Satisfying Choices About Sex\n6                                                          Carry Me Down\n7                                                   Grapes of Wrath, The\n8                                                                   TTYL\n9                                                  It's Perfectly Normal\n10                                                 Harry Potter (series)\n   book_id          author       date year removed explicit antifamily occult\n1     1177     Conroy, Pat 2002-11-16 2002       1        1          0      0\n2      487    Jenkis, A.M. 2009-11-18 2009       0        1          0      0\n3      171 Crutcher, Chris 2006-10-10 2006       1        0          0      0\n4     1766  Marcovitz, Hal 2010-03-20 2010       0        1          0      0\n5      560 Pardes, Bronwen 2010-03-20 2010       0        1          0      0\n6      361    Hyland, M.J. 2007-07-22 2007       0        0          0      0\n7      745 Steinbeck, John 2003-07-14 2003       1        0          0      0\n8     1849 Myracle, Lauren 2009-02-25 2009       0        1          0      0\n9     1025   Harris, Robie 2001-09-22 2001       0        0          0      0\n10     868   Rowling, J.K. 2000-09-30 2000       0        0          0      1\n   language lgbtq violent state political_value_index median_income\n1         1     0       1    WI                   2.4        4234.5\n2         0     0       0    WI                   2.4        4234.5\n3         1     1       0    WI                   2.4        4234.5\n4         0     0       0    WI                   2.4        4234.5\n5         0     0       0    WI                   2.4        4234.5\n6         0     0       1    WI                   2.4        4234.5\n7         1     0       0    WI                   2.4        4234.5\n8         0     0       0    WI                   2.4        4234.5\n9         0     0       0    WI                   2.4        4234.5\n10        0     0       0    WI                   2.4        4234.5\n   hs_grad_rate college_grad_rate\n1      5.538042          -1.62373\n2      5.538042          -1.62373\n3      5.538042          -1.62373\n4      5.538042          -1.62373\n5      5.538042          -1.62373\n6      5.538042          -1.62373\n7      5.538042          -1.62373\n8      5.538042          -1.62373\n9      5.538042          -1.62373\n10     5.538042          -1.62373\n\n\n\n# bookban_df[bookban_df$state != \"WI\", ]"
+  },
+  {
+    "objectID": "slides.html#data-cleaning",
+    "href": "slides.html#data-cleaning",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Data Cleaning",
+    "text": "Data Cleaning\n\nbookban_df |&gt; filter(year &gt; 2004) |&gt; dim()\n\n[1] 515  17\n\n\n\nbookban_df[bookban_df$year &gt; 2004, ] |&gt; dim()\n\n[1] 526  17\n\n\nWhat happened?\n\nwe have missing values in the **year* column\n\ncount(): result in a new dataframe with the distribution of the values that a given column takes on\n\nbookban_df |&gt; count(year)\n\n   year   n\n1  2000  71\n2  2001 111\n3  2002  52\n4  2003  88\n5  2004  83\n6  2005  52\n7  2006  54\n8  2007  38\n9  2008 122\n10 2009 197\n11 2010  52\n12   NA  11"
+  },
+  {
+    "objectID": "idx.html#outline",
+    "href": "idx.html#outline",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Outline",
+    "text": "Outline\n\nRecap\nR Operators\nImport files\nSubsetting a Data Frame\n\nBase R advanced:\n\ntapply()\nsample()\n\nThe Tidyverse approach: dplyr package",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "idx.html#recap",
+    "href": "idx.html#recap",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Recap",
+    "text": "Recap\n\nName your Variables smartly and annotate your code with comments\n\n\nName your variables as nouns1\nlowercase, concatenate with underscores _\nConcise and Meaningful\nrm() command\n\n\nprint() , class() and mapview()\nR Data Types and Data Structures",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "idx.html#r-operators",
+    "href": "idx.html#r-operators",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "R Operators",
+    "text": "R Operators\nTry them out:\n\n\n\nArithmetic Operators\n\n+ - * / ^\n\n\n\n\nComparison Operators\n\n&gt; &lt;\n==\n!=\n\n\n\n\nOther Binary Operators\n\n&\n|\n!\n%in%\n\n\n\n\n\\(\\sqrt{x^2 + y^2}\\)\n\nx &lt;- 3\ny &lt;- 4\nprint((x^2 + y^2)^(1/2))\n\n[1] 5\n\n\n\\(mile = kilometer * 0.62137\\)\n\nprint((3000 * 0.62137))\n\n[1] 1864.11\n\nprint((3000 * 0.62137) * 1.609344)\n\n[1] 2999.994\n\n\n\n# | code-fold: true\n# install.packages('measurements')\nlibrary(measurements)\nconv_unit(3000, 'km', 'mi')\n\n[1] 1864.114\n\n\n\n\n\n\n\n\nR Binary Operators\n\n\n\nBinary operators in R: Be aware of the left hand side and the right hand side of binary operators.\nVector Recycling\n\nvector1 &lt;- 1:5\nprint(vector1)\n\n[1] 1 2 3 4 5\n\nprint(vector1 + 1)\n\n[1] 2 3 4 5 6\n\nprint(vector1 * 1.609344)\n\n[1] 1.609344 3.218688 4.828032 6.437376 8.046720\n\n\nThis helps us make sense of the following evaluation:\n\nprint(vector1 &gt; 3)\n\n[1] FALSE FALSE FALSE  TRUE  TRUE\n\n\n\n\n\n# vector1 &lt;- 1:5\nprint(vector1 != 3)\n\n[1]  TRUE  TRUE FALSE  TRUE  TRUE\n\n\n\n'capitol' == 'CAPITOL'\n\n[1] FALSE\n\n\n\n# ascii or utf8\nprint('&gt;' &lt; '0')\n\n[1] FALSE\n\nprint('a' &lt; 'A')\n\n[1] FALSE\n\n\n\nus_states &lt;- state.abb\nmidwest_states &lt;- c(\n  \"IL\", \"IN\", \"MI\", \"OH\", \"WI\",\"IA\", \"KS\", \"MN\", \"MO\", \"NE\", \"ND\", \"SD\"\n)\nus_states %in% midwest_states\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE\n[25]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE\n[37] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[49]  TRUE FALSE\n\n\n\nus_states &lt;- state.abb\nmidwest_states &lt;- c(\n  \"IL\", \"IN\", \"MI\", \"OH\",\n  \"WI\", \"IA\", \"KS\", \"MN\",\n  \"MO\", \"NE\", \"ND\", \"SD\"\n)\nprint(is.vector(midwest_states))\n\n[1] TRUE\n\n!is.vector(midwest_states)\n\n[1] FALSE\n\n\n\nus_states %in% midwest_states\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE\n[25]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE\n[37] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[49]  TRUE FALSE\n\n\nwhat happened here?\n\ndouble_vector &lt;- seq(21.9, 25.3, 0.1)\nint_vector &lt;- 20L:26L\ndouble_vector %in% int_vector\n\n [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE\n[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE\n[25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "idx.html#import-and-export-files",
+    "href": "idx.html#import-and-export-files",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Import and Export Files",
+    "text": "Import and Export Files",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "idx.html#subsetting-data.frame-continued",
+    "href": "idx.html#subsetting-data.frame-continued",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Subsetting data.frame Continued",
+    "text": "Subsetting data.frame Continued\nWe want to extract or access certain rows or columns of our dataframe.\n\nutah_df &lt;- data.frame(\n    national_park = c(\n    \"Bryce Canyon\", \"Canyonlands\", \"Arches\", \"Zion\", \"Capitol Reef\"\n    ),\n    lat = c(\n        37.640621053549125, 38.478777627059635, 38.6167568289248,\n        37.200271934321734, 38.291603924096385\n        ),\n    lon = c(\n        -112.16957627116382, -109.8251716515892, -109.61982474559946, \n        -112.98700616100083, -111.2619347149233\n        )\n)\nutah_df\n\n  national_park      lat       lon\n1  Bryce Canyon 37.64062 -112.1696\n2   Canyonlands 38.47878 -109.8252\n3        Arches 38.61676 -109.6198\n4          Zion 37.20027 -112.9870\n5  Capitol Reef 38.29160 -111.2619",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "idx.html#tapply-advanced-way-for-data-subsetting",
+    "href": "idx.html#tapply-advanced-way-for-data-subsetting",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "tapply(): Advanced way for data subsetting",
+    "text": "tapply(): Advanced way for data subsetting\n\n\n\n\n\n\nDemo Dataset Description\n\n\n\nVariable Documentation \n\n\n\n# install.packages('bayesrules')\n# import bayesrules package and \nlibrary(bayesrules)\n\n# bookban_df &lt;- bayesrules::book_banning\nbookban_df &lt;- book_banning\n# print(head(bookban_df))\nsummary(bookban_df)\n\n    title              book_id       author               date           \n Length:931         143    : 17   Length:931         Min.   :2000-01-01  \n Class :character   868    : 12   Class :character   1st Qu.:2002-11-16  \n Mode  :character   1849   : 10   Mode  :character   Median :2006-02-10  \n                    1025   :  9                      Mean   :2005-12-16  \n                    1083   :  8                      3rd Qu.:2009-03-18  \n                    399    :  7                      Max.   :2010-09-09  \n                    (Other):868                      NA's   :11          \n      year      removed explicit antifamily occult  language lgbtq   violent\n Min.   :2000   0:714   0:632    0:891      0:895   0:694    0:842   0:797  \n 1st Qu.:2002   1:217   1:299    1: 40      1: 36   1:237    1: 89   1:134  \n Median :2006                                                               \n Mean   :2005                                                               \n 3rd Qu.:2009                                                               \n Max.   :2010                                                               \n NA's   :11                                                                 \n    state           political_value_index median_income    hs_grad_rate   \n Length:931         Min.   :-20.2000      Min.   :-8466   Min.   :-6.662  \n Class :character   1st Qu.: -1.8000      1st Qu.: 1274   1st Qu.: 1.038  \n Mode  :character   Median :  2.0000      Median : 4218   Median : 2.338  \n                    Mean   :  0.0304      Mean   : 4530   Mean   : 2.833  \n                    3rd Qu.:  4.0000      3rd Qu.: 9908   3rd Qu.: 5.538  \n                    Max.   : 13.4000      Max.   :19936   Max.   : 8.738  \n                                                                          \n college_grad_rate\n Min.   :-9.2237  \n 1st Qu.:-2.0237  \n Median : 0.2763  \n Mean   : 0.6043  \n 3rd Qu.: 2.5763  \n Max.   : 9.1763  \n                  \n\n\n\nask your data questions:\n\n\ntapply(\n    bookban_df$removed == '1',\n    bookban_df$state,\n    mean\n    )\n\n        AK         AL         AR         AZ         CA         CO         CT \n0.11111111 0.50000000 0.00000000 0.41666667 0.32000000 0.12345679 0.16666667 \n        DE         FL         GA         IA         ID         IL         IN \n0.50000000 0.30769231 0.30769231 0.25000000 0.85714286 0.30769231 0.30000000 \n        KS         KY         LA         MA         MD         ME         MI \n0.76923077 0.15384615 0.41666667 0.37500000 0.00000000 0.00000000 0.19444444 \n        MN         MO         MS         MT         NC         ND         NE \n0.05555556 0.72727273 1.00000000 0.00000000 0.20000000 0.33333333 0.00000000 \n        NH         NJ         NM         NY         OH         OK         OR \n0.28571429 0.18181818 0.66666667 0.44000000 0.34482759 0.34782609 0.04237288 \n        PA         RI         SC         SD         TN         UT         VA \n0.07432432 0.33333333 0.40000000 0.33333333 0.38461538 0.00000000 0.52941176 \n        VT         WA         WI         WV         WY \n0.00000000 0.33333333 0.30000000 0.00000000 0.25000000 \n\n\nThe data science question that is asked here: What fraction of book challenges were successful in each state?\n\nThe first argument: specify the variable we are interested in which is the books that their remove request were approved\nThe 2nd argument: how we want to group our data, often for the purpose of comparison, and this case we naturally want to compare between states.\nThe 3rd argument: takes a function, which is the operation that we want to apply to our variable of interest, here it is the mean() function for acquiring the fraction of approved request.\n\n\n\n\n\n\n\nR factor\n\n\n\nAs we have observed, the bookban_df$removed, removed column is of factor data type, taking on values ‘0’ and ‘1’. And by making the comparison (add == 1), we get a logical vector of TRUE(1) and FALSE(0) which can be treated as 1 and 0 correspondingly, which mean() can operate on.\n\n\nWhat are we trying to ask for the following two code blocks?\n\ntapply(\n    bookban_df$political_value_ind,\n    bookban_df$lgbtq,\n    mean)\n\n        0         1 \n 0.102019 -0.647191 \n\n\n\ntapply(bookban_df$title, bookban_df$state, length)\n\n AK  AL  AR  AZ  CA  CO  CT  DE  FL  GA  IA  ID  IL  IN  KS  KY  LA  MA  MD  ME \n  9  10   5  12  50  81   6   2  26  13  16  14  39  20  13  13  12   8   5   3 \n MI  MN  MO  MS  MT  NC  ND  NE  NH  NJ  NM  NY  OH  OK  OR  PA  RI  SC  SD  TN \n 36  18  11   1   8  20   6   2   7  11   3  25  29  23 118 148   3  15   3  13 \n UT  VA  VT  WA  WI  WV  WY \n  1  34  13   9  10   3   4",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "idx.html#tidyverse",
+    "href": "idx.html#tidyverse",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Tidyverse",
+    "text": "Tidyverse\n\ntidyverse is a selection of R packages, by running the following import code, we can have most of the packages that we will use to do data analysis\nAmong them, dplyr and ggplot2 will be used for almost all of the upcoming assignments\n\n\nlibrary(tidyverse)\n\n\n|&gt;: meet the pipeline operator\n\nbookban_df |&gt; select(date) |&gt; pull(date) |&gt; class()\n\n[1] \"Date\"\n\n\n\nbookban_df['date']$date |&gt; class()\n\n[1] \"Date\"",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "idx.html#the-tidyverse-way-of-initializing-data-frames",
+    "href": "idx.html#the-tidyverse-way-of-initializing-data-frames",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "The Tidyverse way of initializing data frames",
+    "text": "The Tidyverse way of initializing data frames\n\n\n\nutah_df &lt;- data.frame(\n    national_park = c(\n    \"Bryce Canyon\", \"Canyonlands\", \"Arches\", \"Zion\", \"Capitol Reef\"\n    ),\n    lat = c(\n        37.640621053549125, 38.478777627059635, 38.6167568289248,\n        37.200271934321734, 38.291603924096385\n        ),\n    lon = c(\n        -112.16957627116382, -109.8251716515892, -109.61982474559946, \n        -112.98700616100083, -111.2619347149233\n        )\n)\nutah_df\n\n  national_park      lat       lon\n1  Bryce Canyon 37.64062 -112.1696\n2   Canyonlands 38.47878 -109.8252\n3        Arches 38.61676 -109.6198\n4          Zion 37.20027 -112.9870\n5  Capitol Reef 38.29160 -111.2619\n\n\n\n\nutah_tribble &lt;- tibble::tribble(\n    ~national_park, ~lat, ~lon,\n    \"Bryce Canyon\", 37.640621053549125, -112.16957627116382,\n    \"Canyonlands\", 38.478777627059635, -109.8251716515892,\n    \"Arches\", 38.6167568289248, -109.61982474559946,\n    \"Zion\", 37.200271934321734, -112.98700616100083,\n    \"Capitol Reef\", 38.291603924096385, -111.2619347149233\n)\nutah_tribble\n\n# A tibble: 5 × 3\n  national_park   lat   lon\n  &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;\n1 Bryce Canyon   37.6 -112.\n2 Canyonlands    38.5 -110.\n3 Arches         38.6 -110.\n4 Zion           37.2 -113.\n5 Capitol Reef   38.3 -111.",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "idx.html#why-tibble-object",
+    "href": "idx.html#why-tibble-object",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Why tibble object?",
+    "text": "Why tibble object?\n\nTry uncomment the first line of the code!\n\n\n# print(bookban_df)\n\nas_tibble(bookban_df)\n\n# A tibble: 931 × 17\n   title      book_id author date        year removed explicit antifamily occult\n   &lt;chr&gt;      &lt;fct&gt;   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt; \n 1 House of … 927     Allen… 2005-04-01  2005 0       1        0          1     \n 2 It's Not … 1024    Harri… 2008-02-06  2008 1       0        0          0     \n 3 King Stork 1087    Pyle,… 2008-10-02  2008 0       0        0          0     \n 4 How They … 936     Levit… 2008-10-05  2008 0       0        0          0     \n 5 Ghost in … 764     Masam… 2008-10-02  2008 0       0        0          0     \n 6 King Stork 1087    Pyle,… 2003-09-13  2003 0       0        0          0     \n 7 Queer      1489    Gage,… 2003-09-13  2003 0       0        0          0     \n 8 Witness    2023    Hesse… 2003-09-13  2003 0       0        0          0     \n 9 It's Perf… 1025    Harri… 2001-12-22  2001 0       1        0          0     \n10 Brimstone… 318     Koert… 2006-01-30  2006 1       0        1          0     \n# ℹ 921 more rows\n# ℹ 8 more variables: language &lt;fct&gt;, lgbtq &lt;fct&gt;, violent &lt;fct&gt;, state &lt;chr&gt;,\n#   political_value_index &lt;dbl&gt;, median_income &lt;dbl&gt;, hs_grad_rate &lt;dbl&gt;,\n#   college_grad_rate &lt;dbl&gt;\n\n\n\ntibble object print the data type of each column by default",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "idx.html#dplyr",
+    "href": "idx.html#dplyr",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "dplyr",
+    "text": "dplyr\nselect(): subset by column name\n\ntip: uncomment the following code block in Positron to acquire a copiable vector of all the column names of your dataset\n\n\n# bookban_df |&gt; colnames() |&gt; View()\n\n\nor\n\n\nvarnames &lt;- c(\"title\", \"book_id\", \"author\", \"date\", \"year\", \"removed\", \"explicit\", \n\"antifamily\", \"occult\", \"language\", \"lgbtq\", \"violent\", \"state\", \n\"political_value_index\", \"median_income\", \"hs_grad_rate\", \"college_grad_rate\"\n)\n\nSometimes, we are not interested in all the given variables\n\nstate_level_vars &lt;- c( \n\"political_value_index\", \"median_income\", \"hs_grad_rate\", \"college_grad_rate\"\n)\n\n\nbookban_df |&gt; select(-any_of(state_level_vars)) |&gt; tail(4)\n\n                        title book_id                               author\n928       When Dad Killed Mom    1964                       Lester, Julius\n929         Geology Book, The     755                  Morris, Dr. John D.\n930     And Tango Makes Three     143 Parnell, Peter and Justin Richardson\n931 Darkest Night of the Year     505                         Koontz, Dean\n          date year removed explicit antifamily occult language lgbtq violent\n928 2002-04-21 2002       1        0          0      0        0     0       1\n929 2010-05-05 2010       0        0          0      0        0     0       0\n930 2009-08-22 2009       0        0          0      0        0     1       0\n931 2007-12-03 2007       0        1          0      0        0     0       0\n    state\n928    WY\n929    WY\n930    WY\n931    WY\n\n\n\nBeing mindful of the data type after subsetting\n\n\nbookban_df |&gt; select(title) |&gt; class()\n\n[1] \"data.frame\"\n\n\n\nbookban_df[, 'title'] |&gt; class()\n\n[1] \"character\"",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "idx.html#dplyr-1",
+    "href": "idx.html#dplyr-1",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "dplyr",
+    "text": "dplyr\nfilter(): keep rows that match our criteria\nWe might have a particular interest in Wisconsin\n\nbookban_df |&gt; filter(state == 'WI')\n\n                                                                   title\n1                                               Lords of Discipline, The\n2                                                                 Damage\n3                                                        Athletic Shorts\n4                                                            Teens & Sex\n5  Doing It Right:  Making Smart, Safe, and Satisfying Choices About Sex\n6                                                          Carry Me Down\n7                                                   Grapes of Wrath, The\n8                                                                   TTYL\n9                                                  It's Perfectly Normal\n10                                                 Harry Potter (series)\n   book_id          author       date year removed explicit antifamily occult\n1     1177     Conroy, Pat 2002-11-16 2002       1        1          0      0\n2      487    Jenkis, A.M. 2009-11-18 2009       0        1          0      0\n3      171 Crutcher, Chris 2006-10-10 2006       1        0          0      0\n4     1766  Marcovitz, Hal 2010-03-20 2010       0        1          0      0\n5      560 Pardes, Bronwen 2010-03-20 2010       0        1          0      0\n6      361    Hyland, M.J. 2007-07-22 2007       0        0          0      0\n7      745 Steinbeck, John 2003-07-14 2003       1        0          0      0\n8     1849 Myracle, Lauren 2009-02-25 2009       0        1          0      0\n9     1025   Harris, Robie 2001-09-22 2001       0        0          0      0\n10     868   Rowling, J.K. 2000-09-30 2000       0        0          0      1\n   language lgbtq violent state political_value_index median_income\n1         1     0       1    WI                   2.4        4234.5\n2         0     0       0    WI                   2.4        4234.5\n3         1     1       0    WI                   2.4        4234.5\n4         0     0       0    WI                   2.4        4234.5\n5         0     0       0    WI                   2.4        4234.5\n6         0     0       1    WI                   2.4        4234.5\n7         1     0       0    WI                   2.4        4234.5\n8         0     0       0    WI                   2.4        4234.5\n9         0     0       0    WI                   2.4        4234.5\n10        0     0       0    WI                   2.4        4234.5\n   hs_grad_rate college_grad_rate\n1      5.538042          -1.62373\n2      5.538042          -1.62373\n3      5.538042          -1.62373\n4      5.538042          -1.62373\n5      5.538042          -1.62373\n6      5.538042          -1.62373\n7      5.538042          -1.62373\n8      5.538042          -1.62373\n9      5.538042          -1.62373\n10     5.538042          -1.62373\n\n\n\n# bookban_df[bookban_df$state != \"WI\", ]",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "idx.html#data-cleaning",
+    "href": "idx.html#data-cleaning",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Data Cleaning",
+    "text": "Data Cleaning\n\nbookban_df |&gt; filter(year &gt; 2004) |&gt; dim()\n\n[1] 515  17\n\n\n\nbookban_df[bookban_df$year &gt; 2004, ] |&gt; dim()\n\n[1] 526  17\n\n\nWhat happened?\n\nwe have missing values in the **year* column\n\ncount(): result in a new dataframe with the distribution of the values that a given column takes on\n\nbookban_df |&gt; count(year)\n\n   year   n\n1  2000  71\n2  2001 111\n3  2002  52\n4  2003  88\n5  2004  83\n6  2005  52\n7  2006  54\n8  2007  38\n9  2008 122\n10 2009 197\n11 2010  52\n12   NA  11",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "idx.html#footnotes",
+    "href": "idx.html#footnotes",
+    "title": "R Coding Workshop: 2nd Meeting",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nfunctions should take on verbs as their names↩︎",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 4"
+    ]
+  },
+  {
+    "objectID": "w5-idx.html#review-time",
+    "href": "w5-idx.html#review-time",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Review Time",
+    "text": "Review Time",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "w5-slides.html#review-time",
+    "href": "w5-slides.html#review-time",
+    "title": "R Coding Workshop: 3rd Meeting",
+    "section": "Review Time",
+    "text": "Review Time"
   }
 ]
