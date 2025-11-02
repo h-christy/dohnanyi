@@ -1,0 +1,226 @@
+---
+title: "R Coding Workshop: 8th Meeting"
+subtitle: "GIS & Geospatial Data Analysis (Fall 2025)"
+execute:
+  echo: true
+format:
+  html:
+    output-file: "w10-idx.html"
+    css: styles.css
+    toc: true
+    df-print: kable
+  revealjs:
+    output-file: "w10-slides.html"
+    css: styles.css
+    df-print: kable
+    slide-number: true
+    scrollable: true
+    code:
+      echo: true
+      eval: true
+bibliography: r4spatial-workshop.bib
+---
+
+## R Coding Workshop for GIS: 7th Meeting
+
+```{r, include=FALSE}
+library(tidyverse)
+library(sf)
+library(mapview)
+library(rnaturalearth)
+library(viridis)
+library(spdep)
+library(sfdep)
+library(spatstat)
+library(terra)
+library(stars)
+library(scales)
+```
+
+## Outline
+
+- Organize and save analysis results
+- ggplot
+
+## Initialize a `ggplot` object
+
+To create a ggplot object, we need...
+
+:::: {.columns}
+::: {.column}
+Components:
+
+- data
+- mapping
+- geometry layer
+:::
+::: {.column}
+
+Steps:
+
+1. Prepare your data (often in the structure of a dataframe object)
+2. Think about the variable(s) that you're interested in and what type of geometry (marks: point/line/polygon) might best help you understand their distribution or relationship.
+3. Specify them using the grammar of graphics --map the variables to corresponding aesthetic or spatial properties of the geometry (color/size/position x, y)
+
+:::
+::::
+
+## `ggplot()`: data being the first argument
+
+```{r}
+book_df <- read_csv('data/book-df-us-main.csv')
+book_df |> glimpse()
+```
+
+
+### Plotting the distribution of a single variable
+
+- `view()`
+```{r}
+# book_df |> view()
+```
+
+![](data/view-bk-df.png)
+
+- layer `geom_histogram()`: for a numeric variable
+```{r}
+book_df |>
+  ggplot(mapping = aes(VISITS)) +
+  geom_histogram() +
+  scale_x_continuous(labels = comma)
+```
+
+- layer `geom_bar()`: for a categorical variable
+```{r}
+book_df |>
+    ggplot(aes(x = division_str)) +
+    geom_bar() +
+    guides(x = guide_axis(angle = 60))
+```
+
+## Distribution
+
+`geom_boxplot()`
+
+decompose the elements of ggplot specification
+
+- map variable name to aes attribute
+- add geometry layer with `+` sign
+- extra: change the theme layer to classic
+```{r}
+book_df |>
+  ggplot(mapping = aes(y = BKMOB)) +
+  geom_boxplot() +
+  theme_classic()
+```
+
+## Association
+
+- `geom_point()`, `geom_text()`, `geom_label()`: two variable, using points to mark position
+
+```{r}
+bk_df <- read_csv('data/bkdf-us-main.csv')
+```
+
+:::: {.columns}
+::: {.column}
+```{r}
+bk_df |>
+    ggplot(aes(x = CENTLIB, y = challenge_count, label = state)) +
+    geom_point()
+```
+:::
+::: {.column}
+```{r}
+bk_df |>
+    ggplot(aes(x = CENTLIB, y = challenge_count, label = state)) +
+    geom_text(size = 2)
+```
+:::
+::: {.column}
+```{r}
+bk_df |>
+    ggplot(aes(x = CENTLIB, y = challenge_count, label = state)) +
+    geom_label(size = 2)
+```
+:::
+::: {.column}
+```{r}
+bk_df |>
+    ggplot(aes(x = CENTLIB, y = challenge_count, label = state)) +
+    geom_point(size = 2) +
+    geom_smooth(method = 'lm')
+```
+:::
+::::
+
+## Comparison
+
+- Add a z variable: `color`, `size`, `facet_wrap()`
+
+```{r}
+bk_df |>
+    ggplot(aes(x = CENTLIB, y = challenge_count, color = division_str)) +
+    geom_point()
+```
+
+```{r}
+bk_df |>
+    ggplot(aes(x = CENTLIB, y = challenge_count, color = division_str)) +
+    geom_point() +
+    facet_wrap(~division_str) +
+    theme_classic()
+```
+```{r}
+bk_df |>
+  filter(division_str == 'Mountain') |>
+  ggplot(aes(x = CENTLIB, y = challenge_count, color = state)) +
+  geom_point()
+```
+
+## ggplot for `sf`
+
+- `geom_sf()`
+
+```{r}
+library(tigris)
+states_sf <- states(year = 2010, progress_bar = FALSE)
+# states_sf
+```
+
+```{r}
+states_sf |>
+  ggplot() +
+  geom_sf(aes(fill = DIVISION10))
+```
+
+## ggplot for CDA
+
+```{r}
+library(HistData)
+data(Nightingale)
+```
+
+```{r}
+nightingale_df <- Nightingale |> as_tibble()
+```
+```{r}
+nightingale_df |>
+    ggplot() +
+    geom_line(aes(x = Date, y = Disease), color = 'deepskyblue') +
+    geom_line(aes(x = Date, y = Wounds), color = 'orange') + 
+    geom_line(aes(x = Date, y = Other), color = 'green') +
+    scale_x_date(date_breaks = 'month', date_labels = '%Y %b') +
+    guides(x = guide_axis(angle = 60)) +
+    geom_vline(xintercept = ymd('1855-03-01'), colour = "red") +
+    labs(y = 'Count') +
+    theme_classic()
+```
+
+
+## Public Library Survey 2010: Book Mobiles
+
+
+```{r}
+# bk_df
+```

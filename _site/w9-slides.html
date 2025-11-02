@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.39">
+
+  <title>quintet – R Coding Workshop: 7th Meeting</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
+  <link rel="stylesheet" href="styles.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+  <script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+  <script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+  <link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+  <script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+  <script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+  <link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+  <script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
+  <script src="site_libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+  <script src="site_libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+  <link href="site_libs/HomeButton-0.0.1/home-button.css" rel="stylesheet">
+  <script src="site_libs/HomeButton-0.0.1/home-button.js"></script>
+  <script src="site_libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+  <script src="site_libs/clipboard-0.0.1/setClipboardText.js"></script>
+  <link href="site_libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet">
+  <link href="site_libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">R Coding Workshop: 7th Meeting</h1>
+  <p class="subtitle">GIS &amp; Geospatial Data Analysis (Fall 2025)</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="r-coding-workshop-for-gis-7th-meeting" class="slide level2">
+<h2>R Coding Workshop for GIS: 7th Meeting</h2>
+</section>
+<section id="goals-for-today" class="slide level2">
+<h2>Goals for Today</h2>
+<ul>
+<li>Review R fundamentals</li>
+<li>Walk through the R workflow for (geospatial) data analysis</li>
+<li>Make sense of objects and functions in R</li>
+<li>Move back and forth with <code>df</code>, <code>sf</code>, <code>ppp</code></li>
+<li>Intro to control flow (<code>if</code> and <code>case_when</code>)</li>
+</ul>
+</section>
+<section id="review" class="slide level2 scrollable">
+<h2>Review</h2>
+<ol type="1">
+<li class="fragment">Everything that exists in R is an <strong>object</strong>.(<span class="citation" data-cites="chambersExtending2016">Chambers (<a href="#/sfg-to-sfc" role="doc-biblioref" onclick="">2016</a>)</span>)<sup>1</sup></li>
+<li class="fragment">R uses <strong>functions</strong> to perform operations.(<span class="citation" data-cites="jamesIntroductionStatisticalLearning2021a">James (<a href="#/sfg-to-sfc" role="doc-biblioref" onclick="">2021</a>)</span>)<sup>2</sup></li>
+</ol>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>p.&nbsp;4</p></li><li id="fn2"><p><span class="citation" data-cites="jamesIntroductionStatisticalLearning2021a">James (<a href="#/sfg-to-sfc" role="doc-biblioref" onclick="">2021</a>)</span>, p.&nbsp;43</p></li></ol></aside></section>
+<section id="the-workflow-1-setting-up-the-environment" class="slide level2">
+<h2>The Workflow 1: Setting up the Environment</h2>
+<ul>
+<li>select a working environment and explore their features(Positron, Jupyterhub)</li>
+<li>Open your .qmd file or create one</li>
+</ul>
+<h3 id="r-session">R Session</h3>
+<ul>
+<li>Use <code>getwd()</code> and <code>setwd()</code> to get information about <strong>working directory</strong> the or set them manually to tell R where to look for files during this session</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">getwd</span>()</span>
+<span id="cb1-2"><a></a><span class="fu">setwd</span>(<span class="st">'~/myfolder'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Use the <code>library()</code> function to load the <strong>packages</strong> for our R session.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a></a><span class="fu">library</span>(sf)</span>
+<span id="cb2-3"><a></a><span class="fu">library</span>(mapview)</span>
+<span id="cb2-4"><a></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb2-5"><a></a><span class="fu">library</span>(viridis)</span>
+<span id="cb2-6"><a></a><span class="fu">library</span>(spdep)</span>
+<span id="cb2-7"><a></a><span class="fu">library</span>(sfdep)</span>
+<span id="cb2-8"><a></a><span class="fu">library</span>(spatstat)</span>
+<span id="cb2-9"><a></a><span class="fu">library</span>(terra)</span>
+<span id="cb2-10"><a></a><span class="fu">library</span>(stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-workflow-2-preparing-data-objects" class="slide level2">
+<h2>The Workflow 2: Preparing Data objects</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>uni_df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb3-2"><a></a>  <span class="sc">~</span>university, <span class="sc">~</span>year, <span class="sc">~</span>current_country, <span class="sc">~</span>lat, <span class="sc">~</span>lon, <span class="sc">~</span>exist_today,</span>
+<span id="cb3-3"><a></a>  <span class="st">"Paris"</span>, <span class="dv">1150</span>, <span class="st">"France"</span>, <span class="fl">48.8566</span>, <span class="fl">2.3522</span>, <span class="cn">TRUE</span>,</span>
+<span id="cb3-4"><a></a>  <span class="st">"Salerno"</span>, <span class="dv">1173</span>,  <span class="st">"Italy"</span>, <span class="fl">40.7711</span>, <span class="fl">14.7905</span>, <span class="cn">TRUE</span>,</span>
+<span id="cb3-5"><a></a>  <span class="st">"Reggio"</span>, <span class="dv">1188</span>, <span class="st">"Italy"</span>, <span class="fl">44.6450</span>, <span class="fl">10.9277</span>, <span class="cn">TRUE</span>,</span>
+<span id="cb3-6"><a></a>  <span class="st">"Oxford"</span>, <span class="dv">1190</span>, <span class="st">"United Kingdom"</span>, <span class="fl">51.7520</span>, <span class="sc">-</span><span class="fl">1.2576</span>, <span class="cn">TRUE</span>,</span>
+<span id="cb3-7"><a></a>  <span class="st">"Bologna"</span>, <span class="dv">1200</span>, <span class="st">"Italy"</span>, <span class="fl">44.4989</span>, <span class="fl">11.3275</span>, <span class="cn">TRUE</span></span>
+<span id="cb3-8"><a></a>)</span>
+<span id="cb3-9"><a></a><span class="co"># uni_df</span></span>
+<span id="cb3-10"><a></a>uni_sf <span class="ot">&lt;-</span> uni_df <span class="sc">|&gt;</span></span>
+<span id="cb3-11"><a></a>    <span class="fu">st_as_sf</span>(</span>
+<span id="cb3-12"><a></a>        <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">'lon'</span>,<span class="st">'lat'</span>),</span>
+<span id="cb3-13"><a></a>        <span class="at">crs =</span> <span class="dv">4326</span></span>
+<span id="cb3-14"><a></a>    )</span>
+<span id="cb3-15"><a></a><span class="co"># uni_sf |&gt; mapview(label = 'university')</span></span>
+<span id="cb3-16"><a></a>uni_sfc <span class="ot">&lt;-</span> uni_sf <span class="sc">|&gt;</span> <span class="fu">pull</span>(geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>book_challenge_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/book-challenge11.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>ne_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"geounit"</span>, <span class="st">"pop_est"</span>, <span class="st">"pop_rank"</span>, <span class="st">"pop_year"</span>, <span class="st">"gdp_md"</span>, <span class="st">"gdp_year"</span>, <span class="st">"economy"</span>, <span class="st">"income_grp"</span>, <span class="st">"iso_a2"</span>, <span class="st">"continent"</span>, <span class="st">"region_un"</span>, <span class="st">"subregion"</span>, <span class="st">"region_wb"</span>)</span>
+<span id="cb5-2"><a></a>cca_sf <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(</span>
+<span id="cb5-3"><a></a>    <span class="at">country =</span> <span class="fu">c</span>(</span>
+<span id="cb5-4"><a></a>        <span class="st">"Kazakhstan"</span>, <span class="st">"Kyrgyzstan"</span>, <span class="st">"Tajikistan"</span>, <span class="st">"Turkmenistan"</span>, <span class="st">"Uzbekistan"</span>, <span class="st">"Armenia"</span>, <span class="st">"Azerbaijan"</span>, <span class="st">"Georgia"</span>),</span>
+<span id="cb5-5"><a></a>    <span class="at">scale =</span> <span class="dv">50</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="fu">any_of</span>(ne_vars))</span>
+<span id="cb5-6"><a></a>cca_sfc <span class="ot">&lt;-</span> cca_sf <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>azerbaijan_sf <span class="ot">&lt;-</span> cca_sf <span class="sc">|&gt;</span> <span class="fu">filter</span>(iso_a2 <span class="sc">==</span> <span class="st">'AZ'</span>)</span>
+<span id="cb6-2"><a></a>azerbaijan_sfc <span class="ot">&lt;-</span> azerbaijan_sf <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>georgia_sf <span class="ot">&lt;-</span> cca_sf <span class="sc">|&gt;</span> <span class="fu">filter</span>(iso_a2 <span class="sc">==</span> <span class="st">'GE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>cca_nb <span class="ot">&lt;-</span> cca_sf <span class="sc">|&gt;</span> <span class="fu">st_contiguity</span>()</span>
+<span id="cb8-2"><a></a>cca_listw <span class="ot">&lt;-</span> cca_nb <span class="sc">|&gt;</span> <span class="fu">st_weights</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="finding-help-read-function-documentations" class="slide level2 scrollable">
+<h2>3. Finding Help: read function documentations</h2>
+<p>Ways to access function documentation:</p>
+<ol type="1">
+<li>Add a question mark in front of the function name: <code>?func_name</code></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>?mutate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>??<span class="st">"aggregate"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Use the <code>help()</code> function</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">help</span>(<span class="st">'mutate'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">help</span>(<span class="st">'filter'</span>, <span class="at">package =</span> <span class="st">'dplyr'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>If you are interested in the what are the arguments that the function can take, use <code>args()</code> to check</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>moran <span class="sc">|&gt;</span> <span class="fu">class</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "function"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">args</span>(moran)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>function (x, listw, n, S0, zero.policy = attr(listw, "zero.policy"), 
+    NAOK = FALSE) 
+NULL</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Simply, hover over the function name!</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="st">'Try hover over a function in your code!'</span> <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Try hover over a function in your code!"</code></pre>
+</div>
+</div>
+</section>
+<section id="a-closer-look-at-the-data-structure-of-an-df-object" class="slide level2">
+<h2>A closer look at the data structure of an <strong>df</strong> object</h2>
+<ul>
+<li><code>class()</code> function tells us that <code>uni_df</code> is a “data.frame” object data object with an additional class `“tbl_df”</li>
+<li><code>typeof()</code> call shows the storage mode of <code>uni_df</code>, which is <strong>list</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>uni_df <span class="sc">|&gt;</span> <span class="fu">class</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "tbl_df"     "tbl"        "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>uni_df <span class="sc">|&gt;</span> <span class="fu">typeof</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+<ul>
+<li>describe and extract attributes of a df object using <code>dim()</code> and <code>colnames()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>uni_df <span class="sc">|&gt;</span> <span class="fu">dim</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>uni_df <span class="sc">|&gt;</span> <span class="fu">colnames</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "university"      "year"            "current_country" "lat"            
+[5] "lon"             "exist_today"    </code></pre>
+</div>
+</div>
+</section>
+<section id="longer-and-wider-dataframes" class="slide level2">
+<h2>Longer and Wider Dataframes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>book_challenge_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/book-challenge11.csv'</span>)</span>
+<span id="cb27-2"><a></a>book_challenge_df <span class="sc">|&gt;</span> <span class="fu">dim</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 931  17</code></pre>
+</div>
+</div>
+<ul>
+<li>basic display functions: <code>head()</code>, <code>tail()</code> and <code>slice_sample()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>book_challenge_df <span class="sc">|&gt;</span> <span class="fu">tail</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 3%">
+<col style="width: 16%">
+<col style="width: 5%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 10%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">title</th>
+<th style="text-align: right;">book_id</th>
+<th style="text-align: left;">author</th>
+<th style="text-align: left;">date</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">removed</th>
+<th style="text-align: right;">explicit</th>
+<th style="text-align: right;">antifamily</th>
+<th style="text-align: right;">occult</th>
+<th style="text-align: right;">language</th>
+<th style="text-align: right;">lgbtq</th>
+<th style="text-align: right;">violent</th>
+<th style="text-align: left;">state</th>
+<th style="text-align: right;">political_value_index</th>
+<th style="text-align: right;">median_income</th>
+<th style="text-align: right;">hs_grad_rate</th>
+<th style="text-align: right;">college_grad_rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">And Tango Makes Three</td>
+<td style="text-align: right;">143</td>
+<td style="text-align: left;">Parnell, Peter and Justin Richardson</td>
+<td style="text-align: left;">2006-10-29</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">WV</td>
+<td style="text-align: right;">-7.9</td>
+<td style="text-align: right;">-7290.0</td>
+<td style="text-align: right;">-4.361958</td>
+<td style="text-align: right;">-9.22373</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Go and Come Back</td>
+<td style="text-align: right;">721</td>
+<td style="text-align: left;">Abelove, Joan</td>
+<td style="text-align: left;">2000-06-18</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">WV</td>
+<td style="text-align: right;">-7.9</td>
+<td style="text-align: right;">-7290.0</td>
+<td style="text-align: right;">-4.361958</td>
+<td style="text-align: right;">-9.22373</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">When Dad Killed Mom</td>
+<td style="text-align: right;">1964</td>
+<td style="text-align: left;">Lester, Julius</td>
+<td style="text-align: left;">2002-04-21</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">WY</td>
+<td style="text-align: right;">-19.7</td>
+<td style="text-align: right;">4081.5</td>
+<td style="text-align: right;">8.338042</td>
+<td style="text-align: right;">-2.12373</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Geology Book, The</td>
+<td style="text-align: right;">755</td>
+<td style="text-align: left;">Morris, Dr.&nbsp;John D.</td>
+<td style="text-align: left;">2010-05-05</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">WY</td>
+<td style="text-align: right;">-19.7</td>
+<td style="text-align: right;">4081.5</td>
+<td style="text-align: right;">8.338042</td>
+<td style="text-align: right;">-2.12373</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">And Tango Makes Three</td>
+<td style="text-align: right;">143</td>
+<td style="text-align: left;">Parnell, Peter and Justin Richardson</td>
+<td style="text-align: left;">2009-08-22</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">WY</td>
+<td style="text-align: right;">-19.7</td>
+<td style="text-align: right;">4081.5</td>
+<td style="text-align: right;">8.338042</td>
+<td style="text-align: right;">-2.12373</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Darkest Night of the Year</td>
+<td style="text-align: right;">505</td>
+<td style="text-align: left;">Koontz, Dean</td>
+<td style="text-align: left;">2007-12-03</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">WY</td>
+<td style="text-align: right;">-19.7</td>
+<td style="text-align: right;">4081.5</td>
+<td style="text-align: right;">8.338042</td>
+<td style="text-align: right;">-2.12373</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>book_challenge_df <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 3%">
+<col style="width: 11%">
+<col style="width: 5%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 10%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">title</th>
+<th style="text-align: right;">book_id</th>
+<th style="text-align: left;">author</th>
+<th style="text-align: left;">date</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">removed</th>
+<th style="text-align: right;">explicit</th>
+<th style="text-align: right;">antifamily</th>
+<th style="text-align: right;">occult</th>
+<th style="text-align: right;">language</th>
+<th style="text-align: right;">lgbtq</th>
+<th style="text-align: right;">violent</th>
+<th style="text-align: left;">state</th>
+<th style="text-align: right;">political_value_index</th>
+<th style="text-align: right;">median_income</th>
+<th style="text-align: right;">hs_grad_rate</th>
+<th style="text-align: right;">college_grad_rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Kid’s Guide to Social Action</td>
+<td style="text-align: right;">1076</td>
+<td style="text-align: left;">Lewis, Barbara</td>
+<td style="text-align: left;">2004-08-23</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">CA</td>
+<td style="text-align: right;">7.4</td>
+<td style="text-align: right;">10119.0</td>
+<td style="text-align: right;">-2.761958</td>
+<td style="text-align: right;">2.57627</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Best is Yet to Come</td>
+<td style="text-align: right;">221</td>
+<td style="text-align: left;">Gould, Judith</td>
+<td style="text-align: left;">2003-11-26</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">CO</td>
+<td style="text-align: right;">-0.2</td>
+<td style="text-align: right;">10346.5</td>
+<td style="text-align: right;">7.338042</td>
+<td style="text-align: right;">8.67627</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Velderet</td>
+<td style="text-align: right;">1897</td>
+<td style="text-align: left;">Tan, Cecilia</td>
+<td style="text-align: left;">2003-11-27</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">CO</td>
+<td style="text-align: right;">-0.2</td>
+<td style="text-align: right;">10346.5</td>
+<td style="text-align: right;">7.338042</td>
+<td style="text-align: right;">8.67627</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Magic Eye</td>
+<td style="text-align: right;">1205</td>
+<td style="text-align: left;">N.E. Thing Enterprises</td>
+<td style="text-align: left;">2002-09-17</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">OR</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">1274.5</td>
+<td style="text-align: right;">5.538042</td>
+<td style="text-align: right;">1.07627</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li>optimized display to show all columns <code>glimpse()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>book_challenge_df <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 931
+Columns: 17
+$ title                 &lt;chr&gt; "House of the Spirits, The", "It's Not the Stork…
+$ book_id               &lt;dbl&gt; 927, 1024, 1087, 936, 764, 1087, 1489, 2023, 102…
+$ author                &lt;chr&gt; "Allende, Isabel", "Harris, Robie", "Pyle, Howar…
+$ date                  &lt;date&gt; 2005-04-01, 2008-02-06, 2008-10-02, 2008-10-05,…
+$ year                  &lt;dbl&gt; 2005, 2008, 2008, 2008, 2008, 2003, 2003, 2003, …
+$ removed               &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, …
+$ explicit              &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, …
+$ antifamily            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, …
+$ occult                &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ language              &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, …
+$ lgbtq                 &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, …
+$ violent               &lt;dbl&gt; 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, …
+$ state                 &lt;chr&gt; "AK", "AK", "AK", "AK", "AK", "AK", "AK", "AK", …
+$ political_value_index &lt;dbl&gt; -13.4, -13.4, -13.4, -13.4, -13.4, -13.4, -13.4,…
+$ median_income         &lt;dbl&gt; 15707.5, 15707.5, 15707.5, 15707.5, 15707.5, 157…
+$ hs_grad_rate          &lt;dbl&gt; 8.738042, 8.738042, 8.738042, 8.738042, 8.738042…
+$ college_grad_rate     &lt;dbl&gt; 0.6762701, 0.6762701, 0.6762701, 0.6762701, 0.67…</code></pre>
+</div>
+</div>
+<ul>
+<li><code>view()</code> tidyverse <code>summary()</code> equivalent</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>book_challenge_df <span class="sc">|&gt;</span> <span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-structure-and-the-components-of-an-sf-object" class="slide level2">
+<h2>The structure and the components of an <strong>sf</strong> object</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>an sf object can simultaneously be of classes “sf”, “tbl_df” and “data.frame”</li>
+<li>Using the function <code>typeof()</code> or <code>mode()</code> we can inspect that <code>uni_sf</code> is stored as using a <em>list</em></li>
+</ul>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">class</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "sf"         "tbl_df"     "tbl"        "data.frame"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">typeof</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+</div></div>
+<h3 id="attributes-of-an-sf-object">Attributes of an <strong>sf</strong> object</h3>
+<ul>
+<li>df attributes</li>
+<li>sf column
+<ul>
+<li>coordinate reference system: <code>st_crs()</code></li>
+<li>bounding box: <code>st_bbox()</code></li>
+<li>geometry type</li>
+</ul></li>
+<li>attribute-geometry-relationship</li>
+</ul>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>uni_sf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 7%">
+<col style="width: 23%">
+<col style="width: 17%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">university</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">current_country</th>
+<th style="text-align: left;">exist_today</th>
+<th style="text-align: left;">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Paris</td>
+<td style="text-align: right;">1150</td>
+<td style="text-align: left;">France</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (2.3522 48.8566)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Salerno</td>
+<td style="text-align: right;">1173</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (14.7905 40.7711)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Reggio</td>
+<td style="text-align: right;">1188</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (10.9277 44.645)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oxford</td>
+<td style="text-align: right;">1190</td>
+<td style="text-align: left;">United Kingdom</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (-1.2576 51.752)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bologna</td>
+<td style="text-align: right;">1200</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (11.3275 44.4989)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>sf [5 × 5] (S3: sf/tbl_df/tbl/data.frame)
+ $ university     : chr [1:5] "Paris" "Salerno" "Reggio" "Oxford" ...
+ $ year           : num [1:5] 1150 1173 1188 1190 1200
+ $ current_country: chr [1:5] "France" "Italy" "Italy" "United Kingdom" ...
+ $ exist_today    : logi [1:5] TRUE TRUE TRUE TRUE TRUE
+ $ geometry       :sfc_POINT of length 5; first list element:  'XY' num [1:2] 2.35 48.86
+ - attr(*, "sf_column")= chr "geometry"
+ - attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA NA
+  ..- attr(*, "names")= chr [1:4] "university" "year" "current_country" "exist_today"</code></pre>
+</div>
+</div>
+</div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">st_crs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coordinate Reference System:
+  User input: EPSG:4326 
+  wkt:
+GEOGCRS["WGS 84",
+    ENSEMBLE["World Geodetic System 1984 ensemble",
+        MEMBER["World Geodetic System 1984 (Transit)"],
+        MEMBER["World Geodetic System 1984 (G730)"],
+        MEMBER["World Geodetic System 1984 (G873)"],
+        MEMBER["World Geodetic System 1984 (G1150)"],
+        MEMBER["World Geodetic System 1984 (G1674)"],
+        MEMBER["World Geodetic System 1984 (G1762)"],
+        MEMBER["World Geodetic System 1984 (G2139)"],
+        MEMBER["World Geodetic System 1984 (G2296)"],
+        ELLIPSOID["WGS 84",6378137,298.257223563,
+            LENGTHUNIT["metre",1]],
+        ENSEMBLEACCURACY[2.0]],
+    PRIMEM["Greenwich",0,
+        ANGLEUNIT["degree",0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS["geodetic latitude (Lat)",north,
+            ORDER[1],
+            ANGLEUNIT["degree",0.0174532925199433]],
+        AXIS["geodetic longitude (Lon)",east,
+            ORDER[2],
+            ANGLEUNIT["degree",0.0174532925199433]],
+    USAGE[
+        SCOPE["Horizontal component of 3D system."],
+        AREA["World."],
+        BBOX[-90,-180,90,180]],
+    ID["EPSG",4326]]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">st_bbox</span>() <span class="sc">|&gt;</span> <span class="fu">st_as_sfc</span>() <span class="sc">|&gt;</span> <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mapview</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-407bc9b4214afc4d14b8" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-407bc9b4214afc4d14b8">{"x":{"options":{"minZoom":1,"maxZoom":52,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"preferCanvas":false,"bounceAtZoomLimits":false,"maxBounds":[[[-90,-370]],[[90,370]]]},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron","CartoDB.Positron","CartoDB.Positron",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["CartoDB.DarkMatter","CartoDB.DarkMatter","CartoDB.DarkMatter",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenStreetMap","OpenStreetMap","OpenStreetMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery","Esri.WorldImagery","Esri.WorldImagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenTopoMap","OpenTopoMap","OpenTopoMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"createMapPane","args":["polygon",420]},{"method":"addPolygons","args":[[[[{"lng":[-1.2576,14.7905,14.7905,-1.2576,-1.2576],"lat":[40.7711,40.7711,51.752,51.752,40.7711]}]]],null,"st_as_sf(st_as_sfc(st_bbox(uni_sf)))",{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"pane":"polygon","stroke":true,"color":"#333333","weight":0.5,"opacity":0.9,"fill":true,"fillColor":"#6666FF","fillOpacity":0.6,"smoothFactor":1,"noClip":false},"<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>1&emsp;<\/td><\/tr><tr><td>1<\/td><th>x&emsp;<\/th><td>sfc_POLYGON&emsp;<\/td><\/tr><\/table><\/div>",{"maxWidth":800,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"closeOnClick":true,"className":""},"1",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},{"stroke":true,"weight":1,"opacity":0.9,"fillOpacity":0.84,"bringToFront":false,"sendToBack":false}]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addHomeButton","args":[-1.2576,40.7711,14.7905,51.752,true,"st_as_sf_st_as_sfc_st_bbox_uni_sf___","Zoom to st_as_sf_st_as_sfc_st_bbox_uni_sf___","<strong> st_as_sf_st_as_sfc_st_bbox_uni_sf___ <\/strong>","bottomright"]},{"method":"addLayersControl","args":[["CartoDB.Positron","CartoDB.DarkMatter","OpenStreetMap","Esri.WorldImagery","OpenTopoMap"],"st_as_sf(st_as_sfc(st_bbox(uni_sf)))",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addLegend","args":[{"colors":["#6666FF"],"labels":["st_as_sf(st_as_sfc(st_bbox(uni_sf)))"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"factor","title":"","extra":null,"layerId":null,"className":"info legend","group":"st_as_sf(st_as_sfc(st_bbox(uni_sf)))"}]}],"limits":{"lat":[40.7711,51.752],"lng":[-1.2576,14.7905]},"fitBounds":[40.7711,-1.2576,51.752,14.7905,[]]},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\n      function(el, x, data) {\n      // get the leaflet map\n      var map = this; //HTMLWidgets.find('#' + el.id);\n      // we need a new div element because we have to handle\n      // the mouseover output separately\n      // debugger;\n      function addElement () {\n      // generate new div Element\n      var newDiv = $(document.createElement('div'));\n      // append at end of leaflet htmlwidget container\n      $(el).append(newDiv);\n      //provide ID and style\n      newDiv.addClass('lnlt');\n      newDiv.css({\n      'position': 'relative',\n      'bottomleft':  '0px',\n      'background-color': 'rgba(255, 255, 255, 0.7)',\n      'box-shadow': '0 0 2px #bbb',\n      'background-clip': 'padding-box',\n      'margin': '0',\n      'padding-left': '5px',\n      'color': '#333',\n      'font': '9px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif',\n      'z-index': '700',\n      });\n      return newDiv;\n      }\n\n\n      // check for already existing lnlt class to not duplicate\n      var lnlt = $(el).find('.lnlt');\n\n      if(!lnlt.length) {\n      lnlt = addElement();\n\n      // grab the special div we generated in the beginning\n      // and put the mousmove output there\n\n      map.on('mousemove', function (e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                           ' lon: ' + (e.latlng.lng).toFixed(5) +\n                           ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                           ' | zoom: ' + map.getZoom() +\n                           ' | x: ' + L.CRS.EPSG3857.project(e.latlng).x.toFixed(0) +\n                           ' | y: ' + L.CRS.EPSG3857.project(e.latlng).y.toFixed(0) +\n                           ' | epsg: 3857 ' +\n                           ' | proj4: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs ');\n      } else {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      }\n      });\n\n      // remove the lnlt div when mouse leaves map\n      map.on('mouseout', function (e) {\n      var strip = document.querySelector('.lnlt');\n      if( strip !==null) strip.remove();\n      });\n\n      };\n\n      //$(el).keypress(67, function(e) {\n      map.on('preclick', function(e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      var txt = document.querySelector('.lnlt').textContent;\n      console.log(txt);\n      //txt.innerText.focus();\n      //txt.select();\n      setClipboardText('\"' + txt + '\"');\n      }\n      });\n\n      }\n      ).call(this.getMap(), el, x, data);\n}","data":null},{"code":"function(el, x, data) {\n  return (function(el,x,data){\n           var map = this;\n\n           map.on('keypress', function(e) {\n               console.log(e.originalEvent.code);\n               var key = e.originalEvent.code;\n               if (key === 'KeyE') {\n                   var bb = this.getBounds();\n                   var txt = JSON.stringify(bb);\n                   console.log(txt);\n\n                   setClipboardText('\\'' + txt + '\\'');\n               }\n           })\n        }).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
+</div>
+</div>
+</section>
+<section id="geometry-column-a-closer-look" class="slide level2 scrollable">
+<h2>Geometry column: a closer look</h2>
+<ol type="1">
+<li>Get the name of the geometry column</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">attr</span>(<span class="at">which =</span> <span class="st">'sf_column'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "geometry"</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Single out the geometry column</li>
+</ol>
+<ul>
+<li><code>pull()</code> tidyverse equivalent for <code>$</code>: input a df, a column name, output a <strong>vector</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">pull</span>(geometry) <span class="sc">|&gt;</span> <span class="fu">class</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "sfc_POINT" "sfc"      </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>uni_sfc <span class="ot">&lt;-</span> uni_sf <span class="sc">|&gt;</span> <span class="fu">pull</span>(geometry)</span>
+<span id="cb48-2"><a></a><span class="co"># uni_sfc &lt;- uni_sf$geometry</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>or <code>st_geometry()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>uni_sfc <span class="ot">&lt;-</span> uni_sf <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>uni_sfc <span class="sc">|&gt;</span> <span class="fu">class</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "sfc_POINT" "sfc"      </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>uni_sfc <span class="sc">|&gt;</span> <span class="fu">typeof</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+<ul>
+<li>access list items</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a>uni_sfc[[<span class="dv">4</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>uni_sfc[[<span class="dv">4</span>]] <span class="sc">|&gt;</span> <span class="fu">class</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "XY"    "POINT" "sfg"  </code></pre>
+</div>
+</div>
+<p>summary</p>
+<div class="columns">
+<div class="column" style="width:&quot;33%;">
+<ol type="1">
+<li><code>sf</code>: simple feature collection.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>uni_sf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 7%">
+<col style="width: 23%">
+<col style="width: 17%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">university</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">current_country</th>
+<th style="text-align: left;">exist_today</th>
+<th style="text-align: left;">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Paris</td>
+<td style="text-align: right;">1150</td>
+<td style="text-align: left;">France</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (2.3522 48.8566)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Salerno</td>
+<td style="text-align: right;">1173</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (14.7905 40.7711)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Reggio</td>
+<td style="text-align: right;">1188</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (10.9277 44.645)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oxford</td>
+<td style="text-align: right;">1190</td>
+<td style="text-align: left;">United Kingdom</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (-1.2576 51.752)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bologna</td>
+<td style="text-align: right;">1200</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (11.3275 44.4989)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:&quot;33%;">
+<ol start="2" type="1">
+<li><code>sfc</code>: simple feature list-column(<span class="citation" data-cites="pebesmaSpatialDataScience2023">Pebesma and Bivand (<a href="#/sfg-to-sfc" role="doc-biblioref" onclick="">2023</a>)</span>)</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>uni_sfc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Geometry set for 5 features 
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -1.2576 ymin: 40.7711 xmax: 14.7905 ymax: 51.752
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:&quot;33%;">
+<ol start="3" type="1">
+<li><code>sfg</code>: single geometry</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a>uni_sfc[[<span class="dv">4</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></div>
+</section>
+<section id="st_geometry-make-use-of-the-list-structure" class="slide level2">
+<h2>st_geometry: make use of the list structure</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>azerbaijan_sf <span class="ot">&lt;-</span> cca_sf <span class="sc">|&gt;</span> <span class="fu">filter</span>(iso_a2 <span class="sc">==</span> <span class="st">'AZ'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>azerbaijan_sf <span class="sc">|&gt;</span> <span class="fu">mapview</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-809b10ea1e9d4a6a667a" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-809b10ea1e9d4a6a667a">{"x":{"options":{"minZoom":1,"maxZoom":52,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"preferCanvas":false,"bounceAtZoomLimits":false,"maxBounds":[[[-90,-370]],[[90,370]]]},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron","CartoDB.Positron","CartoDB.Positron",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["CartoDB.DarkMatter","CartoDB.DarkMatter","CartoDB.DarkMatter",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenStreetMap","OpenStreetMap","OpenStreetMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery","Esri.WorldImagery","Esri.WorldImagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenTopoMap","OpenTopoMap","OpenTopoMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"createMapPane","args":["polygon",420]},{"method":"addPolygons","args":[[[[{"lng":[44.81718750000002,44.78339843750001,44.76826171875001,44.8671875,45.03164062500002,45.07646484375002,45.12460937500001,45.14863281250001,45.15283203125,45.17255859375001,45.25253906250001,45.28828125000001,45.34990234375002,45.45683593750002,45.61074218750002,45.68740234375002,45.75048828125,45.78447265625002,45.79648437500001,45.7841796875,45.76630859375001,45.79863281250002,45.92500000000001,45.97744140625002,45.95185546875001,46.0458984375,46.07744140625002,46.11445312500001,45.921875,45.57500000000002,45.47968750000001,45.38925781250001,45.33554687500001,45.25595703125001,45.19062500000001,45.14121093750001,45.11308593750002,45.07167968750002,45.00019531250001,44.83818359375002,44.81718750000002],"lat":[39.650439453125,39.68466796875,39.70351562499999,39.71914062499999,39.76513671875,39.74282226562499,39.696337890625,39.656591796875,39.58266601562499,39.57060546875,39.595458984375,39.56557617187499,39.5298828125,39.494482421875,39.5498046875,39.5640625,39.562939453125,39.54560546875,39.488134765625,39.417236328125,39.378466796875,39.3501953125,39.28193359375,39.243896484375,39.17812499999999,39.017529296875,38.9548828125,38.877783203125,38.90791015625,38.97280273437499,39.00624999999999,39.0958984375,39.13916015625,39.194677734375,39.215625,39.25429687499999,39.311572265625,39.362890625,39.42353515625,39.6291015625,39.650439453125]}],[{"lng":[48.86875000000001,48.84033203125,48.63554687500002,48.59267578125002,48.41738281250002,48.38125000000002,48.30556640625002,48.26132812500001,48.22519531250001,48.20468750000001,48.02324218750002,47.99648437500002,47.99267578125,48.01933593750002,48.05009765625002,48.13857421875002,48.24199218750002,48.27509765625001,48.29208984375001,48.291015625,48.27412109375001,48.12548828125,48.10917968750002,48.10439453125002,48.11289062500001,48.13603515625002,48.25722656250002,48.32216796875002,48.28173828125,48.15107421875001,47.99589843750002,47.89228515625001,47.77285156250002,47.58183593750002,47.47617187500001,47.33847656250001,47.18837890625002,47.0654296875,46.98886718750001,46.8525390625,46.783203125,46.55478515625001,46.49062500000002,46.48671875000002,46.48984375000001,46.47539062500002,46.40146484375001,46.40029296875002,46.42031250000002,46.47714843750001,46.55000000000001,46.58476562500002,46.50664062500002,46.43730468750002,46.37841796875,46.365234375,46.36513671875002,46.37763671875001,46.47812500000001,46.48808593750002,46.4814453125,46.32167968750002,46.20205078125002,46.09482421875001,46.02587890625,45.93994140625,45.86318359375002,45.78964843750001,45.66181640625001,45.57978515625001,45.58095703125002,45.59599609375002,45.63017578125002,45.85810546875001,45.88593750000001,45.90009765625001,45.93125000000001,45.96757812500002,45.96464843750002,45.73574218750002,45.56953125000001,45.45439453125002,45.37617187500001,45.37890625,45.4013671875,45.57939453125002,45.59140625000001,45.58750000000001,45.52402343750001,45.44423828125002,45.41914062500001,45.36894531250002,45.2734375,45.10605468750001,45.07050781250001,45.06259765625001,45.07070312500002,45.19023437500002,45.18857421875001,45.15234375,45.08476562500002,45.02294921875,45.00136718750002,45.21718750000002,45.28095703125001,45.42226562500002,45.71562500000002,45.69570312500002,45.72548828125002,45.79277343750002,45.92197265625001,46.03125,46.08652343750001,46.17070312500002,46.27998046875001,46.38076171875002,46.43095703125002,46.45791015625002,46.53437500000001,46.62636718750002,46.66240234375002,46.67255859375001,46.61894531250002,46.5087890625,46.38496093750001,46.30546875000002,46.25468750000002,46.20351562500002,46.19052734375001,46.18212890625,46.18427734375001,46.20185546875001,46.25185546875002,46.30253906250002,46.34824218750001,46.40546875000001,46.42988281250001,46.53769531250001,46.55214843750002,46.5712890625,46.61601562500002,46.69033203125002,46.74931640625002,46.82558593750002,46.93085937500001,46.98779296875,47.01015625000002,47.06396484375,47.142578125,47.20527343750001,47.26113281250002,47.31767578125002,47.52060546875001,47.591796875,47.791015625,47.86113281250002,47.96367187500002,48.05605468750002,48.14228515625001,48.29814453125002,48.39140625000002,48.4306640625,48.51865234375001,48.57285156250001,48.66464843750001,48.82392578125001,49.05087890625001,49.10664062500001,49.14326171875001,49.17470703125002,49.22646484375002,49.45673828125001,49.55615234375,49.71835937500001,49.77597656250001,49.85175781250001,49.99062500000002,50.119140625,50.18251953125002,50.248046875,50.30683593750001,50.36591796875001,50.14316406250001,49.91884765625002,49.7919921875,49.66904296875001,49.55117187500002,49.47734375000002,49.41513671875001,49.32441406250001,49.32753906250002,49.36738281250001,49.36279296875,49.32119140625002,49.26933593750002,49.19980468750001,49.16533203125002,49.12099609375002,49.10869140625002,49.111328125,49.01347656250002,48.96171875000002,48.92617187500002,48.8544921875,48.85087890625002,48.86875000000001],"lat":[38.435498046875,38.437255859375,38.39873046875,38.411083984375,38.58623046875,38.60561523437499,38.6134765625,38.64228515625,38.689208984375,38.72412109375,38.81904296875,38.853759765625,38.88427734375,38.91181640625,38.935009765625,38.95864257812499,38.978955078125,38.993603515625,39.01884765625,39.05927734375,39.09912109375,39.171630859375,39.20283203125,39.24111328124999,39.281103515625,39.312353515625,39.35498046875,39.39907226562499,39.44833984375,39.560546875,39.683935546875,39.68505859375,39.64858398437499,39.54335937499999,39.49833984375,39.423876953125,39.34096679687499,39.252880859375,39.18017578125,39.1484375,39.08740234375,38.90439453125,38.906689453125,38.99746093749999,39.06943359375,39.110888671875,39.16767578125,39.1921875,39.207373046875,39.198193359375,39.201416015625,39.223681640625,39.29853515625,39.34853515624999,39.382275390625,39.40249023437499,39.416796875,39.43388671875,39.47509765625,39.51284179687499,39.55517578125,39.617431640625,39.594482421875,39.66445312499999,39.7185546875,39.7765625,39.808349609375,39.881103515625,39.95620117187499,39.9775390625,39.989013671875,40.00283203124999,40.014208984375,40.011279296875,40.024853515625,40.057080078125,40.1046875,40.1748046875,40.23378906249999,40.3291015625,40.416845703125,40.53237304687499,40.63808593749999,40.673583984375,40.70712890625,40.8044921875,40.82973632812499,40.846923828125,40.896728515625,40.947998046875,40.985693359375,41.0048828125,41.00624999999999,41.0693359375,41.07558593749999,41.088134765625,41.100830078125,41.12636718749999,41.147412109375,41.175146484375,41.19545898437499,41.245703125,41.290966796875,41.423193359375,41.449560546875,41.42529296875,41.337646484375,41.289013671875,41.26162109374999,41.2244140625,41.18671875,41.16728515625,41.183837890625,41.1978515625,41.15444335937499,41.09931640625,41.07705078124999,41.07021484374999,41.08857421875,41.15966796875,41.24550781249999,41.28681640625,41.34375,41.40556640625,41.45986328124999,41.50771484374999,41.6021484375,41.61259765625,41.624853515625,41.657080078125,41.7021484375,41.736865234375,41.7517578125,41.757080078125,41.79018554687499,41.855078125,41.890966796875,41.87041015625,41.8123046875,41.80009765625,41.80693359375,41.83134765625,41.81259765625,41.743408203125,41.67041015625,41.62138671875,41.5875,41.5546875,41.516064453125,41.455615234375,41.31508789062499,41.282421875,41.229052734375,41.218115234375,41.199267578125,41.212744140625,41.333984375,41.45869140625,41.48476562499999,41.54501953125,41.601904296875,41.663330078125,41.779345703125,41.844482421875,41.78662109375,41.62958984375,41.373974609375,41.301708984375,41.2177734375,41.11611328124999,41.026220703125,40.799853515625,40.71630859375,40.60810546875,40.583984375,40.577197265625,40.57680664062499,40.534521484375,40.50478515624999,40.461767578125,40.41220703125,40.2794921875,40.3232421875,40.31640625,40.287890625,40.2490234375,40.194140625,40.087255859375,39.83984375,39.608349609375,39.501220703125,39.398388671875,39.349560546875,39.32890625,39.28515625,39.07265624999999,39.0302734375,39.00390625,39.029052734375,39.084716796875,39.133984375,39.07875976562499,38.961767578125,38.838818359375,38.81533203124999,38.435498046875]},{"lng":[45.55234375000001,45.56230468750002,45.5341796875,45.50449218750001,45.47880859375002,45.47880859375002,45.51435546875001,45.55234375000001],"lat":[40.616064453125,40.649169921875,40.664013671875,40.66484375,40.64833984374999,40.606982421875,40.599560546875,40.616064453125]}],[{"lng":[45.02363281250001,45.00205078125001,44.96904296875002,44.95888671875002,44.96142578125,44.99433593750001,45.02109375000001,45.02871093750002,45.02363281250001],"lat":[41.02724609374999,41.0158203125,41.02724609374999,41.05263671874999,41.07924804687499,41.08559570312499,41.077978515625,41.05385742187499,41.02724609374999]}]]],null,"azerbaijan_sf",{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"pane":"polygon","stroke":true,"color":"#333333","weight":0.5,"opacity":0.9,"fill":true,"fillColor":"#6666FF","fillOpacity":0.6,"smoothFactor":1,"noClip":false},"<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>1&emsp;<\/td><\/tr><tr><td>1<\/td><th>geounit&emsp;<\/th><td>Azerbaijan&emsp;<\/td><\/tr><tr><td>2<\/td><th>pop_est&emsp;<\/th><td>10023318&emsp;<\/td><\/tr><tr><td>3<\/td><th>pop_rank&emsp;<\/th><td>14&emsp;<\/td><\/tr><tr><td>4<\/td><th>pop_year&emsp;<\/th><td>2019&emsp;<\/td><\/tr><tr><td>5<\/td><th>gdp_md&emsp;<\/th><td>48047&emsp;<\/td><\/tr><tr><td>6<\/td><th>gdp_year&emsp;<\/th><td>2019&emsp;<\/td><\/tr><tr><td>7<\/td><th>economy&emsp;<\/th><td>6. Developing region&emsp;<\/td><\/tr><tr><td>8<\/td><th>income_grp&emsp;<\/th><td>3. Upper middle income&emsp;<\/td><\/tr><tr><td>9<\/td><th>iso_a2&emsp;<\/th><td>AZ&emsp;<\/td><\/tr><tr><td>10<\/td><th>continent&emsp;<\/th><td>Asia&emsp;<\/td><\/tr><tr><td>11<\/td><th>region_un&emsp;<\/th><td>Asia&emsp;<\/td><\/tr><tr><td>12<\/td><th>subregion&emsp;<\/th><td>Western Asia&emsp;<\/td><\/tr><tr><td>13<\/td><th>region_wb&emsp;<\/th><td>Europe & Central Asia&emsp;<\/td><\/tr><tr><td>14<\/td><th>geometry&emsp;<\/th><td>sfc_MULTIPOLYGON&emsp;<\/td><\/tr><\/table><\/div>",{"maxWidth":800,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"closeOnClick":true,"className":""},"1",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},{"stroke":true,"weight":1,"opacity":0.9,"fillOpacity":0.84,"bringToFront":false,"sendToBack":false}]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addHomeButton","args":[44.76826171875001,38.39873046875,50.36591796875001,41.890966796875,true,"azerbaijan_sf","Zoom to azerbaijan_sf","<strong> azerbaijan_sf <\/strong>","bottomright"]},{"method":"addLayersControl","args":[["CartoDB.Positron","CartoDB.DarkMatter","OpenStreetMap","Esri.WorldImagery","OpenTopoMap"],"azerbaijan_sf",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addLegend","args":[{"colors":["#6666FF"],"labels":["azerbaijan_sf"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"factor","title":"","extra":null,"layerId":null,"className":"info legend","group":"azerbaijan_sf"}]}],"limits":{"lat":[38.39873046875,41.890966796875],"lng":[44.76826171875001,50.36591796875001]},"fitBounds":[38.39873046875,44.76826171875001,41.890966796875,50.36591796875001,[]]},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\n      function(el, x, data) {\n      // get the leaflet map\n      var map = this; //HTMLWidgets.find('#' + el.id);\n      // we need a new div element because we have to handle\n      // the mouseover output separately\n      // debugger;\n      function addElement () {\n      // generate new div Element\n      var newDiv = $(document.createElement('div'));\n      // append at end of leaflet htmlwidget container\n      $(el).append(newDiv);\n      //provide ID and style\n      newDiv.addClass('lnlt');\n      newDiv.css({\n      'position': 'relative',\n      'bottomleft':  '0px',\n      'background-color': 'rgba(255, 255, 255, 0.7)',\n      'box-shadow': '0 0 2px #bbb',\n      'background-clip': 'padding-box',\n      'margin': '0',\n      'padding-left': '5px',\n      'color': '#333',\n      'font': '9px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif',\n      'z-index': '700',\n      });\n      return newDiv;\n      }\n\n\n      // check for already existing lnlt class to not duplicate\n      var lnlt = $(el).find('.lnlt');\n\n      if(!lnlt.length) {\n      lnlt = addElement();\n\n      // grab the special div we generated in the beginning\n      // and put the mousmove output there\n\n      map.on('mousemove', function (e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                           ' lon: ' + (e.latlng.lng).toFixed(5) +\n                           ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                           ' | zoom: ' + map.getZoom() +\n                           ' | x: ' + L.CRS.EPSG3857.project(e.latlng).x.toFixed(0) +\n                           ' | y: ' + L.CRS.EPSG3857.project(e.latlng).y.toFixed(0) +\n                           ' | epsg: 3857 ' +\n                           ' | proj4: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs ');\n      } else {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      }\n      });\n\n      // remove the lnlt div when mouse leaves map\n      map.on('mouseout', function (e) {\n      var strip = document.querySelector('.lnlt');\n      if( strip !==null) strip.remove();\n      });\n\n      };\n\n      //$(el).keypress(67, function(e) {\n      map.on('preclick', function(e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      var txt = document.querySelector('.lnlt').textContent;\n      console.log(txt);\n      //txt.innerText.focus();\n      //txt.select();\n      setClipboardText('\"' + txt + '\"');\n      }\n      });\n\n      }\n      ).call(this.getMap(), el, x, data);\n}","data":null},{"code":"function(el, x, data) {\n  return (function(el,x,data){\n           var map = this;\n\n           map.on('keypress', function(e) {\n               console.log(e.originalEvent.code);\n               var key = e.originalEvent.code;\n               if (key === 'KeyE') {\n                   var bb = this.getBounds();\n                   var txt = JSON.stringify(bb);\n                   console.log(txt);\n\n                   setClipboardText('\\'' + txt + '\\'');\n               }\n           })\n        }).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a>azerbaijan_sf <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1
+Columns: 14
+$ geounit    &lt;chr&gt; "Azerbaijan"
+$ pop_est    &lt;dbl&gt; 10023318
+$ pop_rank   &lt;int&gt; 14
+$ pop_year   &lt;int&gt; 2019
+$ gdp_md     &lt;int&gt; 48047
+$ gdp_year   &lt;int&gt; 2019
+$ economy    &lt;chr&gt; "6. Developing region"
+$ income_grp &lt;chr&gt; "3. Upper middle income"
+$ iso_a2     &lt;chr&gt; "AZ"
+$ continent  &lt;chr&gt; "Asia"
+$ region_un  &lt;chr&gt; "Asia"
+$ subregion  &lt;chr&gt; "Western Asia"
+$ region_wb  &lt;chr&gt; "Europe &amp; Central Asia"
+$ geometry   &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((44.81719 39...</code></pre>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<ul>
+<li>save the sf geometry column as <code>azerbaijan_sfc</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a>azerbaijan_sfc <span class="ot">&lt;-</span> azerbaijan_sf <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>()</span>
+<span id="cb65-2"><a></a>azerbaijan_sfc <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>sfc_MULTIPOLYGON of length 1; first list element: List of 3
+ $ :List of 1
+  ..$ : num [1:41, 1:2] 44.8 44.8 44.8 44.9 45 ...
+ $ :List of 2
+  ..$ : num [1:206, 1:2] 48.9 48.8 48.6 48.6 48.4 ...
+  ..$ : num [1:8, 1:2] 45.6 45.6 45.5 45.5 45.5 ...
+ $ :List of 1
+  ..$ : num [1:9, 1:2] 45 45 45 45 45 ...
+ - attr(*, "class")= chr [1:3] "XY" "MULTIPOLYGON" "sfg"</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a>azerbaijan_sfc <span class="sc">|&gt;</span> <span class="fu">class</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "sfc_MULTIPOLYGON" "sfc"             </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a>azerbaijan_sfc <span class="sc">|&gt;</span> <span class="fu">typeof</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">3</span>]][[<span class="dv">1</span>]] <span class="sc">|&gt;</span> <span class="fu">class</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "matrix" "array" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">3</span>]][[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]     [,2]
+ [1,] 45.02363 41.02725
+ [2,] 45.00205 41.01582
+ [3,] 44.96904 41.02725
+ [4,] 44.95889 41.05264
+ [5,] 44.96143 41.07925
+ [6,] 44.99434 41.08560
+ [7,] 45.02109 41.07798
+ [8,] 45.02871 41.05386
+ [9,] 45.02363 41.02725</code></pre>
+</div>
+</div>
+</div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a>az_poly1 <span class="ot">&lt;-</span> azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">1</span>]] <span class="sc">|&gt;</span> <span class="fu">st_polygon</span>()</span>
+<span id="cb75-2"><a></a>az_poly2 <span class="ot">&lt;-</span> azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]] <span class="sc">|&gt;</span> <span class="fu">st_polygon</span>()</span>
+<span id="cb75-3"><a></a>az_poly3 <span class="ot">&lt;-</span> azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">3</span>]] <span class="sc">|&gt;</span> <span class="fu">st_polygon</span>()</span>
+<span id="cb75-4"><a></a></span>
+<span id="cb75-5"><a></a>azer_piece_sfc <span class="ot">&lt;-</span> <span class="fu">list</span>(az_poly1, az_poly2, az_poly3) <span class="sc">|&gt;</span></span>
+<span id="cb75-6"><a></a>  <span class="fu">st_as_sfc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a>azer_piece_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb76-2"><a></a>    <span class="at">geometry =</span> azer_piece_sfc,</span>
+<span id="cb76-3"><a></a>    <span class="at">lab =</span> <span class="fu">c</span>(<span class="st">'Nagorno-Karabakh'</span>, <span class="st">'Azerbaijan Main'</span>, <span class="st">'Yukhari Askipara'</span>)</span>
+<span id="cb76-4"><a></a>)</span>
+<span id="cb76-5"><a></a>azer_piece_sf <span class="ot">&lt;-</span> azer_piece_df <span class="sc">|&gt;</span> <span class="fu">st_as_sf</span>(<span class="at">crs =</span> <span class="dv">4326</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a></a>azer_piece_sf <span class="sc">|&gt;</span> <span class="fu">mapview</span>(<span class="at">zcol =</span> <span class="st">'lab'</span>, <span class="at">label =</span> <span class="st">'lab'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-a273e8f48f4da747d056" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-a273e8f48f4da747d056">{"x":{"options":{"minZoom":1,"maxZoom":52,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"preferCanvas":false,"bounceAtZoomLimits":false,"maxBounds":[[[-90,-370]],[[90,370]]]},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron","CartoDB.Positron","CartoDB.Positron",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["CartoDB.DarkMatter","CartoDB.DarkMatter","CartoDB.DarkMatter",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenStreetMap","OpenStreetMap","OpenStreetMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery","Esri.WorldImagery","Esri.WorldImagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenTopoMap","OpenTopoMap","OpenTopoMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"createMapPane","args":["polygon",420]},{"method":"addPolygons","args":[[[[{"lng":[44.81718750000002,44.78339843750001,44.76826171875001,44.8671875,45.03164062500002,45.07646484375002,45.12460937500001,45.14863281250001,45.15283203125,45.17255859375001,45.25253906250001,45.28828125000001,45.34990234375002,45.45683593750002,45.61074218750002,45.68740234375002,45.75048828125,45.78447265625002,45.79648437500001,45.7841796875,45.76630859375001,45.79863281250002,45.92500000000001,45.97744140625002,45.95185546875001,46.0458984375,46.07744140625002,46.11445312500001,45.921875,45.57500000000002,45.47968750000001,45.38925781250001,45.33554687500001,45.25595703125001,45.19062500000001,45.14121093750001,45.11308593750002,45.07167968750002,45.00019531250001,44.83818359375002,44.81718750000002],"lat":[39.650439453125,39.68466796875,39.70351562499999,39.71914062499999,39.76513671875,39.74282226562499,39.696337890625,39.656591796875,39.58266601562499,39.57060546875,39.595458984375,39.56557617187499,39.5298828125,39.494482421875,39.5498046875,39.5640625,39.562939453125,39.54560546875,39.488134765625,39.417236328125,39.378466796875,39.3501953125,39.28193359375,39.243896484375,39.17812499999999,39.017529296875,38.9548828125,38.877783203125,38.90791015625,38.97280273437499,39.00624999999999,39.0958984375,39.13916015625,39.194677734375,39.215625,39.25429687499999,39.311572265625,39.362890625,39.42353515625,39.6291015625,39.650439453125]}]],[[{"lng":[48.86875000000001,48.84033203125,48.63554687500002,48.59267578125002,48.41738281250002,48.38125000000002,48.30556640625002,48.26132812500001,48.22519531250001,48.20468750000001,48.02324218750002,47.99648437500002,47.99267578125,48.01933593750002,48.05009765625002,48.13857421875002,48.24199218750002,48.27509765625001,48.29208984375001,48.291015625,48.27412109375001,48.12548828125,48.10917968750002,48.10439453125002,48.11289062500001,48.13603515625002,48.25722656250002,48.32216796875002,48.28173828125,48.15107421875001,47.99589843750002,47.89228515625001,47.77285156250002,47.58183593750002,47.47617187500001,47.33847656250001,47.18837890625002,47.0654296875,46.98886718750001,46.8525390625,46.783203125,46.55478515625001,46.49062500000002,46.48671875000002,46.48984375000001,46.47539062500002,46.40146484375001,46.40029296875002,46.42031250000002,46.47714843750001,46.55000000000001,46.58476562500002,46.50664062500002,46.43730468750002,46.37841796875,46.365234375,46.36513671875002,46.37763671875001,46.47812500000001,46.48808593750002,46.4814453125,46.32167968750002,46.20205078125002,46.09482421875001,46.02587890625,45.93994140625,45.86318359375002,45.78964843750001,45.66181640625001,45.57978515625001,45.58095703125002,45.59599609375002,45.63017578125002,45.85810546875001,45.88593750000001,45.90009765625001,45.93125000000001,45.96757812500002,45.96464843750002,45.73574218750002,45.56953125000001,45.45439453125002,45.37617187500001,45.37890625,45.4013671875,45.57939453125002,45.59140625000001,45.58750000000001,45.52402343750001,45.44423828125002,45.41914062500001,45.36894531250002,45.2734375,45.10605468750001,45.07050781250001,45.06259765625001,45.07070312500002,45.19023437500002,45.18857421875001,45.15234375,45.08476562500002,45.02294921875,45.00136718750002,45.21718750000002,45.28095703125001,45.42226562500002,45.71562500000002,45.69570312500002,45.72548828125002,45.79277343750002,45.92197265625001,46.03125,46.08652343750001,46.17070312500002,46.27998046875001,46.38076171875002,46.43095703125002,46.45791015625002,46.53437500000001,46.62636718750002,46.66240234375002,46.67255859375001,46.61894531250002,46.5087890625,46.38496093750001,46.30546875000002,46.25468750000002,46.20351562500002,46.19052734375001,46.18212890625,46.18427734375001,46.20185546875001,46.25185546875002,46.30253906250002,46.34824218750001,46.40546875000001,46.42988281250001,46.53769531250001,46.55214843750002,46.5712890625,46.61601562500002,46.69033203125002,46.74931640625002,46.82558593750002,46.93085937500001,46.98779296875,47.01015625000002,47.06396484375,47.142578125,47.20527343750001,47.26113281250002,47.31767578125002,47.52060546875001,47.591796875,47.791015625,47.86113281250002,47.96367187500002,48.05605468750002,48.14228515625001,48.29814453125002,48.39140625000002,48.4306640625,48.51865234375001,48.57285156250001,48.66464843750001,48.82392578125001,49.05087890625001,49.10664062500001,49.14326171875001,49.17470703125002,49.22646484375002,49.45673828125001,49.55615234375,49.71835937500001,49.77597656250001,49.85175781250001,49.99062500000002,50.119140625,50.18251953125002,50.248046875,50.30683593750001,50.36591796875001,50.14316406250001,49.91884765625002,49.7919921875,49.66904296875001,49.55117187500002,49.47734375000002,49.41513671875001,49.32441406250001,49.32753906250002,49.36738281250001,49.36279296875,49.32119140625002,49.26933593750002,49.19980468750001,49.16533203125002,49.12099609375002,49.10869140625002,49.111328125,49.01347656250002,48.96171875000002,48.92617187500002,48.8544921875,48.85087890625002,48.86875000000001],"lat":[38.435498046875,38.437255859375,38.39873046875,38.411083984375,38.58623046875,38.60561523437499,38.6134765625,38.64228515625,38.689208984375,38.72412109375,38.81904296875,38.853759765625,38.88427734375,38.91181640625,38.935009765625,38.95864257812499,38.978955078125,38.993603515625,39.01884765625,39.05927734375,39.09912109375,39.171630859375,39.20283203125,39.24111328124999,39.281103515625,39.312353515625,39.35498046875,39.39907226562499,39.44833984375,39.560546875,39.683935546875,39.68505859375,39.64858398437499,39.54335937499999,39.49833984375,39.423876953125,39.34096679687499,39.252880859375,39.18017578125,39.1484375,39.08740234375,38.90439453125,38.906689453125,38.99746093749999,39.06943359375,39.110888671875,39.16767578125,39.1921875,39.207373046875,39.198193359375,39.201416015625,39.223681640625,39.29853515625,39.34853515624999,39.382275390625,39.40249023437499,39.416796875,39.43388671875,39.47509765625,39.51284179687499,39.55517578125,39.617431640625,39.594482421875,39.66445312499999,39.7185546875,39.7765625,39.808349609375,39.881103515625,39.95620117187499,39.9775390625,39.989013671875,40.00283203124999,40.014208984375,40.011279296875,40.024853515625,40.057080078125,40.1046875,40.1748046875,40.23378906249999,40.3291015625,40.416845703125,40.53237304687499,40.63808593749999,40.673583984375,40.70712890625,40.8044921875,40.82973632812499,40.846923828125,40.896728515625,40.947998046875,40.985693359375,41.0048828125,41.00624999999999,41.0693359375,41.07558593749999,41.088134765625,41.100830078125,41.12636718749999,41.147412109375,41.175146484375,41.19545898437499,41.245703125,41.290966796875,41.423193359375,41.449560546875,41.42529296875,41.337646484375,41.289013671875,41.26162109374999,41.2244140625,41.18671875,41.16728515625,41.183837890625,41.1978515625,41.15444335937499,41.09931640625,41.07705078124999,41.07021484374999,41.08857421875,41.15966796875,41.24550781249999,41.28681640625,41.34375,41.40556640625,41.45986328124999,41.50771484374999,41.6021484375,41.61259765625,41.624853515625,41.657080078125,41.7021484375,41.736865234375,41.7517578125,41.757080078125,41.79018554687499,41.855078125,41.890966796875,41.87041015625,41.8123046875,41.80009765625,41.80693359375,41.83134765625,41.81259765625,41.743408203125,41.67041015625,41.62138671875,41.5875,41.5546875,41.516064453125,41.455615234375,41.31508789062499,41.282421875,41.229052734375,41.218115234375,41.199267578125,41.212744140625,41.333984375,41.45869140625,41.48476562499999,41.54501953125,41.601904296875,41.663330078125,41.779345703125,41.844482421875,41.78662109375,41.62958984375,41.373974609375,41.301708984375,41.2177734375,41.11611328124999,41.026220703125,40.799853515625,40.71630859375,40.60810546875,40.583984375,40.577197265625,40.57680664062499,40.534521484375,40.50478515624999,40.461767578125,40.41220703125,40.2794921875,40.3232421875,40.31640625,40.287890625,40.2490234375,40.194140625,40.087255859375,39.83984375,39.608349609375,39.501220703125,39.398388671875,39.349560546875,39.32890625,39.28515625,39.07265624999999,39.0302734375,39.00390625,39.029052734375,39.084716796875,39.133984375,39.07875976562499,38.961767578125,38.838818359375,38.81533203124999,38.435498046875]},{"lng":[45.55234375000001,45.56230468750002,45.5341796875,45.50449218750001,45.47880859375002,45.47880859375002,45.51435546875001,45.55234375000001],"lat":[40.616064453125,40.649169921875,40.664013671875,40.66484375,40.64833984374999,40.606982421875,40.599560546875,40.616064453125]}]],[[{"lng":[45.02363281250001,45.00205078125001,44.96904296875002,44.95888671875002,44.96142578125,44.99433593750001,45.02109375000001,45.02871093750002,45.02363281250001],"lat":[41.02724609374999,41.0158203125,41.02724609374999,41.05263671874999,41.07924804687499,41.08559570312499,41.077978515625,41.05385742187499,41.02724609374999]}]]],null,"azer_piece_sf - lab",{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"pane":"polygon","stroke":true,"color":"#333333","weight":0.5,"opacity":[0.9,0.9,0.9],"fill":true,"fillColor":["#009B95","#4B0055","#FDE333"],"fillOpacity":[0.6,0.6,0.6],"smoothFactor":1,"noClip":false},["<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>1&emsp;<\/td><\/tr><tr><td>1<\/td><th>geometry&emsp;<\/th><td>sfc_POLYGON&emsp;<\/td><\/tr><tr><td>2<\/td><th>lab&emsp;<\/th><td>Nagorno-Karabakh&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>2&emsp;<\/td><\/tr><tr><td>1<\/td><th>geometry&emsp;<\/th><td>sfc_POLYGON&emsp;<\/td><\/tr><tr><td>2<\/td><th>lab&emsp;<\/th><td>Azerbaijan Main&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>3&emsp;<\/td><\/tr><tr><td>1<\/td><th>geometry&emsp;<\/th><td>sfc_POLYGON&emsp;<\/td><\/tr><tr><td>2<\/td><th>lab&emsp;<\/th><td>Yukhari Askipara&emsp;<\/td><\/tr><\/table><\/div>"],{"maxWidth":800,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"closeOnClick":true,"className":""},["Nagorno-Karabakh","Azerbaijan Main","Yukhari Askipara"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},{"stroke":true,"weight":1,"opacity":0.9,"fillOpacity":0.84,"bringToFront":false,"sendToBack":false}]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addHomeButton","args":[44.76826171875001,38.39873046875,50.36591796875001,41.890966796875,true,"azer_piece_sf___lab","Zoom to azer_piece_sf___lab","<strong> azer_piece_sf___lab <\/strong>","bottomright"]},{"method":"addLayersControl","args":[["CartoDB.Positron","CartoDB.DarkMatter","OpenStreetMap","Esri.WorldImagery","OpenTopoMap"],"azer_piece_sf - lab",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addLegend","args":[{"colors":["#4B0055","#009B95","#FDE333"],"labels":["Azerbaijan Main","Nagorno-Karabakh","Yukhari Askipara"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"factor","title":"azer_piece_sf - lab","extra":null,"layerId":null,"className":"info legend","group":"azer_piece_sf - lab"}]}],"limits":{"lat":[38.39873046875,41.890966796875],"lng":[44.76826171875001,50.36591796875001]},"fitBounds":[38.39873046875,44.76826171875001,41.890966796875,50.36591796875001,[]]},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\n      function(el, x, data) {\n      // get the leaflet map\n      var map = this; //HTMLWidgets.find('#' + el.id);\n      // we need a new div element because we have to handle\n      // the mouseover output separately\n      // debugger;\n      function addElement () {\n      // generate new div Element\n      var newDiv = $(document.createElement('div'));\n      // append at end of leaflet htmlwidget container\n      $(el).append(newDiv);\n      //provide ID and style\n      newDiv.addClass('lnlt');\n      newDiv.css({\n      'position': 'relative',\n      'bottomleft':  '0px',\n      'background-color': 'rgba(255, 255, 255, 0.7)',\n      'box-shadow': '0 0 2px #bbb',\n      'background-clip': 'padding-box',\n      'margin': '0',\n      'padding-left': '5px',\n      'color': '#333',\n      'font': '9px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif',\n      'z-index': '700',\n      });\n      return newDiv;\n      }\n\n\n      // check for already existing lnlt class to not duplicate\n      var lnlt = $(el).find('.lnlt');\n\n      if(!lnlt.length) {\n      lnlt = addElement();\n\n      // grab the special div we generated in the beginning\n      // and put the mousmove output there\n\n      map.on('mousemove', function (e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                           ' lon: ' + (e.latlng.lng).toFixed(5) +\n                           ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                           ' | zoom: ' + map.getZoom() +\n                           ' | x: ' + L.CRS.EPSG3857.project(e.latlng).x.toFixed(0) +\n                           ' | y: ' + L.CRS.EPSG3857.project(e.latlng).y.toFixed(0) +\n                           ' | epsg: 3857 ' +\n                           ' | proj4: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs ');\n      } else {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      }\n      });\n\n      // remove the lnlt div when mouse leaves map\n      map.on('mouseout', function (e) {\n      var strip = document.querySelector('.lnlt');\n      if( strip !==null) strip.remove();\n      });\n\n      };\n\n      //$(el).keypress(67, function(e) {\n      map.on('preclick', function(e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      var txt = document.querySelector('.lnlt').textContent;\n      console.log(txt);\n      //txt.innerText.focus();\n      //txt.select();\n      setClipboardText('\"' + txt + '\"');\n      }\n      });\n\n      }\n      ).call(this.getMap(), el, x, data);\n}","data":null},{"code":"function(el, x, data) {\n  return (function(el,x,data){\n           var map = this;\n\n           map.on('keypress', function(e) {\n               console.log(e.originalEvent.code);\n               var key = e.originalEvent.code;\n               if (key === 'KeyE') {\n                   var bb = this.getBounds();\n                   var txt = JSON.stringify(bb);\n                   console.log(txt);\n\n                   setClipboardText('\\'' + txt + '\\'');\n               }\n           })\n        }).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a>azer_piece_sf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">geometry</th>
+<th style="text-align: left;">lab</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">POLYGON ((44.81719 39.65044…</td>
+<td style="text-align: left;">Nagorno-Karabakh</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">POLYGON ((48.86875 38.4355,…</td>
+<td style="text-align: left;">Azerbaijan Main</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">POLYGON ((45.02363 41.02725…</td>
+<td style="text-align: left;">Yukhari Askipara</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="sfg-to-sfc" class="slide level2 smaller scrollable">
+<h2>sfg to sfc</h2>
+<h5 id="inner-ring">Inner Ring</h5>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">2</span>]] <span class="sc">|&gt;</span> <span class="fu">class</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "matrix" "array" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         [,1]     [,2]
+[1,] 45.55234 40.61606
+[2,] 45.56230 40.64917
+[3,] 45.53418 40.66401
+[4,] 45.50449 40.66484
+[5,] 45.47881 40.64834
+[6,] 45.47881 40.60698
+[7,] 45.51436 40.59956
+[8,] 45.55234 40.61606</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">2</span>]] <span class="sc">|&gt;</span> <span class="fu">list</span>() <span class="sc">|&gt;</span> <span class="fu">st_polygon</span>() <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="w9_files/figure-revealjs/unnamed-chunk-44-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<h4 id="outer-ring">Outer Ring</h4>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">1</span>]] <span class="sc">|&gt;</span> <span class="fu">dim</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 206   2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">1</span>]] <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         [,1]     [,2]
+[1,] 48.86875 38.43550
+[2,] 48.84033 38.43726
+[3,] 48.63555 38.39873
+[4,] 48.59268 38.41108
+[5,] 48.41738 38.58623
+[6,] 48.38125 38.60562</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">1</span>]] <span class="sc">|&gt;</span> <span class="fu">list</span>() <span class="sc">|&gt;</span> <span class="fu">st_polygon</span>() <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="w9_files/figure-revealjs/unnamed-chunk-46-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a></a>azerbaijan_outer_ring <span class="ot">&lt;-</span> azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">1</span>]]</span>
+<span id="cb89-2"><a></a>azerbaijan_inner_ring <span class="ot">&lt;-</span> azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">2</span>]]</span>
+<span id="cb89-3"><a></a></span>
+<span id="cb89-4"><a></a></span>
+<span id="cb89-5"><a></a>azerbaijan_polygon <span class="ot">&lt;-</span> <span class="fu">st_polygon</span>(<span class="fu">list</span>(azerbaijan_outer_ring, azerbaijan_inner_ring))</span>
+<span id="cb89-6"><a></a></span>
+<span id="cb89-7"><a></a>azerbaijan_polygon <span class="sc">|&gt;</span></span>
+<span id="cb89-8"><a></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb89-9"><a></a>    <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<span id="cb89-10"><a></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="w9_files/figure-revealjs/unnamed-chunk-47-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-chambersExtending2016" class="csl-entry" role="listitem">
+Chambers, John M. 2016. <em>Extending <span>R</span></em>. Milton, UNITED KINGDOM: CRC Press LLC.
+</div>
+<div id="ref-jamesIntroductionStatisticalLearning2021a" class="csl-entry" role="listitem">
+James, Gareth. 2021. <em>An Introduction to Statistical Learning: With Applications in <span>R</span></em>. Second edition. Springer Texts in Statistics. New York, NY: Springer.
+</div>
+<div id="ref-pebesmaSpatialDataScience2023" class="csl-entry" role="listitem">
+Pebesma, Edzer, and Roger Bivand. 2023. <em>Spatial <span>Data Science</span>: <span>With Applications</span> in <span>R</span></em>. New York: <span>Chapman and Hall/CRC</span>. <a href="https://doi.org/10.1201/9780429459016">https://doi.org/10.1201/9780429459016</a>.
+</div>
+</div>
+</section>
+
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

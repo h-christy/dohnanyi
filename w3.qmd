@@ -4,10 +4,17 @@ subtitle: "GIS & Geospatial Data Analysis (Fall 2025)"
 execute:
   echo: true
 format:
+  html:
+    output-file: "w3-idx.html"
+    css: styles.css
+    toc: true
+    df-print: kable
   revealjs:
+    output-file: "w3-slides.html"
     css: styles.css
     slide-number: true
     scrollable: true
+    df-print: kable
     code:
       echo: true
       eval: true

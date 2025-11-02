@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>R Coding Workshop: 7th Meeting – quintet</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="site_libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="site_libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<link href="site_libs/HomeButton-0.0.1/home-button.css" rel="stylesheet">
+<script src="site_libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="site_libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="site_libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="site_libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet">
+<link href="site_libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://georgetown.zoom.us/j/91709606336?pwd=C7Xq1MWIBE2oaQzSO7tNjQRiPoDcgD.1">Coding Workshop</a></li><li class="breadcrumb-item"><a href="./w9-idx.html">Week 9</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Christy Hsu</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Demo</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Coding Workshop</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.zoom.us/j/91709606336?pwd=C7Xq1MWIBE2oaQzSO7tNjQRiPoDcgD.1" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Zoom Link</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=c20d8a0c-387a-4d76-8ba8-b35700c9ee1f" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recordings</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resources-idx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w3-idx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./idx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w5-idx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w6-idx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w6-demo-idx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6 Demo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w7-idx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 7</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w9-idx.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Week 9</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./w10-idx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 10</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+<div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
+<p>2025-07-17</p>
+</div></div></nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#r-coding-workshop-for-gis-7th-meeting" id="toc-r-coding-workshop-for-gis-7th-meeting" class="nav-link active" data-scroll-target="#r-coding-workshop-for-gis-7th-meeting">R Coding Workshop for GIS: 7th Meeting</a></li>
+  <li><a href="#goals-for-today" id="toc-goals-for-today" class="nav-link" data-scroll-target="#goals-for-today">Goals for Today</a></li>
+  <li><a href="#review" id="toc-review" class="nav-link" data-scroll-target="#review">Review</a></li>
+  <li><a href="#the-workflow-1-setting-up-the-environment" id="toc-the-workflow-1-setting-up-the-environment" class="nav-link" data-scroll-target="#the-workflow-1-setting-up-the-environment">The Workflow 1: Setting up the Environment</a>
+  <ul class="collapse">
+  <li><a href="#r-session" id="toc-r-session" class="nav-link" data-scroll-target="#r-session">R Session</a></li>
+  </ul></li>
+  <li><a href="#the-workflow-2-preparing-data-objects" id="toc-the-workflow-2-preparing-data-objects" class="nav-link" data-scroll-target="#the-workflow-2-preparing-data-objects">The Workflow 2: Preparing Data objects</a></li>
+  <li><a href="#finding-help-read-function-documentations" id="toc-finding-help-read-function-documentations" class="nav-link" data-scroll-target="#finding-help-read-function-documentations">3. Finding Help: read function documentations</a></li>
+  <li><a href="#a-closer-look-at-the-data-structure-of-an-df-object" id="toc-a-closer-look-at-the-data-structure-of-an-df-object" class="nav-link" data-scroll-target="#a-closer-look-at-the-data-structure-of-an-df-object">A closer look at the data structure of an <strong>df</strong> object</a></li>
+  <li><a href="#longer-and-wider-dataframes" id="toc-longer-and-wider-dataframes" class="nav-link" data-scroll-target="#longer-and-wider-dataframes">Longer and Wider Dataframes</a></li>
+  <li><a href="#the-structure-and-the-components-of-an-sf-object" id="toc-the-structure-and-the-components-of-an-sf-object" class="nav-link" data-scroll-target="#the-structure-and-the-components-of-an-sf-object">The structure and the components of an <strong>sf</strong> object</a>
+  <ul class="collapse">
+  <li><a href="#attributes-of-an-sf-object" id="toc-attributes-of-an-sf-object" class="nav-link" data-scroll-target="#attributes-of-an-sf-object">Attributes of an <strong>sf</strong> object</a></li>
+  </ul></li>
+  <li><a href="#geometry-column-a-closer-look" id="toc-geometry-column-a-closer-look" class="nav-link" data-scroll-target="#geometry-column-a-closer-look">Geometry column: a closer look</a></li>
+  <li><a href="#st_geometry-make-use-of-the-list-structure" id="toc-st_geometry-make-use-of-the-list-structure" class="nav-link" data-scroll-target="#st_geometry-make-use-of-the-list-structure">st_geometry: make use of the list structure</a></li>
+  <li><a href="#sfg-to-sfc" id="toc-sfg-to-sfc" class="nav-link" data-scroll-target="#sfg-to-sfc">sfg to sfc</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="w9-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://georgetown.zoom.us/j/91709606336?pwd=C7Xq1MWIBE2oaQzSO7tNjQRiPoDcgD.1">Coding Workshop</a></li><li class="breadcrumb-item"><a href="./w9-idx.html">Week 9</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">R Coding Workshop: 7th Meeting</h1>
+<p class="subtitle lead">GIS &amp; Geospatial Data Analysis (Fall 2025)</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="r-coding-workshop-for-gis-7th-meeting" class="level2">
+<h2 class="anchored" data-anchor-id="r-coding-workshop-for-gis-7th-meeting">R Coding Workshop for GIS: 7th Meeting</h2>
+</section>
+<section id="goals-for-today" class="level2">
+<h2 class="anchored" data-anchor-id="goals-for-today">Goals for Today</h2>
+<ul>
+<li>Review R fundamentals</li>
+<li>Walk through the R workflow for (geospatial) data analysis</li>
+<li>Make sense of objects and functions in R</li>
+<li>Move back and forth with <code>df</code>, <code>sf</code>, <code>ppp</code></li>
+<li>Intro to control flow (<code>if</code> and <code>case_when</code>)</li>
+</ul>
+</section>
+<section id="review" class="level2">
+<h2 class="anchored" data-anchor-id="review">Review</h2>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Everything that exists in R is an <strong>object</strong>.(<span class="citation" data-cites="chambersExtending2016">Chambers (<a href="#ref-chambersExtending2016" role="doc-biblioref">2016</a>)</span>)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>R uses <strong>functions</strong> to perform operations.(<span class="citation" data-cites="jamesIntroductionStatisticalLearning2021a">James (<a href="#ref-jamesIntroductionStatisticalLearning2021a" role="doc-biblioref">2021</a>)</span>)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+</ol>
+</blockquote>
+</section>
+<section id="the-workflow-1-setting-up-the-environment" class="level2">
+<h2 class="anchored" data-anchor-id="the-workflow-1-setting-up-the-environment">The Workflow 1: Setting up the Environment</h2>
+<ul>
+<li>select a working environment and explore their features(Positron, Jupyterhub)</li>
+<li>Open your .qmd file or create one</li>
+</ul>
+<section id="r-session" class="level3">
+<h3 class="anchored" data-anchor-id="r-session">R Session</h3>
+<ul>
+<li>Use <code>getwd()</code> and <code>setwd()</code> to get information about <strong>working directory</strong> the or set them manually to tell R where to look for files during this session</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">'~/myfolder'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Use the <code>library()</code> function to load the <strong>packages</strong> for our R session.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapview)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sfdep)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatstat)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="the-workflow-2-preparing-data-objects" class="level2">
+<h2 class="anchored" data-anchor-id="the-workflow-2-preparing-data-objects">The Workflow 2: Preparing Data objects</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>uni_df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>university, <span class="sc">~</span>year, <span class="sc">~</span>current_country, <span class="sc">~</span>lat, <span class="sc">~</span>lon, <span class="sc">~</span>exist_today,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Paris"</span>, <span class="dv">1150</span>, <span class="st">"France"</span>, <span class="fl">48.8566</span>, <span class="fl">2.3522</span>, <span class="cn">TRUE</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Salerno"</span>, <span class="dv">1173</span>,  <span class="st">"Italy"</span>, <span class="fl">40.7711</span>, <span class="fl">14.7905</span>, <span class="cn">TRUE</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Reggio"</span>, <span class="dv">1188</span>, <span class="st">"Italy"</span>, <span class="fl">44.6450</span>, <span class="fl">10.9277</span>, <span class="cn">TRUE</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Oxford"</span>, <span class="dv">1190</span>, <span class="st">"United Kingdom"</span>, <span class="fl">51.7520</span>, <span class="sc">-</span><span class="fl">1.2576</span>, <span class="cn">TRUE</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Bologna"</span>, <span class="dv">1200</span>, <span class="st">"Italy"</span>, <span class="fl">44.4989</span>, <span class="fl">11.3275</span>, <span class="cn">TRUE</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># uni_df</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>uni_sf <span class="ot">&lt;-</span> uni_df <span class="sc">|&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_as_sf</span>(</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">'lon'</span>,<span class="st">'lat'</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">crs =</span> <span class="dv">4326</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># uni_sf |&gt; mapview(label = 'university')</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>uni_sfc <span class="ot">&lt;-</span> uni_sf <span class="sc">|&gt;</span> <span class="fu">pull</span>(geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>book_challenge_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/book-challenge11.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 931 Columns: 17
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr   (3): title, author, state
+dbl  (13): book_id, year, removed, explicit, antifamily, occult, language, l...
+date  (1): date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ne_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"geounit"</span>, <span class="st">"pop_est"</span>, <span class="st">"pop_rank"</span>, <span class="st">"pop_year"</span>, <span class="st">"gdp_md"</span>, <span class="st">"gdp_year"</span>, <span class="st">"economy"</span>, <span class="st">"income_grp"</span>, <span class="st">"iso_a2"</span>, <span class="st">"continent"</span>, <span class="st">"region_un"</span>, <span class="st">"subregion"</span>, <span class="st">"region_wb"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>cca_sf <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="fu">c</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Kazakhstan"</span>, <span class="st">"Kyrgyzstan"</span>, <span class="st">"Tajikistan"</span>, <span class="st">"Turkmenistan"</span>, <span class="st">"Uzbekistan"</span>, <span class="st">"Armenia"</span>, <span class="st">"Azerbaijan"</span>, <span class="st">"Georgia"</span>),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">scale =</span> <span class="dv">50</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="fu">any_of</span>(ne_vars))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>cca_sfc <span class="ot">&lt;-</span> cca_sf <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sf <span class="ot">&lt;-</span> cca_sf <span class="sc">|&gt;</span> <span class="fu">filter</span>(iso_a2 <span class="sc">==</span> <span class="st">'AZ'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc <span class="ot">&lt;-</span> azerbaijan_sf <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>georgia_sf <span class="ot">&lt;-</span> cca_sf <span class="sc">|&gt;</span> <span class="fu">filter</span>(iso_a2 <span class="sc">==</span> <span class="st">'GE'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cca_nb <span class="ot">&lt;-</span> cca_sf <span class="sc">|&gt;</span> <span class="fu">st_contiguity</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in spdep::poly2nb(geometry, queen = queen, ...): neighbour object has 2 sub-graphs;
+if this sub-graph count seems unexpected, try increasing the snap argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cca_listw <span class="ot">&lt;-</span> cca_nb <span class="sc">|&gt;</span> <span class="fu">st_weights</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="finding-help-read-function-documentations" class="level2">
+<h2 class="anchored" data-anchor-id="finding-help-read-function-documentations">3. Finding Help: read function documentations</h2>
+<p>Ways to access function documentation:</p>
+<ol type="1">
+<li>Add a question mark in front of the function name: <code>?func_name</code></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>?mutate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>??<span class="st">"aggregate"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Use the <code>help()</code> function</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="st">'mutate'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="st">'filter'</span>, <span class="at">package =</span> <span class="st">'dplyr'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>If you are interested in the what are the arguments that the function can take, use <code>args()</code> to check</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>moran <span class="sc">|&gt;</span> <span class="fu">class</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "function"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">args</span>(moran)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>function (x, listw, n, S0, zero.policy = attr(listw, "zero.policy"), 
+    NAOK = FALSE) 
+NULL</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Simply, hover over the function name!</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="st">'Try hover over a function in your code!'</span> <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Try hover over a function in your code!"</code></pre>
+</div>
+</div>
+</section>
+<section id="a-closer-look-at-the-data-structure-of-an-df-object" class="level2">
+<h2 class="anchored" data-anchor-id="a-closer-look-at-the-data-structure-of-an-df-object">A closer look at the data structure of an <strong>df</strong> object</h2>
+<ul>
+<li><code>class()</code> function tells us that <code>uni_df</code> is a “data.frame” object data object with an additional class `“tbl_df”</li>
+<li><code>typeof()</code> call shows the storage mode of <code>uni_df</code>, which is <strong>list</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>uni_df <span class="sc">|&gt;</span> <span class="fu">class</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "tbl_df"     "tbl"        "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>uni_df <span class="sc">|&gt;</span> <span class="fu">typeof</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+<ul>
+<li>describe and extract attributes of a df object using <code>dim()</code> and <code>colnames()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>uni_df <span class="sc">|&gt;</span> <span class="fu">dim</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>uni_df <span class="sc">|&gt;</span> <span class="fu">colnames</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "university"      "year"            "current_country" "lat"            
+[5] "lon"             "exist_today"    </code></pre>
+</div>
+</div>
+</section>
+<section id="longer-and-wider-dataframes" class="level2">
+<h2 class="anchored" data-anchor-id="longer-and-wider-dataframes">Longer and Wider Dataframes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>book_challenge_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/book-challenge11.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 931 Columns: 17
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr   (3): title, author, state
+dbl  (13): book_id, year, removed, explicit, antifamily, occult, language, l...
+date  (1): date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>book_challenge_df <span class="sc">|&gt;</span> <span class="fu">dim</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 931  17</code></pre>
+</div>
+</div>
+<ul>
+<li>basic display functions: <code>head()</code>, <code>tail()</code> and <code>slice_sample()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>book_challenge_df <span class="sc">|&gt;</span> <span class="fu">tail</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 3%">
+<col style="width: 16%">
+<col style="width: 5%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 10%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">title</th>
+<th style="text-align: right;">book_id</th>
+<th style="text-align: left;">author</th>
+<th style="text-align: left;">date</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">removed</th>
+<th style="text-align: right;">explicit</th>
+<th style="text-align: right;">antifamily</th>
+<th style="text-align: right;">occult</th>
+<th style="text-align: right;">language</th>
+<th style="text-align: right;">lgbtq</th>
+<th style="text-align: right;">violent</th>
+<th style="text-align: left;">state</th>
+<th style="text-align: right;">political_value_index</th>
+<th style="text-align: right;">median_income</th>
+<th style="text-align: right;">hs_grad_rate</th>
+<th style="text-align: right;">college_grad_rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">And Tango Makes Three</td>
+<td style="text-align: right;">143</td>
+<td style="text-align: left;">Parnell, Peter and Justin Richardson</td>
+<td style="text-align: left;">2006-10-29</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">WV</td>
+<td style="text-align: right;">-7.9</td>
+<td style="text-align: right;">-7290.0</td>
+<td style="text-align: right;">-4.361958</td>
+<td style="text-align: right;">-9.22373</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Go and Come Back</td>
+<td style="text-align: right;">721</td>
+<td style="text-align: left;">Abelove, Joan</td>
+<td style="text-align: left;">2000-06-18</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">WV</td>
+<td style="text-align: right;">-7.9</td>
+<td style="text-align: right;">-7290.0</td>
+<td style="text-align: right;">-4.361958</td>
+<td style="text-align: right;">-9.22373</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">When Dad Killed Mom</td>
+<td style="text-align: right;">1964</td>
+<td style="text-align: left;">Lester, Julius</td>
+<td style="text-align: left;">2002-04-21</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">WY</td>
+<td style="text-align: right;">-19.7</td>
+<td style="text-align: right;">4081.5</td>
+<td style="text-align: right;">8.338042</td>
+<td style="text-align: right;">-2.12373</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Geology Book, The</td>
+<td style="text-align: right;">755</td>
+<td style="text-align: left;">Morris, Dr.&nbsp;John D.</td>
+<td style="text-align: left;">2010-05-05</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">WY</td>
+<td style="text-align: right;">-19.7</td>
+<td style="text-align: right;">4081.5</td>
+<td style="text-align: right;">8.338042</td>
+<td style="text-align: right;">-2.12373</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">And Tango Makes Three</td>
+<td style="text-align: right;">143</td>
+<td style="text-align: left;">Parnell, Peter and Justin Richardson</td>
+<td style="text-align: left;">2009-08-22</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">WY</td>
+<td style="text-align: right;">-19.7</td>
+<td style="text-align: right;">4081.5</td>
+<td style="text-align: right;">8.338042</td>
+<td style="text-align: right;">-2.12373</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Darkest Night of the Year</td>
+<td style="text-align: right;">505</td>
+<td style="text-align: left;">Koontz, Dean</td>
+<td style="text-align: left;">2007-12-03</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">WY</td>
+<td style="text-align: right;">-19.7</td>
+<td style="text-align: right;">4081.5</td>
+<td style="text-align: right;">8.338042</td>
+<td style="text-align: right;">-2.12373</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>book_challenge_df <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 3%">
+<col style="width: 8%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">title</th>
+<th style="text-align: right;">book_id</th>
+<th style="text-align: left;">author</th>
+<th style="text-align: left;">date</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">removed</th>
+<th style="text-align: right;">explicit</th>
+<th style="text-align: right;">antifamily</th>
+<th style="text-align: right;">occult</th>
+<th style="text-align: right;">language</th>
+<th style="text-align: right;">lgbtq</th>
+<th style="text-align: right;">violent</th>
+<th style="text-align: left;">state</th>
+<th style="text-align: right;">political_value_index</th>
+<th style="text-align: right;">median_income</th>
+<th style="text-align: right;">hs_grad_rate</th>
+<th style="text-align: right;">college_grad_rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sin City</td>
+<td style="text-align: right;">1635</td>
+<td style="text-align: left;">Miller, Frank</td>
+<td style="text-align: left;">2006-07-27</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">CA</td>
+<td style="text-align: right;">7.4</td>
+<td style="text-align: right;">10119.0</td>
+<td style="text-align: right;">-2.761958</td>
+<td style="text-align: right;">2.57627</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Stonewall: Riots that Parked the Gay Revolution</td>
+<td style="text-align: right;">1709</td>
+<td style="text-align: left;">Carter, David</td>
+<td style="text-align: left;">2004-12-09</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">OR</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">1274.5</td>
+<td style="text-align: right;">5.538042</td>
+<td style="text-align: right;">1.07627</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Unthinkable Thoughts of Jacob Green, The</td>
+<td style="text-align: right;">1882</td>
+<td style="text-align: left;">Braff, Joshua</td>
+<td style="text-align: left;">2009-04-03</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">OH</td>
+<td style="text-align: right;">-0.7</td>
+<td style="text-align: right;">2469.0</td>
+<td style="text-align: right;">3.438042</td>
+<td style="text-align: right;">-2.92373</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Star Wars: Return of the Jedi II</td>
+<td style="text-align: right;">1698</td>
+<td style="text-align: left;">Dark Horse Comics</td>
+<td style="text-align: left;">2010-01-17</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">VA</td>
+<td style="text-align: right;">-1.7</td>
+<td style="text-align: right;">11296.0</td>
+<td style="text-align: right;">1.938042</td>
+<td style="text-align: right;">5.47627</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li>optimized display to show all columns <code>glimpse()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>book_challenge_df <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 931
+Columns: 17
+$ title                 &lt;chr&gt; "House of the Spirits, The", "It's Not the Stork…
+$ book_id               &lt;dbl&gt; 927, 1024, 1087, 936, 764, 1087, 1489, 2023, 102…
+$ author                &lt;chr&gt; "Allende, Isabel", "Harris, Robie", "Pyle, Howar…
+$ date                  &lt;date&gt; 2005-04-01, 2008-02-06, 2008-10-02, 2008-10-05,…
+$ year                  &lt;dbl&gt; 2005, 2008, 2008, 2008, 2008, 2003, 2003, 2003, …
+$ removed               &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, …
+$ explicit              &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, …
+$ antifamily            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, …
+$ occult                &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ language              &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, …
+$ lgbtq                 &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, …
+$ violent               &lt;dbl&gt; 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, …
+$ state                 &lt;chr&gt; "AK", "AK", "AK", "AK", "AK", "AK", "AK", "AK", …
+$ political_value_index &lt;dbl&gt; -13.4, -13.4, -13.4, -13.4, -13.4, -13.4, -13.4,…
+$ median_income         &lt;dbl&gt; 15707.5, 15707.5, 15707.5, 15707.5, 15707.5, 157…
+$ hs_grad_rate          &lt;dbl&gt; 8.738042, 8.738042, 8.738042, 8.738042, 8.738042…
+$ college_grad_rate     &lt;dbl&gt; 0.6762701, 0.6762701, 0.6762701, 0.6762701, 0.67…</code></pre>
+</div>
+</div>
+<ul>
+<li><code>view()</code> tidyverse <code>summary()</code> equivalent</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>book_challenge_df <span class="sc">|&gt;</span> <span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-structure-and-the-components-of-an-sf-object" class="level2">
+<h2 class="anchored" data-anchor-id="the-structure-and-the-components-of-an-sf-object">The structure and the components of an <strong>sf</strong> object</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>an sf object can simultaneously be of classes “sf”, “tbl_df” and “data.frame”</li>
+<li>Using the function <code>typeof()</code> or <code>mode()</code> we can inspect that <code>uni_sf</code> is stored as using a <em>list</em></li>
+</ul>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">class</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "sf"         "tbl_df"     "tbl"        "data.frame"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">typeof</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<section id="attributes-of-an-sf-object" class="level3">
+<h3 class="anchored" data-anchor-id="attributes-of-an-sf-object">Attributes of an <strong>sf</strong> object</h3>
+<ul>
+<li>df attributes</li>
+<li>sf column
+<ul>
+<li>coordinate reference system: <code>st_crs()</code></li>
+<li>bounding box: <code>st_bbox()</code></li>
+<li>geometry type</li>
+</ul></li>
+<li>attribute-geometry-relationship</li>
+</ul>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>uni_sf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 7%">
+<col style="width: 23%">
+<col style="width: 17%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">university</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">current_country</th>
+<th style="text-align: left;">exist_today</th>
+<th style="text-align: left;">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Paris</td>
+<td style="text-align: right;">1150</td>
+<td style="text-align: left;">France</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (2.3522 48.8566)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Salerno</td>
+<td style="text-align: right;">1173</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (14.7905 40.7711)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Reggio</td>
+<td style="text-align: right;">1188</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (10.9277 44.645)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oxford</td>
+<td style="text-align: right;">1190</td>
+<td style="text-align: left;">United Kingdom</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (-1.2576 51.752)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bologna</td>
+<td style="text-align: right;">1200</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (11.3275 44.4989)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>sf [5 × 5] (S3: sf/tbl_df/tbl/data.frame)
+ $ university     : chr [1:5] "Paris" "Salerno" "Reggio" "Oxford" ...
+ $ year           : num [1:5] 1150 1173 1188 1190 1200
+ $ current_country: chr [1:5] "France" "Italy" "Italy" "United Kingdom" ...
+ $ exist_today    : logi [1:5] TRUE TRUE TRUE TRUE TRUE
+ $ geometry       :sfc_POINT of length 5; first list element:  'XY' num [1:2] 2.35 48.86
+ - attr(*, "sf_column")= chr "geometry"
+ - attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA NA
+  ..- attr(*, "names")= chr [1:4] "university" "year" "current_country" "exist_today"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">st_crs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coordinate Reference System:
+  User input: EPSG:4326 
+  wkt:
+GEOGCRS["WGS 84",
+    ENSEMBLE["World Geodetic System 1984 ensemble",
+        MEMBER["World Geodetic System 1984 (Transit)"],
+        MEMBER["World Geodetic System 1984 (G730)"],
+        MEMBER["World Geodetic System 1984 (G873)"],
+        MEMBER["World Geodetic System 1984 (G1150)"],
+        MEMBER["World Geodetic System 1984 (G1674)"],
+        MEMBER["World Geodetic System 1984 (G1762)"],
+        MEMBER["World Geodetic System 1984 (G2139)"],
+        MEMBER["World Geodetic System 1984 (G2296)"],
+        ELLIPSOID["WGS 84",6378137,298.257223563,
+            LENGTHUNIT["metre",1]],
+        ENSEMBLEACCURACY[2.0]],
+    PRIMEM["Greenwich",0,
+        ANGLEUNIT["degree",0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS["geodetic latitude (Lat)",north,
+            ORDER[1],
+            ANGLEUNIT["degree",0.0174532925199433]],
+        AXIS["geodetic longitude (Lon)",east,
+            ORDER[2],
+            ANGLEUNIT["degree",0.0174532925199433]],
+    USAGE[
+        SCOPE["Horizontal component of 3D system."],
+        AREA["World."],
+        BBOX[-90,-180,90,180]],
+    ID["EPSG",4326]]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">st_bbox</span>() <span class="sc">|&gt;</span> <span class="fu">st_as_sfc</span>() <span class="sc">|&gt;</span> <span class="fu">st_as_sf</span>() <span class="sc">|&gt;</span> <span class="fu">mapview</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-35c8aae3863ee97ffa74" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-35c8aae3863ee97ffa74">{"x":{"options":{"minZoom":1,"maxZoom":52,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"preferCanvas":false,"bounceAtZoomLimits":false,"maxBounds":[[[-90,-370]],[[90,370]]]},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron","CartoDB.Positron","CartoDB.Positron",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["CartoDB.DarkMatter","CartoDB.DarkMatter","CartoDB.DarkMatter",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenStreetMap","OpenStreetMap","OpenStreetMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery","Esri.WorldImagery","Esri.WorldImagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenTopoMap","OpenTopoMap","OpenTopoMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"createMapPane","args":["polygon",420]},{"method":"addPolygons","args":[[[[{"lng":[-1.2576,14.7905,14.7905,-1.2576,-1.2576],"lat":[40.7711,40.7711,51.752,51.752,40.7711]}]]],null,"st_as_sf(st_as_sfc(st_bbox(uni_sf)))",{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"pane":"polygon","stroke":true,"color":"#333333","weight":0.5,"opacity":0.9,"fill":true,"fillColor":"#6666FF","fillOpacity":0.6,"smoothFactor":1,"noClip":false},"<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>1&emsp;<\/td><\/tr><tr><td>1<\/td><th>x&emsp;<\/th><td>sfc_POLYGON&emsp;<\/td><\/tr><\/table><\/div>",{"maxWidth":800,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"closeOnClick":true,"className":""},"1",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},{"stroke":true,"weight":1,"opacity":0.9,"fillOpacity":0.84,"bringToFront":false,"sendToBack":false}]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addHomeButton","args":[-1.2576,40.7711,14.7905,51.752,true,"st_as_sf_st_as_sfc_st_bbox_uni_sf___","Zoom to st_as_sf_st_as_sfc_st_bbox_uni_sf___","<strong> st_as_sf_st_as_sfc_st_bbox_uni_sf___ <\/strong>","bottomright"]},{"method":"addLayersControl","args":[["CartoDB.Positron","CartoDB.DarkMatter","OpenStreetMap","Esri.WorldImagery","OpenTopoMap"],"st_as_sf(st_as_sfc(st_bbox(uni_sf)))",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addLegend","args":[{"colors":["#6666FF"],"labels":["st_as_sf(st_as_sfc(st_bbox(uni_sf)))"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"factor","title":"","extra":null,"layerId":null,"className":"info legend","group":"st_as_sf(st_as_sfc(st_bbox(uni_sf)))"}]}],"limits":{"lat":[40.7711,51.752],"lng":[-1.2576,14.7905]},"fitBounds":[40.7711,-1.2576,51.752,14.7905,[]]},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\n      function(el, x, data) {\n      // get the leaflet map\n      var map = this; //HTMLWidgets.find('#' + el.id);\n      // we need a new div element because we have to handle\n      // the mouseover output separately\n      // debugger;\n      function addElement () {\n      // generate new div Element\n      var newDiv = $(document.createElement('div'));\n      // append at end of leaflet htmlwidget container\n      $(el).append(newDiv);\n      //provide ID and style\n      newDiv.addClass('lnlt');\n      newDiv.css({\n      'position': 'relative',\n      'bottomleft':  '0px',\n      'background-color': 'rgba(255, 255, 255, 0.7)',\n      'box-shadow': '0 0 2px #bbb',\n      'background-clip': 'padding-box',\n      'margin': '0',\n      'padding-left': '5px',\n      'color': '#333',\n      'font': '9px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif',\n      'z-index': '700',\n      });\n      return newDiv;\n      }\n\n\n      // check for already existing lnlt class to not duplicate\n      var lnlt = $(el).find('.lnlt');\n\n      if(!lnlt.length) {\n      lnlt = addElement();\n\n      // grab the special div we generated in the beginning\n      // and put the mousmove output there\n\n      map.on('mousemove', function (e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                           ' lon: ' + (e.latlng.lng).toFixed(5) +\n                           ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                           ' | zoom: ' + map.getZoom() +\n                           ' | x: ' + L.CRS.EPSG3857.project(e.latlng).x.toFixed(0) +\n                           ' | y: ' + L.CRS.EPSG3857.project(e.latlng).y.toFixed(0) +\n                           ' | epsg: 3857 ' +\n                           ' | proj4: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs ');\n      } else {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      }\n      });\n\n      // remove the lnlt div when mouse leaves map\n      map.on('mouseout', function (e) {\n      var strip = document.querySelector('.lnlt');\n      if( strip !==null) strip.remove();\n      });\n\n      };\n\n      //$(el).keypress(67, function(e) {\n      map.on('preclick', function(e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      var txt = document.querySelector('.lnlt').textContent;\n      console.log(txt);\n      //txt.innerText.focus();\n      //txt.select();\n      setClipboardText('\"' + txt + '\"');\n      }\n      });\n\n      }\n      ).call(this.getMap(), el, x, data);\n}","data":null},{"code":"function(el, x, data) {\n  return (function(el,x,data){\n           var map = this;\n\n           map.on('keypress', function(e) {\n               console.log(e.originalEvent.code);\n               var key = e.originalEvent.code;\n               if (key === 'KeyE') {\n                   var bb = this.getBounds();\n                   var txt = JSON.stringify(bb);\n                   console.log(txt);\n\n                   setClipboardText('\\'' + txt + '\\'');\n               }\n           })\n        }).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
+</div>
+</div>
+</section>
+</section>
+<section id="geometry-column-a-closer-look" class="level2">
+<h2 class="anchored" data-anchor-id="geometry-column-a-closer-look">Geometry column: a closer look</h2>
+<ol type="1">
+<li>Get the name of the geometry column</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">attr</span>(<span class="at">which =</span> <span class="st">'sf_column'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "geometry"</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Single out the geometry column</li>
+</ol>
+<ul>
+<li><code>pull()</code> tidyverse equivalent for <code>$</code>: input a df, a column name, output a <strong>vector</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>uni_sf <span class="sc">|&gt;</span> <span class="fu">pull</span>(geometry) <span class="sc">|&gt;</span> <span class="fu">class</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "sfc_POINT" "sfc"      </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>uni_sfc <span class="ot">&lt;-</span> uni_sf <span class="sc">|&gt;</span> <span class="fu">pull</span>(geometry)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># uni_sfc &lt;- uni_sf$geometry</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>or <code>st_geometry()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>uni_sfc <span class="ot">&lt;-</span> uni_sf <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>uni_sfc <span class="sc">|&gt;</span> <span class="fu">class</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "sfc_POINT" "sfc"      </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>uni_sfc <span class="sc">|&gt;</span> <span class="fu">typeof</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+<ul>
+<li>access list items</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>uni_sfc[[<span class="dv">4</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>POINT (-1.2576 51.752)</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>uni_sfc[[<span class="dv">4</span>]] <span class="sc">|&gt;</span> <span class="fu">class</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "XY"    "POINT" "sfg"  </code></pre>
+</div>
+</div>
+<p>summary</p>
+<div class="columns">
+<div class="column" style="width:&quot;33%;">
+<ol type="1">
+<li><code>sf</code>: simple feature collection.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>uni_sf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 7%">
+<col style="width: 23%">
+<col style="width: 17%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">university</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">current_country</th>
+<th style="text-align: left;">exist_today</th>
+<th style="text-align: left;">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Paris</td>
+<td style="text-align: right;">1150</td>
+<td style="text-align: left;">France</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (2.3522 48.8566)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Salerno</td>
+<td style="text-align: right;">1173</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (14.7905 40.7711)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Reggio</td>
+<td style="text-align: right;">1188</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (10.9277 44.645)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oxford</td>
+<td style="text-align: right;">1190</td>
+<td style="text-align: left;">United Kingdom</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (-1.2576 51.752)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bologna</td>
+<td style="text-align: right;">1200</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">POINT (11.3275 44.4989)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:&quot;33%;">
+<ol start="2" type="1">
+<li><code>sfc</code>: simple feature list-column(<span class="citation" data-cites="pebesmaSpatialDataScience2023">Pebesma and Bivand (<a href="#ref-pebesmaSpatialDataScience2023" role="doc-biblioref">2023</a>)</span>)</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>uni_sfc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Geometry set for 5 features 
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -1.2576 ymin: 40.7711 xmax: 14.7905 ymax: 51.752
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>POINT (2.3522 48.8566)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>POINT (14.7905 40.7711)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>POINT (10.9277 44.645)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>POINT (-1.2576 51.752)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>POINT (11.3275 44.4989)</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:&quot;33%;">
+<ol start="3" type="1">
+<li><code>sfg</code>: single geometry</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>uni_sfc[[<span class="dv">4</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>POINT (-1.2576 51.752)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="st_geometry-make-use-of-the-list-structure" class="level2">
+<h2 class="anchored" data-anchor-id="st_geometry-make-use-of-the-list-structure">st_geometry: make use of the list structure</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sf <span class="ot">&lt;-</span> cca_sf <span class="sc">|&gt;</span> <span class="fu">filter</span>(iso_a2 <span class="sc">==</span> <span class="st">'AZ'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sf <span class="sc">|&gt;</span> <span class="fu">mapview</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-aa4ed325d7d4fd8b1ff3" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-aa4ed325d7d4fd8b1ff3">{"x":{"options":{"minZoom":1,"maxZoom":52,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"preferCanvas":false,"bounceAtZoomLimits":false,"maxBounds":[[[-90,-370]],[[90,370]]]},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron","CartoDB.Positron","CartoDB.Positron",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["CartoDB.DarkMatter","CartoDB.DarkMatter","CartoDB.DarkMatter",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenStreetMap","OpenStreetMap","OpenStreetMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery","Esri.WorldImagery","Esri.WorldImagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenTopoMap","OpenTopoMap","OpenTopoMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"createMapPane","args":["polygon",420]},{"method":"addPolygons","args":[[[[{"lng":[44.81718750000002,44.78339843750001,44.76826171875001,44.8671875,45.03164062500002,45.07646484375002,45.12460937500001,45.14863281250001,45.15283203125,45.17255859375001,45.25253906250001,45.28828125000001,45.34990234375002,45.45683593750002,45.61074218750002,45.68740234375002,45.75048828125,45.78447265625002,45.79648437500001,45.7841796875,45.76630859375001,45.79863281250002,45.92500000000001,45.97744140625002,45.95185546875001,46.0458984375,46.07744140625002,46.11445312500001,45.921875,45.57500000000002,45.47968750000001,45.38925781250001,45.33554687500001,45.25595703125001,45.19062500000001,45.14121093750001,45.11308593750002,45.07167968750002,45.00019531250001,44.83818359375002,44.81718750000002],"lat":[39.650439453125,39.68466796875,39.70351562499999,39.71914062499999,39.76513671875,39.74282226562499,39.696337890625,39.656591796875,39.58266601562499,39.57060546875,39.595458984375,39.56557617187499,39.5298828125,39.494482421875,39.5498046875,39.5640625,39.562939453125,39.54560546875,39.488134765625,39.417236328125,39.378466796875,39.3501953125,39.28193359375,39.243896484375,39.17812499999999,39.017529296875,38.9548828125,38.877783203125,38.90791015625,38.97280273437499,39.00624999999999,39.0958984375,39.13916015625,39.194677734375,39.215625,39.25429687499999,39.311572265625,39.362890625,39.42353515625,39.6291015625,39.650439453125]}],[{"lng":[48.86875000000001,48.84033203125,48.63554687500002,48.59267578125002,48.41738281250002,48.38125000000002,48.30556640625002,48.26132812500001,48.22519531250001,48.20468750000001,48.02324218750002,47.99648437500002,47.99267578125,48.01933593750002,48.05009765625002,48.13857421875002,48.24199218750002,48.27509765625001,48.29208984375001,48.291015625,48.27412109375001,48.12548828125,48.10917968750002,48.10439453125002,48.11289062500001,48.13603515625002,48.25722656250002,48.32216796875002,48.28173828125,48.15107421875001,47.99589843750002,47.89228515625001,47.77285156250002,47.58183593750002,47.47617187500001,47.33847656250001,47.18837890625002,47.0654296875,46.98886718750001,46.8525390625,46.783203125,46.55478515625001,46.49062500000002,46.48671875000002,46.48984375000001,46.47539062500002,46.40146484375001,46.40029296875002,46.42031250000002,46.47714843750001,46.55000000000001,46.58476562500002,46.50664062500002,46.43730468750002,46.37841796875,46.365234375,46.36513671875002,46.37763671875001,46.47812500000001,46.48808593750002,46.4814453125,46.32167968750002,46.20205078125002,46.09482421875001,46.02587890625,45.93994140625,45.86318359375002,45.78964843750001,45.66181640625001,45.57978515625001,45.58095703125002,45.59599609375002,45.63017578125002,45.85810546875001,45.88593750000001,45.90009765625001,45.93125000000001,45.96757812500002,45.96464843750002,45.73574218750002,45.56953125000001,45.45439453125002,45.37617187500001,45.37890625,45.4013671875,45.57939453125002,45.59140625000001,45.58750000000001,45.52402343750001,45.44423828125002,45.41914062500001,45.36894531250002,45.2734375,45.10605468750001,45.07050781250001,45.06259765625001,45.07070312500002,45.19023437500002,45.18857421875001,45.15234375,45.08476562500002,45.02294921875,45.00136718750002,45.21718750000002,45.28095703125001,45.42226562500002,45.71562500000002,45.69570312500002,45.72548828125002,45.79277343750002,45.92197265625001,46.03125,46.08652343750001,46.17070312500002,46.27998046875001,46.38076171875002,46.43095703125002,46.45791015625002,46.53437500000001,46.62636718750002,46.66240234375002,46.67255859375001,46.61894531250002,46.5087890625,46.38496093750001,46.30546875000002,46.25468750000002,46.20351562500002,46.19052734375001,46.18212890625,46.18427734375001,46.20185546875001,46.25185546875002,46.30253906250002,46.34824218750001,46.40546875000001,46.42988281250001,46.53769531250001,46.55214843750002,46.5712890625,46.61601562500002,46.69033203125002,46.74931640625002,46.82558593750002,46.93085937500001,46.98779296875,47.01015625000002,47.06396484375,47.142578125,47.20527343750001,47.26113281250002,47.31767578125002,47.52060546875001,47.591796875,47.791015625,47.86113281250002,47.96367187500002,48.05605468750002,48.14228515625001,48.29814453125002,48.39140625000002,48.4306640625,48.51865234375001,48.57285156250001,48.66464843750001,48.82392578125001,49.05087890625001,49.10664062500001,49.14326171875001,49.17470703125002,49.22646484375002,49.45673828125001,49.55615234375,49.71835937500001,49.77597656250001,49.85175781250001,49.99062500000002,50.119140625,50.18251953125002,50.248046875,50.30683593750001,50.36591796875001,50.14316406250001,49.91884765625002,49.7919921875,49.66904296875001,49.55117187500002,49.47734375000002,49.41513671875001,49.32441406250001,49.32753906250002,49.36738281250001,49.36279296875,49.32119140625002,49.26933593750002,49.19980468750001,49.16533203125002,49.12099609375002,49.10869140625002,49.111328125,49.01347656250002,48.96171875000002,48.92617187500002,48.8544921875,48.85087890625002,48.86875000000001],"lat":[38.435498046875,38.437255859375,38.39873046875,38.411083984375,38.58623046875,38.60561523437499,38.6134765625,38.64228515625,38.689208984375,38.72412109375,38.81904296875,38.853759765625,38.88427734375,38.91181640625,38.935009765625,38.95864257812499,38.978955078125,38.993603515625,39.01884765625,39.05927734375,39.09912109375,39.171630859375,39.20283203125,39.24111328124999,39.281103515625,39.312353515625,39.35498046875,39.39907226562499,39.44833984375,39.560546875,39.683935546875,39.68505859375,39.64858398437499,39.54335937499999,39.49833984375,39.423876953125,39.34096679687499,39.252880859375,39.18017578125,39.1484375,39.08740234375,38.90439453125,38.906689453125,38.99746093749999,39.06943359375,39.110888671875,39.16767578125,39.1921875,39.207373046875,39.198193359375,39.201416015625,39.223681640625,39.29853515625,39.34853515624999,39.382275390625,39.40249023437499,39.416796875,39.43388671875,39.47509765625,39.51284179687499,39.55517578125,39.617431640625,39.594482421875,39.66445312499999,39.7185546875,39.7765625,39.808349609375,39.881103515625,39.95620117187499,39.9775390625,39.989013671875,40.00283203124999,40.014208984375,40.011279296875,40.024853515625,40.057080078125,40.1046875,40.1748046875,40.23378906249999,40.3291015625,40.416845703125,40.53237304687499,40.63808593749999,40.673583984375,40.70712890625,40.8044921875,40.82973632812499,40.846923828125,40.896728515625,40.947998046875,40.985693359375,41.0048828125,41.00624999999999,41.0693359375,41.07558593749999,41.088134765625,41.100830078125,41.12636718749999,41.147412109375,41.175146484375,41.19545898437499,41.245703125,41.290966796875,41.423193359375,41.449560546875,41.42529296875,41.337646484375,41.289013671875,41.26162109374999,41.2244140625,41.18671875,41.16728515625,41.183837890625,41.1978515625,41.15444335937499,41.09931640625,41.07705078124999,41.07021484374999,41.08857421875,41.15966796875,41.24550781249999,41.28681640625,41.34375,41.40556640625,41.45986328124999,41.50771484374999,41.6021484375,41.61259765625,41.624853515625,41.657080078125,41.7021484375,41.736865234375,41.7517578125,41.757080078125,41.79018554687499,41.855078125,41.890966796875,41.87041015625,41.8123046875,41.80009765625,41.80693359375,41.83134765625,41.81259765625,41.743408203125,41.67041015625,41.62138671875,41.5875,41.5546875,41.516064453125,41.455615234375,41.31508789062499,41.282421875,41.229052734375,41.218115234375,41.199267578125,41.212744140625,41.333984375,41.45869140625,41.48476562499999,41.54501953125,41.601904296875,41.663330078125,41.779345703125,41.844482421875,41.78662109375,41.62958984375,41.373974609375,41.301708984375,41.2177734375,41.11611328124999,41.026220703125,40.799853515625,40.71630859375,40.60810546875,40.583984375,40.577197265625,40.57680664062499,40.534521484375,40.50478515624999,40.461767578125,40.41220703125,40.2794921875,40.3232421875,40.31640625,40.287890625,40.2490234375,40.194140625,40.087255859375,39.83984375,39.608349609375,39.501220703125,39.398388671875,39.349560546875,39.32890625,39.28515625,39.07265624999999,39.0302734375,39.00390625,39.029052734375,39.084716796875,39.133984375,39.07875976562499,38.961767578125,38.838818359375,38.81533203124999,38.435498046875]},{"lng":[45.55234375000001,45.56230468750002,45.5341796875,45.50449218750001,45.47880859375002,45.47880859375002,45.51435546875001,45.55234375000001],"lat":[40.616064453125,40.649169921875,40.664013671875,40.66484375,40.64833984374999,40.606982421875,40.599560546875,40.616064453125]}],[{"lng":[45.02363281250001,45.00205078125001,44.96904296875002,44.95888671875002,44.96142578125,44.99433593750001,45.02109375000001,45.02871093750002,45.02363281250001],"lat":[41.02724609374999,41.0158203125,41.02724609374999,41.05263671874999,41.07924804687499,41.08559570312499,41.077978515625,41.05385742187499,41.02724609374999]}]]],null,"azerbaijan_sf",{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"pane":"polygon","stroke":true,"color":"#333333","weight":0.5,"opacity":0.9,"fill":true,"fillColor":"#6666FF","fillOpacity":0.6,"smoothFactor":1,"noClip":false},"<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>1&emsp;<\/td><\/tr><tr><td>1<\/td><th>geounit&emsp;<\/th><td>Azerbaijan&emsp;<\/td><\/tr><tr><td>2<\/td><th>pop_est&emsp;<\/th><td>10023318&emsp;<\/td><\/tr><tr><td>3<\/td><th>pop_rank&emsp;<\/th><td>14&emsp;<\/td><\/tr><tr><td>4<\/td><th>pop_year&emsp;<\/th><td>2019&emsp;<\/td><\/tr><tr><td>5<\/td><th>gdp_md&emsp;<\/th><td>48047&emsp;<\/td><\/tr><tr><td>6<\/td><th>gdp_year&emsp;<\/th><td>2019&emsp;<\/td><\/tr><tr><td>7<\/td><th>economy&emsp;<\/th><td>6. Developing region&emsp;<\/td><\/tr><tr><td>8<\/td><th>income_grp&emsp;<\/th><td>3. Upper middle income&emsp;<\/td><\/tr><tr><td>9<\/td><th>iso_a2&emsp;<\/th><td>AZ&emsp;<\/td><\/tr><tr><td>10<\/td><th>continent&emsp;<\/th><td>Asia&emsp;<\/td><\/tr><tr><td>11<\/td><th>region_un&emsp;<\/th><td>Asia&emsp;<\/td><\/tr><tr><td>12<\/td><th>subregion&emsp;<\/th><td>Western Asia&emsp;<\/td><\/tr><tr><td>13<\/td><th>region_wb&emsp;<\/th><td>Europe & Central Asia&emsp;<\/td><\/tr><tr><td>14<\/td><th>geometry&emsp;<\/th><td>sfc_MULTIPOLYGON&emsp;<\/td><\/tr><\/table><\/div>",{"maxWidth":800,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"closeOnClick":true,"className":""},"1",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},{"stroke":true,"weight":1,"opacity":0.9,"fillOpacity":0.84,"bringToFront":false,"sendToBack":false}]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addHomeButton","args":[44.76826171875001,38.39873046875,50.36591796875001,41.890966796875,true,"azerbaijan_sf","Zoom to azerbaijan_sf","<strong> azerbaijan_sf <\/strong>","bottomright"]},{"method":"addLayersControl","args":[["CartoDB.Positron","CartoDB.DarkMatter","OpenStreetMap","Esri.WorldImagery","OpenTopoMap"],"azerbaijan_sf",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addLegend","args":[{"colors":["#6666FF"],"labels":["azerbaijan_sf"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"factor","title":"","extra":null,"layerId":null,"className":"info legend","group":"azerbaijan_sf"}]}],"limits":{"lat":[38.39873046875,41.890966796875],"lng":[44.76826171875001,50.36591796875001]},"fitBounds":[38.39873046875,44.76826171875001,41.890966796875,50.36591796875001,[]]},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\n      function(el, x, data) {\n      // get the leaflet map\n      var map = this; //HTMLWidgets.find('#' + el.id);\n      // we need a new div element because we have to handle\n      // the mouseover output separately\n      // debugger;\n      function addElement () {\n      // generate new div Element\n      var newDiv = $(document.createElement('div'));\n      // append at end of leaflet htmlwidget container\n      $(el).append(newDiv);\n      //provide ID and style\n      newDiv.addClass('lnlt');\n      newDiv.css({\n      'position': 'relative',\n      'bottomleft':  '0px',\n      'background-color': 'rgba(255, 255, 255, 0.7)',\n      'box-shadow': '0 0 2px #bbb',\n      'background-clip': 'padding-box',\n      'margin': '0',\n      'padding-left': '5px',\n      'color': '#333',\n      'font': '9px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif',\n      'z-index': '700',\n      });\n      return newDiv;\n      }\n\n\n      // check for already existing lnlt class to not duplicate\n      var lnlt = $(el).find('.lnlt');\n\n      if(!lnlt.length) {\n      lnlt = addElement();\n\n      // grab the special div we generated in the beginning\n      // and put the mousmove output there\n\n      map.on('mousemove', function (e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                           ' lon: ' + (e.latlng.lng).toFixed(5) +\n                           ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                           ' | zoom: ' + map.getZoom() +\n                           ' | x: ' + L.CRS.EPSG3857.project(e.latlng).x.toFixed(0) +\n                           ' | y: ' + L.CRS.EPSG3857.project(e.latlng).y.toFixed(0) +\n                           ' | epsg: 3857 ' +\n                           ' | proj4: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs ');\n      } else {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      }\n      });\n\n      // remove the lnlt div when mouse leaves map\n      map.on('mouseout', function (e) {\n      var strip = document.querySelector('.lnlt');\n      if( strip !==null) strip.remove();\n      });\n\n      };\n\n      //$(el).keypress(67, function(e) {\n      map.on('preclick', function(e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      var txt = document.querySelector('.lnlt').textContent;\n      console.log(txt);\n      //txt.innerText.focus();\n      //txt.select();\n      setClipboardText('\"' + txt + '\"');\n      }\n      });\n\n      }\n      ).call(this.getMap(), el, x, data);\n}","data":null},{"code":"function(el, x, data) {\n  return (function(el,x,data){\n           var map = this;\n\n           map.on('keypress', function(e) {\n               console.log(e.originalEvent.code);\n               var key = e.originalEvent.code;\n               if (key === 'KeyE') {\n                   var bb = this.getBounds();\n                   var txt = JSON.stringify(bb);\n                   console.log(txt);\n\n                   setClipboardText('\\'' + txt + '\\'');\n               }\n           })\n        }).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sf <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1
+Columns: 14
+$ geounit    &lt;chr&gt; "Azerbaijan"
+$ pop_est    &lt;dbl&gt; 10023318
+$ pop_rank   &lt;int&gt; 14
+$ pop_year   &lt;int&gt; 2019
+$ gdp_md     &lt;int&gt; 48047
+$ gdp_year   &lt;int&gt; 2019
+$ economy    &lt;chr&gt; "6. Developing region"
+$ income_grp &lt;chr&gt; "3. Upper middle income"
+$ iso_a2     &lt;chr&gt; "AZ"
+$ continent  &lt;chr&gt; "Asia"
+$ region_un  &lt;chr&gt; "Asia"
+$ subregion  &lt;chr&gt; "Western Asia"
+$ region_wb  &lt;chr&gt; "Europe &amp; Central Asia"
+$ geometry   &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((44.81719 39...</code></pre>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<ul>
+<li>save the sf geometry column as <code>azerbaijan_sfc</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc <span class="ot">&lt;-</span> azerbaijan_sf <span class="sc">|&gt;</span> <span class="fu">st_geometry</span>()</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>sfc_MULTIPOLYGON of length 1; first list element: List of 3
+ $ :List of 1
+  ..$ : num [1:41, 1:2] 44.8 44.8 44.8 44.9 45 ...
+ $ :List of 2
+  ..$ : num [1:206, 1:2] 48.9 48.8 48.6 48.6 48.4 ...
+  ..$ : num [1:8, 1:2] 45.6 45.6 45.5 45.5 45.5 ...
+ $ :List of 1
+  ..$ : num [1:9, 1:2] 45 45 45 45 45 ...
+ - attr(*, "class")= chr [1:3] "XY" "MULTIPOLYGON" "sfg"</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc <span class="sc">|&gt;</span> <span class="fu">class</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "sfc_MULTIPOLYGON" "sfc"             </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc <span class="sc">|&gt;</span> <span class="fu">typeof</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">3</span>]][[<span class="dv">1</span>]] <span class="sc">|&gt;</span> <span class="fu">class</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "matrix" "array" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">3</span>]][[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]     [,2]
+ [1,] 45.02363 41.02725
+ [2,] 45.00205 41.01582
+ [3,] 44.96904 41.02725
+ [4,] 44.95889 41.05264
+ [5,] 44.96143 41.07925
+ [6,] 44.99434 41.08560
+ [7,] 45.02109 41.07798
+ [8,] 45.02871 41.05386
+ [9,] 45.02363 41.02725</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>az_poly1 <span class="ot">&lt;-</span> azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">1</span>]] <span class="sc">|&gt;</span> <span class="fu">st_polygon</span>()</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>az_poly2 <span class="ot">&lt;-</span> azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]] <span class="sc">|&gt;</span> <span class="fu">st_polygon</span>()</span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>az_poly3 <span class="ot">&lt;-</span> azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">3</span>]] <span class="sc">|&gt;</span> <span class="fu">st_polygon</span>()</span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>azer_piece_sfc <span class="ot">&lt;-</span> <span class="fu">list</span>(az_poly1, az_poly2, az_poly3) <span class="sc">|&gt;</span></span>
+<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sfc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>azer_piece_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">geometry =</span> azer_piece_sfc,</span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">lab =</span> <span class="fu">c</span>(<span class="st">'Nagorno-Karabakh'</span>, <span class="st">'Azerbaijan Main'</span>, <span class="st">'Yukhari Askipara'</span>)</span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>azer_piece_sf <span class="ot">&lt;-</span> azer_piece_df <span class="sc">|&gt;</span> <span class="fu">st_as_sf</span>(<span class="at">crs =</span> <span class="dv">4326</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>azer_piece_sf <span class="sc">|&gt;</span> <span class="fu">mapview</span>(<span class="at">zcol =</span> <span class="st">'lab'</span>, <span class="at">label =</span> <span class="st">'lab'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-1e1867a6da3ce06aa496" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-1e1867a6da3ce06aa496">{"x":{"options":{"minZoom":1,"maxZoom":52,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"preferCanvas":false,"bounceAtZoomLimits":false,"maxBounds":[[[-90,-370]],[[90,370]]]},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron","CartoDB.Positron","CartoDB.Positron",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["CartoDB.DarkMatter","CartoDB.DarkMatter","CartoDB.DarkMatter",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenStreetMap","OpenStreetMap","OpenStreetMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery","Esri.WorldImagery","Esri.WorldImagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenTopoMap","OpenTopoMap","OpenTopoMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false,"pane":"tilePane"}]},{"method":"createMapPane","args":["polygon",420]},{"method":"addPolygons","args":[[[[{"lng":[44.81718750000002,44.78339843750001,44.76826171875001,44.8671875,45.03164062500002,45.07646484375002,45.12460937500001,45.14863281250001,45.15283203125,45.17255859375001,45.25253906250001,45.28828125000001,45.34990234375002,45.45683593750002,45.61074218750002,45.68740234375002,45.75048828125,45.78447265625002,45.79648437500001,45.7841796875,45.76630859375001,45.79863281250002,45.92500000000001,45.97744140625002,45.95185546875001,46.0458984375,46.07744140625002,46.11445312500001,45.921875,45.57500000000002,45.47968750000001,45.38925781250001,45.33554687500001,45.25595703125001,45.19062500000001,45.14121093750001,45.11308593750002,45.07167968750002,45.00019531250001,44.83818359375002,44.81718750000002],"lat":[39.650439453125,39.68466796875,39.70351562499999,39.71914062499999,39.76513671875,39.74282226562499,39.696337890625,39.656591796875,39.58266601562499,39.57060546875,39.595458984375,39.56557617187499,39.5298828125,39.494482421875,39.5498046875,39.5640625,39.562939453125,39.54560546875,39.488134765625,39.417236328125,39.378466796875,39.3501953125,39.28193359375,39.243896484375,39.17812499999999,39.017529296875,38.9548828125,38.877783203125,38.90791015625,38.97280273437499,39.00624999999999,39.0958984375,39.13916015625,39.194677734375,39.215625,39.25429687499999,39.311572265625,39.362890625,39.42353515625,39.6291015625,39.650439453125]}]],[[{"lng":[48.86875000000001,48.84033203125,48.63554687500002,48.59267578125002,48.41738281250002,48.38125000000002,48.30556640625002,48.26132812500001,48.22519531250001,48.20468750000001,48.02324218750002,47.99648437500002,47.99267578125,48.01933593750002,48.05009765625002,48.13857421875002,48.24199218750002,48.27509765625001,48.29208984375001,48.291015625,48.27412109375001,48.12548828125,48.10917968750002,48.10439453125002,48.11289062500001,48.13603515625002,48.25722656250002,48.32216796875002,48.28173828125,48.15107421875001,47.99589843750002,47.89228515625001,47.77285156250002,47.58183593750002,47.47617187500001,47.33847656250001,47.18837890625002,47.0654296875,46.98886718750001,46.8525390625,46.783203125,46.55478515625001,46.49062500000002,46.48671875000002,46.48984375000001,46.47539062500002,46.40146484375001,46.40029296875002,46.42031250000002,46.47714843750001,46.55000000000001,46.58476562500002,46.50664062500002,46.43730468750002,46.37841796875,46.365234375,46.36513671875002,46.37763671875001,46.47812500000001,46.48808593750002,46.4814453125,46.32167968750002,46.20205078125002,46.09482421875001,46.02587890625,45.93994140625,45.86318359375002,45.78964843750001,45.66181640625001,45.57978515625001,45.58095703125002,45.59599609375002,45.63017578125002,45.85810546875001,45.88593750000001,45.90009765625001,45.93125000000001,45.96757812500002,45.96464843750002,45.73574218750002,45.56953125000001,45.45439453125002,45.37617187500001,45.37890625,45.4013671875,45.57939453125002,45.59140625000001,45.58750000000001,45.52402343750001,45.44423828125002,45.41914062500001,45.36894531250002,45.2734375,45.10605468750001,45.07050781250001,45.06259765625001,45.07070312500002,45.19023437500002,45.18857421875001,45.15234375,45.08476562500002,45.02294921875,45.00136718750002,45.21718750000002,45.28095703125001,45.42226562500002,45.71562500000002,45.69570312500002,45.72548828125002,45.79277343750002,45.92197265625001,46.03125,46.08652343750001,46.17070312500002,46.27998046875001,46.38076171875002,46.43095703125002,46.45791015625002,46.53437500000001,46.62636718750002,46.66240234375002,46.67255859375001,46.61894531250002,46.5087890625,46.38496093750001,46.30546875000002,46.25468750000002,46.20351562500002,46.19052734375001,46.18212890625,46.18427734375001,46.20185546875001,46.25185546875002,46.30253906250002,46.34824218750001,46.40546875000001,46.42988281250001,46.53769531250001,46.55214843750002,46.5712890625,46.61601562500002,46.69033203125002,46.74931640625002,46.82558593750002,46.93085937500001,46.98779296875,47.01015625000002,47.06396484375,47.142578125,47.20527343750001,47.26113281250002,47.31767578125002,47.52060546875001,47.591796875,47.791015625,47.86113281250002,47.96367187500002,48.05605468750002,48.14228515625001,48.29814453125002,48.39140625000002,48.4306640625,48.51865234375001,48.57285156250001,48.66464843750001,48.82392578125001,49.05087890625001,49.10664062500001,49.14326171875001,49.17470703125002,49.22646484375002,49.45673828125001,49.55615234375,49.71835937500001,49.77597656250001,49.85175781250001,49.99062500000002,50.119140625,50.18251953125002,50.248046875,50.30683593750001,50.36591796875001,50.14316406250001,49.91884765625002,49.7919921875,49.66904296875001,49.55117187500002,49.47734375000002,49.41513671875001,49.32441406250001,49.32753906250002,49.36738281250001,49.36279296875,49.32119140625002,49.26933593750002,49.19980468750001,49.16533203125002,49.12099609375002,49.10869140625002,49.111328125,49.01347656250002,48.96171875000002,48.92617187500002,48.8544921875,48.85087890625002,48.86875000000001],"lat":[38.435498046875,38.437255859375,38.39873046875,38.411083984375,38.58623046875,38.60561523437499,38.6134765625,38.64228515625,38.689208984375,38.72412109375,38.81904296875,38.853759765625,38.88427734375,38.91181640625,38.935009765625,38.95864257812499,38.978955078125,38.993603515625,39.01884765625,39.05927734375,39.09912109375,39.171630859375,39.20283203125,39.24111328124999,39.281103515625,39.312353515625,39.35498046875,39.39907226562499,39.44833984375,39.560546875,39.683935546875,39.68505859375,39.64858398437499,39.54335937499999,39.49833984375,39.423876953125,39.34096679687499,39.252880859375,39.18017578125,39.1484375,39.08740234375,38.90439453125,38.906689453125,38.99746093749999,39.06943359375,39.110888671875,39.16767578125,39.1921875,39.207373046875,39.198193359375,39.201416015625,39.223681640625,39.29853515625,39.34853515624999,39.382275390625,39.40249023437499,39.416796875,39.43388671875,39.47509765625,39.51284179687499,39.55517578125,39.617431640625,39.594482421875,39.66445312499999,39.7185546875,39.7765625,39.808349609375,39.881103515625,39.95620117187499,39.9775390625,39.989013671875,40.00283203124999,40.014208984375,40.011279296875,40.024853515625,40.057080078125,40.1046875,40.1748046875,40.23378906249999,40.3291015625,40.416845703125,40.53237304687499,40.63808593749999,40.673583984375,40.70712890625,40.8044921875,40.82973632812499,40.846923828125,40.896728515625,40.947998046875,40.985693359375,41.0048828125,41.00624999999999,41.0693359375,41.07558593749999,41.088134765625,41.100830078125,41.12636718749999,41.147412109375,41.175146484375,41.19545898437499,41.245703125,41.290966796875,41.423193359375,41.449560546875,41.42529296875,41.337646484375,41.289013671875,41.26162109374999,41.2244140625,41.18671875,41.16728515625,41.183837890625,41.1978515625,41.15444335937499,41.09931640625,41.07705078124999,41.07021484374999,41.08857421875,41.15966796875,41.24550781249999,41.28681640625,41.34375,41.40556640625,41.45986328124999,41.50771484374999,41.6021484375,41.61259765625,41.624853515625,41.657080078125,41.7021484375,41.736865234375,41.7517578125,41.757080078125,41.79018554687499,41.855078125,41.890966796875,41.87041015625,41.8123046875,41.80009765625,41.80693359375,41.83134765625,41.81259765625,41.743408203125,41.67041015625,41.62138671875,41.5875,41.5546875,41.516064453125,41.455615234375,41.31508789062499,41.282421875,41.229052734375,41.218115234375,41.199267578125,41.212744140625,41.333984375,41.45869140625,41.48476562499999,41.54501953125,41.601904296875,41.663330078125,41.779345703125,41.844482421875,41.78662109375,41.62958984375,41.373974609375,41.301708984375,41.2177734375,41.11611328124999,41.026220703125,40.799853515625,40.71630859375,40.60810546875,40.583984375,40.577197265625,40.57680664062499,40.534521484375,40.50478515624999,40.461767578125,40.41220703125,40.2794921875,40.3232421875,40.31640625,40.287890625,40.2490234375,40.194140625,40.087255859375,39.83984375,39.608349609375,39.501220703125,39.398388671875,39.349560546875,39.32890625,39.28515625,39.07265624999999,39.0302734375,39.00390625,39.029052734375,39.084716796875,39.133984375,39.07875976562499,38.961767578125,38.838818359375,38.81533203124999,38.435498046875]},{"lng":[45.55234375000001,45.56230468750002,45.5341796875,45.50449218750001,45.47880859375002,45.47880859375002,45.51435546875001,45.55234375000001],"lat":[40.616064453125,40.649169921875,40.664013671875,40.66484375,40.64833984374999,40.606982421875,40.599560546875,40.616064453125]}]],[[{"lng":[45.02363281250001,45.00205078125001,44.96904296875002,44.95888671875002,44.96142578125,44.99433593750001,45.02109375000001,45.02871093750002,45.02363281250001],"lat":[41.02724609374999,41.0158203125,41.02724609374999,41.05263671874999,41.07924804687499,41.08559570312499,41.077978515625,41.05385742187499,41.02724609374999]}]]],null,"azer_piece_sf - lab",{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"pane":"polygon","stroke":true,"color":"#333333","weight":0.5,"opacity":[0.9,0.9,0.9],"fill":true,"fillColor":["#009B95","#4B0055","#FDE333"],"fillOpacity":[0.6,0.6,0.6],"smoothFactor":1,"noClip":false},["<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>1&emsp;<\/td><\/tr><tr><td>1<\/td><th>geometry&emsp;<\/th><td>sfc_POLYGON&emsp;<\/td><\/tr><tr><td>2<\/td><th>lab&emsp;<\/th><td>Nagorno-Karabakh&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>2&emsp;<\/td><\/tr><tr><td>1<\/td><th>geometry&emsp;<\/th><td>sfc_POLYGON&emsp;<\/td><\/tr><tr><td>2<\/td><th>lab&emsp;<\/th><td>Azerbaijan Main&emsp;<\/td><\/tr><\/table><\/div>","<div class='scrollableContainer'><table class=mapview-popup id='popup'><tr class='coord'><td><\/td><th><b>Feature ID&emsp;<\/b><\/th><td>3&emsp;<\/td><\/tr><tr><td>1<\/td><th>geometry&emsp;<\/th><td>sfc_POLYGON&emsp;<\/td><\/tr><tr><td>2<\/td><th>lab&emsp;<\/th><td>Yukhari Askipara&emsp;<\/td><\/tr><\/table><\/div>"],{"maxWidth":800,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"closeOnClick":true,"className":""},["Nagorno-Karabakh","Azerbaijan Main","Yukhari Askipara"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},{"stroke":true,"weight":1,"opacity":0.9,"fillOpacity":0.84,"bringToFront":false,"sendToBack":false}]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addHomeButton","args":[44.76826171875001,38.39873046875,50.36591796875001,41.890966796875,true,"azer_piece_sf___lab","Zoom to azer_piece_sf___lab","<strong> azer_piece_sf___lab <\/strong>","bottomright"]},{"method":"addLayersControl","args":[["CartoDB.Positron","CartoDB.DarkMatter","OpenStreetMap","Esri.WorldImagery","OpenTopoMap"],"azer_piece_sf - lab",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addLegend","args":[{"colors":["#4B0055","#009B95","#FDE333"],"labels":["Azerbaijan Main","Nagorno-Karabakh","Yukhari Askipara"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"factor","title":"azer_piece_sf - lab","extra":null,"layerId":null,"className":"info legend","group":"azer_piece_sf - lab"}]}],"limits":{"lat":[38.39873046875,41.890966796875],"lng":[44.76826171875001,50.36591796875001]},"fitBounds":[38.39873046875,44.76826171875001,41.890966796875,50.36591796875001,[]]},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\n      function(el, x, data) {\n      // get the leaflet map\n      var map = this; //HTMLWidgets.find('#' + el.id);\n      // we need a new div element because we have to handle\n      // the mouseover output separately\n      // debugger;\n      function addElement () {\n      // generate new div Element\n      var newDiv = $(document.createElement('div'));\n      // append at end of leaflet htmlwidget container\n      $(el).append(newDiv);\n      //provide ID and style\n      newDiv.addClass('lnlt');\n      newDiv.css({\n      'position': 'relative',\n      'bottomleft':  '0px',\n      'background-color': 'rgba(255, 255, 255, 0.7)',\n      'box-shadow': '0 0 2px #bbb',\n      'background-clip': 'padding-box',\n      'margin': '0',\n      'padding-left': '5px',\n      'color': '#333',\n      'font': '9px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif',\n      'z-index': '700',\n      });\n      return newDiv;\n      }\n\n\n      // check for already existing lnlt class to not duplicate\n      var lnlt = $(el).find('.lnlt');\n\n      if(!lnlt.length) {\n      lnlt = addElement();\n\n      // grab the special div we generated in the beginning\n      // and put the mousmove output there\n\n      map.on('mousemove', function (e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                           ' lon: ' + (e.latlng.lng).toFixed(5) +\n                           ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                           ' | zoom: ' + map.getZoom() +\n                           ' | x: ' + L.CRS.EPSG3857.project(e.latlng).x.toFixed(0) +\n                           ' | y: ' + L.CRS.EPSG3857.project(e.latlng).y.toFixed(0) +\n                           ' | epsg: 3857 ' +\n                           ' | proj4: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs ');\n      } else {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      }\n      });\n\n      // remove the lnlt div when mouse leaves map\n      map.on('mouseout', function (e) {\n      var strip = document.querySelector('.lnlt');\n      if( strip !==null) strip.remove();\n      });\n\n      };\n\n      //$(el).keypress(67, function(e) {\n      map.on('preclick', function(e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      var txt = document.querySelector('.lnlt').textContent;\n      console.log(txt);\n      //txt.innerText.focus();\n      //txt.select();\n      setClipboardText('\"' + txt + '\"');\n      }\n      });\n\n      }\n      ).call(this.getMap(), el, x, data);\n}","data":null},{"code":"function(el, x, data) {\n  return (function(el,x,data){\n           var map = this;\n\n           map.on('keypress', function(e) {\n               console.log(e.originalEvent.code);\n               var key = e.originalEvent.code;\n               if (key === 'KeyE') {\n                   var bb = this.getBounds();\n                   var txt = JSON.stringify(bb);\n                   console.log(txt);\n\n                   setClipboardText('\\'' + txt + '\\'');\n               }\n           })\n        }).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
+</div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>azer_piece_sf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">geometry</th>
+<th style="text-align: left;">lab</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">POLYGON ((44.81719 39.65044…</td>
+<td style="text-align: left;">Nagorno-Karabakh</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">POLYGON ((48.86875 38.4355,…</td>
+<td style="text-align: left;">Azerbaijan Main</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">POLYGON ((45.02363 41.02725…</td>
+<td style="text-align: left;">Yukhari Askipara</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="sfg-to-sfc" class="level2">
+<h2 class="anchored" data-anchor-id="sfg-to-sfc">sfg to sfc</h2>
+<section id="inner-ring" class="level5">
+<h5 class="anchored" data-anchor-id="inner-ring">Inner Ring</h5>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">2</span>]] <span class="sc">|&gt;</span> <span class="fu">class</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "matrix" "array" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         [,1]     [,2]
+[1,] 45.55234 40.61606
+[2,] 45.56230 40.64917
+[3,] 45.53418 40.66401
+[4,] 45.50449 40.66484
+[5,] 45.47881 40.64834
+[6,] 45.47881 40.60698
+[7,] 45.51436 40.59956
+[8,] 45.55234 40.61606</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">2</span>]] <span class="sc">|&gt;</span> <span class="fu">list</span>() <span class="sc">|&gt;</span> <span class="fu">st_polygon</span>() <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="w9_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="outer-ring" class="level4">
+<h4 class="anchored" data-anchor-id="outer-ring">Outer Ring</h4>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">1</span>]] <span class="sc">|&gt;</span> <span class="fu">dim</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 206   2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">1</span>]] <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         [,1]     [,2]
+[1,] 48.86875 38.43550
+[2,] 48.84033 38.43726
+[3,] 48.63555 38.39873
+[4,] 48.59268 38.41108
+[5,] 48.41738 38.58623
+[6,] 48.38125 38.60562</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">1</span>]] <span class="sc">|&gt;</span> <span class="fu">list</span>() <span class="sc">|&gt;</span> <span class="fu">st_polygon</span>() <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="w9_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>azerbaijan_outer_ring <span class="ot">&lt;-</span> azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">1</span>]]</span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>azerbaijan_inner_ring <span class="ot">&lt;-</span> azerbaijan_sfc[[<span class="dv">1</span>]][[<span class="dv">2</span>]][[<span class="dv">2</span>]]</span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-5"><a href="#cb101-5" aria-hidden="true" tabindex="-1"></a>azerbaijan_polygon <span class="ot">&lt;-</span> <span class="fu">st_polygon</span>(<span class="fu">list</span>(azerbaijan_outer_ring, azerbaijan_inner_ring))</span>
+<span id="cb101-6"><a href="#cb101-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-7"><a href="#cb101-7" aria-hidden="true" tabindex="-1"></a>azerbaijan_polygon <span class="sc">|&gt;</span></span>
+<span id="cb101-8"><a href="#cb101-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb101-9"><a href="#cb101-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<span id="cb101-10"><a href="#cb101-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="w9_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-chambersExtending2016" class="csl-entry" role="listitem">
+Chambers, John M. 2016. <em>Extending <span>R</span></em>. Milton, UNITED KINGDOM: CRC Press LLC.
+</div>
+<div id="ref-jamesIntroductionStatisticalLearning2021a" class="csl-entry" role="listitem">
+James, Gareth. 2021. <em>An Introduction to Statistical Learning: With Applications in <span>R</span></em>. Second edition. Springer Texts in Statistics. New York, NY: Springer.
+</div>
+<div id="ref-pebesmaSpatialDataScience2023" class="csl-entry" role="listitem">
+Pebesma, Edzer, and Roger Bivand. 2023. <em>Spatial <span>Data Science</span>: <span>With Applications</span> in <span>R</span></em>. New York: <span>Chapman and Hall/CRC</span>. <a href="https://doi.org/10.1201/9780429459016">https://doi.org/10.1201/9780429459016</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>p.&nbsp;4<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><span class="citation" data-cites="jamesIntroductionStatisticalLearning2021a">James (<a href="#ref-jamesIntroductionStatisticalLearning2021a" role="doc-biblioref">2021</a>)</span>, p.&nbsp;43<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

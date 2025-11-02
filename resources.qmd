@@ -1,0 +1,79 @@
+---
+title: "R for Geospatial Data Analysis: Learning Resources"
+subtitle: "GIS & Geospatial Data Analysis (Fall 2025)"
+execute:
+  echo: true
+format:
+  html:
+    output-file: "resources-idx.html"
+    css: styles.css
+    toc: true
+    df-print: kable
+    link-external-icon: true
+    link-external-newwindow: true
+---
+
+## Extra Resources
+
+Please check out the [Resources page](https://jjacobs.me/ppol6805/resources.html) of the main course site, there are already many books and online publications that can support your out-of-classroom GIS learning.
+
+I hope this page will also be helpful by putting together urls that I mentioned in TA session.
+
+### Cheatsheets
+
+In this section, I gathered the following cheatsheets for most of the packages that we have been using in this class, mainly from the Posit cheatsheets listing page, and rstudio github page
+
+#### Packages that would be loaded when you call `library(tidyverse)`
+
+|tidyverse|    |    |
+|------------------------------------------------------------------------|------------------------------------------------------------------------------------|-----------------------------------------------------------|
+| [dplyr](https://rstudio.github.io/cheatsheets/data-transformation.pdf) | [tidyr](https://rstudio.github.io/cheatsheets/tidyr.pdf)  | [stringr](https://rstudio.github.io/cheatsheets/strings.pdf)                      |
+| [readr](https://rstudio.github.io/cheatsheets/html/data-import.html)   | [purrr](https://rstudio.github.io/cheatsheets/purrr.pdf)                          | [lubridate](https://github.com/rstudio/cheatsheets/blob/main/lubridate.pdf)        | -                                   
+| [ggplot](https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf) || [forcats](https://rstudio.github.io/cheatsheets/factors.pdf)      |                                                     
+
+#### Base R
+
+- [baseR cheatsheet](https://rstudio.github.io/cheatsheets/base-r.pdf)
+  
+#### R Spatial
+
+- [sf](https://github.com/rstudio/cheatsheets/blob/main/sf.pdf)
+
+### Other Documentations
+
+Package Manuals and Books
+
+:::: {.columns}
+
+::: {.column}
+
+- [sf](https://r-spatial.github.io/sf/reference/index.html)
+- [spatstat](https://spatstat.org/resources/spatstatManual.pdf)
+- spdep:
+  - [spdep book](https://cran.r-project.org/web/packages/spdep/spdep.pdf)
+  - [spdep functions](https://r-spatial.github.io/spdep/reference/index.html)
+
+:::
+
+::: {.column}
+
+- [mapview](https://r-spatial.github.io/mapview/index.html)
+- [rnaturalearth](https://docs.ropensci.org/rnaturalearth/reference/index.html)
+- [r-spatial](https://github.com/r-spatial)
+- [ggplot for sf](https://ggplot2.tidyverse.org/reference/ggsf.html)
+
+:::
+
+::: {.column}
+
+- [terra](https://rspatial.org/pkg/terraPackage.pdf)
+- [stars](https://r-spatial.github.io/stars/)
+- [tidyterra](https://dieghernan.github.io/tidyterra/reference/index.html)
+
+:::
+
+::::
+
+### Finding Help
+
+- Google the error message you received, and look for links to github issues in the results page

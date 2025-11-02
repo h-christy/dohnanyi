@@ -1,0 +1,254 @@
+---
+title: "R Coding Workshop: 4th Meeting"
+subtitle: "GIS & Geospatial Data Analysis (Fall 2025)"
+execute:
+  echo: true
+format:
+  html:
+    output-file: "w6-idx.html"
+    css: styles.css
+    toc: true
+    df-print: kable
+  revealjs:
+    output-file: "w6-slides.html"
+    css: styles.css
+    df-print: kable
+    slide-number: true
+    scrollable: true
+    code:
+      echo: true
+      eval: true
+---
+
+## R Coding Workshop: 4th Meeting
+
+## Outline
+
+- R Functions
+- dplyr functions
+  - `arrange()`
+  - `slice_sample()`
+- define your own function
+- ggplot2
+
+## R Functions
+
+```{r}
+library(tidyverse)
+library(sf)
+library(mapview)
+library(rnaturalearth)
+library(viridis)
+```
+
+## Using base and imported functions
+
+::: {.columns}
+::: {.column}
+
+Functions from Base R
+```{r}
+class(print) |> print()
+class(class)
+```
+
+```{r}
+long_df <- tibble(
+    value = 1:37
+)
+print(long_df)
+```
+
+```{r}
+long_df |> print(n = 37)
+```
+
+::::
+::: {.column}
+Imported functions
+
+```{r}
+class(select)
+class(mapview)
+```
+
+:::
+::::
+
+
+## Components of a Function
+
+## When we want to write our own Function
+
+- copy-and-paste
+- vector operations
+- creating plots
+
+## Components of a Function
+
+- Function Name: Usually a verb
+- Parameters: Variable provided when you defined your function,they act as a placeholder for expected input
+- Arguments: Variable specified at the time you use the function
+- Return: Output of the function
+
+```{r}
+add_four <- function(x) x + 4
+add_four |> class() |> print()
+```
+
+::: {.columns}
+::: {.column}
+
+```{r}
+add_four <- function(x) x + 4
+add_four |> class() |> print()
+```
+
+::::
+::: {.column}
+```{r}
+a <- 1.46
+add_four(a)
+v1 <- c(1, 9, 8, 8)
+add_four(v1)
+```
+```{r}
+v1 + 4
+```
+```{r}
+sapply(v1, add_four)
+```
+```{r}
+long_df$value |> add_four()
+```
+
+:::
+::::
+
+
+```{r}
+book_challenge_sf <- st_read('data/book-challenges-state-sf.gpkg')
+
+book_challenge_sf |> mapview(zcol = 'count')
+```
+
+## Getting familiar with how functions work
+
+- `paste()` and `paste0()` function 
+```{r}
+create_label <- function(unit, count) {
+    paste0(unit, ': ', count)
+}
+```
+
+```{r}
+book_challenge_sf <- book_challenge_sf |> mutate(lab = create_label(gn_name, count))
+book_challenge_sf |> mapview(zcol = 'count', label = 'lab')
+```
+
+## Plotting Function
+
+::: {.columns}
+::: {.column}
+```{r}
+book_challenge_sf |>
+  filter(!(postal %in% c('HI', 'AK'))) |>
+  ggplot() +
+  geom_sf(
+    aes(fill = count),
+    color = 'white',
+    size = 0.1
+  ) +
+  geom_sf_label(
+    aes(label = postal),
+    size = 2.5,
+    fill = 'white',
+    alpha = 0.7,
+    color = 'black'
+  ) +
+  scale_fill_viridis(na.value = '#E2E2E2') +
+  theme_minimal() +
+  labs(
+    title = 'Book Challenges by State',
+    subtitle = '2000-2010'
+  )
+```
+
+::::
+::: {.column}
+```{r}
+plot_state_choropleth <- function(sf, col_str, plt_title) {
+    sf |>
+    filter(!(postal %in% c('HI', 'AK'))) |>
+    ggplot() +
+    geom_sf(
+      aes_string(fill = col_str),
+      color = 'white',
+      size = 0.1
+    ) +
+    geom_sf_label(
+      aes(label = postal),
+      size = 2.5,
+      fill = 'white',
+      alpha = 0.7,
+      color = 'black'
+    ) +
+    scale_fill_viridis(na.value = '#E2E2E2') +
+    theme_minimal() +
+    labs(
+      title = plt_title,
+      subtitle = '2000-2010'
+    )
+}
+```
+
+:::
+::::
+```{r}
+plot_state_choropleth(
+    book_challenge_sf,
+    'count',
+    'Book Challenges by State'
+    )
+```
+```{r}
+plot_state_choropleth(book_challenge_sf, 'median_income', 'State Median Income')
+```
+```{r}
+book_challenge_sf |> plot_state_choropleth('political_value_index', 'Political Value Index')
+```
+
+## `arrange()`
+
+- Sort observations by column value
+```{r}
+book_challenge_sf |>
+  arrange(desc(count)) |>
+  pull(lab)
+```
+
+```{r}
+book_challenge_sf |>
+  arrange(political_value_index) |>
+  select(gn_name, count, political_value_index)
+```
+
+```{r}
+book_challenge_df <- read_csv('data/book-challenge11.csv')
+```
+
+```{r}
+book_challenge_df |> arrange(author, title) |> head(10)
+```
+
+## `slice_sample()`
+
+```{r}
+book_challenge_df |> slice_sample(n = 10)
+```
+
+```{r}
+book_challenge_df |>
+  filter(state == 'PA') |>
+  slice_sample(n = 10)
+```

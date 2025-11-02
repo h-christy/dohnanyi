@@ -1,0 +1,218 @@
+---
+title: "R Coding Workshop: Demo"
+subtitle: "GIS & Geospatial Data Analysis (Fall 2025)"
+execute:
+  echo: true
+format:
+  html:
+    output-file: "w6-demo-idx.html"
+    css: styles.css
+    toc: true
+    df-print: kable
+bibliography: dohnanyi.bib
+---
+
+## Note 1: Bringing Point Data in Place
+
+This demo is meant to provide a walkthrough that people might find relevant as they begin looking for potential datasets for their final project, especially in showing what steps to take when spatial data appears off during the EDA phase.
+
+For illustration, I will be using the replication data for Steven Brooke and Neil Ketchley's 2018 paper *“Social and Institutional Origins of Political Islam”* downloaded from dataverse (@brookeSocialInstitutionalOrigins2018)
+
+The 2018 study associated the Muslim Brotherhood branches in Interwar Egypt (204 branches in 1937 and 238 in 1940) with the 4230 subdistricts from the 1937 census appendices. Therefore, each row, or a point, in this dataset represents a subdistrict, where there are variables such as population characteristics, presence of Muslim Brotherhood branches, presence of state railway stations, and other attributes that describes the subdistrict.^[some variables are attributes of divisions a level higher]
+
+
+### Read and Count: understanding the *Unit(s) of Observation* of our dataset
+
+Now we get the sense that though we have data on subdistricts, yet the granularity for the spatial variable is only at administrative level 2 (disrict or qism)
+
+We would like to start with understanding the unit of observation of our dataset, and we especially wanted to look into how these observations are represented spatially in the data that we have.
+
+::: {.callout-note}
+
+Egypt subnational divisions
+
+- Governoratemuhafatha (administrative level 1)
+- District: Qism (level 2), 142 qisms
+- Subdistrict: Subdistrict Name (level 3)^[There weren't more than one presence of MB branches in a subdistrict, thus of the 4000 subdistrict, each can be mark as presence or absence of MB branch]
+
+:::
+
+
+```{r}
+library(tidyverse)
+library(sf)
+library(mapview)
+library(rnaturalearth)
+library(viridis)
+```
+
+```{r}
+eg_subdistrict_df <- read_csv('data/mb-interwar-egypt-decoded.csv')
+```
+
+```{r}
+eg_subdistrict_df |> dim() |> print()
+eg_subdistrict_df |> head()
+```
+
+```{r}
+mb_df <- eg_subdistrict_df |>
+  filter(mb_1940 + mb_1940 > 0)
+mb_df |> count(district_X) |> dim()
+
+```
+```{r}
+set.seed(103)
+eg_subdistrict_df |> slice_sample(n = 6)
+```
+
+```{r}
+eg_subdistrict_df |> filter(mb_1937 + mb_1940 > 0) |> dim()
+```
+
+```{r}
+eg_subdistrict_df |>
+  group_by(qism) |>
+  summarize(
+    coords_count = n_distinct(district_X)
+  )
+```
+
+```{r}
+eg_subdistrict_df |> filter(is.na(district_X))
+```
+
+```{r}
+eg_subdistrict_df |> filter(qism == '
+Qism al-Sharq (Maryut)') |> filter(is.na(district_X))
+```
+
+```{r}
+eg_subdistrict_sf <- eg_subdistrict_df |> filter(!is.na(district_X)) |> st_as_sf(coords = c('district_X', 'district_Y'), crs = 4326)
+eg_subdistrict_sf |>
+  count(qism) |>
+  mapview(label = 'muhafatha')
+```
+
+```{r}
+eg_subdistrict_sf |> filter(muhafatha == 'al-Qahira') |> count(name) |> tail()
+```
+
+```{r}
+egypt_sf <- ne_countries(country = 'Egypt', scale = 50) |> select(geounit)
+```
+
+## Case: preserving the coords
+
+```{r}
+eg_subdistrict_sf <- eg_subdistrict_sf |>
+  mutate(
+    longitude = format(st_coordinates(geometry)[, 1], digits = 12),
+    latitude = format(st_coordinates(geometry)[, 2], digits = 12)
+  )
+```
+```{r}
+eg_subdistrict_sf |> select(name, longitude, latitude) |> slice_sample(n = 5)
+```
+
+## Case: `st_intersects()` as a spatial filter
+
+```{r}
+intersect_list <- st_intersects(eg_subdistrict_sf, egypt_sf)
+intersect_list |> class()
+```
+
+```{r}
+eg_subdistrict_sf$n_intersections <- lengths(intersect_list)
+```
+
+```{r}
+eg_subdistrict_sf |>
+  filter(n_intersections < 1) |> mapview()
+```
+
+## `flip_lonlat()` Function
+
+```{r}
+flip_lonlat <- function(geom) {
+    old_coords <- st_coordinates(geom)
+
+    st_point(c(old_coords[2], old_coords[1]))
+}
+```
+
+```{r}
+flipped_sf <- eg_subdistrict_sf |>
+  filter(n_intersections < 1) |>
+  mutate(geometry = map(geometry, flip_lonlat) |>
+  st_sfc(crs = 4326))
+flipped_sf |> mapview()
+```
+
+```{r}
+flipped_sf |> select(longitude, latitude) |> slice_sample(n = 4)
+```
+
+- sanity check here, Rafah crossing, Ismailiya, Giza and Port Said, at a quick look everything seems to be in place
+  
+```{r}
+flipped_sf |> st_crs()
+```
+```{r}
+flipped_sf |>
+  ggplot() + 
+  geom_sf()
+```
+
+
+## Case: Update
+
+```{r}
+flipped_sf <- flipped_sf |>
+  mutate(
+    old_lon = longitude,
+    longitude = latitude,
+    latitude = old_lon
+  ) |>
+  select(-old_lon)
+
+flipped_sf |> select(longitude, latitude) |> slice_sample(n = 4)
+```
+
+```{r}
+flipped_sf |> mapview(label = 'qism')
+```
+
+```{r}
+valid_sf <- eg_subdistrict_sf |>
+  filter(n_intersections > 0)
+valid_sf |> dim()
+```
+
+```{r}
+fixed_subdistrict_sf <- bind_rows(valid_sf, flipped_sf)
+```
+
+```{r}
+fixed_subdistrict_sf |> count(qism) |> mapview(label = 'muhafatha')
+```
+
+```{r}
+fixed_subdistrict_sf |> summary()
+```
+
+```{r}
+fixed_subdistrict_sf |> count(qism, latitude, longitude) |> slice_sample(n = 10)
+```
+
+```{r}
+fixed_subdistrict_sf |> count(qism, latitude, longitude) |> dim()
+```
+
+```{r}
+fixed_subdistrict_sf |> arrange(desc(greek)) |> head(10) |> mapview()
+```
+```{r}
+fixed_subdistrict_sf |> filter(muhafatha == 'al-Qahira') |> arrange(desc(french)) |> head(10) |> mapview()
+```
+

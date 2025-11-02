@@ -1,0 +1,222 @@
+---
+title: "R Coding Workshop: 5th Meeting"
+subtitle: "GIS & Geospatial Data Analysis (Fall 2025)"
+execute:
+  echo: true
+format:
+  html:
+    output-file: "w7-idx.html"
+    css: styles.css
+    toc: true
+    df-print: kable
+  revealjs:
+    output-file: "w7-slides.html"
+    css: styles.css
+    df-print: kable
+    slide-number: true
+    scrollable: true
+    code:
+      echo: true
+      eval: true
+---
+
+## R Coding Workshop: 5th Meeting
+
+## Outline
+
+- resources
+- Combining Data Frames
+- more on df to sf, sf to df
+- debugging
+
+## Working with Multiple Data Frames
+
+```{r}
+library(tidyverse)
+library(sf)
+library(terra)
+library(mapview)
+library(rnaturalearth)
+```
+
+## Combining data frames of the same shape
+
+- `bind_cols()` and `bind_rows()` can combine two or more data frames
+- `cbind()` and  `rbind()`
+```{r}
+division_df <- tibble(
+    division_str = c(
+        'New England', 'Middle Atlantic', 'East North Central',
+        'West North Central', 'South Atlantic', 'East South Central',
+        'West South Central', 'Mountain', 'Pacific'
+    )
+)
+division_code_df <- tibble(
+    division_code = 1:9
+)
+paste(
+    'Dimensions of division_df:', dim(division_df),
+    'Dimensions of division_code_df', dim(division_code_df)) |> print()
+```
+
+```{r}
+division_lookup <- bind_cols(
+    division_code_df, division_df
+)
+division_lookup
+```
+
+## `bind_rows()`:
+
+- check if colnames align
+
+```{r}
+book_df <- read_csv('data/book-challenge11.csv')
+```
+
+```{r}
+removed_tb <- book_df |> count(state, removed) |> filter(removed == 1)
+challenged_tb <- book_df |> count(state)
+removed_tb |> dim() |> print()
+challenged_tb |> dim() |> print()
+```
+
+```{r}
+not_removed_tb <- book_df |>
+  group_by(state) |>
+  summarize(n = sum(removed == 0)) |>
+  mutate(var = 'not removed')
+not_removed_tb |> tail()
+```
+```{r}
+removed_tb <- book_df |>
+  group_by(state) |>
+  summarize(n = sum(removed == 1)) |>
+  mutate(var = 'removed')
+removed_tb |> tail()
+```
+
+```{r}
+all_tb <- book_df |>
+  count(state) |>
+  mutate(var = 'all')
+all_tb |> tail()
+```
+
+```{r}
+count_df <- bind_rows(all_tb, removed_tb, not_removed_tb)
+count_df |> dim()
+```
+
+```{r}
+count_df |> arrange(state) |> tail()
+```
+
+```{r}
+removed_df <- book_df |>
+  mutate(removed = as.factor(removed)) |>
+  count(state, removed, .drop = FALSE)
+removed_df |> dim()
+```
+
+
+## Joins
+
+- `left_join()`, `inner_join()`, `right_join()`, `full_join()`, `semi_join()`, and `anti_join()`.
+- Binary operation on dataframes
+  - takes pair of data frames (x, y)
+
+```{r}
+region_lookup <- tibble(
+    region_code = 1:4,
+    region_str = c('Northeast', 'Midwest', 'South','West')
+)
+```
+```{r}
+regions <- state.region |> 
+  recode("North Central" = "Midwest")
+regions
+```
+
+```{r}
+state_region_df <- tibble(
+  state_abb = state.abb,
+  region_str = regions
+)
+```
+
+`left_join()` retains the number of rows of the data frame on the left (x)
+
+```{r}
+state_region_df <- state_region_df |>
+  left_join(region_lookup, join_by(region_str))
+state_region_df
+```
+
+## Joins sf and df
+
+- [TIGER/Line Shapefiles](https://www.census.gov/geographies/mapping-files/2010/geo/tiger-line-file.html)
+
+```{r}
+state_vars <- c('REGION10', 'DIVISION10', 'GEOID10', 'STUSPS10', 'NAME10', 'ALAND10', 
+'AWATER10', 'INTPTLAT10', 'INTPTLON10', 'geometry')
+```
+```{r}
+st_layers('data/tl_2010_us_state10')
+us_state_sf <- st_read('data/tl_2010_us_state10')|>
+  select(any_of(state_vars))
+us_state_sf |> head(4)
+```
+
+```{r}
+us_state_sf |> st_crs()
+```
+
+- [imls](https://www.imls.gov/research-evaluation/surveys/public-libraries-survey-pls)
+
+```{r}
+lib_df <- read_csv('data/public-libraries-2010.csv')
+lib_df |> summary()
+```
+
+```{r}
+lib_sf <- lib_df |> left_join(us_state_sf, join_by(STABR == STUSPS10))
+```
+
+```{r}
+#| error: true
+lib_sf |> mapview()
+```
+
+## Joins df to sf
+
+- check missing values in geometry column
+
+```{r}
+lib_sf <- lib_df |> filter(!(STABR %in% c('GU', 'MP', 'VI'))) |> left_join(us_state_sf, join_by(STABR == STUSPS10))
+```
+
+```{r}
+lib_sf <- lib_sf |>
+  st_as_sf(
+    geometry = lib_sf$geometry,
+    crs = 4269
+)
+lib_sf |> mapview(zcol = 'CENTLIB')
+```
+
+```{r}
+lib_sf |> class()
+# result of subsetting
+```
+
+```{r}
+lib_sf2 <- us_state_sf |> left_join(lib_df, join_by(STUSPS10 == STABR))
+lib_sf2 |> mapview(zcol = 'CENTLIB')
+```
+
+```{r}
+lib_sf2 |> head()
+```
+
+## Debugging

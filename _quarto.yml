@@ -20,12 +20,24 @@ website:
           text: Zoom Link
         - href: "https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=c20d8a0c-387a-4d76-8ba8-b35700c9ee1f"
           text: Recordings
+        - href: resources.qmd
+          text: Resources
         - href: w3.qmd
           text: "Week 3"
         - href: w4.qmd
           text: "Week 4"
         - href: w5.qmd
           text: "Week 5"
+        - href: w6.qmd
+          text: "Week 6"
+        - href: w6-demo.qmd
+          text: "Week 6 Demo"
+        - href: w7.qmd
+          text: "Week 7"
+        - href: w9.qmd
+          text: "Week 9"
+        - href: w10.qmd
+          text: "Week 10"
 
 # format:
 #   html:
