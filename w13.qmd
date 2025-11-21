@@ -1,0 +1,372 @@
+---
+title: "R Coding Workshop: 10th Meeting"
+subtitle: "GIS & Geospatial Data Analysis (Fall 2025)"
+execute:
+  echo: true
+format:
+  html:
+    output-file: "w13-idx.html"
+    css: styles.css
+    toc: true
+    df-print: kable
+  revealjs:
+    output-file: "w13-slides.html"
+    css: styles.css
+    df-print: kable
+    slide-number: true
+    scrollable: true
+    code:
+      echo: true
+      eval: true
+bibliography: r4spatial-workshop.bib
+---
+
+## R Coding Workshop for GIS: 10th Meeting
+
+```{r, include=FALSE}
+library(tidyverse)
+library(sf)
+library(mapview)
+library(rnaturalearth)
+library(viridis)
+library(spdep)
+library(sfdep)
+library(spatstat)
+library(terra)
+library(stars)
+library(scales)
+library(leaflet)
+library(osmdata)
+library(raster)
+
+palette4 <- c(
+  '#A597C5', '#D2CDDF', '#FFFFD1', 
+  '#CEE8B9','#86BDB1', '#54766E'
+)
+```
+
+## Outline
+
+- Open Street Map
+- Project checklist
+- Raster Data
+
+## Open Street Map
+
+1. use place name to search for bounding box
+```{r}
+?getbb
+```
+
+```{r}
+taipei_bb_results <- getbb(place_name = 'taipei', format_out='sf_polygon')
+taipei_bb_results
+```
+
+```{r}
+tpc_bb <- taipei_bb_results |> filter(place_id == 213710844)
+```
+```{r}
+ntpc_bb <- taipei_bb_results |> filter(place_id == 212454050)
+ntpc_bb |> mapview()
+```
+
+## `osmdata`
+
+2. create a query
+```{r}
+# assign("has_internet_via_proxy", TRUE, environment(curl::has_internet))
+```
+```{r}
+tpc_mosque_results <- tpc_bb |>
+  opq() |> 
+  add_osm_feature(key='building', value = 'mosque') |>
+  osmdata_sf()
+tpc_mosque_results
+```
+
+3. leaflet visualization
+```{r}
+leaflet() |>
+  addProviderTiles('CartoDB.Positron') |>
+  addPolygons(
+    data = tpc_mosque_results$osm_polygons,
+    color = "purple"
+  )
+```
+
+```{r}
+tpc_mosque_polygon_sf <- tpc_mosque_results$osm_polygons
+```
+
+## `osmdata`
+
+```{r}
+kentucky_bb <- getbb('kentucky, USA')
+kentucky_bb
+```
+
+1. Bounding Box
+
+```{r}
+ky_results <- kentucky_bb |>
+  opq() |>
+  add_osm_feature(key = 'boundary', value = 'administrative') |>
+  add_osm_feature(key = 'admin_level', value = '4') |>
+  add_osm_feature(key = 'name', value = 'Kentucky') |>
+  osmdata_sf()
+ky_results
+```
+
+```{r}
+ky_sf <- ky_results$osm_multipolygons
+ky_vars <- c("osm_id", "name", "ISO3166-2", "admin_level", "border_type", 
+"boundary", "nickname", "official_name", "ref", "ref:USCG", "ref:USPS", "ref:fips", 
+"short_name", "source:short_name", "type", 
+"wikidata", "wikipedia", "geometry")
+```
+```{r}
+ky_sf <- ky_sf |> dplyr::select(all_of(ky_vars))
+ky_sf |> mapview()
+```
+```{r}
+ky_bookcase_results <- kentucky_bb |>
+  opq() |>
+  add_osm_feature(key='amenity', value = 'public_bookcase') |>
+  osmdata_sf()
+ky_bookcase_results
+```
+
+```{r}
+ky_bookcase_sf <- ky_bookcase_results$osm_points
+```
+
+```{r}
+# ky_convex_sf <- ky_sf |> st_convex_hull() |> st_buffer()
+# ky_convex_sf |> mapview()
+ky_bbox_sf <- ky_sf |> st_bbox() |> st_as_sfc() |> st_as_sf(crs = 4326)
+ky_bbox_sf |> mapview()
+```
+
+
+
+
+## Tessellation
+
+```{r}
+library(tigris)
+```
+```{r}
+uac_sf <- urban_areas(year = 2020, progress_bar = FALSE)
+```
+```{r}
+uac_sf |> st_crs() |> print()
+ky_sf |> st_crs() |> print()
+uac_sf <- uac_sf |> st_transform(4326)
+```
+
+```{r}
+ky_uac_sf <- uac_sf[ky_sf,]
+ky_urban_bookcase_sf <- ky_bookcase_sf[ky_uac_sf,]
+ky_urban_bookcase_sf |> dim()
+```
+
+```{r}
+mapview(ky_sf, col.region = 'lightblue', alpha.regions = 0.6, map.types = 'CartoDB.Positron') +
+  mapview(ky_uac_sf, col.regions = 'yellow') + 
+  mapview(ky_urban_bookcase_sf, cex = 4)
+```
+
+## Observation Window
+
+```{r}
+kybb_uac_sf <- uac_sf[ky_bbox_sf,]
+kybb_uac_sf |> mapview()
+```
+```{r}
+ky_bookcase_sf[kybb_uac_sf,] |> dim()
+```
+
+## ppp
+
+```{r}
+ky_owin <- ky_bbox_sf |> st_transform(3857) |> as.owin()
+
+ky_urban_owin <- kybb_uac_sf |>
+  st_simplify(dTolerance = 200) |>
+  st_intersection(ky_bbox_sf) |>
+  st_transform(3857) |>
+  as.owin()
+# plot(ky_urban_owin)
+```
+```{r}
+ky_bookcase_ppp <- ky_bookcase_sf |>
+  st_as_sfc() |>
+  st_transform(3857) |>
+  as.ppp(W = ky_owin)
+plot(ky_bookcase_ppp)
+```
+
+## Dividing the observation window
+
+```{r}
+urban_rural_tess <- tess(
+  tiles = list(
+    urban = ky_urban_owin,
+    rural = setminus.owin(ky_owin, ky_urban_owin)
+  )
+)
+```
+```{r}
+urban_rural_tess |> class()
+```
+
+## Simulation
+
+```{r}
+set.seed(6805)
+gen_sim_ppp <- function() {
+  prot_sim <- spatstat.random::rpoint(
+    n = nrow(ky_bookcase_sf),
+    w = ky_owin
+  )
+  return(prot_sim)
+}
+sim_prot_ppp <- gen_sim_ppp()
+plot(sim_prot_ppp)
+```
+
+```{r}
+compute_tile_counts <- function(ppp_obj) {
+  class_list <- tileindex(
+    ppp_obj,
+    Z = urban_rural_tess
+  )
+  count_tb <- table(class_list)
+  count_df <- tibble(
+    urban = count_tb[1],
+    rural = count_tb[2]
+  )
+
+  return(count_df)
+}
+```
+
+```{r}
+compute_tile_counts(sim_prot_ppp)
+```
+
+```{r}
+compute_tile_counts(ky_bookcase_ppp)
+```
+
+## Simulation
+
+```{r}
+set.seed(6805)
+gen_sims_ppp <- function(num_sims = 999) {
+  bkcase_sims <- spatstat.random::rpoint(
+    n = nrow(ky_bookcase_sf),
+    w = ky_owin,
+    nsim = num_sims
+  )
+  return(bkcase_sims)
+}
+bkcase_sims_list <- gen_sims_ppp()
+```
+```{r}
+# compute_tile_counts <- function(ppp_obj) {
+#   class_list <- tileindex(
+#     ppp_obj,
+#     Z = urban_rural_tess
+#   )
+#   counts <- class_list |>
+#     table() |>
+#     as.vector()
+#   names(counts) <- c('urban', 'rural')
+
+#   return(counts)
+# }
+```
+
+
+```{r}
+sims_tess_counts <- lapply(
+  X = bkcase_sims_list,
+  FUN = compute_tile_counts
+)
+sim_df <- sims_tess_counts |> bind_rows()
+sim_df |> slice_sample(n = 4)
+```
+
+```{r}
+obs_df <- compute_tile_counts(ky_bookcase_ppp)
+obs_df
+```
+
+```{r}
+bind_df <- bind_rows(sim_df, obs_df)
+bind_df |> dim()
+```
+
+```{r}
+bind_df |>
+  ggplot(aes(x = rural)) +
+  geom_density(fill = palette4[2], alpha = 0.7) +
+  geom_vline(
+    xintercept = 9,
+    linetype = 'dashed',
+    color = palette4[5]
+  ) +
+    theme_classic()
+
+```
+
+## Raster
+
+```{r}
+pop_raster <- raster(
+  'data/gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min.tif'
+)
+pop_raster
+```
+
+```{r}
+bbox_extent <- extent(-89.57151, -81.96454, 36.49712, 39.14780)
+pop_raster_sub <- crop(pop_raster, bbox_extent)
+```
+
+```{r}
+pop_poly <- pop_raster_sub |> raster::rasterToPolygons(n = 8, na.rm = TRUE)
+pop_poly
+```
+
+```{r}
+pop_sf <- st_as_sf(pop_poly)
+pop_sf |> glimpse()
+```
+
+```{r}
+pop_sf <- pop_sf |> rename(pop_count = gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min)
+```
+
+```{r}
+gpw_map <- pop_sf |>
+  ggplot(aes(fill = pop_count)) +
+  geom_sf(color = scales::alpha("white",0)) +
+  scale_fill_viridis_c(trans = 'pseudo_log') + 
+  theme_minimal() +
+  labs(
+    title = "Population Counts",
+    subtitle = 'GPW V.4 2020-07-01',
+    fill = "Population Count"
+    ) + 
+  theme(
+    plot.title = element_text(hjust=0.5),
+    plot.subtitle = element_text(hjust=0.5)
+    )
+
+ggsave('image/gpw-raster.png', plot = gpw_map)
+
+gpw_map
+```

@@ -1,0 +1,195 @@
+---
+title: "R Coding Workshop: 9th Meeting"
+subtitle: "GIS & Geospatial Data Analysis (Fall 2025)"
+execute:
+  echo: true
+format:
+  html:
+    output-file: "w12-idx.html"
+    css: styles.css
+    toc: true
+    df-print: kable
+  revealjs:
+    output-file: "w12-slides.html"
+    css: styles.css
+    df-print: kable
+    slide-number: true
+    scrollable: true
+    code:
+      echo: true
+      eval: true
+bibliography: r4spatial-workshop.bib
+---
+
+## GIS Coding Workshop: 9th Meeting
+
+```{r, include=FALSE}
+library(tidyverse)
+library(sf)
+library(mapview)
+library(rnaturalearth)
+library(viridis)
+library(spdep)
+library(sfdep)
+library(spatstat)
+library(terra)
+library(stars)
+library(scales)
+```
+
+## Outline
+
+- Data Import
+- ggplot
+
+## Data Import
+
+`download.file()` download files from an url
+
+```{r}
+grandison_url <- "https://www.gutenberg.org/cache/epub/13884/pg13884.txt"
+
+download.file(url = grandison_url, destfile = 'grandison.txt', quiet = TRUE)
+```
+```{r}
+grandison_text <- readLines('grandison.txt')
+grandison_text |> head()
+```
+
+## Components of `ggplot`
+
+:::: {.columns}
+::: {.column}
+
+We can define an `ggplot` object by specifying:
+
+- data
+- aesthetic mapping
+- geometry layer
+
+:::
+::: {.column}
+
+Patterns
+- use `+` to introduce more layers or components
+
+```{r}
+bk_df <- read_csv('data/us-main-books.csv')
+bk_df |> glimpse()
+```
+
+```{r}
+bkmob_plot <- bk_df |>
+    ggplot(aes(x = BKMOB)) +
+    geom_histogram()
+```
+
+```{r}
+bkmob_plot |> class()
+```
+
+:::
+::::
+
+## Data
+
+```{r}
+tigris_vars <- c("STUSPS10", "NAME10", "ALAND10", "AWATER10", "INTPTLAT10", "INTPTLON10")
+main_states <- bk_df |> pull(state)
+library(tigris)
+state_sf <- states(year = 2010, progress_bar = FALSE) |> 
+    select(any_of(tigris_vars)) |>
+    filter(STUSPS10 %in% main_states)
+
+state_sf |> st_crs() |> print()
+```
+```{r}
+bk_sf <- state_sf |>
+    left_join(bk_df, join_by(STUSPS10 == state))
+bk_sf |> slice_sample(n = 2)
+```
+
+## Aesthetic Mapping
+
+Common aesthetic attributes
+
+- Position (x, y)
+- Color (or, fill)
+- Other visual features: size and shape (size, shape, linewidth)
+
+```{r}
+bk_sf |>
+    ggplot(
+        aes(
+            x = CENTLIB,
+            y = BKMOB,
+            color = division_str,
+            label = STUSPS10
+        )
+    ) +
+    geom_label(size = 2) +
+    labs(
+        x = 'Central Library Count',
+        y = 'Bookmobile Count'
+    )
+```
+
+::: {.callout-tip}
+
+`labs()`: to customize plot labels
+:::
+
+## Save your plot
+
+```{r}
+plot1 <- bk_sf |>
+    ggplot(
+        aes(
+            x = CENTLIB,
+            y = BKMOB,
+            color = division_str,
+            label = STUSPS10
+        )
+    ) +
+    geom_label(size = 3.5) +
+    labs(
+        x = 'Central Library Count',
+        y = 'Bookmobile Count'
+    )
+
+```
+```{r}
+ggsave(
+    filename = 'lib-bkmob-scatterplot.png',
+    plot = plot1,
+    width = 20,
+    height = 10,
+    dpi = 300
+)
+```
+
+![](lib-bkmob-scatterplot.png)
+
+
+
+## geom_sf
+
+```{r}
+bk_sf |> mapview(zcol = 'BKMOB')
+```
+
+
+```{r}
+bk_sf |>
+    ggplot() +
+    geom_sf(aes(fill = (BKMOB / POPU_LSA))) +
+    geom_sf_label(aes(label = STUSPS10), size = 1.5, fill = "white", alpha = 0.7, color = "black") +
+    theme_classic() +
+    scale_fill_viridis() +
+    labs(
+        x = 'Longitude',
+        y = 'Latitude',
+        fill = "Number of Bookmobiles per Capita"
+    )
+```
+

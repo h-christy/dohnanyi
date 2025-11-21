@@ -52,6 +52,7 @@ Package Manuals and Books
 - spdep:
   - [spdep book](https://cran.r-project.org/web/packages/spdep/spdep.pdf)
   - [spdep functions](https://r-spatial.github.io/spdep/reference/index.html)
+- sfdep: [sfdep](https://sfdep.josiahparry.com/)
 
 :::
 
@@ -61,6 +62,7 @@ Package Manuals and Books
 - [rnaturalearth](https://docs.ropensci.org/rnaturalearth/reference/index.html)
 - [r-spatial](https://github.com/r-spatial)
 - [ggplot for sf](https://ggplot2.tidyverse.org/reference/ggsf.html)
+- [leaflet](https://ugoproto.github.io/ugo_r_doc/pdf/leaflet-cheat-sheet.pdf)
 
 :::
 
