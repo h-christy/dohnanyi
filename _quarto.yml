@@ -42,6 +42,8 @@ website:
           text: "Week 12"
         - href: w13.qmd
           text: "Week 13"
+        - href: progress-report.qmd
+          text: "progress report"
 
 # format:
 #   html:

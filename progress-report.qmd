@@ -1,0 +1,126 @@
+---
+title: "DSAN6600 Final: Manchu Learning"
+subtitle: "Manchu-English Machine Translation Project"
+execute:
+  echo: true
+format:
+  html:
+    output-file: "pp-idx.html"
+    css: styles.css
+    toc: true
+    df-print: kable
+  revealjs:
+    output-file: "pp-slides.html"
+    css: styles.css
+    df-print: kable
+    slide-number: true
+    scrollable: true
+    code:
+      echo: true
+      eval: true
+bibliography: r4spatial-workshop.bib
+---
+
+## Manchu-English Machine Translation Model
+
+## Intro
+
+![](image/goal.png)
+
+## Pipeline: How we learn (to translate) Manchu?
+
+:::: {.columns}
+::: {.column}
+
+1. Digitization
+2. OCR and typing
+
+:::
+::: {.column}
+
+1. Transliteration
+2. Translation
+
+:::
+::::
+
+## Literature Review
+
+OCR
+
+- Choi et al., *“Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.”* (2025)
+
+
+Machine Translation
+
+- Seo et al., *“Mergen: The First Manchu-Korean Machine Translation Model Trained on Augmented Data.”* (2024)
+- Pei et al., *“Understanding In-Context Machine Translation for Low-Resource Languages: A Case Study on Manchu.”* (2025)
+
+
+## Data and Methods
+
+Parallel Corpora
+
+*The Diary of a Manchu Soldier in Seventeenth-Century China* (Cosmo annotated, 2006)
+   - size: 771 sentences
+   - vocab siz: 961 words
+
+*The Dream of the Red Chamber* (Cao, 1792)
+  - source: Sibe translation (1993, Mu)
+  - reference: English translation (1891, Joly)
+  - size: 340 sentences, vocab size: 669 words
+
+Models
+
+- Baseline: Translation with a Sequence to Sequence Network (LSTM) and Attention
+- Apply transfer learning with Pre-trained model
+  - *Mergen*: Manchu-Korean NMT (Seo et al. 2024)
+
+## Results: Progress Report
+
+Evaluation Metrics
+
+- sentence-level BLEU
+  - Baseline: 0.0
+  - Transfer Learning: 42.89
+
+
+```{.r}
+Source:     ai bithe hūlambi
+Reference:  Which books are you reading
+Prediction:  what is is you
+BLEU  12.44
+
+Source:     bi sini funde buki
+Reference:  I will contribute for you
+Prediction:  I I I you
+BLEU  14.79
+
+Source:     si genefi terede alaci ojorakū
+Reference:  you must not tell him
+Prediction:  I you you you to to
+BLEU  8.12
+
+Source:     bi arkan seme jici suwe inu mimbe forome karame tuwarakū
+Reference:  you pay no heed to me at all though I have managed to come after ever so much trouble
+Predicted:  I you you you you to to to to to
+BLEU  2.41
+
+Source:     ume jilidara
+Reference:  dont be angry
+Predicted:  what you
+BLEU  0.00
+
+Source:     tere oci teni jihengge ainahai terei jalin simbe aldangga tuwara giyan binio
+Reference:  how could I ever distance you on her account while she has only recently come
+Predicted:  but will will that to to to to to to to
+BLEU  0.00
+```
+
+## More to work on...
+
+![](image/loss.png)
+
+1. Eng-Korean MT
+2. Norman Manchu-English dictionary for data augmentation
+3. Generative
