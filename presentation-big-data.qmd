@@ -1,0 +1,57 @@
+---
+title: "Big Data Analytics & Cloud Computing Final"
+subtitle: "Project Presentation"
+execute:
+  echo: true
+format:
+  html:
+    output-file: "pre6000-idx.html"
+    css: styles.css
+    toc: true
+    df-print: kable
+  revealjs:
+    output-file: "pre6000-slides.html"
+    css: styles.css
+    df-print: kable
+    slide-number: true
+    scrollable: true
+    code:
+      echo: true
+      eval: true
+bibliography: r4spatial-workshop.bib
+---
+
+## DSAN6000 Project
+
+### Data Overview
+
+Reddit Submission and Comment Data
+
+- Time Span: 2023-06-01 to 2024-07-31 (14 months)
+- Size: 9.09 GB
+  - submission: 2,878,865 rows
+  - comment: 61,773,939 rows
+
+Filtering US Locational Subreddits
+
+- Result: 619 subreddits
+- Resource: (https://www.reddit.com/r/LocationReddits/wiki/faq/northamerica/)
+  - Census Bureau Incorporated Places 2023, 2024 population estimates
+  - SNAP: Social Network Reddit Embedding Dataset (city cluster)
+
+**Introduce additional dimensions: Spatial, Geographic Regions, Administractive Boundaries**
+
+## Top 50 Incorporated Places in US by Population sorted by 
+
+
+## More Work...
+
+- Exploring Groupings of our subreddits:
+  - Top 50 Incorporated Place by Population
+  - Largest city for each state
+  - Census Bureau defined regions and divisions
+  - Natural
+- Introduce External Data
+  - State-level estimate of "Death of Despair"
+- Estimation of Community Connectedness: language usage, similarity based on topic and user
+

@@ -92,7 +92,27 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
   <link rel="stylesheet" href="styles.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -200,21 +220,29 @@
 </div>
 
 </section>
-<section id="manchu-english-machine-translation-model" class="slide level2">
-<h2>Manchu-English Machine Translation Model</h2>
+<section id="manchu-english-machine-translation" class="slide level2">
+<h2>Manchu-English Machine Translation</h2>
+<ul>
+<li>Author: Christy Hsu</li>
+<li>Course: Neural Networks and Deep Learning (Fall 2025)</li>
+<li>Keywords: Neural Machine Translation, Data Curation, In-Context Machine Translation, Endangered Language</li>
+</ul>
 </section>
 <section id="intro" class="slide level2">
 <h2>Intro</h2>
 
-<img data-src="image/goal.png" class="r-stretch"></section>
-<section id="pipeline-how-we-learn-to-translate-manchu" class="slide level2 scrollable">
-<h2>Pipeline: How we learn (to translate) Manchu?</h2>
+<img data-src="image/manchu-steps.png" class="r-stretch"></section>
+<section id="the-pipeline-and-challenges-how-we-learn-to-translate-manchu" class="slide level2 scrollable">
+<h2>The Pipeline and Challenges: How we learn (to translate) Manchu?</h2>
 <div class="columns">
 <div class="column">
-<ol type="1">
-<li>Digitization</li>
-<li>OCR and typing</li>
-</ol>
+<ul>
+<li>Digitization
+<ul>
+<li>Typing</li>
+<li>OCR</li>
+</ul></li>
+</ul>
 </div><div class="column">
 <ol type="1">
 <li>Transliteration</li>
@@ -222,83 +250,180 @@
 </ol>
 </div></div>
 </section>
-<section id="literature-review" class="slide level2">
+<section id="literature-review" class="slide level2 scrollable">
 <h2>Literature Review</h2>
-<p>OCR</p>
 <ul>
-<li>Choi et al., <em>“Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.”</em> (2025)</li>
+<li><p>Seo et al., <em>“Mergen: The First Manchu-Korean Machine Translation Model Trained on Augmented Data.”</em><sup>1</sup></p></li>
+<li><p>Lee et al., <em>“ManNER &amp; ManPOS: Pioneering NLP for Endangered Manchu Language.”</em><sup>2</sup></p></li>
+<li><p>Pei et al., <em>Understanding In-Context Machine Translation for Low-Resource Languages: A Case Study on Manchu</em><sup>3</sup></p></li>
+<li><p>Choi et al., <em>“Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.”</em> (2025)</p></li>
 </ul>
-<p>Machine Translation</p>
-<ul>
-<li>Seo et al., <em>“Mergen: The First Manchu-Korean Machine Translation Model Trained on Augmented Data.”</em> (2024)</li>
-<li>Pei et al., <em>“Understanding In-Context Machine Translation for Low-Resource Languages: A Case Study on Manchu.”</em> (2025)</li>
-</ul>
-</section>
-<section id="data-and-methods" class="slide level2">
+<aside><ol class="aside-footnotes"><li id="fn1"><p><span class="citation" data-cites="seoMergenFirstManchuKorean2024">Seo et al. (<a href="#/discussion-and-reflection" role="doc-biblioref" onclick="">2024</a>)</span></p></li><li id="fn2"><p><span class="citation" data-cites="leeManNERManPOSPioneering2024">Lee et al. (<a href="#/discussion-and-reflection" role="doc-biblioref" onclick="">2024</a>)</span></p></li><li id="fn3"><p><span class="citation" data-cites="pei-etal-2025-understanding">Pei et al. (<a href="#/discussion-and-reflection" role="doc-biblioref" onclick="">2025</a>)</span></p></li></ol></aside></section>
+<section id="data-and-methods" class="slide level2 scrollable">
 <h2>Data and Methods</h2>
 <p>Parallel Corpora</p>
-<p><em>The Diary of a Manchu Soldier in Seventeenth-Century China</em> (Cosmo annotated, 2006) - size: 771 sentences - vocab siz: 961 words</p>
-<p><em>The Dream of the Red Chamber</em> (Cao, 1792) - source: Sibe translation (1993, Mu) - reference: English translation (1891, Joly) - size: 340 sentences, vocab size: 669 words</p>
-<p>Models</p>
+<ol type="A">
+<li>Curated</li>
+</ol>
+<p><em>The Dream of the Red Chamber</em> (Cao, 1792)</p>
 <ul>
-<li>Baseline: Translation with a Sequence to Sequence Network (LSTM) and Attention</li>
-<li>Apply transfer learning with Pre-trained model
+<li>source: Sibe translation (1993, Mu)</li>
+<li>reference: English translation (1891, Joly)</li>
+<li>size: 262 sentences, vocab size: 669 words</li>
+</ul>
+<ol start="2" type="A">
+<li>Validation set</li>
+</ol>
+<p><em>Old Cathay</em></p>
 <ul>
-<li><em>Mergen</em>: Manchu-Korean NMT (Seo et al.&nbsp;2024)</li>
-</ul></li>
+<li>src &amp; ref: manc.hu</li>
+<li>size: 107 sentence pairs</li>
+</ul>
+<ol start="3" type="A">
+<li>Linguistic Resource</li>
+</ol>
+<p><em>Norman, A Comprehensive Manchu-English Dictionary</em></p>
+<ul>
+<li>src &amp; ref: manc.hu</li>
+<li>size: 21,628 Manchu entries with English defintiton</li>
 </ul>
 </section>
-<section id="results-progress-report" class="slide level2">
-<h2>Results: Progress Report</h2>
-<p>Evaluation Metrics</p>
+<section id="overview-models" class="slide level2">
+<h2>Overview: Models</h2>
+<p>Goal again: input Manchu sentence, output English sentence</p>
+<div class="columns">
+<div class="column">
 <ul>
-<li>sentence-level BLEU
-<ul>
-<li>Baseline: 0.0</li>
-<li>Transfer Learning: 42.89</li>
-</ul></li>
+<li>Attempt 0: Seq2seq (2 GRUs) + Attention</li>
+<li>Attempt 1: manchuBERT + LSTM</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>Source<span class="sc">:</span>     ai bithe hūlambi</span>
-<span id="cb1-2"><a></a>Reference<span class="sc">:</span>  Which books are you reading</span>
-<span id="cb1-3"><a></a>Prediction<span class="sc">:</span>  what is is you</span>
-<span id="cb1-4"><a></a>BLEU  <span class="fl">12.44</span></span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a>Source<span class="sc">:</span>     bi sini funde buki</span>
-<span id="cb1-7"><a></a>Reference<span class="sc">:</span>  I will contribute <span class="cf">for</span> you</span>
-<span id="cb1-8"><a></a>Prediction<span class="sc">:</span>  I I I you</span>
-<span id="cb1-9"><a></a>BLEU  <span class="fl">14.79</span></span>
-<span id="cb1-10"><a></a></span>
-<span id="cb1-11"><a></a>Source<span class="sc">:</span>     si genefi terede alaci ojorakū</span>
-<span id="cb1-12"><a></a>Reference<span class="sc">:</span>  you must not tell him</span>
-<span id="cb1-13"><a></a>Prediction<span class="sc">:</span>  I you you you to to</span>
-<span id="cb1-14"><a></a>BLEU  <span class="fl">8.12</span></span>
-<span id="cb1-15"><a></a></span>
-<span id="cb1-16"><a></a>Source<span class="sc">:</span>     bi arkan seme jici suwe inu mimbe forome karame tuwarakū</span>
-<span id="cb1-17"><a></a>Reference<span class="sc">:</span>  you pay no heed to me at all though I have managed to come after ever so much trouble</span>
-<span id="cb1-18"><a></a>Predicted<span class="sc">:</span>  I you you you you to to to to to</span>
-<span id="cb1-19"><a></a>BLEU  <span class="fl">2.41</span></span>
+</div><div class="column">
+<ul>
+<li>Attempt 2: manchuBERT + mBART</li>
+<li>Attempt 3: prompt engineering with dictionary + google.colab.ai in-context learning</li>
+</ul>
+</div></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>manchuBERT</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># EN: this is a pretty good name</span></span>
+<span id="cb1-2"><a></a>predict_masked(</span>
+<span id="cb1-3"><a></a>  <span class="st">'ere gebu umesi [MASK]'</span>, tokenizer, model,</span>
+<span id="cb1-4"><a></a>  reference_text <span class="op">=</span> <span class="st">'ere gebu umesi sain'</span></span>
+<span id="cb1-5"><a></a>)</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a><span class="co"># Input text:</span></span>
+<span id="cb1-8"><a></a><span class="co"># ere gebu umesi [MASK].</span></span>
+<span id="cb1-9"><a></a><span class="co"># ------------------------------</span></span>
+<span id="cb1-10"><a></a><span class="co"># Top 5 predictions:</span></span>
+<span id="cb1-11"><a></a><span class="co">#     - wesihun</span></span>
+<span id="cb1-12"><a></a><span class="co">#     - ambula</span></span>
+<span id="cb1-13"><a></a><span class="co">#     - .</span></span>
+<span id="cb1-14"><a></a><span class="co">#     - sain</span></span>
+<span id="cb1-15"><a></a><span class="co">#     - saikan</span></span>
+<span id="cb1-16"><a></a><span class="co"># ------------------------------</span></span>
+<span id="cb1-17"><a></a><span class="co"># Reference: ere gebu umesi sain</span></span>
+<span id="cb1-18"><a></a></span>
+<span id="cb1-19"><a></a>manchuBERT<span class="op">^</span>[<span class="op">@</span>SeemdogManchuBERTHugging]</span>
 <span id="cb1-20"><a></a></span>
-<span id="cb1-21"><a></a>Source<span class="sc">:</span>     ume jilidara</span>
-<span id="cb1-22"><a></a>Reference<span class="sc">:</span>  dont be angry</span>
-<span id="cb1-23"><a></a>Predicted<span class="sc">:</span>  what you</span>
-<span id="cb1-24"><a></a>BLEU  <span class="fl">0.00</span></span>
-<span id="cb1-25"><a></a></span>
-<span id="cb1-26"><a></a>Source<span class="sc">:</span>     tere oci teni jihengge ainahai terei jalin simbe aldangga tuwara giyan binio</span>
-<span id="cb1-27"><a></a>Reference<span class="sc">:</span>  how could I ever distance you on her account <span class="cf">while</span> she has only recently come</span>
-<span id="cb1-28"><a></a>Predicted<span class="sc">:</span>  but will will that to to to to to to to</span>
-<span id="cb1-29"><a></a>BLEU  <span class="fl">0.00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-21"><a></a><span class="op">-</span> embedding vector: `<span class="dv">768</span>`</span>
+<span id="cb1-22"><a></a><span class="op">-</span> trained on `<span class="dv">195</span>,<span class="dv">611</span>` monoligual sentences (after augmentation: `<span class="dv">5</span>,<span class="dv">207</span>,<span class="dv">0</span><span class="er">69</span>`)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="more-to-work-on" class="slide level2 scrollable">
-<h2>More to work on…</h2>
+<section id="results" class="slide level2 scrollable">
+<h2>Results</h2>
+<p>Auto and Human Evaluation of MT</p>
+<div class="columns">
+<div class="column">
+<ol type="1">
+<li>BLEU</li>
+</ol>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Test BLEU</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2 GRUs</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td>manchuBERT + LSTM</td>
+<td>0.136</td>
+</tr>
+<tr class="odd">
+<td>manchuBERT + mBART</td>
+<td>0.842</td>
+</tr>
+<tr class="even">
+<td>dictionary + google.colab.ai</td>
+<td>1.203</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column">
+<ol type="1">
+<li>Translation Examples</li>
+</ol>
+</div><pre><code>Source: enteke erde uthai feksime jifi ainambi
+Reference: what have you run over to do at this early hour
 
-<img data-src="image/loss.png" class="r-stretch"><ol type="1">
-<li>Eng-Korean MT</li>
-<li>Norman Manchu-English dictionary for data augmentation</li>
-<li>Generative</li>
+- Prediction (manchuBERT + mBART): *why did you come back again for*
+
+- Prediction (dict + colan.ai): *why does he come so early immediately after getting up*</code></pre>
+</div>
+<ol type="1">
+<li>Translation Examples</li>
 </ol>
 
-
+<img data-src="image/mbart-plots.png" class="r-stretch"><ol type="1">
+<li>Translation Examples</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>Source<span class="sc">:</span>     ume jilidara</span>
+<span id="cb3-2"><a></a>Reference<span class="sc">:</span>  dont be angry</span>
+<span id="cb3-3"><a></a>Prediction<span class="sc">:</span>  what you</span>
+<span id="cb3-4"><a></a></span>
+<span id="cb3-5"><a></a>Source<span class="sc">:</span>     tere oci teni jihengge ainahai terei jalin simbe aldangga tuwara giyan binio</span>
+<span id="cb3-6"><a></a>Reference<span class="sc">:</span>  how could I ever distance you on her account <span class="cf">while</span> she has only recently come</span>
+<span id="cb3-7"><a></a>Prediction<span class="sc">:</span>  but will will that to to to to to to to</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>Source<span class="sc">:</span>     giyan de uthai uttu</span>
+<span id="cb4-2"><a></a>Reference<span class="sc">:</span>    this goes without saying</span>
+<span id="cb4-3"><a></a>Prediction<span class="sc">:</span>    SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="discussion-and-reflection" class="slide level2 smaller scrollable">
+<h2>Discussion and Reflection</h2>
+<ul>
+<li>Chung et al., <em>“Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.”</em> (2025)<sup>1</sup></li>
+</ul>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-chungFinetuningVisionLanguageModels2025" class="csl-entry" role="listitem">
+Chung, Yan Hon Michael, and Donghyeok Choi. 2025. <span>“Finetuning <span>Vision-Language Models</span> as <span>OCR Systems</span> for <span>Low-Resource Languages</span>: <span>A Case Study</span> of <span>Manchu</span>.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.2507.06761">https://doi.org/10.48550/arXiv.2507.06761</a>.
+</div>
+<div id="ref-leeManNERManPOSPioneering2024" class="csl-entry" role="listitem">
+Lee, Sangah, Sungjoo Byun, Jean Seo, and Minha Kang. 2024. <span>“<span>ManNER</span> &amp; <span>ManPOS</span>: <span>Pioneering NLP</span> for Endangered <span>Manchu</span> Language.”</span> In <em>Proceedings of the 2024 <span>Joint International Conference</span> on <span>Computational Linguistics</span>, <span>Language Resources</span> and <span>Evaluation</span> (<span>LREC-COLING</span> 2024)</em>, 11030–39.
+</div>
+<div id="ref-pei-etal-2025-understanding" class="csl-entry" role="listitem">
+Pei, Renhao, Yihong Liu, Peiqin Lin, François Yvon, and Hinrich Schuetze. 2025. <span>“Understanding in-Context Machine Translation for Low-Resource Languages: A Case Study on <span>M</span>anchu.”</span> In <em>Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)</em>, edited by Wanxiang Che, Joyce Nabende, Ekaterina Shutova, and Mohammad Taher Pilehvar, 8767–88. Vienna, Austria: Association for Computational Linguistics. <a href="https://doi.org/10.18653/v1/2025.acl-long.429">https://doi.org/10.18653/v1/2025.acl-long.429</a>.
+</div>
+<div id="ref-seoMergenFirstManchuKorean2024" class="csl-entry" role="listitem">
+Seo, Jean, Sungjoo Byun, Minha Kang, and Sangah Lee. 2024. <span>“Mergen: <span>The First Manchu-Korean Machine Translation Model Trained</span> on <span>Augmented Data</span>,”</span> no. arXiv:2311.17492 (January). <a href="https://doi.org/10.48550/arXiv.2311.17492">https://doi.org/10.48550/arXiv.2311.17492</a>.
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn4"><p><span class="citation" data-cites="chungFinetuningVisionLanguageModels2025">Chung and Choi (<a href="#/discussion-and-reflection" role="doc-biblioref" onclick="">2025</a>)</span></p></li></ol></aside></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

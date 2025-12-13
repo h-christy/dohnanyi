@@ -21,19 +21,24 @@ format:
 bibliography: r4spatial-workshop.bib
 ---
 
-## Manchu-English Machine Translation Model
+## Manchu-English Machine Translation
+
+- Author: Christy Hsu
+- Course: Neural Networks and Deep Learning (Fall 2025)
+- Keywords: Neural Machine Translation, Data Curation, In-Context Machine Translation, Endangered Language
 
 ## Intro
 
-![](image/goal.png)
+![](image/manchu-steps.png)
 
-## Pipeline: How we learn (to translate) Manchu?
+## The Pipeline and Challenges: How we learn (to translate) Manchu?
 
 :::: {.columns}
 ::: {.column}
 
-1. Digitization
-2. OCR and typing
+- Digitization
+  - Typing
+  - OCR
 
 :::
 ::: {.column}
@@ -46,81 +51,145 @@ bibliography: r4spatial-workshop.bib
 
 ## Literature Review
 
-OCR
+
+- Seo et al., *“Mergen: The First Manchu-Korean Machine Translation Model Trained on Augmented Data.”*^[@seoMergenFirstManchuKorean2024]
+- Lee et al., *“ManNER & ManPOS: Pioneering NLP for Endangered Manchu Language.”*^[@leeManNERManPOSPioneering2024]
+- Pei et al., *Understanding In-Context Machine Translation for Low-Resource Languages: A Case Study on Manchu*^[@pei-etal-2025-understanding]
 
 - Choi et al., *“Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.”* (2025)
 
-
-Machine Translation
-
-- Seo et al., *“Mergen: The First Manchu-Korean Machine Translation Model Trained on Augmented Data.”* (2024)
-- Pei et al., *“Understanding In-Context Machine Translation for Low-Resource Languages: A Case Study on Manchu.”* (2025)
 
 
 ## Data and Methods
 
 Parallel Corpora
 
-*The Diary of a Manchu Soldier in Seventeenth-Century China* (Cosmo annotated, 2006)
-   - size: 771 sentences
-   - vocab siz: 961 words
+(A) Curated
 
 *The Dream of the Red Chamber* (Cao, 1792)
+
   - source: Sibe translation (1993, Mu)
   - reference: English translation (1891, Joly)
-  - size: 340 sentences, vocab size: 669 words
+  - size: `262` sentences, vocab size: `669` words
 
-Models
+(B) Validation set
 
-- Baseline: Translation with a Sequence to Sequence Network (LSTM) and Attention
-- Apply transfer learning with Pre-trained model
-  - *Mergen*: Manchu-Korean NMT (Seo et al. 2024)
+*Old Cathay*
 
-## Results: Progress Report
+  - src & ref: manc.hu
+  - size: `107` sentence pairs
 
-Evaluation Metrics
+(C) Linguistic Resource
 
-- sentence-level BLEU
-  - Baseline: 0.0
-  - Transfer Learning: 42.89
+*Norman, A Comprehensive Manchu-English Dictionary*
+
+  - src & ref: manc.hu
+  - size: `21,628` Manchu entries with English definition
+
+## Overview: Models
+
+Goal again: input Manchu sentence, output English sentence
+
+:::: {.columns}
+::: {.column}
+
+- Attempt 0: Seq2seq (2 GRUs) + Attention
+- Attempt 1: manchuBERT + LSTM
+
+:::
+::: {.column}
+
+- Attempt 2: manchuBERT + mBART
+- Attempt 3: prompt engineering with dictionary + google.colab.ai in-context learning
+
+:::
+::::
+
+::: {.callout-note}
+
+### manchuBERT
+
+```{.python}
+# EN: this is a pretty good name
+predict_masked(
+  'ere gebu umesi [MASK]', tokenizer, model,
+  reference_text = 'ere gebu umesi sain'
+)
+
+# Input text:
+# ere gebu umesi [MASK].
+# ------------------------------
+# Top 5 predictions:
+#     - wesihun
+#     - ambula
+#     - .
+#     - sain
+#     - saikan
+# ------------------------------
+# Reference: ere gebu umesi sain
+```
+
+
+manchuBERT^[@SeemdogManchuBERTHugging]
+
+- embedding vector: `768`
+- trained on `195,611` monoligual sentences (after augmentation: `5,207,069`)
+
+:::
+
+## Results
+
+Auto and Human Evaluation of MT
+
+:::: {.columns}
+::: {.column}
+
+1. BLEU
+
+| Model                     | Test BLEU |
+|---------------------------|-----------|
+| 2 GRUs                    | 0.000     |
+| manchuBERT + LSTM         | 0.136     |
+| manchuBERT + mBART        | 0.842     |
+| dictionary + google.colab.ai | 1.203     |
+
+:::
+::: {.column}
+
+1. Translation Examples
+
+Source: enteke erde uthai feksime jifi ainambi
+Reference: what have you run over to do at this early hour
+
+- Prediction (manchuBERT + mBART): *why did you come back again for*
+
+- Prediction (dict + colab.ai): *why does he come so early immediately after getting up*
+
+:::
+::::
+
+
+1. Translation Examples
+
+![](image/mbart-plots.png)
+
+1. Translation Examples
 
 
 ```{.r}
-Source:     ai bithe hūlambi
-Reference:  Which books are you reading
-Prediction:  what is is you
-BLEU  12.44
-
-Source:     bi sini funde buki
-Reference:  I will contribute for you
-Prediction:  I I I you
-BLEU  14.79
-
-Source:     si genefi terede alaci ojorakū
-Reference:  you must not tell him
-Prediction:  I you you you to to
-BLEU  8.12
-
-Source:     bi arkan seme jici suwe inu mimbe forome karame tuwarakū
-Reference:  you pay no heed to me at all though I have managed to come after ever so much trouble
-Predicted:  I you you you you to to to to to
-BLEU  2.41
-
 Source:     ume jilidara
 Reference:  dont be angry
-Predicted:  what you
-BLEU  0.00
+Prediction:  what you
 
 Source:     tere oci teni jihengge ainahai terei jalin simbe aldangga tuwara giyan binio
 Reference:  how could I ever distance you on her account while she has only recently come
-Predicted:  but will will that to to to to to to to
-BLEU  0.00
+Prediction:  but will will that to to to to to to to
 ```
+```{.r}
+Source:     giyan de uthai uttu
+Reference:    this goes without saying
+Prediction:    SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS
+```
+## Discussion and Reflection
 
-## More to work on...
-
-![](image/loss.png)
-
-1. Eng-Korean MT
-2. Norman Manchu-English dictionary for data augmentation
-3. Generative
+- Chung et al., *“Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.”* (2025)^[@chungFinetuningVisionLanguageModels2025]

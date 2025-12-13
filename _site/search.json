@@ -517,7 +517,7 @@
     "href": "w6-idx.html#slice_sample",
     "title": "R Coding Workshop: 4th Meeting",
     "section": "slice_sample()",
-    "text": "slice_sample()\n\nbook_challenge_df |&gt; slice_sample(n = 10)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nWait Till Helen Comes\n1907\nHahn, Mary Downing\n2010-03-19\n2010\n0\n0\n0\n0\n0\n0\n0\nNH\n1.6\n17303.0\n7.838042\n4.67627\n\n\nKing & King\n1083\nde Haan, Linda\n2003-04-15\n2003\n0\n0\n0\n0\n0\n1\n0\nMA\n11.7\n14048.5\n5.238042\n9.17627\n\n\nRadiant Identities\n1495\nSturges, Jock\n2000-06-29\n2000\n0\n0\n0\n0\n0\n0\n0\nOR\n4.0\n1274.5\n5.538042\n1.07627\n\n\nFire From Within, The\n696\nCastaneda, Carlos\n2000-06-29\n2000\n0\n0\n0\n0\n0\n0\n0\nOR\n4.0\n1274.5\n5.538042\n1.07627\n\n\nVampires\n1892\nYolen, Jane and Martin H. Greenberg\n2007-07-22\n2007\n0\n1\n0\n0\n0\n0\n0\nCA\n7.4\n10119.0\n-2.761958\n2.57627\n\n\nTTYL\n1849\nMyracle, Lauren\n2008-09-15\n2008\n1\n0\n0\n0\n0\n0\n0\nMO\n-3.1\n1279.5\n1.738042\n-2.42373\n\n\nLook At Me\n1170\nEgan, Jennifer\n2001-12-10\n2001\n0\n1\n0\n0\n0\n0\n0\nMI\n3.8\n2966.0\n3.838042\n-2.22373\n\n\nTenth Circle, The\n1773\nPicoult, Jodi\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2.0\n4218.0\n2.338042\n-1.62373\n\n\nPinky and Rex and the Bully\n1451\nHowe, James\n2003-04-15\n2003\n0\n0\n0\n0\n0\n1\n0\nMI\n3.8\n2966.0\n3.838042\n-2.22373\n\n\nPaula\n1429\nNA\n2001-05-25\n2001\n1\n0\n0\n0\n0\n0\n0\nVA\n-1.7\n11296.0\n1.938042\n5.47627\n\n\n\n\n\n\n\nbook_challenge_df |&gt;\n  filter(state == 'PA') |&gt;\n  slice_sample(n = 10)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nRhymes With Witches\n1528\nMyracle, Lauren\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nOne Flew Over the Cuckoo’s Nest\n1393\nKesey, Ken\n2008-10-17\n2008\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nBody Drama\n268\nRedd, Nancy Amanda\n2008-09-14\n2008\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nAs I Lay Dying\n165\nFaulkner, William\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nSpeak\n1684\nAnderson, Laurie Halse\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nRabbit (series)\n1492\nUpdike, John\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nEarth, My Butt and Other Big Round Things, The\n607\nMackler, Carolyn\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nGlass Castle, The\n718\nWalls, Jeannette\n2009-08-26\n2009\n0\n0\n0\n0\n1\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nAre You In the House Alone?\n155\nPeck, Richard\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nI Know What You Did Last Summer\n957\nDuncan, Lois\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373",
+    "text": "slice_sample()\n\nbook_challenge_df |&gt; slice_sample(n = 10)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nGolden Compass, The\n730\nPullman, Philip\n2008-09-24\n2008\n1\n0\n0\n0\n0\n0\n0\nLA\n-9.7\n-5120.5\n-4.761958\n-5.32373\n\n\nGhost\n761\nRingo, John\n2006-07-27\n2006\n0\n1\n0\n0\n0\n0\n0\nMN\n2.3\n15378.0\n8.338042\n3.37627\n\n\nSong of Solomon\n1671\nMorrison, Toni\n2009-08-12\n2009\n0\n1\n0\n0\n1\n0\n0\nMI\n3.8\n2966.0\n3.838042\n-2.22373\n\n\nLightkeeper’s Daughter, The\n1137\nLawrence, Iain\n2009-01-07\n2009\n0\n1\n0\n0\n0\n0\n0\nSC\n-7.8\n-2191.5\n-3.261958\n-3.62373\n\n\nBatman: The Dark Knight Strikes Again\n197\nMiller, Frank\n2010-05-30\n2010\n0\n0\n0\n0\n1\n0\n0\nOH\n-0.7\n2469.0\n3.438042\n-2.92373\n\n\nFallen Angels\n663\nMyers, Walter Dean\n2002-12-18\n2002\n1\n0\n0\n0\n1\n0\n0\nWA\n5.0\n9907.5\n7.538042\n3.67627\n\n\nCold Feet\n417\nDeFelice, Cynthia\n2001-05-25\n2001\n0\n0\n0\n0\n0\n0\n1\nOR\n4.0\n1274.5\n5.538042\n1.07627\n\n\nFull Spectrum: A New Generation of Writing About Gay, Lesbian, Bisexual, Transgender, Questioning, and Other Identities, The\n739\nLevithan, David (ed.) and Billy Merrell (ed.)\n2009-08-09\n2009\n0\n0\n0\n0\n0\n1\n0\nCA\n7.4\n10119.0\n-2.761958\n2.57627\n\n\nRabble Rousers\n1493\nHarkness, Cheryl\n2004-08-24\n2004\n0\n0\n0\n0\n0\n0\n0\nCA\n7.4\n10119.0\n-2.761958\n2.57627\n\n\nCujo\n470\nKing, Steven\n2003-12-11\n2003\n0\n1\n0\n0\n0\n0\n1\nCO\n-0.2\n10346.5\n7.338042\n8.67627\n\n\n\n\n\n\n\nbook_challenge_df |&gt;\n  filter(state == 'PA') |&gt;\n  slice_sample(n = 10)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nGod Went to Beauty School\n725\nRylant, Cynthia\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nSafe\n1557\nShaw, Susan\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nGone With the Wind\n733\nMitchell, Margaret\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nShort Novels of John Steinbeck\n1624\nSteinbeck, John\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nShooter\n1622\nMeyers, Walter Dean\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nTriathalon\n1840\nYMCA\n2002-04-20\n2002\n0\n0\n0\n1\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nSo Hard to Say\n1662\nSanchez, Alex\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nJungle, The\n1060\nSinclair, Upton\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nFreaky Friday\n725\nRodgers, Mary\n2002-04-19\n2002\n0\n0\n1\n0\n1\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nGrapes of Wrath, The\n745\nSteinbeck, John\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373",
     "crumbs": [
       "Coding Workshop",
       "Week 6"
@@ -598,7 +598,7 @@
     "href": "w6-slides.html#slice_sample",
     "title": "R Coding Workshop: 4th Meeting",
     "section": "slice_sample()",
-    "text": "slice_sample()\n\nbook_challenge_df |&gt; slice_sample(n = 10)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nJoy of Gay Sex, The\n1054\nSilverstein, Dr. Charles and Felice Picano\n2009-01-02\n2009\n1\n1\n0\n0\n0\n0\n0\nKS\n-11.5\n144.5\n6.4380421\n1.7762701\n\n\nYu Yu Hakusho (series)\n2057\nTogashi, Yoshihiro\n2008-11-14\n2008\n0\n1\n0\n0\n0\n0\n1\nAZ\n-6.1\n3490.5\n1.4380421\n-0.5237299\n\n\nTenderness\n1772\nCormier, Robert\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2.0\n4218.0\n2.3380421\n-1.6237299\n\n\nLittle Giant Book of Whodunits, The\n1147\nConrad, Hy\n2008-01-04\n2008\n0\n0\n1\n0\n1\n0\n1\nNY\n10.2\n5007.5\n-0.4619579\n3.3762701\n\n\nKilling Johnny Fry\n1080\nMosely, Walter\n2008-04-02\n2008\n0\n1\n0\n0\n0\n0\n0\nOK\n-16.9\n-3087.5\n1.0380421\n-3.7237299\n\n\nMessage Bible\n1251\nPeterson, Eugene H\n2010-05-26\n2010\n0\n0\n0\n0\n0\n0\n0\nNC\n-4.3\n-310.0\n-1.4619579\n-1.5237299\n\n\nSlaughterhouse-Five\n1643\nVonnegut, Kurt\n2001-04-25\n2001\n0\n1\n0\n0\n1\n0\n0\nTN\n-8.7\n-2995.5\n-3.6619579\n-4.4237299\n\n\nStarplace, The\n1699\nGrove, Vicki\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2.0\n4218.0\n2.3380421\n-1.6237299\n\n\nTransparent: Love, Family, and Living the T with Transgender Teenagers\n1834\nBeam, Chris\n2009-08-09\n2009\n0\n0\n0\n0\n0\n1\n0\nCA\n7.4\n10119.0\n-2.7619579\n2.5762701\n\n\nVillages\n1903\nUpdike, John\n2006-07-27\n2006\n0\n1\n0\n0\n1\n0\n0\nID\n-17.4\n3194.0\n5.1380421\n-2.3237299\n\n\n\n\n\n\n\nbook_challenge_df |&gt;\n  filter(state == 'PA') |&gt;\n  slice_sample(n = 10)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nThis Is What I Did\n1800\nEllis, Ann Dee\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nDiary of a Groupie\n539\nTyree, Omar\n2005-09-24\n2005\n0\n1\n0\n0\n1\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nThings They Carried, The\n1792\nO’Brein, Tim\n2001-04-25\n2001\n0\n1\n0\n0\n1\n0\n1\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nWhat Happened to Cass McBride?\n1944\nGiles, Gail\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nPrey\n1476\nMcDaniel, Lurlene\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nLike Sisters on the Homefront\n1139\nWilliams-Garcia, Rita\n2000-08-28\n2000\n1\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nMartian Chronicles, The\n1237\nBradbury, Ray\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nImpulse\n981\nHopkins, Ellen\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nLucky\n1199\nSebold, Alice\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nDanse Macabre\n503\nHamilton, Laurell K.\n2007-05-23\n2007\n0\n1\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373"
+    "text": "slice_sample()\n\nbook_challenge_df |&gt; slice_sample(n = 10)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nGreen Bible\n753\nNA\n2010-05-26\n2010\n0\n0\n0\n0\n0\n0\n0\nNC\n-4.3\n-310.0\n-1.461958\n-1.52373\n\n\nPleasure\n1458\nDickey, Eric Jerome\n2009-03-24\n2009\n0\n1\n0\n0\n0\n0\n0\nMI\n3.8\n2966.0\n3.838042\n-2.22373\n\n\nEarth, My Butt and Other Big Round Things, The\n607\nMackler, Carolyn\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2.0\n4218.0\n2.338042\n-1.62373\n\n\nGrendel\n756\nGardner, John\n2001-04-25\n2001\n0\n0\n0\n0\n0\n0\n0\nTN\n-8.7\n-2995.5\n-3.661958\n-4.42373\n\n\nJason & Kyra\n1036\nDavidson, Dana\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2.0\n4218.0\n2.338042\n-1.62373\n\n\nMurder Mysteries\n990\nGaiman, Neil and P. Craig Russell\n2008-01-15\n2008\n0\n1\n0\n0\n0\n0\n0\nOH\n-0.7\n2469.0\n3.438042\n-2.92373\n\n\nKey of Valor\n1071\nRoberts, Nora\n2005-10-01\n2005\n0\n0\n0\n0\n0\n0\n0\nOR\n4.0\n1274.5\n5.538042\n1.07627\n\n\nColdest Winter Ever, The\n419\nSouljah, Sister\n2005-09-24\n2005\n0\n1\n0\n0\n1\n0\n0\nPA\n2.0\n4218.0\n2.338042\n-1.62373\n\n\nAnd Tango Makes Three\n143\nParnell, Peter and Justin Richardson\n2008-10-02\n2008\n0\n0\n1\n0\n0\n1\n0\nIA\n1.0\n3921.5\n6.538042\n-2.82373\n\n\nIt’s Perfectly Normal\n1025\nHarris, Robie\n2005-04-01\n2005\n0\n1\n0\n0\n0\n1\n0\nIN\n-6.2\n1086.5\n2.538042\n-4.62373\n\n\n\n\n\n\n\nbook_challenge_df |&gt;\n  filter(state == 'PA') |&gt;\n  slice_sample(n = 10)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nThirteen Reasons Why\n1794\nAsher, Jay\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nEnvy\n636\nBrown, Sandra\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nLucky\n1199\nSebold, Alice\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nAre You In the House Alone?\n155\nPeck, Richard\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nSnowman, The\n1659\nStine, R.L.\n2008-06-07\n2008\n0\n0\n0\n0\n0\n0\n1\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nCopper Sun\n438\nDraper, Sharon\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nTwilight (series)\n1861\nMeyer, Stephenie\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nA Separate Peach\n45\nKnowles, John\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nKissing Kate\n1090\nMyracle, Lauren\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373\n\n\nMama Fue Pequena Antes de Ser Mayor\n1215\nLarrodo, Valerie; Desmareau, Claudine (illustrator); Rubio, Esther (translator)\n2007-05-23\n2007\n1\n0\n0\n0\n1\n0\n0\nPA\n2\n4218\n2.338042\n-1.62373"
   },
   {
     "objectID": "w9-idx.html#goals-for-today",
@@ -671,7 +671,7 @@
     "href": "w9-idx.html#longer-and-wider-dataframes",
     "title": "R Coding Workshop: 7th Meeting",
     "section": "Longer and Wider Dataframes",
-    "text": "Longer and Wider Dataframes\n\nbook_challenge_df &lt;- read_csv('data/book-challenge11.csv')\n\nRows: 931 Columns: 17\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr   (3): title, author, state\ndbl  (13): book_id, year, removed, explicit, antifamily, occult, language, l...\ndate  (1): date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nbook_challenge_df |&gt; dim() |&gt; print()\n\n[1] 931  17\n\n\n\nbasic display functions: head(), tail() and slice_sample()\n\n\nbook_challenge_df |&gt; tail()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nAnd Tango Makes Three\n143\nParnell, Peter and Justin Richardson\n2006-10-29\n2006\n0\n0\n0\n0\n0\n1\n0\nWV\n-7.9\n-7290.0\n-4.361958\n-9.22373\n\n\nGo and Come Back\n721\nAbelove, Joan\n2000-06-18\n2000\n0\n1\n0\n0\n0\n0\n0\nWV\n-7.9\n-7290.0\n-4.361958\n-9.22373\n\n\nWhen Dad Killed Mom\n1964\nLester, Julius\n2002-04-21\n2002\n1\n0\n0\n0\n0\n0\n1\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\nGeology Book, The\n755\nMorris, Dr. John D.\n2010-05-05\n2010\n0\n0\n0\n0\n0\n0\n0\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\nAnd Tango Makes Three\n143\nParnell, Peter and Justin Richardson\n2009-08-22\n2009\n0\n0\n0\n0\n0\n1\n0\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\nDarkest Night of the Year\n505\nKoontz, Dean\n2007-12-03\n2007\n0\n1\n0\n0\n0\n0\n0\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\n\n\n\n\n\nbook_challenge_df |&gt; slice_sample(n = 4)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nWonderful Story Henry Sugar and Six More, The\n2034\nDahl, Roald\n2007-07-22\n2007\n1\n0\n0\n0\n0\n0\n1\nIL\n7.7\n6489.5\n1.838042\n2.07627\n\n\nWhale Talk\n1941\nCrutcher, Chris\n2005-06-09\n2005\n1\n0\n0\n0\n1\n0\n0\nAL\n-13.2\n-5054.0\n-4.261958\n-5.02373\n\n\nHarry Potter (series)\n868\nRowling, J.K.\n2001-04-25\n2001\n0\n0\n0\n1\n0\n0\n0\nMI\n3.8\n2966.0\n3.838042\n-2.22373\n\n\nThey’re All Named Wildfire\n1789\nSpringer, Nancy\n2005-08-02\n2005\n0\n0\n0\n0\n1\n0\n1\nCA\n7.4\n10119.0\n-2.761958\n2.57627\n\n\n\n\n\n\n\noptimized display to show all columns glimpse()\n\n\nbook_challenge_df |&gt; glimpse()\n\nRows: 931\nColumns: 17\n$ title                 &lt;chr&gt; \"House of the Spirits, The\", \"It's Not the Stork…\n$ book_id               &lt;dbl&gt; 927, 1024, 1087, 936, 764, 1087, 1489, 2023, 102…\n$ author                &lt;chr&gt; \"Allende, Isabel\", \"Harris, Robie\", \"Pyle, Howar…\n$ date                  &lt;date&gt; 2005-04-01, 2008-02-06, 2008-10-02, 2008-10-05,…\n$ year                  &lt;dbl&gt; 2005, 2008, 2008, 2008, 2008, 2003, 2003, 2003, …\n$ removed               &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, …\n$ explicit              &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, …\n$ antifamily            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, …\n$ occult                &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ language              &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, …\n$ lgbtq                 &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, …\n$ violent               &lt;dbl&gt; 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, …\n$ state                 &lt;chr&gt; \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", …\n$ political_value_index &lt;dbl&gt; -13.4, -13.4, -13.4, -13.4, -13.4, -13.4, -13.4,…\n$ median_income         &lt;dbl&gt; 15707.5, 15707.5, 15707.5, 15707.5, 15707.5, 157…\n$ hs_grad_rate          &lt;dbl&gt; 8.738042, 8.738042, 8.738042, 8.738042, 8.738042…\n$ college_grad_rate     &lt;dbl&gt; 0.6762701, 0.6762701, 0.6762701, 0.6762701, 0.67…\n\n\n\nview() tidyverse summary() equivalent\n\n\nbook_challenge_df |&gt; view()",
+    "text": "Longer and Wider Dataframes\n\nbook_challenge_df &lt;- read_csv('data/book-challenge11.csv')\n\nRows: 931 Columns: 17\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr   (3): title, author, state\ndbl  (13): book_id, year, removed, explicit, antifamily, occult, language, l...\ndate  (1): date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nbook_challenge_df |&gt; dim() |&gt; print()\n\n[1] 931  17\n\n\n\nbasic display functions: head(), tail() and slice_sample()\n\n\nbook_challenge_df |&gt; tail()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nAnd Tango Makes Three\n143\nParnell, Peter and Justin Richardson\n2006-10-29\n2006\n0\n0\n0\n0\n0\n1\n0\nWV\n-7.9\n-7290.0\n-4.361958\n-9.22373\n\n\nGo and Come Back\n721\nAbelove, Joan\n2000-06-18\n2000\n0\n1\n0\n0\n0\n0\n0\nWV\n-7.9\n-7290.0\n-4.361958\n-9.22373\n\n\nWhen Dad Killed Mom\n1964\nLester, Julius\n2002-04-21\n2002\n1\n0\n0\n0\n0\n0\n1\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\nGeology Book, The\n755\nMorris, Dr. John D.\n2010-05-05\n2010\n0\n0\n0\n0\n0\n0\n0\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\nAnd Tango Makes Three\n143\nParnell, Peter and Justin Richardson\n2009-08-22\n2009\n0\n0\n0\n0\n0\n1\n0\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\nDarkest Night of the Year\n505\nKoontz, Dean\n2007-12-03\n2007\n0\n1\n0\n0\n0\n0\n0\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\n\n\n\n\n\nbook_challenge_df |&gt; slice_sample(n = 4)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nAdventures of Tom Sawyer, The\n78\nTwain, Mark\n2007-08-02\n2007\n0\n0\n0\n0\n1\n0\n0\nIA\n1.0\n3921.5\n6.538042\n-2.82373\n\n\nGoddesses: A World of Myth and Magic\n727\nMuten, Burleigh\n2004-08-24\n2004\n1\n0\n0\n1\n0\n0\n0\nCA\n7.4\n10119.0\n-2.761958\n2.57627\n\n\nHotel New Hampshire, The\n924\nIrving, John\n2008-09-14\n2008\n0\n1\n0\n0\n0\n0\n0\nNH\n1.6\n17303.0\n7.838042\n4.67627\n\n\nLooking for Alaska\n1174\nGreen, John\n2009-11-09\n2009\n0\n0\n0\n0\n0\n0\n0\nPA\n2.0\n4218.0\n2.338042\n-1.62373\n\n\n\n\n\n\n\noptimized display to show all columns glimpse()\n\n\nbook_challenge_df |&gt; glimpse()\n\nRows: 931\nColumns: 17\n$ title                 &lt;chr&gt; \"House of the Spirits, The\", \"It's Not the Stork…\n$ book_id               &lt;dbl&gt; 927, 1024, 1087, 936, 764, 1087, 1489, 2023, 102…\n$ author                &lt;chr&gt; \"Allende, Isabel\", \"Harris, Robie\", \"Pyle, Howar…\n$ date                  &lt;date&gt; 2005-04-01, 2008-02-06, 2008-10-02, 2008-10-05,…\n$ year                  &lt;dbl&gt; 2005, 2008, 2008, 2008, 2008, 2003, 2003, 2003, …\n$ removed               &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, …\n$ explicit              &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, …\n$ antifamily            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, …\n$ occult                &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ language              &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, …\n$ lgbtq                 &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, …\n$ violent               &lt;dbl&gt; 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, …\n$ state                 &lt;chr&gt; \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", …\n$ political_value_index &lt;dbl&gt; -13.4, -13.4, -13.4, -13.4, -13.4, -13.4, -13.4,…\n$ median_income         &lt;dbl&gt; 15707.5, 15707.5, 15707.5, 15707.5, 15707.5, 157…\n$ hs_grad_rate          &lt;dbl&gt; 8.738042, 8.738042, 8.738042, 8.738042, 8.738042…\n$ college_grad_rate     &lt;dbl&gt; 0.6762701, 0.6762701, 0.6762701, 0.6762701, 0.67…\n\n\n\nview() tidyverse summary() equivalent\n\n\nbook_challenge_df |&gt; view()",
     "crumbs": [
       "Coding Workshop",
       "Week 9"
@@ -786,7 +786,7 @@
     "href": "w9-slides.html#longer-and-wider-dataframes",
     "title": "R Coding Workshop: 7th Meeting",
     "section": "Longer and Wider Dataframes",
-    "text": "Longer and Wider Dataframes\n\nbook_challenge_df &lt;- read_csv('data/book-challenge11.csv')\nbook_challenge_df |&gt; dim() |&gt; print()\n\n[1] 931  17\n\n\n\nbasic display functions: head(), tail() and slice_sample()\n\n\nbook_challenge_df |&gt; tail()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nAnd Tango Makes Three\n143\nParnell, Peter and Justin Richardson\n2006-10-29\n2006\n0\n0\n0\n0\n0\n1\n0\nWV\n-7.9\n-7290.0\n-4.361958\n-9.22373\n\n\nGo and Come Back\n721\nAbelove, Joan\n2000-06-18\n2000\n0\n1\n0\n0\n0\n0\n0\nWV\n-7.9\n-7290.0\n-4.361958\n-9.22373\n\n\nWhen Dad Killed Mom\n1964\nLester, Julius\n2002-04-21\n2002\n1\n0\n0\n0\n0\n0\n1\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\nGeology Book, The\n755\nMorris, Dr. John D.\n2010-05-05\n2010\n0\n0\n0\n0\n0\n0\n0\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\nAnd Tango Makes Three\n143\nParnell, Peter and Justin Richardson\n2009-08-22\n2009\n0\n0\n0\n0\n0\n1\n0\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\nDarkest Night of the Year\n505\nKoontz, Dean\n2007-12-03\n2007\n0\n1\n0\n0\n0\n0\n0\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\n\n\n\n\n\nbook_challenge_df |&gt; slice_sample(n = 4)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nBridge to Terabithia\n316\nPaterson, Katherine\n2005-04-01\n2005\n0\n1\n0\n0\n1\n0\n0\nVA\n-1.7\n11296.0\n1.938042\n5.47627\n\n\nTurning Angel\n1853\nIles, Greg\n2008-10-04\n2008\n0\n1\n0\n0\n1\n0\n1\nMD\n8.5\n19404.5\n4.238042\n7.37627\n\n\nLook At Me\n1170\nEgan, Jennifer\n2001-12-10\n2001\n0\n1\n0\n0\n0\n0\n0\nMI\n3.8\n2966.0\n3.838042\n-2.22373\n\n\nAngus, Thongs, and Full Frontal Snogging\n148\nRennison, Louise\n2006-07-15\n2006\n0\n0\n0\n0\n0\n0\n0\nVA\n-1.7\n11296.0\n1.938042\n5.47627\n\n\n\n\n\n\n\noptimized display to show all columns glimpse()\n\n\nbook_challenge_df |&gt; glimpse()\n\nRows: 931\nColumns: 17\n$ title                 &lt;chr&gt; \"House of the Spirits, The\", \"It's Not the Stork…\n$ book_id               &lt;dbl&gt; 927, 1024, 1087, 936, 764, 1087, 1489, 2023, 102…\n$ author                &lt;chr&gt; \"Allende, Isabel\", \"Harris, Robie\", \"Pyle, Howar…\n$ date                  &lt;date&gt; 2005-04-01, 2008-02-06, 2008-10-02, 2008-10-05,…\n$ year                  &lt;dbl&gt; 2005, 2008, 2008, 2008, 2008, 2003, 2003, 2003, …\n$ removed               &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, …\n$ explicit              &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, …\n$ antifamily            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, …\n$ occult                &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ language              &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, …\n$ lgbtq                 &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, …\n$ violent               &lt;dbl&gt; 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, …\n$ state                 &lt;chr&gt; \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", …\n$ political_value_index &lt;dbl&gt; -13.4, -13.4, -13.4, -13.4, -13.4, -13.4, -13.4,…\n$ median_income         &lt;dbl&gt; 15707.5, 15707.5, 15707.5, 15707.5, 15707.5, 157…\n$ hs_grad_rate          &lt;dbl&gt; 8.738042, 8.738042, 8.738042, 8.738042, 8.738042…\n$ college_grad_rate     &lt;dbl&gt; 0.6762701, 0.6762701, 0.6762701, 0.6762701, 0.67…\n\n\n\nview() tidyverse summary() equivalent\n\n\nbook_challenge_df |&gt; view()"
+    "text": "Longer and Wider Dataframes\n\nbook_challenge_df &lt;- read_csv('data/book-challenge11.csv')\nbook_challenge_df |&gt; dim() |&gt; print()\n\n[1] 931  17\n\n\n\nbasic display functions: head(), tail() and slice_sample()\n\n\nbook_challenge_df |&gt; tail()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nAnd Tango Makes Three\n143\nParnell, Peter and Justin Richardson\n2006-10-29\n2006\n0\n0\n0\n0\n0\n1\n0\nWV\n-7.9\n-7290.0\n-4.361958\n-9.22373\n\n\nGo and Come Back\n721\nAbelove, Joan\n2000-06-18\n2000\n0\n1\n0\n0\n0\n0\n0\nWV\n-7.9\n-7290.0\n-4.361958\n-9.22373\n\n\nWhen Dad Killed Mom\n1964\nLester, Julius\n2002-04-21\n2002\n1\n0\n0\n0\n0\n0\n1\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\nGeology Book, The\n755\nMorris, Dr. John D.\n2010-05-05\n2010\n0\n0\n0\n0\n0\n0\n0\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\nAnd Tango Makes Three\n143\nParnell, Peter and Justin Richardson\n2009-08-22\n2009\n0\n0\n0\n0\n0\n1\n0\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\nDarkest Night of the Year\n505\nKoontz, Dean\n2007-12-03\n2007\n0\n1\n0\n0\n0\n0\n0\nWY\n-19.7\n4081.5\n8.338042\n-2.12373\n\n\n\n\n\n\n\nbook_challenge_df |&gt; slice_sample(n = 4)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntitle\nbook_id\nauthor\ndate\nyear\nremoved\nexplicit\nantifamily\noccult\nlanguage\nlgbtq\nviolent\nstate\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\n\n\n\n\nLaughing Corpse, The\n1106\nHamilton, Laurell K.\n2002-09-17\n2002\n0\n1\n0\n0\n0\n0\n1\nOR\n4\n1274.5\n5.538042\n1.07627\n\n\nLove and Rockets X\n1185\nHernandez, Gilbert and Jaime Hernandez\n2001-05-25\n2001\n0\n0\n0\n0\n1\n0\n0\nOR\n4\n1274.5\n5.538042\n1.07627\n\n\nClay Boy\n411\nGinsburg, Mirra\n2001-05-25\n2001\n0\n0\n0\n0\n0\n0\n1\nOR\n4\n1274.5\n5.538042\n1.07627\n\n\nGotham Central: The Quick & the Dead\n743\nRucka, Greg\n2009-01-25\n2009\n0\n1\n0\n0\n0\n1\n0\nPA\n2\n4218.0\n2.338042\n-1.62373\n\n\n\n\n\n\n\noptimized display to show all columns glimpse()\n\n\nbook_challenge_df |&gt; glimpse()\n\nRows: 931\nColumns: 17\n$ title                 &lt;chr&gt; \"House of the Spirits, The\", \"It's Not the Stork…\n$ book_id               &lt;dbl&gt; 927, 1024, 1087, 936, 764, 1087, 1489, 2023, 102…\n$ author                &lt;chr&gt; \"Allende, Isabel\", \"Harris, Robie\", \"Pyle, Howar…\n$ date                  &lt;date&gt; 2005-04-01, 2008-02-06, 2008-10-02, 2008-10-05,…\n$ year                  &lt;dbl&gt; 2005, 2008, 2008, 2008, 2008, 2003, 2003, 2003, …\n$ removed               &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, …\n$ explicit              &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, …\n$ antifamily            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, …\n$ occult                &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ language              &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, …\n$ lgbtq                 &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, …\n$ violent               &lt;dbl&gt; 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, …\n$ state                 &lt;chr&gt; \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", \"AK\", …\n$ political_value_index &lt;dbl&gt; -13.4, -13.4, -13.4, -13.4, -13.4, -13.4, -13.4,…\n$ median_income         &lt;dbl&gt; 15707.5, 15707.5, 15707.5, 15707.5, 15707.5, 157…\n$ hs_grad_rate          &lt;dbl&gt; 8.738042, 8.738042, 8.738042, 8.738042, 8.738042…\n$ college_grad_rate     &lt;dbl&gt; 0.6762701, 0.6762701, 0.6762701, 0.6762701, 0.67…\n\n\n\nview() tidyverse summary() equivalent\n\n\nbook_challenge_df |&gt; view()"
   },
   {
     "objectID": "w9-slides.html#the-structure-and-the-components-of-an-sf-object",
@@ -815,529 +815,6 @@
     "title": "R Coding Workshop: 7th Meeting",
     "section": "sfg to sfc",
     "text": "sfg to sfc\nInner Ring\n\n\n\nazerbaijan_sfc[[1]][[2]][[2]] |&gt; class() |&gt; print()\n\n[1] \"matrix\" \"array\" \n\nazerbaijan_sfc[[1]][[2]][[2]]\n\n         [,1]     [,2]\n[1,] 45.55234 40.61606\n[2,] 45.56230 40.64917\n[3,] 45.53418 40.66401\n[4,] 45.50449 40.66484\n[5,] 45.47881 40.64834\n[6,] 45.47881 40.60698\n[7,] 45.51436 40.59956\n[8,] 45.55234 40.61606\n\n\n\n\nazerbaijan_sfc[[1]][[2]][[2]] |&gt; list() |&gt; st_polygon() |&gt; ggplot() + geom_sf() + theme_bw()\n\n\n\n\n\n\n\n\n\nOuter Ring\n\n\n\nazerbaijan_sfc[[1]][[2]][[1]] |&gt; dim() |&gt; print()\n\n[1] 206   2\n\nazerbaijan_sfc[[1]][[2]][[1]] |&gt; head()\n\n         [,1]     [,2]\n[1,] 48.86875 38.43550\n[2,] 48.84033 38.43726\n[3,] 48.63555 38.39873\n[4,] 48.59268 38.41108\n[5,] 48.41738 38.58623\n[6,] 48.38125 38.60562\n\n\n\n\nazerbaijan_sfc[[1]][[2]][[1]] |&gt; list() |&gt; st_polygon() |&gt; ggplot() + geom_sf() + theme_bw()\n\n\n\n\n\n\n\n\n\n\nazerbaijan_outer_ring &lt;- azerbaijan_sfc[[1]][[2]][[1]]\nazerbaijan_inner_ring &lt;- azerbaijan_sfc[[1]][[2]][[2]]\n\n\nazerbaijan_polygon &lt;- st_polygon(list(azerbaijan_outer_ring, azerbaijan_inner_ring))\n\nazerbaijan_polygon |&gt;\n    ggplot() +\n    geom_sf(fill = \"lightblue\") +\n    theme_bw()\n\n\n\n\n\n\n\n\n\n\n\n\nChambers, John M. 2016. Extending R. Milton, UNITED KINGDOM: CRC Press LLC.\n\n\nJames, Gareth. 2021. An Introduction to Statistical Learning: With Applications in R. Second edition. Springer Texts in Statistics. New York, NY: Springer.\n\n\nPebesma, Edzer, and Roger Bivand. 2023. Spatial Data Science: With Applications in R. New York: Chapman and Hall/CRC. https://doi.org/10.1201/9780429459016."
-  },
-  {
-    "objectID": "pp-idx.html#intro",
-    "href": "pp-idx.html#intro",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "Intro",
-    "text": "Intro",
-    "crumbs": [
-      "Coding Workshop",
-      "progress report"
-    ]
-  },
-  {
-    "objectID": "pp-idx.html#pipeline-how-we-learn-to-translate-manchu",
-    "href": "pp-idx.html#pipeline-how-we-learn-to-translate-manchu",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "Pipeline: How we learn (to translate) Manchu?",
-    "text": "Pipeline: How we learn (to translate) Manchu?\n\n\n\nDigitization\nOCR and typing\n\n\n\nTransliteration\nTranslation",
-    "crumbs": [
-      "Coding Workshop",
-      "progress report"
-    ]
-  },
-  {
-    "objectID": "pp-idx.html#literature-review",
-    "href": "pp-idx.html#literature-review",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "Literature Review",
-    "text": "Literature Review\nOCR\n\nChoi et al., “Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.” (2025)\n\nMachine Translation\n\nSeo et al., “Mergen: The First Manchu-Korean Machine Translation Model Trained on Augmented Data.” (2024)\nPei et al., “Understanding In-Context Machine Translation for Low-Resource Languages: A Case Study on Manchu.” (2025)",
-    "crumbs": [
-      "Coding Workshop",
-      "progress report"
-    ]
-  },
-  {
-    "objectID": "pp-idx.html#data-and-methods",
-    "href": "pp-idx.html#data-and-methods",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "Data and Methods",
-    "text": "Data and Methods\nParallel Corpora\nThe Diary of a Manchu Soldier in Seventeenth-Century China (Cosmo annotated, 2006) - size: 771 sentences - vocab siz: 961 words\nThe Dream of the Red Chamber (Cao, 1792) - source: Sibe translation (1993, Mu) - reference: English translation (1891, Joly) - size: 340 sentences, vocab size: 669 words\nModels\n\nBaseline: Translation with a Sequence to Sequence Network (LSTM) and Attention\nApply transfer learning with Pre-trained model\n\nMergen: Manchu-Korean NMT (Seo et al. 2024)",
-    "crumbs": [
-      "Coding Workshop",
-      "progress report"
-    ]
-  },
-  {
-    "objectID": "pp-idx.html#results-progress-report",
-    "href": "pp-idx.html#results-progress-report",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "Results: Progress Report",
-    "text": "Results: Progress Report\nEvaluation Metrics\n\nsentence-level BLEU\n\nBaseline: 0.0\nTransfer Learning: 42.89\n\n\nSource:     ai bithe hūlambi\nReference:  Which books are you reading\nPrediction:  what is is you\nBLEU  12.44\n\nSource:     bi sini funde buki\nReference:  I will contribute for you\nPrediction:  I I I you\nBLEU  14.79\n\nSource:     si genefi terede alaci ojorakū\nReference:  you must not tell him\nPrediction:  I you you you to to\nBLEU  8.12\n\nSource:     bi arkan seme jici suwe inu mimbe forome karame tuwarakū\nReference:  you pay no heed to me at all though I have managed to come after ever so much trouble\nPredicted:  I you you you you to to to to to\nBLEU  2.41\n\nSource:     ume jilidara\nReference:  dont be angry\nPredicted:  what you\nBLEU  0.00\n\nSource:     tere oci teni jihengge ainahai terei jalin simbe aldangga tuwara giyan binio\nReference:  how could I ever distance you on her account while she has only recently come\nPredicted:  but will will that to to to to to to to\nBLEU  0.00",
-    "crumbs": [
-      "Coding Workshop",
-      "progress report"
-    ]
-  },
-  {
-    "objectID": "pp-idx.html#more-to-work-on",
-    "href": "pp-idx.html#more-to-work-on",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "More to work on…",
-    "text": "More to work on…\n\n\nEng-Korean MT\nNorman Manchu-English dictionary for data augmentation\nGenerative",
-    "crumbs": [
-      "Coding Workshop",
-      "progress report"
-    ]
-  },
-  {
-    "objectID": "pp-slides.html#manchu-english-machine-translation-model",
-    "href": "pp-slides.html#manchu-english-machine-translation-model",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "Manchu-English Machine Translation Model",
-    "text": "Manchu-English Machine Translation Model"
-  },
-  {
-    "objectID": "pp-slides.html#intro",
-    "href": "pp-slides.html#intro",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "Intro",
-    "text": "Intro"
-  },
-  {
-    "objectID": "pp-slides.html#pipeline-how-we-learn-to-translate-manchu",
-    "href": "pp-slides.html#pipeline-how-we-learn-to-translate-manchu",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "Pipeline: How we learn (to translate) Manchu?",
-    "text": "Pipeline: How we learn (to translate) Manchu?\n\n\n\nDigitization\nOCR and typing\n\n\n\nTransliteration\nTranslation"
-  },
-  {
-    "objectID": "pp-slides.html#literature-review",
-    "href": "pp-slides.html#literature-review",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "Literature Review",
-    "text": "Literature Review\nOCR\n\nChoi et al., “Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.” (2025)\n\nMachine Translation\n\nSeo et al., “Mergen: The First Manchu-Korean Machine Translation Model Trained on Augmented Data.” (2024)\nPei et al., “Understanding In-Context Machine Translation for Low-Resource Languages: A Case Study on Manchu.” (2025)"
-  },
-  {
-    "objectID": "pp-slides.html#data-and-methods",
-    "href": "pp-slides.html#data-and-methods",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "Data and Methods",
-    "text": "Data and Methods\nParallel Corpora\nThe Diary of a Manchu Soldier in Seventeenth-Century China (Cosmo annotated, 2006) - size: 771 sentences - vocab siz: 961 words\nThe Dream of the Red Chamber (Cao, 1792) - source: Sibe translation (1993, Mu) - reference: English translation (1891, Joly) - size: 340 sentences, vocab size: 669 words\nModels\n\nBaseline: Translation with a Sequence to Sequence Network (LSTM) and Attention\nApply transfer learning with Pre-trained model\n\nMergen: Manchu-Korean NMT (Seo et al. 2024)"
-  },
-  {
-    "objectID": "pp-slides.html#results-progress-report",
-    "href": "pp-slides.html#results-progress-report",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "Results: Progress Report",
-    "text": "Results: Progress Report\nEvaluation Metrics\n\nsentence-level BLEU\n\nBaseline: 0.0\nTransfer Learning: 42.89\n\n\nSource:     ai bithe hūlambi\nReference:  Which books are you reading\nPrediction:  what is is you\nBLEU  12.44\n\nSource:     bi sini funde buki\nReference:  I will contribute for you\nPrediction:  I I I you\nBLEU  14.79\n\nSource:     si genefi terede alaci ojorakū\nReference:  you must not tell him\nPrediction:  I you you you to to\nBLEU  8.12\n\nSource:     bi arkan seme jici suwe inu mimbe forome karame tuwarakū\nReference:  you pay no heed to me at all though I have managed to come after ever so much trouble\nPredicted:  I you you you you to to to to to\nBLEU  2.41\n\nSource:     ume jilidara\nReference:  dont be angry\nPredicted:  what you\nBLEU  0.00\n\nSource:     tere oci teni jihengge ainahai terei jalin simbe aldangga tuwara giyan binio\nReference:  how could I ever distance you on her account while she has only recently come\nPredicted:  but will will that to to to to to to to\nBLEU  0.00"
-  },
-  {
-    "objectID": "pp-slides.html#more-to-work-on",
-    "href": "pp-slides.html#more-to-work-on",
-    "title": "DSAN6600 Final: Manchu Learning",
-    "section": "More to work on…",
-    "text": "More to work on…\n\n\nEng-Korean MT\nNorman Manchu-English dictionary for data augmentation\nGenerative"
-  },
-  {
-    "objectID": "w13-idx.html#outline",
-    "href": "w13-idx.html#outline",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Outline",
-    "text": "Outline\n\nOpen Street Map\nProject checklist\nRaster Data",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 13"
-    ]
-  },
-  {
-    "objectID": "w13-idx.html#open-street-map",
-    "href": "w13-idx.html#open-street-map",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Open Street Map",
-    "text": "Open Street Map\n\nuse place name to search for bounding box\n\n\n?getbb\n\n\ntaipei_bb_results &lt;- getbb(place_name = 'taipei', format_out='sf_polygon')\ntaipei_bb_results\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplace_id\nlicence\nosm_type\nosm_id\nlat\nlon\nclass\ntype\nplace_rank\nimportance\naddresstype\nname\ndisplay_name\ngeometry\n\n\n\n\n213710844\nData © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\nrelation\n1293250\n25.0375198\n121.5636796\nboundary\nadministrative\n7\n0.7009468\ncity\n臺北市\n臺北市, 臺灣\nPOLYGON ((121.4571 25.10798…\n\n\n212454050\nData © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\nrelation\n1527220\n25.0119970\n121.4656619\nboundary\nadministrative\n8\n0.6192987\ncity\n新北市\n新北市, 臺灣\nMULTIPOLYGON (((121.2826 25…\n\n\n\n\n\n\n\ntpc_bb &lt;- taipei_bb_results |&gt; filter(place_id == 213710844)\n\n\nntpc_bb &lt;- taipei_bb_results |&gt; filter(place_id == 212454050)\nntpc_bb |&gt; mapview()",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 13"
-    ]
-  },
-  {
-    "objectID": "w13-idx.html#osmdata",
-    "href": "w13-idx.html#osmdata",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "osmdata",
-    "text": "osmdata\n\ncreate a query\n\n\nassign(\"has_internet_via_proxy\", TRUE, environment(curl::has_internet))\n\n\ntpc_mosque_results &lt;- tpc_bb |&gt;\n  opq() |&gt; \n  add_osm_feature(key='building', value = 'mosque') |&gt;\n  osmdata_sf()\ntpc_mosque_results\n\nObject of class 'osmdata' with:\n                 $bbox : relation(id:1293250)\n        $overpass_call : The call submitted to the overpass API\n                 $meta : metadata including timestamp and version numbers\n           $osm_points : 'sf' Simple Features Collection with 67 points\n            $osm_lines : NULL\n         $osm_polygons : 'sf' Simple Features Collection with 3 polygons\n       $osm_multilines : NULL\n    $osm_multipolygons : 'sf' Simple Features Collection with 1 multipolygons\n\n\n\nleaflet visualization\n\n\nleaflet() |&gt;\n  addProviderTiles('CartoDB.Positron') |&gt;\n  addPolygons(\n    data = tpc_mosque_results$osm_polygons,\n    color = \"purple\"\n  )\n\n\n\n\n\n\ntpc_mosque_polygon_sf &lt;- tpc_mosque_results$osm_polygons",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 13"
-    ]
-  },
-  {
-    "objectID": "w13-idx.html#osmdata-1",
-    "href": "w13-idx.html#osmdata-1",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "osmdata",
-    "text": "osmdata\n\nkentucky_bb &lt;- getbb('kentucky, USA')\nkentucky_bb\n\n        min       max\nx -89.57151 -81.96454\ny  36.49712  39.14780\n\n\n\nBounding Box\n\n\nky_results &lt;- kentucky_bb |&gt;\n  opq() |&gt;\n  add_osm_feature(key = 'boundary', value = 'administrative') |&gt;\n  add_osm_feature(key = 'admin_level', value = '4') |&gt;\n  add_osm_feature(key = 'name', value = 'Kentucky') |&gt;\n  osmdata_sf()\nky_results\n\nObject of class 'osmdata' with:\n                 $bbox : 36.497118,-89.571509,39.1477997,-81.9645413\n        $overpass_call : The call submitted to the overpass API\n                 $meta : metadata including timestamp and version numbers\n           $osm_points : 'sf' Simple Features Collection with 10411 points\n            $osm_lines : 'sf' Simple Features Collection with 266 linestrings\n         $osm_polygons : 'sf' Simple Features Collection with 0 polygons\n       $osm_multilines : NULL\n    $osm_multipolygons : 'sf' Simple Features Collection with 1 multipolygons\n\n\n\nky_sf &lt;- ky_results$osm_multipolygons\nky_vars &lt;- c(\"osm_id\", \"name\", \"ISO3166-2\", \"admin_level\", \"border_type\", \n\"boundary\", \"nickname\", \"official_name\", \"ref\", \"ref:USCG\", \"ref:USPS\", \"ref:fips\", \n\"short_name\", \"source:short_name\", \"type\", \n\"wikidata\", \"wikipedia\", \"geometry\")\n\n\nky_sf &lt;- ky_sf |&gt; dplyr::select(all_of(ky_vars))\nky_sf |&gt; mapview()\n\n\n\n\n\n\nky_bookcase_results &lt;- kentucky_bb |&gt;\n  opq() |&gt;\n  add_osm_feature(key='amenity', value = 'public_bookcase') |&gt;\n  osmdata_sf()\nky_bookcase_results\n\nObject of class 'osmdata' with:\n                 $bbox : 36.497118,-89.571509,39.1477997,-81.9645413\n        $overpass_call : The call submitted to the overpass API\n                 $meta : metadata including timestamp and version numbers\n           $osm_points : 'sf' Simple Features Collection with 77 points\n            $osm_lines : NULL\n         $osm_polygons : 'sf' Simple Features Collection with 0 polygons\n       $osm_multilines : NULL\n    $osm_multipolygons : NULL\n\n\n\nky_bookcase_sf &lt;- ky_bookcase_results$osm_points\n\n\n# ky_convex_sf &lt;- ky_sf |&gt; st_convex_hull() |&gt; st_buffer()\n# ky_convex_sf |&gt; mapview()\nky_bbox_sf &lt;- ky_sf |&gt; st_bbox() |&gt; st_as_sfc() |&gt; st_as_sf(crs = 4326)\nky_bbox_sf |&gt; mapview()",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 13"
-    ]
-  },
-  {
-    "objectID": "w13-idx.html#tessellation",
-    "href": "w13-idx.html#tessellation",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Tessellation",
-    "text": "Tessellation\n\nlibrary(tigris)\n\nTo enable caching of data, set `options(tigris_use_cache = TRUE)`\nin your R script or .Rprofile.\n\n\n\nAttachement du package : 'tigris'\n\n\nL'objet suivant est masqué depuis 'package:terra':\n\n    blocks\n\n\n\nuac_sf &lt;- urban_areas(year = 2020, progress_bar = FALSE)\n\n\nuac_sf |&gt; st_crs() |&gt; print()\n\nCoordinate Reference System:\n  User input: NAD83 \n  wkt:\nGEOGCRS[\"NAD83\",\n    DATUM[\"North American Datum 1983\",\n        ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"latitude\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"longitude\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    ID[\"EPSG\",4269]]\n\nky_sf |&gt; st_crs() |&gt; print()\n\nCoordinate Reference System:\n  User input: EPSG:4326 \n  wkt:\nGEOGCRS[\"WGS 84\",\n    ENSEMBLE[\"World Geodetic System 1984 ensemble\",\n        MEMBER[\"World Geodetic System 1984 (Transit)\"],\n        MEMBER[\"World Geodetic System 1984 (G730)\"],\n        MEMBER[\"World Geodetic System 1984 (G873)\"],\n        MEMBER[\"World Geodetic System 1984 (G1150)\"],\n        MEMBER[\"World Geodetic System 1984 (G1674)\"],\n        MEMBER[\"World Geodetic System 1984 (G1762)\"],\n        ELLIPSOID[\"WGS 84\",6378137,298.257223563,\n            LENGTHUNIT[\"metre\",1]],\n        ENSEMBLEACCURACY[2.0]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"geodetic latitude (Lat)\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"geodetic longitude (Lon)\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    USAGE[\n        SCOPE[\"Horizontal component of 3D system.\"],\n        AREA[\"World.\"],\n        BBOX[-90,-180,90,180]],\n    ID[\"EPSG\",4326]]\n\nuac_sf &lt;- uac_sf |&gt; st_transform(4326)\n\n\nky_uac_sf &lt;- uac_sf[ky_sf,]\nky_urban_bookcase_sf &lt;- ky_bookcase_sf[ky_uac_sf,]\nky_urban_bookcase_sf |&gt; dim()\n\n[1] 64 24\n\n\n\nmapview(ky_sf, col.region = 'lightblue', alpha.regions = 0.6, map.types = 'CartoDB.Positron') +\n  mapview(ky_uac_sf, col.regions = 'yellow') + \n  mapview(ky_urban_bookcase_sf, cex = 4)",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 13"
-    ]
-  },
-  {
-    "objectID": "w13-idx.html#observation-window",
-    "href": "w13-idx.html#observation-window",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Observation Window",
-    "text": "Observation Window\n\nkybb_uac_sf &lt;- uac_sf[ky_bbox_sf,]\nkybb_uac_sf |&gt; mapview()\n\n\n\n\n\n\nky_bookcase_sf[kybb_uac_sf,] |&gt; dim()\n\n[1] 70 24",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 13"
-    ]
-  },
-  {
-    "objectID": "w13-idx.html#ppp",
-    "href": "w13-idx.html#ppp",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "ppp",
-    "text": "ppp\n\nky_owin &lt;- ky_bbox_sf |&gt; st_transform(3857) |&gt; as.owin()\n\nky_urban_owin &lt;- kybb_uac_sf |&gt;\n  st_simplify(dTolerance = 200) |&gt;\n  st_intersection(ky_bbox_sf) |&gt;\n  st_transform(3857) |&gt;\n  as.owin()\n\nWarning: attribute variables are assumed to be spatially constant throughout\nall geometries\n\n# plot(ky_urban_owin)\n\n\nky_bookcase_ppp &lt;- ky_bookcase_sf |&gt;\n  st_as_sfc() |&gt;\n  st_transform(3857) |&gt;\n  as.ppp(W = ky_owin)\nplot(ky_bookcase_ppp)",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 13"
-    ]
-  },
-  {
-    "objectID": "w13-idx.html#dividing-the-observation-window",
-    "href": "w13-idx.html#dividing-the-observation-window",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Dividing the observation window",
-    "text": "Dividing the observation window\n\nurban_rural_tess &lt;- tess(\n  tiles = list(\n    urban = ky_urban_owin,\n    rural = setminus.owin(ky_owin, ky_urban_owin)\n  )\n)\n\n\nurban_rural_tess |&gt; class()\n\n[1] \"tess\" \"list\"",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 13"
-    ]
-  },
-  {
-    "objectID": "w13-idx.html#simulation",
-    "href": "w13-idx.html#simulation",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Simulation",
-    "text": "Simulation\n\nset.seed(6805)\ngen_sim_ppp &lt;- function() {\n  prot_sim &lt;- spatstat.random::rpoint(\n    n = nrow(ky_bookcase_sf),\n    w = ky_owin\n  )\n  return(prot_sim)\n}\nsim_prot_ppp &lt;- gen_sim_ppp()\nplot(sim_prot_ppp)\n\n\n\n\n\n\n\n\n\ncompute_tile_counts &lt;- function(ppp_obj) {\n  class_list &lt;- tileindex(\n    ppp_obj,\n    Z = urban_rural_tess\n  )\n  count_tb &lt;- table(class_list)\n  count_df &lt;- tibble(\n    urban = count_tb[1],\n    rural = count_tb[2]\n  )\n\n  return(count_df)\n}\n\n\ncompute_tile_counts(sim_prot_ppp)\n\n\n\n\n\nurban\nrural\n\n\n\n\n4\n73\n\n\n\n\n\n\n\ncompute_tile_counts(ky_bookcase_ppp)\n\n\n\n\n\nurban\nrural\n\n\n\n\n68\n9",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 13"
-    ]
-  },
-  {
-    "objectID": "w13-idx.html#simulation-1",
-    "href": "w13-idx.html#simulation-1",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Simulation",
-    "text": "Simulation\n\nset.seed(6805)\ngen_sims_ppp &lt;- function(num_sims = 999) {\n  bkcase_sims &lt;- spatstat.random::rpoint(\n    n = nrow(ky_bookcase_sf),\n    w = ky_owin,\n    nsim = num_sims\n  )\n  return(bkcase_sims)\n}\nbkcase_sims_list &lt;- gen_sims_ppp()\n\n\n# compute_tile_counts &lt;- function(ppp_obj) {\n#   class_list &lt;- tileindex(\n#     ppp_obj,\n#     Z = urban_rural_tess\n#   )\n#   counts &lt;- class_list |&gt;\n#     table() |&gt;\n#     as.vector()\n#   names(counts) &lt;- c('urban', 'rural')\n\n#   return(counts)\n# }\n\n\nsims_tess_counts &lt;- lapply(\n  X = bkcase_sims_list,\n  FUN = compute_tile_counts\n)\nsim_df &lt;- sims_tess_counts |&gt; bind_rows()\nsim_df |&gt; slice_sample(n = 4)\n\n\n\n\n\nurban\nrural\n\n\n\n\n3\n74\n\n\n2\n75\n\n\n2\n75\n\n\n2\n75\n\n\n\n\n\n\n\nobs_df &lt;- compute_tile_counts(ky_bookcase_ppp)\nobs_df\n\n\n\n\n\nurban\nrural\n\n\n\n\n68\n9\n\n\n\n\n\n\n\nbind_df &lt;- bind_rows(sim_df, obs_df)\nbind_df |&gt; dim()\n\n[1] 1000    2\n\n\n\nbind_df |&gt;\n  ggplot(aes(x = rural)) +\n  geom_density(fill = palette4[2], alpha = 0.7) +\n  geom_vline(\n    xintercept = 9,\n    linetype = 'dashed',\n    color = palette4[5]\n  ) +\n    theme_classic()",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 13"
-    ]
-  },
-  {
-    "objectID": "w13-idx.html#raster",
-    "href": "w13-idx.html#raster",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Raster",
-    "text": "Raster\n\npop_raster &lt;- raster(\n  'data/gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min.tif'\n)\npop_raster\n\nclass      : RasterLayer \ndimensions : 4320, 8640, 37324800  (nrow, ncol, ncell)\nresolution : 0.04166667, 0.04166667  (x, y)\nextent     : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)\ncrs        : +proj=longlat +datum=WGS84 +no_defs \nsource     : gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min.tif \nnames      : gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min \n\n\n\nbbox_extent &lt;- extent(-89.57151, -81.96454, 36.49712, 39.14780)\npop_raster_sub &lt;- crop(pop_raster, bbox_extent)\n\n\npop_poly &lt;- pop_raster_sub |&gt; raster::rasterToPolygons(n = 8, na.rm = TRUE)\npop_poly\n\nclass       : SpatialPolygonsDataFrame \nfeatures    : 11712 \nextent      : -89.58333, -81.95833, 36.5, 39.16667  (xmin, xmax, ymin, ymax)\ncrs         : +proj=longlat +datum=WGS84 +no_defs \nvariables   : 1\nnames       : gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min \nmin values  :                                                                                 0 \nmax values  :                                                                     37111.3984375 \n\n\n\npop_sf &lt;- st_as_sf(pop_poly)\npop_sf |&gt; glimpse()\n\nRows: 11,712\nColumns: 2\n$ gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min &lt;dbl&gt; …\n$ geometry                                                                          &lt;POLYGON [°]&gt; …\n\n\n\npop_sf &lt;- pop_sf |&gt; rename(pop_count = gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min)\n\n\ngpw_map &lt;- pop_sf |&gt;\n  ggplot(aes(fill = pop_count)) +\n  geom_sf(color = scales::alpha(\"white\",0)) +\n  scale_fill_viridis_c(trans = 'pseudo_log') + \n  theme_minimal() +\n  labs(\n    title = \"Population Counts\",\n    subtitle = 'GPW V.4 2020-07-01',\n    fill = \"Population Count\"\n    ) + \n  theme(\n    plot.title = element_text(hjust=0.5),\n    plot.subtitle = element_text(hjust=0.5)\n    )\n\nggsave('image/gpw-raster.png', plot = gpw_map)\n\nSaving 7 x 5 in image\n\ngpw_map",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 13"
-    ]
-  },
-  {
-    "objectID": "w13-slides.html#r-coding-workshop-for-gis-10th-meeting",
-    "href": "w13-slides.html#r-coding-workshop-for-gis-10th-meeting",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "R Coding Workshop for GIS: 10th Meeting",
-    "text": "R Coding Workshop for GIS: 10th Meeting"
-  },
-  {
-    "objectID": "w13-slides.html#outline",
-    "href": "w13-slides.html#outline",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Outline",
-    "text": "Outline\n\nOpen Street Map\nProject checklist\nRaster Data"
-  },
-  {
-    "objectID": "w13-slides.html#open-street-map",
-    "href": "w13-slides.html#open-street-map",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Open Street Map",
-    "text": "Open Street Map\n\nuse place name to search for bounding box\n\n\n?getbb\n\n\ntaipei_bb_results &lt;- getbb(place_name = 'taipei', format_out='sf_polygon')\ntaipei_bb_results\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplace_id\nlicence\nosm_type\nosm_id\nlat\nlon\nclass\ntype\nplace_rank\nimportance\naddresstype\nname\ndisplay_name\ngeometry\n\n\n\n\n213710844\nData © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\nrelation\n1293250\n25.0375198\n121.5636796\nboundary\nadministrative\n7\n0.7009468\ncity\n臺北市\n臺北市, 臺灣\nPOLYGON ((121.4571 25.10798…\n\n\n212454050\nData © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\nrelation\n1527220\n25.0119970\n121.4656619\nboundary\nadministrative\n8\n0.6192987\ncity\n新北市\n新北市, 臺灣\nMULTIPOLYGON (((121.2826 25…\n\n\n\n\n\n\n\ntpc_bb &lt;- taipei_bb_results |&gt; filter(place_id == 213710844)\n\n\nntpc_bb &lt;- taipei_bb_results |&gt; filter(place_id == 212454050)\nntpc_bb |&gt; mapview()"
-  },
-  {
-    "objectID": "w13-slides.html#osmdata",
-    "href": "w13-slides.html#osmdata",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "osmdata",
-    "text": "osmdata\n\ncreate a query\n\n\nassign(\"has_internet_via_proxy\", TRUE, environment(curl::has_internet))\n\n\ntpc_mosque_results &lt;- tpc_bb |&gt;\n  opq() |&gt; \n  add_osm_feature(key='building', value = 'mosque') |&gt;\n  osmdata_sf()\ntpc_mosque_results\n\n\nleaflet visualization\n\n\nleaflet() |&gt;\n  addProviderTiles('CartoDB.Positron') |&gt;\n  addPolygons(\n    data = tpc_mosque_results$osm_polygons,\n    color = \"purple\"\n  )\n\n\n\n\n\n\ntpc_mosque_polygon_sf &lt;- tpc_mosque_results$osm_polygons"
-  },
-  {
-    "objectID": "w13-slides.html#osmdata-1",
-    "href": "w13-slides.html#osmdata-1",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "osmdata",
-    "text": "osmdata\n\nkentucky_bb &lt;- getbb('kentucky, USA')\nkentucky_bb\n\n        min       max\nx -89.57151 -81.96454\ny  36.49712  39.14780\n\n\n\nBounding Box\n\n\nky_results &lt;- kentucky_bb |&gt;\n  opq() |&gt;\n  add_osm_feature(key = 'boundary', value = 'administrative') |&gt;\n  add_osm_feature(key = 'admin_level', value = '4') |&gt;\n  add_osm_feature(key = 'name', value = 'Kentucky') |&gt;\n  osmdata_sf()\nky_results\n\n\nky_sf &lt;- ky_results$osm_multipolygons\nky_vars &lt;- c(\"osm_id\", \"name\", \"ISO3166-2\", \"admin_level\", \"border_type\", \n\"boundary\", \"nickname\", \"official_name\", \"ref\", \"ref:USCG\", \"ref:USPS\", \"ref:fips\", \n\"short_name\", \"source:short_name\", \"type\", \n\"wikidata\", \"wikipedia\", \"geometry\")\n\n\nky_sf &lt;- ky_sf |&gt; dplyr::select(all_of(ky_vars))\nky_sf |&gt; mapview()\n\n\n\n\n\n\nky_bookcase_results &lt;- kentucky_bb |&gt;\n  opq() |&gt;\n  add_osm_feature(key='amenity', value = 'public_bookcase') |&gt;\n  osmdata_sf()\nky_bookcase_results\n\n\nky_bookcase_sf &lt;- ky_bookcase_results$osm_points\n\n\n# ky_convex_sf &lt;- ky_sf |&gt; st_convex_hull() |&gt; st_buffer()\n# ky_convex_sf |&gt; mapview()\nky_bbox_sf &lt;- ky_sf |&gt; st_bbox() |&gt; st_as_sfc() |&gt; st_as_sf(crs = 4326)\nky_bbox_sf |&gt; mapview()"
-  },
-  {
-    "objectID": "w13-slides.html#tessellation",
-    "href": "w13-slides.html#tessellation",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Tessellation",
-    "text": "Tessellation\n\nlibrary(tigris)\n\n\nuac_sf &lt;- urban_areas(year = 2020, progress_bar = FALSE)\n\n\nuac_sf |&gt; st_crs() |&gt; print()\n\nCoordinate Reference System:\n  User input: NAD83 \n  wkt:\nGEOGCRS[\"NAD83\",\n    DATUM[\"North American Datum 1983\",\n        ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"latitude\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"longitude\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    ID[\"EPSG\",4269]]\n\nky_sf |&gt; st_crs() |&gt; print()\n\nCoordinate Reference System:\n  User input: EPSG:4326 \n  wkt:\nGEOGCRS[\"WGS 84\",\n    ENSEMBLE[\"World Geodetic System 1984 ensemble\",\n        MEMBER[\"World Geodetic System 1984 (Transit)\"],\n        MEMBER[\"World Geodetic System 1984 (G730)\"],\n        MEMBER[\"World Geodetic System 1984 (G873)\"],\n        MEMBER[\"World Geodetic System 1984 (G1150)\"],\n        MEMBER[\"World Geodetic System 1984 (G1674)\"],\n        MEMBER[\"World Geodetic System 1984 (G1762)\"],\n        ELLIPSOID[\"WGS 84\",6378137,298.257223563,\n            LENGTHUNIT[\"metre\",1]],\n        ENSEMBLEACCURACY[2.0]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"geodetic latitude (Lat)\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"geodetic longitude (Lon)\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    USAGE[\n        SCOPE[\"Horizontal component of 3D system.\"],\n        AREA[\"World.\"],\n        BBOX[-90,-180,90,180]],\n    ID[\"EPSG\",4326]]\n\nuac_sf &lt;- uac_sf |&gt; st_transform(4326)\n\n\nky_uac_sf &lt;- uac_sf[ky_sf,]\nky_urban_bookcase_sf &lt;- ky_bookcase_sf[ky_uac_sf,]\nky_urban_bookcase_sf |&gt; dim()\n\n[1] 64 24\n\n\n\nmapview(ky_sf, col.region = 'lightblue', alpha.regions = 0.6, map.types = 'CartoDB.Positron') +\n  mapview(ky_uac_sf, col.regions = 'yellow') + \n  mapview(ky_urban_bookcase_sf, cex = 4)"
-  },
-  {
-    "objectID": "w13-slides.html#observation-window",
-    "href": "w13-slides.html#observation-window",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Observation Window",
-    "text": "Observation Window\n\nkybb_uac_sf &lt;- uac_sf[ky_bbox_sf,]\nkybb_uac_sf |&gt; mapview()\n\n\n\n\n\n\nky_bookcase_sf[kybb_uac_sf,] |&gt; dim()\n\n[1] 70 24"
-  },
-  {
-    "objectID": "w13-slides.html#ppp",
-    "href": "w13-slides.html#ppp",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "ppp",
-    "text": "ppp\n\nky_owin &lt;- ky_bbox_sf |&gt; st_transform(3857) |&gt; as.owin()\n\nky_urban_owin &lt;- kybb_uac_sf |&gt;\n  st_simplify(dTolerance = 200) |&gt;\n  st_intersection(ky_bbox_sf) |&gt;\n  st_transform(3857) |&gt;\n  as.owin()\n# plot(ky_urban_owin)\n\n\nky_bookcase_ppp &lt;- ky_bookcase_sf |&gt;\n  st_as_sfc() |&gt;\n  st_transform(3857) |&gt;\n  as.ppp(W = ky_owin)\nplot(ky_bookcase_ppp)"
-  },
-  {
-    "objectID": "w13-slides.html#dividing-the-observation-window",
-    "href": "w13-slides.html#dividing-the-observation-window",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Dividing the observation window",
-    "text": "Dividing the observation window\n\nurban_rural_tess &lt;- tess(\n  tiles = list(\n    urban = ky_urban_owin,\n    rural = setminus.owin(ky_owin, ky_urban_owin)\n  )\n)\n\n\nurban_rural_tess |&gt; class()\n\n[1] \"tess\" \"list\""
-  },
-  {
-    "objectID": "w13-slides.html#simulation",
-    "href": "w13-slides.html#simulation",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Simulation",
-    "text": "Simulation\n\nset.seed(6805)\ngen_sim_ppp &lt;- function() {\n  prot_sim &lt;- spatstat.random::rpoint(\n    n = nrow(ky_bookcase_sf),\n    w = ky_owin\n  )\n  return(prot_sim)\n}\nsim_prot_ppp &lt;- gen_sim_ppp()\nplot(sim_prot_ppp)\n\n\n\ncompute_tile_counts &lt;- function(ppp_obj) {\n  class_list &lt;- tileindex(\n    ppp_obj,\n    Z = urban_rural_tess\n  )\n  count_tb &lt;- table(class_list)\n  count_df &lt;- tibble(\n    urban = count_tb[1],\n    rural = count_tb[2]\n  )\n\n  return(count_df)\n}\n\n\ncompute_tile_counts(sim_prot_ppp)\n\n\n\n\n\nurban\nrural\n\n\n\n\n4\n73\n\n\n\n\n\n\n\ncompute_tile_counts(ky_bookcase_ppp)\n\n\n\n\n\nurban\nrural\n\n\n\n\n68\n9"
-  },
-  {
-    "objectID": "w13-slides.html#simulation-1",
-    "href": "w13-slides.html#simulation-1",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Simulation",
-    "text": "Simulation\n\nset.seed(6805)\ngen_sims_ppp &lt;- function(num_sims = 999) {\n  bkcase_sims &lt;- spatstat.random::rpoint(\n    n = nrow(ky_bookcase_sf),\n    w = ky_owin,\n    nsim = num_sims\n  )\n  return(bkcase_sims)\n}\nbkcase_sims_list &lt;- gen_sims_ppp()\n\n\n# compute_tile_counts &lt;- function(ppp_obj) {\n#   class_list &lt;- tileindex(\n#     ppp_obj,\n#     Z = urban_rural_tess\n#   )\n#   counts &lt;- class_list |&gt;\n#     table() |&gt;\n#     as.vector()\n#   names(counts) &lt;- c('urban', 'rural')\n\n#   return(counts)\n# }\n\n\nsims_tess_counts &lt;- lapply(\n  X = bkcase_sims_list,\n  FUN = compute_tile_counts\n)\nsim_df &lt;- sims_tess_counts |&gt; bind_rows()\nsim_df |&gt; slice_sample(n = 4)\n\n\n\n\n\nurban\nrural\n\n\n\n\n3\n74\n\n\n2\n75\n\n\n2\n75\n\n\n2\n75\n\n\n\n\n\n\n\nobs_df &lt;- compute_tile_counts(ky_bookcase_ppp)\nobs_df\n\n\n\n\n\nurban\nrural\n\n\n\n\n68\n9\n\n\n\n\n\n\n\nbind_df &lt;- bind_rows(sim_df, obs_df)\nbind_df |&gt; dim()\n\n[1] 1000    2\n\n\n\nbind_df |&gt;\n  ggplot(aes(x = rural)) +\n  geom_density(fill = palette4[2], alpha = 0.7) +\n  geom_vline(\n    xintercept = 9,\n    linetype = 'dashed',\n    color = palette4[5]\n  ) +\n    theme_classic()"
-  },
-  {
-    "objectID": "w13-slides.html#raster",
-    "href": "w13-slides.html#raster",
-    "title": "R Coding Workshop: 10th Meeting",
-    "section": "Raster",
-    "text": "Raster\n\npop_raster &lt;- raster(\n  'data/gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min.tif'\n)\npop_raster\n\nclass      : RasterLayer \ndimensions : 4320, 8640, 37324800  (nrow, ncol, ncell)\nresolution : 0.04166667, 0.04166667  (x, y)\nextent     : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)\ncrs        : +proj=longlat +datum=WGS84 +no_defs \nsource     : gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min.tif \nnames      : gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min \n\n\n\nbbox_extent &lt;- extent(-89.57151, -81.96454, 36.49712, 39.14780)\npop_raster_sub &lt;- crop(pop_raster, bbox_extent)\n\n\npop_poly &lt;- pop_raster_sub |&gt; raster::rasterToPolygons(n = 8, na.rm = TRUE)\npop_poly\n\nclass       : SpatialPolygonsDataFrame \nfeatures    : 11712 \nextent      : -89.58333, -81.95833, 36.5, 39.16667  (xmin, xmax, ymin, ymax)\ncrs         : +proj=longlat +datum=WGS84 +no_defs \nvariables   : 1\nnames       : gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min \nmin values  :                                                                                 0 \nmax values  :                                                                     37111.3984375 \n\n\n\npop_sf &lt;- st_as_sf(pop_poly)\npop_sf |&gt; glimpse()\n\nRows: 11,712\nColumns: 2\n$ gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min &lt;dbl&gt; …\n$ geometry                                                                          &lt;POLYGON [°]&gt; …\n\n\n\npop_sf &lt;- pop_sf |&gt; rename(pop_count = gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min)\n\n\ngpw_map &lt;- pop_sf |&gt;\n  ggplot(aes(fill = pop_count)) +\n  geom_sf(color = scales::alpha(\"white\",0)) +\n  scale_fill_viridis_c(trans = 'pseudo_log') + \n  theme_minimal() +\n  labs(\n    title = \"Population Counts\",\n    subtitle = 'GPW V.4 2020-07-01',\n    fill = \"Population Count\"\n    ) + \n  theme(\n    plot.title = element_text(hjust=0.5),\n    plot.subtitle = element_text(hjust=0.5)\n    )\n\nggsave('image/gpw-raster.png', plot = gpw_map)\n\ngpw_map"
-  },
-  {
-    "objectID": "w12-slides.html#gis-coding-workshop-9th-meeting",
-    "href": "w12-slides.html#gis-coding-workshop-9th-meeting",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "GIS Coding Workshop: 9th Meeting",
-    "text": "GIS Coding Workshop: 9th Meeting"
-  },
-  {
-    "objectID": "w12-slides.html#outline",
-    "href": "w12-slides.html#outline",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "Outline",
-    "text": "Outline\n\nData Import\nggplot"
-  },
-  {
-    "objectID": "w12-slides.html#data-import",
-    "href": "w12-slides.html#data-import",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "Data Import",
-    "text": "Data Import\ndownload.file() download files from an url\n\ngrandison_url &lt;- \"https://www.gutenberg.org/cache/epub/13884/pg13884.txt\"\n\ndownload.file(url = grandison_url, destfile = 'grandison.txt', quiet = TRUE)\n\n\ngrandison_text &lt;- readLines('grandison.txt')\ngrandison_text |&gt; head()\n\n[1] \"The Project Gutenberg eBook of The History of Sir Charles Grandison, Volume 4 (of 7)\"\n[2] \"    \"                                                                                \n[3] \"This ebook is for the use of anyone anywhere in the United States and\"               \n[4] \"most other parts of the world at no cost and with almost no restrictions\"            \n[5] \"whatsoever. You may copy it, give it away or re-use it under the terms\"              \n[6] \"of the Project Gutenberg License included with this ebook or online\""
-  },
-  {
-    "objectID": "w12-slides.html#components-of-ggplot",
-    "href": "w12-slides.html#components-of-ggplot",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "Components of ggplot",
-    "text": "Components of ggplot\n\n\nWe can define an ggplot object by specifying:\n\ndata\naesthetic mapping\ngeometry layer\n\n\nPatterns - use + to introduce more layers or components\n\nbk_df &lt;- read_csv('data/us-main-books.csv')\nbk_df |&gt; glimpse()\n\nRows: 48\nColumns: 25\n$ state                 &lt;chr&gt; \"WY\", \"PA\", \"OH\", \"NM\", \"MD\", \"RI\", \"OR\", \"WI\", …\n$ division_code         &lt;dbl&gt; 8, 2, 3, 8, 5, 1, 9, 3, 4, 8, 5, 2, 7, 4, 4, 8, …\n$ division_str          &lt;chr&gt; \"Mountain\", \"Middle Atlantic\", \"East North Centr…\n$ political_value_index &lt;dbl&gt; -19.7, 2.0, -0.7, 2.4, 8.5, 11.2, 4.0, 2.4, -10.…\n$ median_income         &lt;dbl&gt; 4081.5, 4218.0, 2469.0, -2401.5, 19404.5, 8141.0…\n$ hs_grad_rate          &lt;dbl&gt; 8.3380421, 2.3380421, 3.4380421, -0.6619579, 4.2…\n$ college_grad_rate     &lt;dbl&gt; -2.1237299, -1.6237299, -2.9237299, -0.5237299, …\n$ challenge_count       &lt;dbl&gt; 4, 148, 29, 3, 5, 3, 118, 10, 6, 0, 13, 25, 5, 1…\n$ explicit_count        &lt;dbl&gt; 1, 15, 13, 1, 2, 3, 26, 5, 2, 0, 4, 7, 1, 6, 1, …\n$ antifamily_count      &lt;dbl&gt; 0, 2, 5, 0, 1, 0, 1, 0, 0, 0, 1, 2, 0, 0, 0, 0, …\n$ occult_count          &lt;dbl&gt; 0, 3, 2, 0, 0, 0, 3, 1, 0, 0, 0, 1, 1, 1, 0, 0, …\n$ language_count        &lt;dbl&gt; 0, 16, 14, 1, 3, 2, 14, 3, 2, 0, 7, 9, 3, 5, 1, …\n$ lgbtq_count           &lt;dbl&gt; 1, 5, 1, 0, 2, 0, 10, 1, 0, 0, 3, 3, 0, 0, 0, 0,…\n$ violent_count         &lt;dbl&gt; 1, 6, 2, 0, 2, 0, 19, 2, 1, 0, 3, 3, 1, 3, 1, 0,…\n$ removed_count         &lt;dbl&gt; 1, 11, 10, 2, 0, 1, 5, 3, 2, 0, 4, 11, 0, 10, 0,…\n$ removed_pct           &lt;dbl&gt; 25.000000, 7.432432, 34.482759, 66.666667, 0.000…\n$ POPU_LSA              &lt;dbl&gt; 544270, 12054201, 11551941, 1588981, 5633514, 14…\n$ POPU_ST               &lt;dbl&gt; 544270, 12284183, 11551941, 2009671, 5618344, 10…\n$ CENTLIB               &lt;dbl&gt; 23, 451, 240, 91, 15, 47, 122, 378, 80, 19, 61, …\n$ BRANLIB               &lt;dbl&gt; 53, 183, 480, 27, 169, 26, 94, 82, 10, 67, 331, …\n$ BKMOB                 &lt;dbl&gt; 2, 29, 58, 1, 18, 2, 8, 6, 12, 4, 17, 6, 1, 4, 7…\n$ BKVOL                 &lt;dbl&gt; 2497545, 27790282, 45224425, 4518130, 13954140, …\n$ LIBRARIA              &lt;dbl&gt; 189.16, 1445.81, 2725.65, 290.37, 1297.29, 232.1…\n$ VISITS                &lt;dbl&gt; 3872783, 47188171, 88255852, 8324986, 33662473, …\n$ REGBOR                &lt;dbl&gt; 383126, 5549200, 8767349, 1140637, 3271760, 5747…\n\n\n\nbkmob_plot &lt;- bk_df |&gt;\n    ggplot(aes(x = BKMOB)) +\n    geom_histogram()\n\n\nbkmob_plot |&gt; class()\n\n[1] \"gg\"     \"ggplot\""
-  },
-  {
-    "objectID": "w12-slides.html#data",
-    "href": "w12-slides.html#data",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "Data",
-    "text": "Data\n\ntigris_vars &lt;- c(\"STUSPS10\", \"NAME10\", \"ALAND10\", \"AWATER10\", \"INTPTLAT10\", \"INTPTLON10\")\nmain_states &lt;- bk_df |&gt; pull(state)\nlibrary(tigris)\nstate_sf &lt;- states(year = 2010, progress_bar = FALSE) |&gt; \n    select(any_of(tigris_vars)) |&gt;\n    filter(STUSPS10 %in% main_states)\n\nstate_sf |&gt; st_crs() |&gt; print()\n\nCoordinate Reference System:\n  User input: NAD83 \n  wkt:\nGEOGCRS[\"NAD83\",\n    DATUM[\"North American Datum 1983\",\n        ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"latitude\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"longitude\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    ID[\"EPSG\",4269]]\n\n\n\nbk_sf &lt;- state_sf |&gt;\n    left_join(bk_df, join_by(STUSPS10 == state))\nbk_sf |&gt; slice_sample(n = 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSTUSPS10\nNAME10\nALAND10\nAWATER10\nINTPTLAT10\nINTPTLON10\ndivision_code\ndivision_str\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\nchallenge_count\nexplicit_count\nantifamily_count\noccult_count\nlanguage_count\nlgbtq_count\nviolent_count\nremoved_count\nremoved_pct\nPOPU_LSA\nPOPU_ST\nCENTLIB\nBRANLIB\nBKMOB\nBKVOL\nLIBRARIA\nVISITS\nREGBOR\ngeometry\n\n\n\n\nNY\nNew York\n122056806947\n19239924100\n+42.9133974\n-075.5962723\n2\nMiddle Atlantic\n10.2\n5007.5\n-0.4619579\n3.37627\n25\n7\n2\n1\n9\n3\n3\n11\n44.00000\n19121677\n18976664\n755\n311\n6\n73077567\n4062.49\n117795146\n10589289\nMULTIPOLYGON (((-74.0394 40…\n\n\nIL\nIllinois\n143793362385\n6202038080\n+40.1028754\n-089.1526108\n3\nEast North Central\n7.7\n6489.5\n1.8380421\n2.07627\n39\n16\n2\n0\n9\n4\n6\n12\n30.76923\n11802452\n12830632\n634\n161\n23\n45333092\n3113.71\n83072172\n5348139\nMULTIPOLYGON (((-90.45081 3…"
-  },
-  {
-    "objectID": "w12-slides.html#aesthetic-mapping",
-    "href": "w12-slides.html#aesthetic-mapping",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "Aesthetic Mapping",
-    "text": "Aesthetic Mapping\nCommon aesthetic attributes\n\nPosition (x, y)\nColor (or, fill)\nOther visual features: size and shape (size, shape, linewidth)\n\n\nbk_sf |&gt;\n    ggplot(\n        aes(\n            x = CENTLIB,\n            y = BKMOB,\n            color = division_str,\n            label = STUSPS10\n        )\n    ) +\n    geom_label(size = 2) +\n    labs(\n        x = 'Central Library Count',\n        y = 'Bookmobile Count'\n    )\n\n\n\n\n\n\n\n\nTip\n\n\nlabs(): to customize plot labels"
-  },
-  {
-    "objectID": "w12-slides.html#save-your-plot",
-    "href": "w12-slides.html#save-your-plot",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "Save your plot",
-    "text": "Save your plot\n\nplot1 &lt;- bk_sf |&gt;\n    ggplot(\n        aes(\n            x = CENTLIB,\n            y = BKMOB,\n            color = division_str,\n            label = STUSPS10\n        )\n    ) +\n    geom_label(size = 3.5) +\n    labs(\n        x = 'Central Library Count',\n        y = 'Bookmobile Count'\n    )\n\n\nggsave(\n    filename = 'lib-bkmob-scatterplot.png',\n    plot = plot1,\n    width = 20,\n    height = 10,\n    dpi = 300\n)"
-  },
-  {
-    "objectID": "w12-slides.html#geom_sf",
-    "href": "w12-slides.html#geom_sf",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "geom_sf",
-    "text": "geom_sf\n\nbk_sf |&gt; mapview(zcol = 'BKMOB')\n\n\n\n\n\n\nbk_sf |&gt;\n    ggplot() +\n    geom_sf(aes(fill = (BKMOB / POPU_LSA))) +\n    geom_sf_label(aes(label = STUSPS10), size = 1.5, fill = \"white\", alpha = 0.7, color = \"black\") +\n    theme_classic() +\n    scale_fill_viridis() +\n    labs(\n        x = 'Longitude',\n        y = 'Latitude',\n        fill = \"Number of Bookmobiles per Capita\"\n    )"
-  },
-  {
-    "objectID": "w12-idx.html#outline",
-    "href": "w12-idx.html#outline",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "Outline",
-    "text": "Outline\n\nData Import\nggplot",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 12"
-    ]
-  },
-  {
-    "objectID": "w12-idx.html#data-import",
-    "href": "w12-idx.html#data-import",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "Data Import",
-    "text": "Data Import\ndownload.file() download files from an url\n\ngrandison_url &lt;- \"https://www.gutenberg.org/cache/epub/13884/pg13884.txt\"\n\ndownload.file(url = grandison_url, destfile = 'grandison.txt', quiet = TRUE)\n\n\ngrandison_text &lt;- readLines('grandison.txt')\ngrandison_text |&gt; head()\n\n[1] \"The Project Gutenberg eBook of The History of Sir Charles Grandison, Volume 4 (of 7)\"\n[2] \"    \"                                                                                \n[3] \"This ebook is for the use of anyone anywhere in the United States and\"               \n[4] \"most other parts of the world at no cost and with almost no restrictions\"            \n[5] \"whatsoever. You may copy it, give it away or re-use it under the terms\"              \n[6] \"of the Project Gutenberg License included with this ebook or online\"",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 12"
-    ]
-  },
-  {
-    "objectID": "w12-idx.html#components-of-ggplot",
-    "href": "w12-idx.html#components-of-ggplot",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "Components of ggplot",
-    "text": "Components of ggplot\n\n\nWe can define an ggplot object by specifying:\n\ndata\naesthetic mapping\ngeometry layer\n\n\nPatterns - use + to introduce more layers or components\n\nbk_df &lt;- read_csv('data/us-main-books.csv')\n\nRows: 48 Columns: 25\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (2): state, division_str\ndbl (23): division_code, political_value_index, median_income, hs_grad_rate,...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nbk_df |&gt; glimpse()\n\nRows: 48\nColumns: 25\n$ state                 &lt;chr&gt; \"WY\", \"PA\", \"OH\", \"NM\", \"MD\", \"RI\", \"OR\", \"WI\", …\n$ division_code         &lt;dbl&gt; 8, 2, 3, 8, 5, 1, 9, 3, 4, 8, 5, 2, 7, 4, 4, 8, …\n$ division_str          &lt;chr&gt; \"Mountain\", \"Middle Atlantic\", \"East North Centr…\n$ political_value_index &lt;dbl&gt; -19.7, 2.0, -0.7, 2.4, 8.5, 11.2, 4.0, 2.4, -10.…\n$ median_income         &lt;dbl&gt; 4081.5, 4218.0, 2469.0, -2401.5, 19404.5, 8141.0…\n$ hs_grad_rate          &lt;dbl&gt; 8.3380421, 2.3380421, 3.4380421, -0.6619579, 4.2…\n$ college_grad_rate     &lt;dbl&gt; -2.1237299, -1.6237299, -2.9237299, -0.5237299, …\n$ challenge_count       &lt;dbl&gt; 4, 148, 29, 3, 5, 3, 118, 10, 6, 0, 13, 25, 5, 1…\n$ explicit_count        &lt;dbl&gt; 1, 15, 13, 1, 2, 3, 26, 5, 2, 0, 4, 7, 1, 6, 1, …\n$ antifamily_count      &lt;dbl&gt; 0, 2, 5, 0, 1, 0, 1, 0, 0, 0, 1, 2, 0, 0, 0, 0, …\n$ occult_count          &lt;dbl&gt; 0, 3, 2, 0, 0, 0, 3, 1, 0, 0, 0, 1, 1, 1, 0, 0, …\n$ language_count        &lt;dbl&gt; 0, 16, 14, 1, 3, 2, 14, 3, 2, 0, 7, 9, 3, 5, 1, …\n$ lgbtq_count           &lt;dbl&gt; 1, 5, 1, 0, 2, 0, 10, 1, 0, 0, 3, 3, 0, 0, 0, 0,…\n$ violent_count         &lt;dbl&gt; 1, 6, 2, 0, 2, 0, 19, 2, 1, 0, 3, 3, 1, 3, 1, 0,…\n$ removed_count         &lt;dbl&gt; 1, 11, 10, 2, 0, 1, 5, 3, 2, 0, 4, 11, 0, 10, 0,…\n$ removed_pct           &lt;dbl&gt; 25.000000, 7.432432, 34.482759, 66.666667, 0.000…\n$ POPU_LSA              &lt;dbl&gt; 544270, 12054201, 11551941, 1588981, 5633514, 14…\n$ POPU_ST               &lt;dbl&gt; 544270, 12284183, 11551941, 2009671, 5618344, 10…\n$ CENTLIB               &lt;dbl&gt; 23, 451, 240, 91, 15, 47, 122, 378, 80, 19, 61, …\n$ BRANLIB               &lt;dbl&gt; 53, 183, 480, 27, 169, 26, 94, 82, 10, 67, 331, …\n$ BKMOB                 &lt;dbl&gt; 2, 29, 58, 1, 18, 2, 8, 6, 12, 4, 17, 6, 1, 4, 7…\n$ BKVOL                 &lt;dbl&gt; 2497545, 27790282, 45224425, 4518130, 13954140, …\n$ LIBRARIA              &lt;dbl&gt; 189.16, 1445.81, 2725.65, 290.37, 1297.29, 232.1…\n$ VISITS                &lt;dbl&gt; 3872783, 47188171, 88255852, 8324986, 33662473, …\n$ REGBOR                &lt;dbl&gt; 383126, 5549200, 8767349, 1140637, 3271760, 5747…\n\n\n\nbkmob_plot &lt;- bk_df |&gt;\n    ggplot(aes(x = BKMOB)) +\n    geom_histogram()\n\n\nbkmob_plot |&gt; class()\n\n[1] \"gg\"     \"ggplot\"",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 12"
-    ]
-  },
-  {
-    "objectID": "w12-idx.html#data",
-    "href": "w12-idx.html#data",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "Data",
-    "text": "Data\n\ntigris_vars &lt;- c(\"STUSPS10\", \"NAME10\", \"ALAND10\", \"AWATER10\", \"INTPTLAT10\", \"INTPTLON10\")\nmain_states &lt;- bk_df |&gt; pull(state)\nlibrary(tigris)\n\nTo enable caching of data, set `options(tigris_use_cache = TRUE)`\nin your R script or .Rprofile.\n\n\n\nAttachement du package : 'tigris'\n\n\nL'objet suivant est masqué depuis 'package:terra':\n\n    blocks\n\nstate_sf &lt;- states(year = 2010, progress_bar = FALSE) |&gt; \n    select(any_of(tigris_vars)) |&gt;\n    filter(STUSPS10 %in% main_states)\n\nstate_sf |&gt; st_crs() |&gt; print()\n\nCoordinate Reference System:\n  User input: NAD83 \n  wkt:\nGEOGCRS[\"NAD83\",\n    DATUM[\"North American Datum 1983\",\n        ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"latitude\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"longitude\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    ID[\"EPSG\",4269]]\n\n\n\nbk_sf &lt;- state_sf |&gt;\n    left_join(bk_df, join_by(STUSPS10 == state))\nbk_sf |&gt; slice_sample(n = 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSTUSPS10\nNAME10\nALAND10\nAWATER10\nINTPTLAT10\nINTPTLON10\ndivision_code\ndivision_str\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\nchallenge_count\nexplicit_count\nantifamily_count\noccult_count\nlanguage_count\nlgbtq_count\nviolent_count\nremoved_count\nremoved_pct\nPOPU_LSA\nPOPU_ST\nCENTLIB\nBRANLIB\nBKMOB\nBKVOL\nLIBRARIA\nVISITS\nREGBOR\ngeometry\n\n\n\n\nOR\nOregon\n248607802255\n6191433228\n+43.9715225\n-120.6226269\n9\nPacific\n4.0\n1274.5\n5.538042\n1.07627\n118\n26\n1\n3\n14\n10\n19\n5\n4.237288\n3657597\n3823465\n122\n94\n8\n10052777\n503.41\n25034546\n1938999\nMULTIPOLYGON (((-124.5523 4…\n\n\nMI\nMichigan\n146435075220\n104051765840\n+44.8410835\n-085.6593197\n3\nEast North Central\n3.8\n2966.0\n3.838042\n-2.22373\n36\n11\n2\n7\n8\n3\n5\n7\n19.444444\n9935266\n9952969\n380\n274\n11\n35339085\n1905.85\n59474967\n5257023\nMULTIPOLYGON (((-87.08834 4…",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 12"
-    ]
-  },
-  {
-    "objectID": "w12-idx.html#aesthetic-mapping",
-    "href": "w12-idx.html#aesthetic-mapping",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "Aesthetic Mapping",
-    "text": "Aesthetic Mapping\nCommon aesthetic attributes\n\nPosition (x, y)\nColor (or, fill)\nOther visual features: size and shape (size, shape, linewidth)\n\n\nbk_sf |&gt;\n    ggplot(\n        aes(\n            x = CENTLIB,\n            y = BKMOB,\n            color = division_str,\n            label = STUSPS10\n        )\n    ) +\n    geom_label(size = 2) +\n    labs(\n        x = 'Central Library Count',\n        y = 'Bookmobile Count'\n    )\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nlabs(): to customize plot labels",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 12"
-    ]
-  },
-  {
-    "objectID": "w12-idx.html#save-your-plot",
-    "href": "w12-idx.html#save-your-plot",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "Save your plot",
-    "text": "Save your plot\n\nplot1 &lt;- bk_sf |&gt;\n    ggplot(\n        aes(\n            x = CENTLIB,\n            y = BKMOB,\n            color = division_str,\n            label = STUSPS10\n        )\n    ) +\n    geom_label(size = 3.5) +\n    labs(\n        x = 'Central Library Count',\n        y = 'Bookmobile Count'\n    )\n\n\nggsave(\n    filename = 'lib-bkmob-scatterplot.png',\n    plot = plot1,\n    width = 20,\n    height = 10,\n    dpi = 300\n)",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 12"
-    ]
-  },
-  {
-    "objectID": "w12-idx.html#geom_sf",
-    "href": "w12-idx.html#geom_sf",
-    "title": "R Coding Workshop: 9th Meeting",
-    "section": "geom_sf",
-    "text": "geom_sf\n\nbk_sf |&gt; mapview(zcol = 'BKMOB')\n\n\n\n\n\n\nbk_sf |&gt;\n    ggplot() +\n    geom_sf(aes(fill = (BKMOB / POPU_LSA))) +\n    geom_sf_label(aes(label = STUSPS10), size = 1.5, fill = \"white\", alpha = 0.7, color = \"black\") +\n    theme_classic() +\n    scale_fill_viridis() +\n    labs(\n        x = 'Longitude',\n        y = 'Latitude',\n        fill = \"Number of Bookmobiles per Capita\"\n    )\n\nWarning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not\ngive correct results for longitude/latitude data",
-    "crumbs": [
-      "Coding Workshop",
-      "Week 12"
-    ]
-  },
-  {
-    "objectID": "w10-slides.html#r-coding-workshop-for-gis-7th-meeting",
-    "href": "w10-slides.html#r-coding-workshop-for-gis-7th-meeting",
-    "title": "R Coding Workshop: 8th Meeting",
-    "section": "R Coding Workshop for GIS: 7th Meeting",
-    "text": "R Coding Workshop for GIS: 7th Meeting"
-  },
-  {
-    "objectID": "w10-slides.html#outline",
-    "href": "w10-slides.html#outline",
-    "title": "R Coding Workshop: 8th Meeting",
-    "section": "Outline",
-    "text": "Outline\n\nOrganize and save analysis results\nggplot"
-  },
-  {
-    "objectID": "w10-slides.html#initialize-a-ggplot-object",
-    "href": "w10-slides.html#initialize-a-ggplot-object",
-    "title": "R Coding Workshop: 8th Meeting",
-    "section": "Initialize a ggplot object",
-    "text": "Initialize a ggplot object\nTo create a ggplot object, we need…\n\n\nComponents:\n\ndata\nmapping\ngeometry layer\n\n\nSteps:\n\nPrepare your data (often in the structure of a dataframe object)\nThink about the variable(s) that you’re interested in and what type of geometry (marks: point/line/polygon) might best help you understand their distribution or relationship.\nSpecify them using the grammar of graphics –map the variables to corresponding aesthetic or spatial properties of the geometry (color/size/position x, y)"
-  },
-  {
-    "objectID": "w10-slides.html#ggplot-data-being-the-first-argument",
-    "href": "w10-slides.html#ggplot-data-being-the-first-argument",
-    "title": "R Coding Workshop: 8th Meeting",
-    "section": "ggplot(): data being the first argument",
-    "text": "ggplot(): data being the first argument\n\nbook_df &lt;- read_csv('data/book-df-us-main.csv')\nbook_df |&gt; glimpse()\n\nRows: 47\nColumns: 25\n$ state                 &lt;chr&gt; \"WY\", \"PA\", \"OH\", \"NM\", \"MD\", \"RI\", \"OR\", \"WI\", …\n$ division_code         &lt;dbl&gt; 8, 2, 3, 8, 5, 1, 9, 3, 4, 8, 5, 2, 7, 4, 4, 8, …\n$ division_str          &lt;chr&gt; \"Mountain\", \"Middle Atlantic\", \"East North Centr…\n$ political_value_index &lt;dbl&gt; -19.7, 2.0, -0.7, 2.4, 8.5, 11.2, 4.0, 2.4, -10.…\n$ median_income         &lt;dbl&gt; 4081.5, 4218.0, 2469.0, -2401.5, 19404.5, 8141.0…\n$ hs_grad_rate          &lt;dbl&gt; 8.3380421, 2.3380421, 3.4380421, -0.6619579, 4.2…\n$ college_grad_rate     &lt;dbl&gt; -2.1237299, -1.6237299, -2.9237299, -0.5237299, …\n$ challenge_count       &lt;dbl&gt; 4, 148, 29, 3, 5, 3, 118, 10, 6, NA, 13, 25, 5, …\n$ explicit_count        &lt;dbl&gt; 1, 15, 13, 1, 2, 3, 26, 5, 2, NA, 4, 7, 1, 6, 1,…\n$ antifamily_count      &lt;dbl&gt; 0, 2, 5, 0, 1, 0, 1, 0, 0, NA, 1, 2, 0, 0, 0, 0,…\n$ occult_count          &lt;dbl&gt; 0, 3, 2, 0, 0, 0, 3, 1, 0, NA, 0, 1, 1, 1, 0, 0,…\n$ language_count        &lt;dbl&gt; 0, 16, 14, 1, 3, 2, 14, 3, 2, NA, 7, 9, 3, 5, 1,…\n$ lgbtq_count           &lt;dbl&gt; 1, 5, 1, 0, 2, 0, 10, 1, 0, NA, 3, 3, 0, 0, 0, 0…\n$ violent_count         &lt;dbl&gt; 1, 6, 2, 0, 2, 0, 19, 2, 1, NA, 3, 3, 1, 3, 1, 0…\n$ removed_count         &lt;dbl&gt; 1, 11, 10, 2, 0, 1, 5, 3, 2, NA, 4, 11, 0, 10, 0…\n$ removed_pct           &lt;dbl&gt; 25.000000, 7.432432, 34.482759, 66.666667, 0.000…\n$ POPU_LSA              &lt;dbl&gt; 544270, 12054201, 11551941, 1588981, 5633514, 14…\n$ POPU_ST               &lt;dbl&gt; 544270, 12284183, 11551941, 2009671, 5618344, 10…\n$ CENTLIB               &lt;dbl&gt; 23, 451, 240, 91, 15, 47, 122, 378, 80, 19, 61, …\n$ BRANLIB               &lt;dbl&gt; 53, 183, 480, 27, 169, 26, 94, 82, 10, 67, 331, …\n$ BKMOB                 &lt;dbl&gt; 2, 29, 58, 1, 18, 2, 8, 6, 12, 4, 17, 6, 1, 4, 7…\n$ BKVOL                 &lt;dbl&gt; 2497545, 27790282, 45224425, 4518130, 13954140, …\n$ LIBRARIA              &lt;dbl&gt; 189.16, 1445.81, 2725.65, 290.37, 1297.29, 232.1…\n$ VISITS                &lt;dbl&gt; 3872783, 47188171, 88255852, 8324986, 33662473, …\n$ REGBOR                &lt;dbl&gt; 383126, 5549200, 8767349, 1140637, 3271760, 5747…\n\n\nPlotting the distribution of a single variable\n\nview()\n\n\n# book_df |&gt; view()\n\n\n\nlayer geom_histogram(): for a numeric variable\n\n\nbook_df |&gt;\n  ggplot(mapping = aes(VISITS)) +\n  geom_histogram() +\n  scale_x_continuous(labels = comma)\n\n\n\n\n\n\n\n\n\nlayer geom_bar(): for a categorical variable\n\n\nbook_df |&gt;\n    ggplot(aes(x = division_str)) +\n    geom_bar() +\n    guides(x = guide_axis(angle = 60))"
-  },
-  {
-    "objectID": "w10-slides.html#distribution",
-    "href": "w10-slides.html#distribution",
-    "title": "R Coding Workshop: 8th Meeting",
-    "section": "Distribution",
-    "text": "Distribution\ngeom_boxplot()\ndecompose the elements of ggplot specification\n\nmap variable name to aes attribute\nadd geometry layer with + sign\nextra: change the theme layer to classic\n\n\nbook_df |&gt;\n  ggplot(mapping = aes(y = BKMOB)) +\n  geom_boxplot() +\n  theme_classic()"
-  },
-  {
-    "objectID": "w10-slides.html#association",
-    "href": "w10-slides.html#association",
-    "title": "R Coding Workshop: 8th Meeting",
-    "section": "Association",
-    "text": "Association\n\ngeom_point(), geom_text(), geom_label(): two variable, using points to mark position\n\n\nbk_df &lt;- read_csv('data/bkdf-us-main.csv')\n\n\n\n\nbk_df |&gt;\n    ggplot(aes(x = CENTLIB, y = challenge_count, label = state)) +\n    geom_point()\n\n\n\n\n\n\n\n\n\n\nbk_df |&gt;\n    ggplot(aes(x = CENTLIB, y = challenge_count, label = state)) +\n    geom_text(size = 2)\n\n\n\n\n\n\n\n\n\n\nbk_df |&gt;\n    ggplot(aes(x = CENTLIB, y = challenge_count, label = state)) +\n    geom_label(size = 2)\n\n\n\n\n\n\n\n\n\n\nbk_df |&gt;\n    ggplot(aes(x = CENTLIB, y = challenge_count, label = state)) +\n    geom_point(size = 2) +\n    geom_smooth(method = 'lm')"
-  },
-  {
-    "objectID": "w10-slides.html#comparison",
-    "href": "w10-slides.html#comparison",
-    "title": "R Coding Workshop: 8th Meeting",
-    "section": "Comparison",
-    "text": "Comparison\n\nAdd a z variable: color, size, facet_wrap()\n\n\nbk_df |&gt;\n    ggplot(aes(x = CENTLIB, y = challenge_count, color = division_str)) +\n    geom_point()\n\n\n\n\n\n\n\n\n\nbk_df |&gt;\n    ggplot(aes(x = CENTLIB, y = challenge_count, color = division_str)) +\n    geom_point() +\n    facet_wrap(~division_str) +\n    theme_classic()\n\n\n\n\n\n\n\n\n\nbk_df |&gt;\n  filter(division_str == 'Mountain') |&gt;\n  ggplot(aes(x = CENTLIB, y = challenge_count, color = state)) +\n  geom_point()"
-  },
-  {
-    "objectID": "w10-slides.html#ggplot-for-sf",
-    "href": "w10-slides.html#ggplot-for-sf",
-    "title": "R Coding Workshop: 8th Meeting",
-    "section": "ggplot for sf",
-    "text": "ggplot for sf\n\ngeom_sf()\n\n\nlibrary(tigris)\nstates_sf &lt;- states(year = 2010, progress_bar = FALSE)\n# states_sf\n\n\nstates_sf |&gt;\n  ggplot() +\n  geom_sf(aes(fill = DIVISION10))"
-  },
-  {
-    "objectID": "w10-slides.html#ggplot-for-cda",
-    "href": "w10-slides.html#ggplot-for-cda",
-    "title": "R Coding Workshop: 8th Meeting",
-    "section": "ggplot for CDA",
-    "text": "ggplot for CDA\n\nlibrary(HistData)\ndata(Nightingale)\n\n\nnightingale_df &lt;- Nightingale |&gt; as_tibble()\n\n\nnightingale_df |&gt;\n    ggplot() +\n    geom_line(aes(x = Date, y = Disease), color = 'deepskyblue') +\n    geom_line(aes(x = Date, y = Wounds), color = 'orange') + \n    geom_line(aes(x = Date, y = Other), color = 'green') +\n    scale_x_date(date_breaks = 'month', date_labels = '%Y %b') +\n    guides(x = guide_axis(angle = 60)) +\n    geom_vline(xintercept = ymd('1855-03-01'), colour = \"red\") +\n    labs(y = 'Count') +\n    theme_classic()"
-  },
-  {
-    "objectID": "w10-slides.html#public-library-survey-2010-book-mobiles",
-    "href": "w10-slides.html#public-library-survey-2010-book-mobiles",
-    "title": "R Coding Workshop: 8th Meeting",
-    "section": "Public Library Survey 2010: Book Mobiles",
-    "text": "Public Library Survey 2010: Book Mobiles\n\n# bk_df"
   },
   {
     "objectID": "w10-idx.html#outline",
@@ -1437,6 +914,629 @@
       "Coding Workshop",
       "Week 10"
     ]
+  },
+  {
+    "objectID": "w10-slides.html#r-coding-workshop-for-gis-7th-meeting",
+    "href": "w10-slides.html#r-coding-workshop-for-gis-7th-meeting",
+    "title": "R Coding Workshop: 8th Meeting",
+    "section": "R Coding Workshop for GIS: 7th Meeting",
+    "text": "R Coding Workshop for GIS: 7th Meeting"
+  },
+  {
+    "objectID": "w10-slides.html#outline",
+    "href": "w10-slides.html#outline",
+    "title": "R Coding Workshop: 8th Meeting",
+    "section": "Outline",
+    "text": "Outline\n\nOrganize and save analysis results\nggplot"
+  },
+  {
+    "objectID": "w10-slides.html#initialize-a-ggplot-object",
+    "href": "w10-slides.html#initialize-a-ggplot-object",
+    "title": "R Coding Workshop: 8th Meeting",
+    "section": "Initialize a ggplot object",
+    "text": "Initialize a ggplot object\nTo create a ggplot object, we need…\n\n\nComponents:\n\ndata\nmapping\ngeometry layer\n\n\nSteps:\n\nPrepare your data (often in the structure of a dataframe object)\nThink about the variable(s) that you’re interested in and what type of geometry (marks: point/line/polygon) might best help you understand their distribution or relationship.\nSpecify them using the grammar of graphics –map the variables to corresponding aesthetic or spatial properties of the geometry (color/size/position x, y)"
+  },
+  {
+    "objectID": "w10-slides.html#ggplot-data-being-the-first-argument",
+    "href": "w10-slides.html#ggplot-data-being-the-first-argument",
+    "title": "R Coding Workshop: 8th Meeting",
+    "section": "ggplot(): data being the first argument",
+    "text": "ggplot(): data being the first argument\n\nbook_df &lt;- read_csv('data/book-df-us-main.csv')\nbook_df |&gt; glimpse()\n\nRows: 47\nColumns: 25\n$ state                 &lt;chr&gt; \"WY\", \"PA\", \"OH\", \"NM\", \"MD\", \"RI\", \"OR\", \"WI\", …\n$ division_code         &lt;dbl&gt; 8, 2, 3, 8, 5, 1, 9, 3, 4, 8, 5, 2, 7, 4, 4, 8, …\n$ division_str          &lt;chr&gt; \"Mountain\", \"Middle Atlantic\", \"East North Centr…\n$ political_value_index &lt;dbl&gt; -19.7, 2.0, -0.7, 2.4, 8.5, 11.2, 4.0, 2.4, -10.…\n$ median_income         &lt;dbl&gt; 4081.5, 4218.0, 2469.0, -2401.5, 19404.5, 8141.0…\n$ hs_grad_rate          &lt;dbl&gt; 8.3380421, 2.3380421, 3.4380421, -0.6619579, 4.2…\n$ college_grad_rate     &lt;dbl&gt; -2.1237299, -1.6237299, -2.9237299, -0.5237299, …\n$ challenge_count       &lt;dbl&gt; 4, 148, 29, 3, 5, 3, 118, 10, 6, NA, 13, 25, 5, …\n$ explicit_count        &lt;dbl&gt; 1, 15, 13, 1, 2, 3, 26, 5, 2, NA, 4, 7, 1, 6, 1,…\n$ antifamily_count      &lt;dbl&gt; 0, 2, 5, 0, 1, 0, 1, 0, 0, NA, 1, 2, 0, 0, 0, 0,…\n$ occult_count          &lt;dbl&gt; 0, 3, 2, 0, 0, 0, 3, 1, 0, NA, 0, 1, 1, 1, 0, 0,…\n$ language_count        &lt;dbl&gt; 0, 16, 14, 1, 3, 2, 14, 3, 2, NA, 7, 9, 3, 5, 1,…\n$ lgbtq_count           &lt;dbl&gt; 1, 5, 1, 0, 2, 0, 10, 1, 0, NA, 3, 3, 0, 0, 0, 0…\n$ violent_count         &lt;dbl&gt; 1, 6, 2, 0, 2, 0, 19, 2, 1, NA, 3, 3, 1, 3, 1, 0…\n$ removed_count         &lt;dbl&gt; 1, 11, 10, 2, 0, 1, 5, 3, 2, NA, 4, 11, 0, 10, 0…\n$ removed_pct           &lt;dbl&gt; 25.000000, 7.432432, 34.482759, 66.666667, 0.000…\n$ POPU_LSA              &lt;dbl&gt; 544270, 12054201, 11551941, 1588981, 5633514, 14…\n$ POPU_ST               &lt;dbl&gt; 544270, 12284183, 11551941, 2009671, 5618344, 10…\n$ CENTLIB               &lt;dbl&gt; 23, 451, 240, 91, 15, 47, 122, 378, 80, 19, 61, …\n$ BRANLIB               &lt;dbl&gt; 53, 183, 480, 27, 169, 26, 94, 82, 10, 67, 331, …\n$ BKMOB                 &lt;dbl&gt; 2, 29, 58, 1, 18, 2, 8, 6, 12, 4, 17, 6, 1, 4, 7…\n$ BKVOL                 &lt;dbl&gt; 2497545, 27790282, 45224425, 4518130, 13954140, …\n$ LIBRARIA              &lt;dbl&gt; 189.16, 1445.81, 2725.65, 290.37, 1297.29, 232.1…\n$ VISITS                &lt;dbl&gt; 3872783, 47188171, 88255852, 8324986, 33662473, …\n$ REGBOR                &lt;dbl&gt; 383126, 5549200, 8767349, 1140637, 3271760, 5747…\n\n\nPlotting the distribution of a single variable\n\nview()\n\n\n# book_df |&gt; view()\n\n\n\nlayer geom_histogram(): for a numeric variable\n\n\nbook_df |&gt;\n  ggplot(mapping = aes(VISITS)) +\n  geom_histogram() +\n  scale_x_continuous(labels = comma)\n\n\n\n\n\n\n\n\n\nlayer geom_bar(): for a categorical variable\n\n\nbook_df |&gt;\n    ggplot(aes(x = division_str)) +\n    geom_bar() +\n    guides(x = guide_axis(angle = 60))"
+  },
+  {
+    "objectID": "w10-slides.html#distribution",
+    "href": "w10-slides.html#distribution",
+    "title": "R Coding Workshop: 8th Meeting",
+    "section": "Distribution",
+    "text": "Distribution\ngeom_boxplot()\ndecompose the elements of ggplot specification\n\nmap variable name to aes attribute\nadd geometry layer with + sign\nextra: change the theme layer to classic\n\n\nbook_df |&gt;\n  ggplot(mapping = aes(y = BKMOB)) +\n  geom_boxplot() +\n  theme_classic()"
+  },
+  {
+    "objectID": "w10-slides.html#association",
+    "href": "w10-slides.html#association",
+    "title": "R Coding Workshop: 8th Meeting",
+    "section": "Association",
+    "text": "Association\n\ngeom_point(), geom_text(), geom_label(): two variable, using points to mark position\n\n\nbk_df &lt;- read_csv('data/bkdf-us-main.csv')\n\n\n\n\nbk_df |&gt;\n    ggplot(aes(x = CENTLIB, y = challenge_count, label = state)) +\n    geom_point()\n\n\n\n\n\n\n\n\n\n\nbk_df |&gt;\n    ggplot(aes(x = CENTLIB, y = challenge_count, label = state)) +\n    geom_text(size = 2)\n\n\n\n\n\n\n\n\n\n\nbk_df |&gt;\n    ggplot(aes(x = CENTLIB, y = challenge_count, label = state)) +\n    geom_label(size = 2)\n\n\n\n\n\n\n\n\n\n\nbk_df |&gt;\n    ggplot(aes(x = CENTLIB, y = challenge_count, label = state)) +\n    geom_point(size = 2) +\n    geom_smooth(method = 'lm')"
+  },
+  {
+    "objectID": "w10-slides.html#comparison",
+    "href": "w10-slides.html#comparison",
+    "title": "R Coding Workshop: 8th Meeting",
+    "section": "Comparison",
+    "text": "Comparison\n\nAdd a z variable: color, size, facet_wrap()\n\n\nbk_df |&gt;\n    ggplot(aes(x = CENTLIB, y = challenge_count, color = division_str)) +\n    geom_point()\n\n\n\n\n\n\n\n\n\nbk_df |&gt;\n    ggplot(aes(x = CENTLIB, y = challenge_count, color = division_str)) +\n    geom_point() +\n    facet_wrap(~division_str) +\n    theme_classic()\n\n\n\n\n\n\n\n\n\nbk_df |&gt;\n  filter(division_str == 'Mountain') |&gt;\n  ggplot(aes(x = CENTLIB, y = challenge_count, color = state)) +\n  geom_point()"
+  },
+  {
+    "objectID": "w10-slides.html#ggplot-for-sf",
+    "href": "w10-slides.html#ggplot-for-sf",
+    "title": "R Coding Workshop: 8th Meeting",
+    "section": "ggplot for sf",
+    "text": "ggplot for sf\n\ngeom_sf()\n\n\nlibrary(tigris)\nstates_sf &lt;- states(year = 2010, progress_bar = FALSE)\n# states_sf\n\n\nstates_sf |&gt;\n  ggplot() +\n  geom_sf(aes(fill = DIVISION10))"
+  },
+  {
+    "objectID": "w10-slides.html#ggplot-for-cda",
+    "href": "w10-slides.html#ggplot-for-cda",
+    "title": "R Coding Workshop: 8th Meeting",
+    "section": "ggplot for CDA",
+    "text": "ggplot for CDA\n\nlibrary(HistData)\ndata(Nightingale)\n\n\nnightingale_df &lt;- Nightingale |&gt; as_tibble()\n\n\nnightingale_df |&gt;\n    ggplot() +\n    geom_line(aes(x = Date, y = Disease), color = 'deepskyblue') +\n    geom_line(aes(x = Date, y = Wounds), color = 'orange') + \n    geom_line(aes(x = Date, y = Other), color = 'green') +\n    scale_x_date(date_breaks = 'month', date_labels = '%Y %b') +\n    guides(x = guide_axis(angle = 60)) +\n    geom_vline(xintercept = ymd('1855-03-01'), colour = \"red\") +\n    labs(y = 'Count') +\n    theme_classic()"
+  },
+  {
+    "objectID": "w10-slides.html#public-library-survey-2010-book-mobiles",
+    "href": "w10-slides.html#public-library-survey-2010-book-mobiles",
+    "title": "R Coding Workshop: 8th Meeting",
+    "section": "Public Library Survey 2010: Book Mobiles",
+    "text": "Public Library Survey 2010: Book Mobiles\n\n# bk_df"
+  },
+  {
+    "objectID": "w12-idx.html#outline",
+    "href": "w12-idx.html#outline",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "Outline",
+    "text": "Outline\n\nData Import\nggplot",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 12"
+    ]
+  },
+  {
+    "objectID": "w12-idx.html#data-import",
+    "href": "w12-idx.html#data-import",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "Data Import",
+    "text": "Data Import\ndownload.file() download files from an url\n\ngrandison_url &lt;- \"https://www.gutenberg.org/cache/epub/13884/pg13884.txt\"\n\ndownload.file(url = grandison_url, destfile = 'grandison.txt', quiet = TRUE)\n\n\ngrandison_text &lt;- readLines('grandison.txt')\ngrandison_text |&gt; head()\n\n[1] \"The Project Gutenberg eBook of The History of Sir Charles Grandison, Volume 4 (of 7)\"\n[2] \"    \"                                                                                \n[3] \"This ebook is for the use of anyone anywhere in the United States and\"               \n[4] \"most other parts of the world at no cost and with almost no restrictions\"            \n[5] \"whatsoever. You may copy it, give it away or re-use it under the terms\"              \n[6] \"of the Project Gutenberg License included with this ebook or online\"",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 12"
+    ]
+  },
+  {
+    "objectID": "w12-idx.html#components-of-ggplot",
+    "href": "w12-idx.html#components-of-ggplot",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "Components of ggplot",
+    "text": "Components of ggplot\n\n\nWe can define an ggplot object by specifying:\n\ndata\naesthetic mapping\ngeometry layer\n\n\nPatterns - use + to introduce more layers or components\n\nbk_df &lt;- read_csv('data/us-main-books.csv')\n\nRows: 48 Columns: 25\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (2): state, division_str\ndbl (23): division_code, political_value_index, median_income, hs_grad_rate,...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nbk_df |&gt; glimpse()\n\nRows: 48\nColumns: 25\n$ state                 &lt;chr&gt; \"WY\", \"PA\", \"OH\", \"NM\", \"MD\", \"RI\", \"OR\", \"WI\", …\n$ division_code         &lt;dbl&gt; 8, 2, 3, 8, 5, 1, 9, 3, 4, 8, 5, 2, 7, 4, 4, 8, …\n$ division_str          &lt;chr&gt; \"Mountain\", \"Middle Atlantic\", \"East North Centr…\n$ political_value_index &lt;dbl&gt; -19.7, 2.0, -0.7, 2.4, 8.5, 11.2, 4.0, 2.4, -10.…\n$ median_income         &lt;dbl&gt; 4081.5, 4218.0, 2469.0, -2401.5, 19404.5, 8141.0…\n$ hs_grad_rate          &lt;dbl&gt; 8.3380421, 2.3380421, 3.4380421, -0.6619579, 4.2…\n$ college_grad_rate     &lt;dbl&gt; -2.1237299, -1.6237299, -2.9237299, -0.5237299, …\n$ challenge_count       &lt;dbl&gt; 4, 148, 29, 3, 5, 3, 118, 10, 6, 0, 13, 25, 5, 1…\n$ explicit_count        &lt;dbl&gt; 1, 15, 13, 1, 2, 3, 26, 5, 2, 0, 4, 7, 1, 6, 1, …\n$ antifamily_count      &lt;dbl&gt; 0, 2, 5, 0, 1, 0, 1, 0, 0, 0, 1, 2, 0, 0, 0, 0, …\n$ occult_count          &lt;dbl&gt; 0, 3, 2, 0, 0, 0, 3, 1, 0, 0, 0, 1, 1, 1, 0, 0, …\n$ language_count        &lt;dbl&gt; 0, 16, 14, 1, 3, 2, 14, 3, 2, 0, 7, 9, 3, 5, 1, …\n$ lgbtq_count           &lt;dbl&gt; 1, 5, 1, 0, 2, 0, 10, 1, 0, 0, 3, 3, 0, 0, 0, 0,…\n$ violent_count         &lt;dbl&gt; 1, 6, 2, 0, 2, 0, 19, 2, 1, 0, 3, 3, 1, 3, 1, 0,…\n$ removed_count         &lt;dbl&gt; 1, 11, 10, 2, 0, 1, 5, 3, 2, 0, 4, 11, 0, 10, 0,…\n$ removed_pct           &lt;dbl&gt; 25.000000, 7.432432, 34.482759, 66.666667, 0.000…\n$ POPU_LSA              &lt;dbl&gt; 544270, 12054201, 11551941, 1588981, 5633514, 14…\n$ POPU_ST               &lt;dbl&gt; 544270, 12284183, 11551941, 2009671, 5618344, 10…\n$ CENTLIB               &lt;dbl&gt; 23, 451, 240, 91, 15, 47, 122, 378, 80, 19, 61, …\n$ BRANLIB               &lt;dbl&gt; 53, 183, 480, 27, 169, 26, 94, 82, 10, 67, 331, …\n$ BKMOB                 &lt;dbl&gt; 2, 29, 58, 1, 18, 2, 8, 6, 12, 4, 17, 6, 1, 4, 7…\n$ BKVOL                 &lt;dbl&gt; 2497545, 27790282, 45224425, 4518130, 13954140, …\n$ LIBRARIA              &lt;dbl&gt; 189.16, 1445.81, 2725.65, 290.37, 1297.29, 232.1…\n$ VISITS                &lt;dbl&gt; 3872783, 47188171, 88255852, 8324986, 33662473, …\n$ REGBOR                &lt;dbl&gt; 383126, 5549200, 8767349, 1140637, 3271760, 5747…\n\n\n\nbkmob_plot &lt;- bk_df |&gt;\n    ggplot(aes(x = BKMOB)) +\n    geom_histogram()\n\n\nbkmob_plot |&gt; class()\n\n[1] \"gg\"     \"ggplot\"",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 12"
+    ]
+  },
+  {
+    "objectID": "w12-idx.html#data",
+    "href": "w12-idx.html#data",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "Data",
+    "text": "Data\n\ntigris_vars &lt;- c(\"STUSPS10\", \"NAME10\", \"ALAND10\", \"AWATER10\", \"INTPTLAT10\", \"INTPTLON10\")\nmain_states &lt;- bk_df |&gt; pull(state)\nlibrary(tigris)\n\nTo enable caching of data, set `options(tigris_use_cache = TRUE)`\nin your R script or .Rprofile.\n\n\n\nAttachement du package : 'tigris'\n\n\nL'objet suivant est masqué depuis 'package:terra':\n\n    blocks\n\nstate_sf &lt;- states(year = 2010, progress_bar = FALSE) |&gt; \n    select(any_of(tigris_vars)) |&gt;\n    filter(STUSPS10 %in% main_states)\n\nstate_sf |&gt; st_crs() |&gt; print()\n\nCoordinate Reference System:\n  User input: NAD83 \n  wkt:\nGEOGCRS[\"NAD83\",\n    DATUM[\"North American Datum 1983\",\n        ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"latitude\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"longitude\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    ID[\"EPSG\",4269]]\n\n\n\nbk_sf &lt;- state_sf |&gt;\n    left_join(bk_df, join_by(STUSPS10 == state))\nbk_sf |&gt; slice_sample(n = 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSTUSPS10\nNAME10\nALAND10\nAWATER10\nINTPTLAT10\nINTPTLON10\ndivision_code\ndivision_str\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\nchallenge_count\nexplicit_count\nantifamily_count\noccult_count\nlanguage_count\nlgbtq_count\nviolent_count\nremoved_count\nremoved_pct\nPOPU_LSA\nPOPU_ST\nCENTLIB\nBRANLIB\nBKMOB\nBKVOL\nLIBRARIA\nVISITS\nREGBOR\ngeometry\n\n\n\n\nAZ\nArizona\n294207314414\n1026196264\n+34.2099643\n-111.6024010\n8\nMountain\n-6.1\n3490.5\n1.438042\n-0.5237299\n12\n7\n0\n0\n4\n0\n3\n5\n41.66667\n6473587\n6401657\n87\n133\n11\n8970028\n586.95\n29173271\n4290863\nMULTIPOLYGON (((-109.0476 3…\n\n\nCA\nCalifornia\n403466310059\n20501110720\n+37.1485730\n-119.5406515\n9\nPacific\n7.4\n10119.0\n-2.761958\n2.5762701\n50\n16\n6\n4\n10\n9\n11\n16\n32.00000\n38647288\n38648090\n165\n942\n60\n74753745\n3379.23\n178979300\n22275618\nMULTIPOLYGON (((-119.0009 3…",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 12"
+    ]
+  },
+  {
+    "objectID": "w12-idx.html#aesthetic-mapping",
+    "href": "w12-idx.html#aesthetic-mapping",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "Aesthetic Mapping",
+    "text": "Aesthetic Mapping\nCommon aesthetic attributes\n\nPosition (x, y)\nColor (or, fill)\nOther visual features: size and shape (size, shape, linewidth)\n\n\nbk_sf |&gt;\n    ggplot(\n        aes(\n            x = CENTLIB,\n            y = BKMOB,\n            color = division_str,\n            label = STUSPS10\n        )\n    ) +\n    geom_label(size = 2) +\n    labs(\n        x = 'Central Library Count',\n        y = 'Bookmobile Count'\n    )\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nlabs(): to customize plot labels",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 12"
+    ]
+  },
+  {
+    "objectID": "w12-idx.html#save-your-plot",
+    "href": "w12-idx.html#save-your-plot",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "Save your plot",
+    "text": "Save your plot\n\nplot1 &lt;- bk_sf |&gt;\n    ggplot(\n        aes(\n            x = CENTLIB,\n            y = BKMOB,\n            color = division_str,\n            label = STUSPS10\n        )\n    ) +\n    geom_label(size = 3.5) +\n    labs(\n        x = 'Central Library Count',\n        y = 'Bookmobile Count'\n    )\n\n\nggsave(\n    filename = 'lib-bkmob-scatterplot.png',\n    plot = plot1,\n    width = 20,\n    height = 10,\n    dpi = 300\n)",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 12"
+    ]
+  },
+  {
+    "objectID": "w12-idx.html#geom_sf",
+    "href": "w12-idx.html#geom_sf",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "geom_sf",
+    "text": "geom_sf\n\nbk_sf |&gt; mapview(zcol = 'BKMOB')\n\n\n\n\n\n\nbk_sf |&gt;\n    ggplot() +\n    geom_sf(aes(fill = (BKMOB / POPU_LSA))) +\n    geom_sf_label(aes(label = STUSPS10), size = 1.5, fill = \"white\", alpha = 0.7, color = \"black\") +\n    theme_classic() +\n    scale_fill_viridis() +\n    labs(\n        x = 'Longitude',\n        y = 'Latitude',\n        fill = \"Number of Bookmobiles per Capita\"\n    )\n\nWarning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not\ngive correct results for longitude/latitude data",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 12"
+    ]
+  },
+  {
+    "objectID": "w12-slides.html#gis-coding-workshop-9th-meeting",
+    "href": "w12-slides.html#gis-coding-workshop-9th-meeting",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "GIS Coding Workshop: 9th Meeting",
+    "text": "GIS Coding Workshop: 9th Meeting"
+  },
+  {
+    "objectID": "w12-slides.html#outline",
+    "href": "w12-slides.html#outline",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "Outline",
+    "text": "Outline\n\nData Import\nggplot"
+  },
+  {
+    "objectID": "w12-slides.html#data-import",
+    "href": "w12-slides.html#data-import",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "Data Import",
+    "text": "Data Import\ndownload.file() download files from an url\n\ngrandison_url &lt;- \"https://www.gutenberg.org/cache/epub/13884/pg13884.txt\"\n\ndownload.file(url = grandison_url, destfile = 'grandison.txt', quiet = TRUE)\n\n\ngrandison_text &lt;- readLines('grandison.txt')\ngrandison_text |&gt; head()\n\n[1] \"The Project Gutenberg eBook of The History of Sir Charles Grandison, Volume 4 (of 7)\"\n[2] \"    \"                                                                                \n[3] \"This ebook is for the use of anyone anywhere in the United States and\"               \n[4] \"most other parts of the world at no cost and with almost no restrictions\"            \n[5] \"whatsoever. You may copy it, give it away or re-use it under the terms\"              \n[6] \"of the Project Gutenberg License included with this ebook or online\""
+  },
+  {
+    "objectID": "w12-slides.html#components-of-ggplot",
+    "href": "w12-slides.html#components-of-ggplot",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "Components of ggplot",
+    "text": "Components of ggplot\n\n\nWe can define an ggplot object by specifying:\n\ndata\naesthetic mapping\ngeometry layer\n\n\nPatterns - use + to introduce more layers or components\n\nbk_df &lt;- read_csv('data/us-main-books.csv')\nbk_df |&gt; glimpse()\n\nRows: 48\nColumns: 25\n$ state                 &lt;chr&gt; \"WY\", \"PA\", \"OH\", \"NM\", \"MD\", \"RI\", \"OR\", \"WI\", …\n$ division_code         &lt;dbl&gt; 8, 2, 3, 8, 5, 1, 9, 3, 4, 8, 5, 2, 7, 4, 4, 8, …\n$ division_str          &lt;chr&gt; \"Mountain\", \"Middle Atlantic\", \"East North Centr…\n$ political_value_index &lt;dbl&gt; -19.7, 2.0, -0.7, 2.4, 8.5, 11.2, 4.0, 2.4, -10.…\n$ median_income         &lt;dbl&gt; 4081.5, 4218.0, 2469.0, -2401.5, 19404.5, 8141.0…\n$ hs_grad_rate          &lt;dbl&gt; 8.3380421, 2.3380421, 3.4380421, -0.6619579, 4.2…\n$ college_grad_rate     &lt;dbl&gt; -2.1237299, -1.6237299, -2.9237299, -0.5237299, …\n$ challenge_count       &lt;dbl&gt; 4, 148, 29, 3, 5, 3, 118, 10, 6, 0, 13, 25, 5, 1…\n$ explicit_count        &lt;dbl&gt; 1, 15, 13, 1, 2, 3, 26, 5, 2, 0, 4, 7, 1, 6, 1, …\n$ antifamily_count      &lt;dbl&gt; 0, 2, 5, 0, 1, 0, 1, 0, 0, 0, 1, 2, 0, 0, 0, 0, …\n$ occult_count          &lt;dbl&gt; 0, 3, 2, 0, 0, 0, 3, 1, 0, 0, 0, 1, 1, 1, 0, 0, …\n$ language_count        &lt;dbl&gt; 0, 16, 14, 1, 3, 2, 14, 3, 2, 0, 7, 9, 3, 5, 1, …\n$ lgbtq_count           &lt;dbl&gt; 1, 5, 1, 0, 2, 0, 10, 1, 0, 0, 3, 3, 0, 0, 0, 0,…\n$ violent_count         &lt;dbl&gt; 1, 6, 2, 0, 2, 0, 19, 2, 1, 0, 3, 3, 1, 3, 1, 0,…\n$ removed_count         &lt;dbl&gt; 1, 11, 10, 2, 0, 1, 5, 3, 2, 0, 4, 11, 0, 10, 0,…\n$ removed_pct           &lt;dbl&gt; 25.000000, 7.432432, 34.482759, 66.666667, 0.000…\n$ POPU_LSA              &lt;dbl&gt; 544270, 12054201, 11551941, 1588981, 5633514, 14…\n$ POPU_ST               &lt;dbl&gt; 544270, 12284183, 11551941, 2009671, 5618344, 10…\n$ CENTLIB               &lt;dbl&gt; 23, 451, 240, 91, 15, 47, 122, 378, 80, 19, 61, …\n$ BRANLIB               &lt;dbl&gt; 53, 183, 480, 27, 169, 26, 94, 82, 10, 67, 331, …\n$ BKMOB                 &lt;dbl&gt; 2, 29, 58, 1, 18, 2, 8, 6, 12, 4, 17, 6, 1, 4, 7…\n$ BKVOL                 &lt;dbl&gt; 2497545, 27790282, 45224425, 4518130, 13954140, …\n$ LIBRARIA              &lt;dbl&gt; 189.16, 1445.81, 2725.65, 290.37, 1297.29, 232.1…\n$ VISITS                &lt;dbl&gt; 3872783, 47188171, 88255852, 8324986, 33662473, …\n$ REGBOR                &lt;dbl&gt; 383126, 5549200, 8767349, 1140637, 3271760, 5747…\n\n\n\nbkmob_plot &lt;- bk_df |&gt;\n    ggplot(aes(x = BKMOB)) +\n    geom_histogram()\n\n\nbkmob_plot |&gt; class()\n\n[1] \"gg\"     \"ggplot\""
+  },
+  {
+    "objectID": "w12-slides.html#data",
+    "href": "w12-slides.html#data",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "Data",
+    "text": "Data\n\ntigris_vars &lt;- c(\"STUSPS10\", \"NAME10\", \"ALAND10\", \"AWATER10\", \"INTPTLAT10\", \"INTPTLON10\")\nmain_states &lt;- bk_df |&gt; pull(state)\nlibrary(tigris)\nstate_sf &lt;- states(year = 2010, progress_bar = FALSE) |&gt; \n    select(any_of(tigris_vars)) |&gt;\n    filter(STUSPS10 %in% main_states)\n\nstate_sf |&gt; st_crs() |&gt; print()\n\nCoordinate Reference System:\n  User input: NAD83 \n  wkt:\nGEOGCRS[\"NAD83\",\n    DATUM[\"North American Datum 1983\",\n        ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"latitude\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"longitude\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    ID[\"EPSG\",4269]]\n\n\n\nbk_sf &lt;- state_sf |&gt;\n    left_join(bk_df, join_by(STUSPS10 == state))\nbk_sf |&gt; slice_sample(n = 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSTUSPS10\nNAME10\nALAND10\nAWATER10\nINTPTLAT10\nINTPTLON10\ndivision_code\ndivision_str\npolitical_value_index\nmedian_income\nhs_grad_rate\ncollege_grad_rate\nchallenge_count\nexplicit_count\nantifamily_count\noccult_count\nlanguage_count\nlgbtq_count\nviolent_count\nremoved_count\nremoved_pct\nPOPU_LSA\nPOPU_ST\nCENTLIB\nBRANLIB\nBKMOB\nBKVOL\nLIBRARIA\nVISITS\nREGBOR\ngeometry\n\n\n\n\nTN\nTennessee\n106797885992\n2355218865\n+35.8585639\n-086.3493573\n6\nEast South Central\n-8.7\n-2995.5\n-3.661958\n-4.42373\n13\n3\n0\n0\n4\n2\n1\n5\n38.461539\n6270431\n6270431\n186\n103\n3\n11836785\n554.89\n21161771\n3239146\nMULTIPOLYGON (((-88.38051 3…\n\n\nOR\nOregon\n248607802255\n6191433228\n+43.9715225\n-120.6226269\n9\nPacific\n4.0\n1274.5\n5.538042\n1.07627\n118\n26\n1\n3\n14\n10\n19\n5\n4.237288\n3657597\n3823465\n122\n94\n8\n10052777\n503.41\n25034546\n1938999\nMULTIPOLYGON (((-124.5523 4…"
+  },
+  {
+    "objectID": "w12-slides.html#aesthetic-mapping",
+    "href": "w12-slides.html#aesthetic-mapping",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "Aesthetic Mapping",
+    "text": "Aesthetic Mapping\nCommon aesthetic attributes\n\nPosition (x, y)\nColor (or, fill)\nOther visual features: size and shape (size, shape, linewidth)\n\n\nbk_sf |&gt;\n    ggplot(\n        aes(\n            x = CENTLIB,\n            y = BKMOB,\n            color = division_str,\n            label = STUSPS10\n        )\n    ) +\n    geom_label(size = 2) +\n    labs(\n        x = 'Central Library Count',\n        y = 'Bookmobile Count'\n    )\n\n\n\n\n\n\n\n\nTip\n\n\nlabs(): to customize plot labels"
+  },
+  {
+    "objectID": "w12-slides.html#save-your-plot",
+    "href": "w12-slides.html#save-your-plot",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "Save your plot",
+    "text": "Save your plot\n\nplot1 &lt;- bk_sf |&gt;\n    ggplot(\n        aes(\n            x = CENTLIB,\n            y = BKMOB,\n            color = division_str,\n            label = STUSPS10\n        )\n    ) +\n    geom_label(size = 3.5) +\n    labs(\n        x = 'Central Library Count',\n        y = 'Bookmobile Count'\n    )\n\n\nggsave(\n    filename = 'lib-bkmob-scatterplot.png',\n    plot = plot1,\n    width = 20,\n    height = 10,\n    dpi = 300\n)"
+  },
+  {
+    "objectID": "w12-slides.html#geom_sf",
+    "href": "w12-slides.html#geom_sf",
+    "title": "R Coding Workshop: 9th Meeting",
+    "section": "geom_sf",
+    "text": "geom_sf\n\nbk_sf |&gt; mapview(zcol = 'BKMOB')\n\n\n\n\n\n\nbk_sf |&gt;\n    ggplot() +\n    geom_sf(aes(fill = (BKMOB / POPU_LSA))) +\n    geom_sf_label(aes(label = STUSPS10), size = 1.5, fill = \"white\", alpha = 0.7, color = \"black\") +\n    theme_classic() +\n    scale_fill_viridis() +\n    labs(\n        x = 'Longitude',\n        y = 'Latitude',\n        fill = \"Number of Bookmobiles per Capita\"\n    )"
+  },
+  {
+    "objectID": "w13-slides.html#r-coding-workshop-for-gis-10th-meeting",
+    "href": "w13-slides.html#r-coding-workshop-for-gis-10th-meeting",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "R Coding Workshop for GIS: 10th Meeting",
+    "text": "R Coding Workshop for GIS: 10th Meeting"
+  },
+  {
+    "objectID": "w13-slides.html#outline",
+    "href": "w13-slides.html#outline",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Outline",
+    "text": "Outline\n\nOpen Street Map\nProject checklist\nRaster Data"
+  },
+  {
+    "objectID": "w13-slides.html#open-street-map",
+    "href": "w13-slides.html#open-street-map",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Open Street Map",
+    "text": "Open Street Map\n\nuse place name to search for bounding box\n\n\n?getbb\n\n\ntaipei_bb_results &lt;- getbb(place_name = 'taipei', format_out='sf_polygon')\ntaipei_bb_results\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplace_id\nlicence\nosm_type\nosm_id\nlat\nlon\nclass\ntype\nplace_rank\nimportance\naddresstype\nname\ndisplay_name\ngeometry\n\n\n\n\n213710844\nData © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\nrelation\n1293250\n25.0375198\n121.5636796\nboundary\nadministrative\n7\n0.7009468\ncity\n臺北市\n臺北市, 臺灣\nPOLYGON ((121.4571 25.10798…\n\n\n212454050\nData © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\nrelation\n1527220\n25.0119970\n121.4656619\nboundary\nadministrative\n8\n0.6192987\ncity\n新北市\n新北市, 臺灣\nMULTIPOLYGON (((121.2826 25…\n\n\n\n\n\n\n\ntpc_bb &lt;- taipei_bb_results |&gt; filter(place_id == 213710844)\n\n\nntpc_bb &lt;- taipei_bb_results |&gt; filter(place_id == 212454050)\nntpc_bb |&gt; mapview()"
+  },
+  {
+    "objectID": "w13-slides.html#osmdata",
+    "href": "w13-slides.html#osmdata",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "osmdata",
+    "text": "osmdata\n\ncreate a query\n\n\nassign(\"has_internet_via_proxy\", TRUE, environment(curl::has_internet))\n\n\ntpc_mosque_results &lt;- tpc_bb |&gt;\n  opq() |&gt; \n  add_osm_feature(key='building', value = 'mosque') |&gt;\n  osmdata_sf()\ntpc_mosque_results\n\n\nleaflet visualization\n\n\nleaflet() |&gt;\n  addProviderTiles('CartoDB.Positron') |&gt;\n  addPolygons(\n    data = tpc_mosque_results$osm_polygons,\n    color = \"purple\"\n  )\n\n\n\n\n\n\ntpc_mosque_polygon_sf &lt;- tpc_mosque_results$osm_polygons"
+  },
+  {
+    "objectID": "w13-slides.html#osmdata-1",
+    "href": "w13-slides.html#osmdata-1",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "osmdata",
+    "text": "osmdata\n\nkentucky_bb &lt;- getbb('kentucky, USA')\nkentucky_bb\n\n        min       max\nx -89.57151 -81.96454\ny  36.49712  39.14780\n\n\n\nBounding Box\n\n\nky_results &lt;- kentucky_bb |&gt;\n  opq() |&gt;\n  add_osm_feature(key = 'boundary', value = 'administrative') |&gt;\n  add_osm_feature(key = 'admin_level', value = '4') |&gt;\n  add_osm_feature(key = 'name', value = 'Kentucky') |&gt;\n  osmdata_sf()\nky_results\n\n\nky_sf &lt;- ky_results$osm_multipolygons\nky_vars &lt;- c(\"osm_id\", \"name\", \"ISO3166-2\", \"admin_level\", \"border_type\", \n\"boundary\", \"nickname\", \"official_name\", \"ref\", \"ref:USCG\", \"ref:USPS\", \"ref:fips\", \n\"short_name\", \"source:short_name\", \"type\", \n\"wikidata\", \"wikipedia\", \"geometry\")\n\n\nky_sf &lt;- ky_sf |&gt; dplyr::select(all_of(ky_vars))\nky_sf |&gt; mapview()\n\n\n\n\n\n\nky_bookcase_results &lt;- kentucky_bb |&gt;\n  opq() |&gt;\n  add_osm_feature(key='amenity', value = 'public_bookcase') |&gt;\n  osmdata_sf()\nky_bookcase_results\n\n\nky_bookcase_sf &lt;- ky_bookcase_results$osm_points\n\n\n# ky_convex_sf &lt;- ky_sf |&gt; st_convex_hull() |&gt; st_buffer()\n# ky_convex_sf |&gt; mapview()\nky_bbox_sf &lt;- ky_sf |&gt; st_bbox() |&gt; st_as_sfc() |&gt; st_as_sf(crs = 4326)\nky_bbox_sf |&gt; mapview()"
+  },
+  {
+    "objectID": "w13-slides.html#tessellation",
+    "href": "w13-slides.html#tessellation",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Tessellation",
+    "text": "Tessellation\n\nlibrary(tigris)\n\n\nuac_sf &lt;- urban_areas(year = 2020, progress_bar = FALSE)\n\n\nuac_sf |&gt; st_crs() |&gt; print()\n\nCoordinate Reference System:\n  User input: NAD83 \n  wkt:\nGEOGCRS[\"NAD83\",\n    DATUM[\"North American Datum 1983\",\n        ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"latitude\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"longitude\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    ID[\"EPSG\",4269]]\n\nky_sf |&gt; st_crs() |&gt; print()\n\nCoordinate Reference System:\n  User input: EPSG:4326 \n  wkt:\nGEOGCRS[\"WGS 84\",\n    ENSEMBLE[\"World Geodetic System 1984 ensemble\",\n        MEMBER[\"World Geodetic System 1984 (Transit)\"],\n        MEMBER[\"World Geodetic System 1984 (G730)\"],\n        MEMBER[\"World Geodetic System 1984 (G873)\"],\n        MEMBER[\"World Geodetic System 1984 (G1150)\"],\n        MEMBER[\"World Geodetic System 1984 (G1674)\"],\n        MEMBER[\"World Geodetic System 1984 (G1762)\"],\n        ELLIPSOID[\"WGS 84\",6378137,298.257223563,\n            LENGTHUNIT[\"metre\",1]],\n        ENSEMBLEACCURACY[2.0]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"geodetic latitude (Lat)\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"geodetic longitude (Lon)\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    USAGE[\n        SCOPE[\"Horizontal component of 3D system.\"],\n        AREA[\"World.\"],\n        BBOX[-90,-180,90,180]],\n    ID[\"EPSG\",4326]]\n\nuac_sf &lt;- uac_sf |&gt; st_transform(4326)\n\n\nky_uac_sf &lt;- uac_sf[ky_sf,]\nky_urban_bookcase_sf &lt;- ky_bookcase_sf[ky_uac_sf,]\nky_urban_bookcase_sf |&gt; dim()\n\n[1] 64 26\n\n\n\nmapview(ky_sf, col.region = 'lightblue', alpha.regions = 0.6, map.types = 'CartoDB.Positron') +\n  mapview(ky_uac_sf, col.regions = 'yellow') + \n  mapview(ky_urban_bookcase_sf, cex = 4)"
+  },
+  {
+    "objectID": "w13-slides.html#observation-window",
+    "href": "w13-slides.html#observation-window",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Observation Window",
+    "text": "Observation Window\n\nkybb_uac_sf &lt;- uac_sf[ky_bbox_sf,]\nkybb_uac_sf |&gt; mapview()\n\n\n\n\n\n\nky_bookcase_sf[kybb_uac_sf,] |&gt; dim()\n\n[1] 70 26"
+  },
+  {
+    "objectID": "w13-slides.html#ppp",
+    "href": "w13-slides.html#ppp",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "ppp",
+    "text": "ppp\n\nky_owin &lt;- ky_bbox_sf |&gt; st_transform(3857) |&gt; as.owin()\n\nky_urban_owin &lt;- kybb_uac_sf |&gt;\n  st_simplify(dTolerance = 200) |&gt;\n  st_intersection(ky_bbox_sf) |&gt;\n  st_transform(3857) |&gt;\n  as.owin()\n# plot(ky_urban_owin)\n\n\nky_bookcase_ppp &lt;- ky_bookcase_sf |&gt;\n  st_as_sfc() |&gt;\n  st_transform(3857) |&gt;\n  as.ppp(W = ky_owin)\nplot(ky_bookcase_ppp)"
+  },
+  {
+    "objectID": "w13-slides.html#dividing-the-observation-window",
+    "href": "w13-slides.html#dividing-the-observation-window",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Dividing the observation window",
+    "text": "Dividing the observation window\n\nurban_rural_tess &lt;- tess(\n  tiles = list(\n    urban = ky_urban_owin,\n    rural = setminus.owin(ky_owin, ky_urban_owin)\n  )\n)\n\n\nurban_rural_tess |&gt; class()\n\n[1] \"tess\" \"list\""
+  },
+  {
+    "objectID": "w13-slides.html#simulation",
+    "href": "w13-slides.html#simulation",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Simulation",
+    "text": "Simulation\n\nset.seed(6805)\ngen_sim_ppp &lt;- function() {\n  prot_sim &lt;- spatstat.random::rpoint(\n    n = nrow(ky_bookcase_sf),\n    w = ky_owin\n  )\n  return(prot_sim)\n}\nsim_prot_ppp &lt;- gen_sim_ppp()\nplot(sim_prot_ppp)\n\n\n\ncompute_tile_counts &lt;- function(ppp_obj) {\n  class_list &lt;- tileindex(\n    ppp_obj,\n    Z = urban_rural_tess\n  )\n  count_tb &lt;- table(class_list)\n  count_df &lt;- tibble(\n    urban = count_tb[1],\n    rural = count_tb[2]\n  )\n\n  return(count_df)\n}\n\n\ncompute_tile_counts(sim_prot_ppp)\n\n\n\n\n\nurban\nrural\n\n\n\n\n3\n75\n\n\n\n\n\n\n\ncompute_tile_counts(ky_bookcase_ppp)\n\n\n\n\n\nurban\nrural\n\n\n\n\n68\n10"
+  },
+  {
+    "objectID": "w13-slides.html#simulation-1",
+    "href": "w13-slides.html#simulation-1",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Simulation",
+    "text": "Simulation\n\nset.seed(6805)\ngen_sims_ppp &lt;- function(num_sims = 999) {\n  bkcase_sims &lt;- spatstat.random::rpoint(\n    n = nrow(ky_bookcase_sf),\n    w = ky_owin,\n    nsim = num_sims\n  )\n  return(bkcase_sims)\n}\nbkcase_sims_list &lt;- gen_sims_ppp()\n\n\n# compute_tile_counts &lt;- function(ppp_obj) {\n#   class_list &lt;- tileindex(\n#     ppp_obj,\n#     Z = urban_rural_tess\n#   )\n#   counts &lt;- class_list |&gt;\n#     table() |&gt;\n#     as.vector()\n#   names(counts) &lt;- c('urban', 'rural')\n\n#   return(counts)\n# }\n\n\nsims_tess_counts &lt;- lapply(\n  X = bkcase_sims_list,\n  FUN = compute_tile_counts\n)\nsim_df &lt;- sims_tess_counts |&gt; bind_rows()\nsim_df |&gt; slice_sample(n = 4)\n\n\n\n\n\nurban\nrural\n\n\n\n\n1\n77\n\n\n2\n76\n\n\n4\n74\n\n\n0\n78\n\n\n\n\n\n\n\nobs_df &lt;- compute_tile_counts(ky_bookcase_ppp)\nobs_df\n\n\n\n\n\nurban\nrural\n\n\n\n\n68\n10\n\n\n\n\n\n\n\nbind_df &lt;- bind_rows(sim_df, obs_df)\nbind_df |&gt; dim()\n\n[1] 1000    2\n\n\n\nbind_df |&gt;\n  ggplot(aes(x = rural)) +\n  geom_density(fill = palette4[2], alpha = 0.7) +\n  geom_vline(\n    xintercept = 9,\n    linetype = 'dashed',\n    color = palette4[5]\n  ) +\n    theme_classic()"
+  },
+  {
+    "objectID": "w13-slides.html#raster",
+    "href": "w13-slides.html#raster",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Raster",
+    "text": "Raster\n\npop_raster &lt;- raster(\n  'data/gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min.tif'\n)\npop_raster\n\nclass      : RasterLayer \ndimensions : 4320, 8640, 37324800  (nrow, ncol, ncell)\nresolution : 0.04166667, 0.04166667  (x, y)\nextent     : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)\ncrs        : +proj=longlat +datum=WGS84 +no_defs \nsource     : gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min.tif \nnames      : gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min \n\n\n\nbbox_extent &lt;- extent(-89.57151, -81.96454, 36.49712, 39.14780)\npop_raster_sub &lt;- crop(pop_raster, bbox_extent)\n\n\npop_poly &lt;- pop_raster_sub |&gt; raster::rasterToPolygons(n = 8, na.rm = TRUE)\npop_poly\n\nclass       : SpatialPolygonsDataFrame \nfeatures    : 11712 \nextent      : -89.58333, -81.95833, 36.5, 39.16667  (xmin, xmax, ymin, ymax)\ncrs         : +proj=longlat +datum=WGS84 +no_defs \nvariables   : 1\nnames       : gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min \nmin values  :                                                                                 0 \nmax values  :                                                                     37111.3984375 \n\n\n\npop_sf &lt;- st_as_sf(pop_poly)\npop_sf |&gt; glimpse()\n\nRows: 11,712\nColumns: 2\n$ gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min &lt;dbl&gt; …\n$ geometry                                                                          &lt;POLYGON [°]&gt; …\n\n\n\npop_sf &lt;- pop_sf |&gt; rename(pop_count = gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min)\n\n\ngpw_map &lt;- pop_sf |&gt;\n  ggplot(aes(fill = pop_count)) +\n  geom_sf(color = scales::alpha(\"white\",0)) +\n  scale_fill_viridis_c(trans = 'pseudo_log') + \n  theme_minimal() +\n  labs(\n    title = \"Population Counts\",\n    subtitle = 'GPW V.4 2020-07-01',\n    fill = \"Population Count\"\n    ) + \n  theme(\n    plot.title = element_text(hjust=0.5),\n    plot.subtitle = element_text(hjust=0.5)\n    )\n\nggsave('image/gpw-raster.png', plot = gpw_map)\n\ngpw_map"
+  },
+  {
+    "objectID": "w13-idx.html#outline",
+    "href": "w13-idx.html#outline",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Outline",
+    "text": "Outline\n\nOpen Street Map\nProject checklist\nRaster Data",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "w13-idx.html#open-street-map",
+    "href": "w13-idx.html#open-street-map",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Open Street Map",
+    "text": "Open Street Map\n\nuse place name to search for bounding box\n\n\n?getbb\n\n\ntaipei_bb_results &lt;- getbb(place_name = 'taipei', format_out='sf_polygon')\ntaipei_bb_results\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplace_id\nlicence\nosm_type\nosm_id\nlat\nlon\nclass\ntype\nplace_rank\nimportance\naddresstype\nname\ndisplay_name\ngeometry\n\n\n\n\n213710844\nData © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\nrelation\n1293250\n25.0375198\n121.5636796\nboundary\nadministrative\n7\n0.7009468\ncity\n臺北市\n臺北市, 臺灣\nPOLYGON ((121.4571 25.10798…\n\n\n212454050\nData © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\nrelation\n1527220\n25.0119970\n121.4656619\nboundary\nadministrative\n8\n0.6192987\ncity\n新北市\n新北市, 臺灣\nMULTIPOLYGON (((121.2826 25…\n\n\n\n\n\n\n\ntpc_bb &lt;- taipei_bb_results |&gt; filter(place_id == 213710844)\n\n\nntpc_bb &lt;- taipei_bb_results |&gt; filter(place_id == 212454050)\nntpc_bb |&gt; mapview()",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "w13-idx.html#osmdata",
+    "href": "w13-idx.html#osmdata",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "osmdata",
+    "text": "osmdata\n\ncreate a query\n\n\nassign(\"has_internet_via_proxy\", TRUE, environment(curl::has_internet))\n\n\ntpc_mosque_results &lt;- tpc_bb |&gt;\n  opq() |&gt; \n  add_osm_feature(key='building', value = 'mosque') |&gt;\n  osmdata_sf()\ntpc_mosque_results\n\nObject of class 'osmdata' with:\n                 $bbox : relation(id:1293250)\n        $overpass_call : The call submitted to the overpass API\n                 $meta : metadata including timestamp and version numbers\n           $osm_points : 'sf' Simple Features Collection with 67 points\n            $osm_lines : NULL\n         $osm_polygons : 'sf' Simple Features Collection with 3 polygons\n       $osm_multilines : NULL\n    $osm_multipolygons : 'sf' Simple Features Collection with 1 multipolygons\n\n\n\nleaflet visualization\n\n\nleaflet() |&gt;\n  addProviderTiles('CartoDB.Positron') |&gt;\n  addPolygons(\n    data = tpc_mosque_results$osm_polygons,\n    color = \"purple\"\n  )\n\n\n\n\n\n\ntpc_mosque_polygon_sf &lt;- tpc_mosque_results$osm_polygons",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "w13-idx.html#osmdata-1",
+    "href": "w13-idx.html#osmdata-1",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "osmdata",
+    "text": "osmdata\n\nkentucky_bb &lt;- getbb('kentucky, USA')\nkentucky_bb\n\n        min       max\nx -89.57151 -81.96454\ny  36.49712  39.14780\n\n\n\nBounding Box\n\n\nky_results &lt;- kentucky_bb |&gt;\n  opq() |&gt;\n  add_osm_feature(key = 'boundary', value = 'administrative') |&gt;\n  add_osm_feature(key = 'admin_level', value = '4') |&gt;\n  add_osm_feature(key = 'name', value = 'Kentucky') |&gt;\n  osmdata_sf()\nky_results\n\nObject of class 'osmdata' with:\n                 $bbox : 36.497118,-89.571509,39.1477997,-81.9645413\n        $overpass_call : The call submitted to the overpass API\n                 $meta : metadata including timestamp and version numbers\n           $osm_points : 'sf' Simple Features Collection with 10411 points\n            $osm_lines : 'sf' Simple Features Collection with 266 linestrings\n         $osm_polygons : 'sf' Simple Features Collection with 0 polygons\n       $osm_multilines : NULL\n    $osm_multipolygons : 'sf' Simple Features Collection with 1 multipolygons\n\n\n\nky_sf &lt;- ky_results$osm_multipolygons\nky_vars &lt;- c(\"osm_id\", \"name\", \"ISO3166-2\", \"admin_level\", \"border_type\", \n\"boundary\", \"nickname\", \"official_name\", \"ref\", \"ref:USCG\", \"ref:USPS\", \"ref:fips\", \n\"short_name\", \"source:short_name\", \"type\", \n\"wikidata\", \"wikipedia\", \"geometry\")\n\n\nky_sf &lt;- ky_sf |&gt; dplyr::select(all_of(ky_vars))\nky_sf |&gt; mapview()\n\n\n\n\n\n\nky_bookcase_results &lt;- kentucky_bb |&gt;\n  opq() |&gt;\n  add_osm_feature(key='amenity', value = 'public_bookcase') |&gt;\n  osmdata_sf()\nky_bookcase_results\n\nObject of class 'osmdata' with:\n                 $bbox : 36.497118,-89.571509,39.1477997,-81.9645413\n        $overpass_call : The call submitted to the overpass API\n                 $meta : metadata including timestamp and version numbers\n           $osm_points : 'sf' Simple Features Collection with 78 points\n            $osm_lines : NULL\n         $osm_polygons : 'sf' Simple Features Collection with 0 polygons\n       $osm_multilines : NULL\n    $osm_multipolygons : NULL\n\n\n\nky_bookcase_sf &lt;- ky_bookcase_results$osm_points\n\n\n# ky_convex_sf &lt;- ky_sf |&gt; st_convex_hull() |&gt; st_buffer()\n# ky_convex_sf |&gt; mapview()\nky_bbox_sf &lt;- ky_sf |&gt; st_bbox() |&gt; st_as_sfc() |&gt; st_as_sf(crs = 4326)\nky_bbox_sf |&gt; mapview()",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "w13-idx.html#tessellation",
+    "href": "w13-idx.html#tessellation",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Tessellation",
+    "text": "Tessellation\n\nlibrary(tigris)\n\nTo enable caching of data, set `options(tigris_use_cache = TRUE)`\nin your R script or .Rprofile.\n\n\n\nAttachement du package : 'tigris'\n\n\nL'objet suivant est masqué depuis 'package:terra':\n\n    blocks\n\n\n\nuac_sf &lt;- urban_areas(year = 2020, progress_bar = FALSE)\n\n\nuac_sf |&gt; st_crs() |&gt; print()\n\nCoordinate Reference System:\n  User input: NAD83 \n  wkt:\nGEOGCRS[\"NAD83\",\n    DATUM[\"North American Datum 1983\",\n        ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"latitude\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"longitude\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    ID[\"EPSG\",4269]]\n\nky_sf |&gt; st_crs() |&gt; print()\n\nCoordinate Reference System:\n  User input: EPSG:4326 \n  wkt:\nGEOGCRS[\"WGS 84\",\n    ENSEMBLE[\"World Geodetic System 1984 ensemble\",\n        MEMBER[\"World Geodetic System 1984 (Transit)\"],\n        MEMBER[\"World Geodetic System 1984 (G730)\"],\n        MEMBER[\"World Geodetic System 1984 (G873)\"],\n        MEMBER[\"World Geodetic System 1984 (G1150)\"],\n        MEMBER[\"World Geodetic System 1984 (G1674)\"],\n        MEMBER[\"World Geodetic System 1984 (G1762)\"],\n        ELLIPSOID[\"WGS 84\",6378137,298.257223563,\n            LENGTHUNIT[\"metre\",1]],\n        ENSEMBLEACCURACY[2.0]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"geodetic latitude (Lat)\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"geodetic longitude (Lon)\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    USAGE[\n        SCOPE[\"Horizontal component of 3D system.\"],\n        AREA[\"World.\"],\n        BBOX[-90,-180,90,180]],\n    ID[\"EPSG\",4326]]\n\nuac_sf &lt;- uac_sf |&gt; st_transform(4326)\n\n\nky_uac_sf &lt;- uac_sf[ky_sf,]\nky_urban_bookcase_sf &lt;- ky_bookcase_sf[ky_uac_sf,]\nky_urban_bookcase_sf |&gt; dim()\n\n[1] 64 26\n\n\n\nmapview(ky_sf, col.region = 'lightblue', alpha.regions = 0.6, map.types = 'CartoDB.Positron') +\n  mapview(ky_uac_sf, col.regions = 'yellow') + \n  mapview(ky_urban_bookcase_sf, cex = 4)",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "w13-idx.html#observation-window",
+    "href": "w13-idx.html#observation-window",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Observation Window",
+    "text": "Observation Window\n\nkybb_uac_sf &lt;- uac_sf[ky_bbox_sf,]\nkybb_uac_sf |&gt; mapview()\n\n\n\n\n\n\nky_bookcase_sf[kybb_uac_sf,] |&gt; dim()\n\n[1] 70 26",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "w13-idx.html#ppp",
+    "href": "w13-idx.html#ppp",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "ppp",
+    "text": "ppp\n\nky_owin &lt;- ky_bbox_sf |&gt; st_transform(3857) |&gt; as.owin()\n\nky_urban_owin &lt;- kybb_uac_sf |&gt;\n  st_simplify(dTolerance = 200) |&gt;\n  st_intersection(ky_bbox_sf) |&gt;\n  st_transform(3857) |&gt;\n  as.owin()\n\nWarning: attribute variables are assumed to be spatially constant throughout\nall geometries\n\n# plot(ky_urban_owin)\n\n\nky_bookcase_ppp &lt;- ky_bookcase_sf |&gt;\n  st_as_sfc() |&gt;\n  st_transform(3857) |&gt;\n  as.ppp(W = ky_owin)\nplot(ky_bookcase_ppp)",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "w13-idx.html#dividing-the-observation-window",
+    "href": "w13-idx.html#dividing-the-observation-window",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Dividing the observation window",
+    "text": "Dividing the observation window\n\nurban_rural_tess &lt;- tess(\n  tiles = list(\n    urban = ky_urban_owin,\n    rural = setminus.owin(ky_owin, ky_urban_owin)\n  )\n)\n\n\nurban_rural_tess |&gt; class()\n\n[1] \"tess\" \"list\"",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "w13-idx.html#simulation",
+    "href": "w13-idx.html#simulation",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Simulation",
+    "text": "Simulation\n\nset.seed(6805)\ngen_sim_ppp &lt;- function() {\n  prot_sim &lt;- spatstat.random::rpoint(\n    n = nrow(ky_bookcase_sf),\n    w = ky_owin\n  )\n  return(prot_sim)\n}\nsim_prot_ppp &lt;- gen_sim_ppp()\nplot(sim_prot_ppp)\n\n\n\n\n\n\n\n\n\ncompute_tile_counts &lt;- function(ppp_obj) {\n  class_list &lt;- tileindex(\n    ppp_obj,\n    Z = urban_rural_tess\n  )\n  count_tb &lt;- table(class_list)\n  count_df &lt;- tibble(\n    urban = count_tb[1],\n    rural = count_tb[2]\n  )\n\n  return(count_df)\n}\n\n\ncompute_tile_counts(sim_prot_ppp)\n\n\n\n\n\nurban\nrural\n\n\n\n\n3\n75\n\n\n\n\n\n\n\ncompute_tile_counts(ky_bookcase_ppp)\n\n\n\n\n\nurban\nrural\n\n\n\n\n68\n10",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "w13-idx.html#simulation-1",
+    "href": "w13-idx.html#simulation-1",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Simulation",
+    "text": "Simulation\n\nset.seed(6805)\ngen_sims_ppp &lt;- function(num_sims = 999) {\n  bkcase_sims &lt;- spatstat.random::rpoint(\n    n = nrow(ky_bookcase_sf),\n    w = ky_owin,\n    nsim = num_sims\n  )\n  return(bkcase_sims)\n}\nbkcase_sims_list &lt;- gen_sims_ppp()\n\n\n# compute_tile_counts &lt;- function(ppp_obj) {\n#   class_list &lt;- tileindex(\n#     ppp_obj,\n#     Z = urban_rural_tess\n#   )\n#   counts &lt;- class_list |&gt;\n#     table() |&gt;\n#     as.vector()\n#   names(counts) &lt;- c('urban', 'rural')\n\n#   return(counts)\n# }\n\n\nsims_tess_counts &lt;- lapply(\n  X = bkcase_sims_list,\n  FUN = compute_tile_counts\n)\nsim_df &lt;- sims_tess_counts |&gt; bind_rows()\nsim_df |&gt; slice_sample(n = 4)\n\n\n\n\n\nurban\nrural\n\n\n\n\n1\n77\n\n\n2\n76\n\n\n4\n74\n\n\n0\n78\n\n\n\n\n\n\n\nobs_df &lt;- compute_tile_counts(ky_bookcase_ppp)\nobs_df\n\n\n\n\n\nurban\nrural\n\n\n\n\n68\n10\n\n\n\n\n\n\n\nbind_df &lt;- bind_rows(sim_df, obs_df)\nbind_df |&gt; dim()\n\n[1] 1000    2\n\n\n\nbind_df |&gt;\n  ggplot(aes(x = rural)) +\n  geom_density(fill = palette4[2], alpha = 0.7) +\n  geom_vline(\n    xintercept = 9,\n    linetype = 'dashed',\n    color = palette4[5]\n  ) +\n    theme_classic()",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "w13-idx.html#raster",
+    "href": "w13-idx.html#raster",
+    "title": "R Coding Workshop: 10th Meeting",
+    "section": "Raster",
+    "text": "Raster\n\npop_raster &lt;- raster(\n  'data/gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min.tif'\n)\npop_raster\n\nclass      : RasterLayer \ndimensions : 4320, 8640, 37324800  (nrow, ncol, ncell)\nresolution : 0.04166667, 0.04166667  (x, y)\nextent     : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)\ncrs        : +proj=longlat +datum=WGS84 +no_defs \nsource     : gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min.tif \nnames      : gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min \n\n\n\nbbox_extent &lt;- extent(-89.57151, -81.96454, 36.49712, 39.14780)\npop_raster_sub &lt;- crop(pop_raster, bbox_extent)\n\n\npop_poly &lt;- pop_raster_sub |&gt; raster::rasterToPolygons(n = 8, na.rm = TRUE)\npop_poly\n\nclass       : SpatialPolygonsDataFrame \nfeatures    : 11712 \nextent      : -89.58333, -81.95833, 36.5, 39.16667  (xmin, xmax, ymin, ymax)\ncrs         : +proj=longlat +datum=WGS84 +no_defs \nvariables   : 1\nnames       : gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min \nmin values  :                                                                                 0 \nmax values  :                                                                     37111.3984375 \n\n\n\npop_sf &lt;- st_as_sf(pop_poly)\npop_sf |&gt; glimpse()\n\nRows: 11,712\nColumns: 2\n$ gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min &lt;dbl&gt; …\n$ geometry                                                                          &lt;POLYGON [°]&gt; …\n\n\n\npop_sf &lt;- pop_sf |&gt; rename(pop_count = gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2020_2pt5_min)\n\n\ngpw_map &lt;- pop_sf |&gt;\n  ggplot(aes(fill = pop_count)) +\n  geom_sf(color = scales::alpha(\"white\",0)) +\n  scale_fill_viridis_c(trans = 'pseudo_log') + \n  theme_minimal() +\n  labs(\n    title = \"Population Counts\",\n    subtitle = 'GPW V.4 2020-07-01',\n    fill = \"Population Count\"\n    ) + \n  theme(\n    plot.title = element_text(hjust=0.5),\n    plot.subtitle = element_text(hjust=0.5)\n    )\n\nggsave('image/gpw-raster.png', plot = gpw_map)\n\nSaving 7 x 5 in image\n\ngpw_map",
+    "crumbs": [
+      "Coding Workshop",
+      "Week 13"
+    ]
+  },
+  {
+    "objectID": "pp-slides.html#manchu-english-machine-translation",
+    "href": "pp-slides.html#manchu-english-machine-translation",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Manchu-English Machine Translation",
+    "text": "Manchu-English Machine Translation\n\nAuthor: Christy Hsu\nCourse: Neural Networks and Deep Learning (Fall 2025)\nKeywords: Neural Machine Translation, Data Curation, In-Context Machine Translation, Endangered Language"
+  },
+  {
+    "objectID": "pp-slides.html#intro",
+    "href": "pp-slides.html#intro",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Intro",
+    "text": "Intro"
+  },
+  {
+    "objectID": "pp-slides.html#the-pipeline-and-challenges-how-we-learn-to-translate-manchu",
+    "href": "pp-slides.html#the-pipeline-and-challenges-how-we-learn-to-translate-manchu",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "The Pipeline and Challenges: How we learn (to translate) Manchu?",
+    "text": "The Pipeline and Challenges: How we learn (to translate) Manchu?\n\n\n\nDigitization\n\nTyping\nOCR\n\n\n\n\nTransliteration\nTranslation"
+  },
+  {
+    "objectID": "pp-slides.html#literature-review",
+    "href": "pp-slides.html#literature-review",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Literature Review",
+    "text": "Literature Review\n\nSeo et al., “Mergen: The First Manchu-Korean Machine Translation Model Trained on Augmented Data.”1\nLee et al., “ManNER & ManPOS: Pioneering NLP for Endangered Manchu Language.”2\nPei et al., Understanding In-Context Machine Translation for Low-Resource Languages: A Case Study on Manchu3\nChoi et al., “Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.” (2025)\n\nSeo et al. (2024)Lee et al. (2024)Pei et al. (2025)"
+  },
+  {
+    "objectID": "pp-slides.html#data-and-methods",
+    "href": "pp-slides.html#data-and-methods",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Data and Methods",
+    "text": "Data and Methods\nParallel Corpora\n\nCurated\n\nThe Dream of the Red Chamber (Cao, 1792)\n\nsource: Sibe translation (1993, Mu)\nreference: English translation (1891, Joly)\nsize: 262 sentences, vocab size: 669 words\n\n\nValidation set\n\nOld Cathay\n\nsrc & ref: manc.hu\nsize: 107 sentence pairs\n\n\nLinguistic Resource\n\nNorman, A Comprehensive Manchu-English Dictionary\n\nsrc & ref: manc.hu\nsize: 21,628 Manchu entries with English defintiton"
+  },
+  {
+    "objectID": "pp-slides.html#overview-models",
+    "href": "pp-slides.html#overview-models",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Overview: Models",
+    "text": "Overview: Models\nGoal again: input Manchu sentence, output English sentence\n\n\n\nAttempt 0: Seq2seq (2 GRUs) + Attention\nAttempt 1: manchuBERT + LSTM\n\n\n\nAttempt 2: manchuBERT + mBART\nAttempt 3: prompt engineering with dictionary + google.colab.ai in-context learning\n\n\n\n\n\n\n\n\nmanchuBERT\n\n\n# EN: this is a pretty good name\npredict_masked(\n  'ere gebu umesi [MASK]', tokenizer, model,\n  reference_text = 'ere gebu umesi sain'\n)\n\n# Input text:\n# ere gebu umesi [MASK].\n# ------------------------------\n# Top 5 predictions:\n#     - wesihun\n#     - ambula\n#     - .\n#     - sain\n#     - saikan\n# ------------------------------\n# Reference: ere gebu umesi sain\n\nmanchuBERT^[@SeemdogManchuBERTHugging]\n\n- embedding vector: `768`\n- trained on `195,611` monoligual sentences (after augmentation: `5,207,069`)"
+  },
+  {
+    "objectID": "pp-slides.html#results",
+    "href": "pp-slides.html#results",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Results",
+    "text": "Results\nAuto and Human Evaluation of MT\n\n\n\nBLEU\n\n\n\n\nModel\nTest BLEU\n\n\n\n\n2 GRUs\n0.000\n\n\nmanchuBERT + LSTM\n0.136\n\n\nmanchuBERT + mBART\n0.842\n\n\ndictionary + google.colab.ai\n1.203\n\n\n\n\n\nTranslation Examples\n\nSource: enteke erde uthai feksime jifi ainambi\nReference: what have you run over to do at this early hour\n\n- Prediction (manchuBERT + mBART): *why did you come back again for*\n\n- Prediction (dict + colan.ai): *why does he come so early immediately after getting up*\n\n\nTranslation Examples\n\n\n\nTranslation Examples\n\nSource:     ume jilidara\nReference:  dont be angry\nPrediction:  what you\n\nSource:     tere oci teni jihengge ainahai terei jalin simbe aldangga tuwara giyan binio\nReference:  how could I ever distance you on her account while she has only recently come\nPrediction:  but will will that to to to to to to to\nSource:     giyan de uthai uttu\nReference:    this goes without saying\nPrediction:    SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS"
+  },
+  {
+    "objectID": "pp-slides.html#discussion-and-reflection",
+    "href": "pp-slides.html#discussion-and-reflection",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Discussion and Reflection",
+    "text": "Discussion and Reflection\n\nChung et al., “Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.” (2025)1\n\n\n\n\n\nChung, Yan Hon Michael, and Donghyeok Choi. 2025. “Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.” arXiv. https://doi.org/10.48550/arXiv.2507.06761.\n\n\nLee, Sangah, Sungjoo Byun, Jean Seo, and Minha Kang. 2024. “ManNER & ManPOS: Pioneering NLP for Endangered Manchu Language.” In Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), 11030–39.\n\n\nPei, Renhao, Yihong Liu, Peiqin Lin, François Yvon, and Hinrich Schuetze. 2025. “Understanding in-Context Machine Translation for Low-Resource Languages: A Case Study on Manchu.” In Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), edited by Wanxiang Che, Joyce Nabende, Ekaterina Shutova, and Mohammad Taher Pilehvar, 8767–88. Vienna, Austria: Association for Computational Linguistics. https://doi.org/10.18653/v1/2025.acl-long.429.\n\n\nSeo, Jean, Sungjoo Byun, Minha Kang, and Sangah Lee. 2024. “Mergen: The First Manchu-Korean Machine Translation Model Trained on Augmented Data,” no. arXiv:2311.17492 (January). https://doi.org/10.48550/arXiv.2311.17492.\n\n\nChung and Choi (2025)"
+  },
+  {
+    "objectID": "pp-idx.html",
+    "href": "pp-idx.html",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "",
+    "text": "Author: Christy Hsu\nCourse: Neural Networks and Deep Learning (Fall 2025)\nKeywords: Neural Machine Translation, Data Curation, In-Context Machine Translation, Endangered Language",
+    "crumbs": [
+      "Coding Workshop",
+      "progress report"
+    ]
+  },
+  {
+    "objectID": "pp-idx.html#manchu-english-machine-translation",
+    "href": "pp-idx.html#manchu-english-machine-translation",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "",
+    "text": "Author: Christy Hsu\nCourse: Neural Networks and Deep Learning (Fall 2025)\nKeywords: Neural Machine Translation, Data Curation, In-Context Machine Translation, Endangered Language",
+    "crumbs": [
+      "Coding Workshop",
+      "progress report"
+    ]
+  },
+  {
+    "objectID": "pp-idx.html#intro",
+    "href": "pp-idx.html#intro",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Intro",
+    "text": "Intro",
+    "crumbs": [
+      "Coding Workshop",
+      "progress report"
+    ]
+  },
+  {
+    "objectID": "pp-idx.html#the-pipeline-and-challenges-how-we-learn-to-translate-manchu",
+    "href": "pp-idx.html#the-pipeline-and-challenges-how-we-learn-to-translate-manchu",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "The Pipeline and Challenges: How we learn (to translate) Manchu?",
+    "text": "The Pipeline and Challenges: How we learn (to translate) Manchu?\n\n\n\nDigitization\n\nTyping\nOCR\n\n\n\n\nTransliteration\nTranslation",
+    "crumbs": [
+      "Coding Workshop",
+      "progress report"
+    ]
+  },
+  {
+    "objectID": "pp-idx.html#literature-review",
+    "href": "pp-idx.html#literature-review",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Literature Review",
+    "text": "Literature Review\n\nSeo et al., “Mergen: The First Manchu-Korean Machine Translation Model Trained on Augmented Data.”1\nLee et al., “ManNER & ManPOS: Pioneering NLP for Endangered Manchu Language.”2\nPei et al., Understanding In-Context Machine Translation for Low-Resource Languages: A Case Study on Manchu3\nChoi et al., “Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.” (2025)",
+    "crumbs": [
+      "Coding Workshop",
+      "progress report"
+    ]
+  },
+  {
+    "objectID": "pp-idx.html#data-and-methods",
+    "href": "pp-idx.html#data-and-methods",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Data and Methods",
+    "text": "Data and Methods\nParallel Corpora\n\nCurated\n\nThe Dream of the Red Chamber (Cao, 1792)\n\nsource: Sibe translation (1993, Mu)\nreference: English translation (1891, Joly)\nsize: 262 sentences, vocab size: 669 words\n\n\nValidation set\n\nOld Cathay\n\nsrc & ref: manc.hu\nsize: 107 sentence pairs\n\n\nLinguistic Resource\n\nNorman, A Comprehensive Manchu-English Dictionary\n\nsrc & ref: manc.hu\nsize: 21,628 Manchu entries with English defintiton",
+    "crumbs": [
+      "Coding Workshop",
+      "progress report"
+    ]
+  },
+  {
+    "objectID": "pp-idx.html#overview-models",
+    "href": "pp-idx.html#overview-models",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Overview: Models",
+    "text": "Overview: Models\nGoal again: input Manchu sentence, output English sentence\n\n\n\nAttempt 0: Seq2seq (2 GRUs) + Attention\nAttempt 1: manchuBERT + LSTM\n\n\n\nAttempt 2: manchuBERT + mBART\nAttempt 3: prompt engineering with dictionary + google.colab.ai in-context learning\n\n\n\n\n\n\n\n\n\nmanchuBERT\n\n\n\n# EN: this is a pretty good name\npredict_masked(\n  'ere gebu umesi [MASK]', tokenizer, model,\n  reference_text = 'ere gebu umesi sain'\n)\n\n# Input text:\n# ere gebu umesi [MASK].\n# ------------------------------\n# Top 5 predictions:\n#     - wesihun\n#     - ambula\n#     - .\n#     - sain\n#     - saikan\n# ------------------------------\n# Reference: ere gebu umesi sain\n\nmanchuBERT^[@SeemdogManchuBERTHugging]\n\n- embedding vector: `768`\n- trained on `195,611` monoligual sentences (after augmentation: `5,207,069`)",
+    "crumbs": [
+      "Coding Workshop",
+      "progress report"
+    ]
+  },
+  {
+    "objectID": "pp-idx.html#results",
+    "href": "pp-idx.html#results",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Results",
+    "text": "Results\nAuto and Human Evaluation of MT\n\n\n\nBLEU\n\n\n\n\nModel\nTest BLEU\n\n\n\n\n2 GRUs\n0.000\n\n\nmanchuBERT + LSTM\n0.136\n\n\nmanchuBERT + mBART\n0.842\n\n\ndictionary + google.colab.ai\n1.203\n\n\n\n\n\nTranslation Examples\n\nSource: enteke erde uthai feksime jifi ainambi\nReference: what have you run over to do at this early hour\n\n- Prediction (manchuBERT + mBART): *why did you come back again for*\n\n- Prediction (dict + colan.ai): *why does he come so early immediately after getting up*\n\n\nTranslation Examples\n\n\n\nTranslation Examples\n\nSource:     ume jilidara\nReference:  dont be angry\nPrediction:  what you\n\nSource:     tere oci teni jihengge ainahai terei jalin simbe aldangga tuwara giyan binio\nReference:  how could I ever distance you on her account while she has only recently come\nPrediction:  but will will that to to to to to to to\nSource:     giyan de uthai uttu\nReference:    this goes without saying\nPrediction:    SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS SOS",
+    "crumbs": [
+      "Coding Workshop",
+      "progress report"
+    ]
+  },
+  {
+    "objectID": "pp-idx.html#discussion-and-reflection",
+    "href": "pp-idx.html#discussion-and-reflection",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Discussion and Reflection",
+    "text": "Discussion and Reflection\n\nChung et al., “Finetuning Vision-Language Models as OCR Systems for Low-Resource Languages: A Case Study of Manchu.” (2025)4",
+    "crumbs": [
+      "Coding Workshop",
+      "progress report"
+    ]
+  },
+  {
+    "objectID": "pp-idx.html#footnotes",
+    "href": "pp-idx.html#footnotes",
+    "title": "DSAN6600 Final: Manchu Learning",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSeo et al. (2024)↩︎\nLee et al. (2024)↩︎\nPei et al. (2025)↩︎\nChung and Choi (2025)↩︎",
+    "crumbs": [
+      "Coding Workshop",
+      "progress report"
+    ]
+  },
+  {
+    "objectID": "pre6000-slides.html#dsan6000-project",
+    "href": "pre6000-slides.html#dsan6000-project",
+    "title": "Big Data Analytics & Cloud Computing Final",
+    "section": "DSAN6000 Project",
+    "text": "DSAN6000 Project\nData Overview\nReddit Submission and Comment Data\n\nTime Span: 2023-06-01 to 2024-07-31 (14 months)\nSize: 9.09 GB\n\nsubmission: 2,878,865 rows\ncomment: 61,773,939 rows\n\n\nFiltering US Locational Subreddits\n\nResult: 619 subreddits\nResource: (https://www.reddit.com/r/LocationReddits/wiki/faq/northamerica/)\n\nCensus Bureau Incorporated Places 2023, 2024 population estimates\nSNAP: Social Network Reddit Embedding Dataset (city cluster)\n\n\nIntroduce additional dimensions: Spatial, Geographic Regions, Administractive Boundaries"
+  },
+  {
+    "objectID": "pre6000-slides.html#top-50-incorporated-places-in-us-by-population-sorted-by",
+    "href": "pre6000-slides.html#top-50-incorporated-places-in-us-by-population-sorted-by",
+    "title": "Big Data Analytics & Cloud Computing Final",
+    "section": "Top 50 Incorporated Places in US by Population sorted by",
+    "text": "Top 50 Incorporated Places in US by Population sorted by"
+  },
+  {
+    "objectID": "pre6000-slides.html#more-work",
+    "href": "pre6000-slides.html#more-work",
+    "title": "Big Data Analytics & Cloud Computing Final",
+    "section": "More Work…",
+    "text": "More Work…\n\nExploring Groupings of our subreddits:\n\nTop 50 Incorporated Place by Population\nLargest city for each state\nCensus Bureau defined regions and divisions\nNatural\n\nIntroduce External Data\n\nState-level estimate of “Death of Despair”\n\nEstimation of Community Connectedness: language usage, similarity based on topic and user"
+  },
+  {
+    "objectID": "pre6000-idx.html",
+    "href": "pre6000-idx.html",
+    "title": "Big Data Analytics & Cloud Computing Final",
+    "section": "",
+    "text": "Reddit Submission and Comment Data\n\nTime Span: 2023-06-01 to 2024-07-31 (14 months)\nSize: 9.09 GB\n\nsubmission: 2,878,865 rows\ncomment: 61,773,939 rows\n\n\nFiltering US Locational Subreddits\n\nResult: 619 subreddits\nResource: (https://www.reddit.com/r/LocationReddits/wiki/faq/northamerica/)\n\nCensus Bureau Incorporated Places 2023, 2024 population estimates\nSNAP: Social Network Reddit Embedding Dataset (city cluster)\n\n\nIntroduce additional dimensions: Spatial, Geographic Regions, Administractive Boundaries"
+  },
+  {
+    "objectID": "pre6000-idx.html#dsan6000-project",
+    "href": "pre6000-idx.html#dsan6000-project",
+    "title": "Big Data Analytics & Cloud Computing Final",
+    "section": "",
+    "text": "Reddit Submission and Comment Data\n\nTime Span: 2023-06-01 to 2024-07-31 (14 months)\nSize: 9.09 GB\n\nsubmission: 2,878,865 rows\ncomment: 61,773,939 rows\n\n\nFiltering US Locational Subreddits\n\nResult: 619 subreddits\nResource: (https://www.reddit.com/r/LocationReddits/wiki/faq/northamerica/)\n\nCensus Bureau Incorporated Places 2023, 2024 population estimates\nSNAP: Social Network Reddit Embedding Dataset (city cluster)\n\n\nIntroduce additional dimensions: Spatial, Geographic Regions, Administractive Boundaries"
+  },
+  {
+    "objectID": "pre6000-idx.html#top-50-incorporated-places-in-us-by-population-sorted-by",
+    "href": "pre6000-idx.html#top-50-incorporated-places-in-us-by-population-sorted-by",
+    "title": "Big Data Analytics & Cloud Computing Final",
+    "section": "Top 50 Incorporated Places in US by Population sorted by",
+    "text": "Top 50 Incorporated Places in US by Population sorted by"
+  },
+  {
+    "objectID": "pre6000-idx.html#more-work",
+    "href": "pre6000-idx.html#more-work",
+    "title": "Big Data Analytics & Cloud Computing Final",
+    "section": "More Work…",
+    "text": "More Work…\n\nExploring Groupings of our subreddits:\n\nTop 50 Incorporated Place by Population\nLargest city for each state\nCensus Bureau defined regions and divisions\nNatural\n\nIntroduce External Data\n\nState-level estimate of “Death of Despair”\n\nEstimation of Community Connectedness: language usage, similarity based on topic and user"
   },
   {
     "objectID": "index.html",
